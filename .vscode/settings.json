@@ -1,0 +1,10 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#ffffff",
+    "titleBar.activeBackground": "#004489",
+    "titleBar.inactiveBackground": "#004489"
+  },
+  "prettier.configPath": "./devtools/prettier/config.js",
+  "wordIntellisense.baseDir": "src/lib"
+}

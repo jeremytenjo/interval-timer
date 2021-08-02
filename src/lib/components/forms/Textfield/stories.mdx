@@ -1,0 +1,22 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks'
+import TextField from './'
+import Form from '../Form'
+
+<Meta title='Lib/Components/Form/TextField' component={TextField} args={{label: 'First Name', name: 'firstName' }} />
+
+# TextField
+
+export const Template = (args) => <Form sx={{margin:4}}> <TextField  {...args} /> </Form>
+
+### Default
+
+<Story name='Default' argTypes={{}} args={{}}> 
+  {Template.bind({})}
+</Story>
+
+### Error
+
+<Story name='Error' argTypes={{}} args={{ validation:{ required: true }, forceError: true }}> 
+  {Template.bind({})}
+</Story>
+

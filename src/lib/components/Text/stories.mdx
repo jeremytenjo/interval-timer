@@ -1,0 +1,33 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks'
+import Typography from '../../../theme/tokens/stories/theme.typography'
+import { variantNames } from '../../../theme/tokens/typography'
+import Text from './'
+
+<Meta title='Lib/Components/Text' component={Text} />
+
+# Text
+
+export const Template = (args) => <Text {...args} />
+
+### Default
+
+<Story
+  name='default'
+  argTypes={{
+    variant: {
+      control: {
+        type: 'select',
+        options: variantNames,
+      },
+    },
+  }}
+  args={{ text: 'hello', variant: 'h1' }}
+>
+  {Template.bind({})}
+</Story>
+
+### Variants
+
+<Story name='variants' argTypes={{}} args={{}}>
+  <Typography />
+</Story>

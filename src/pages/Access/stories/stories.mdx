@@ -1,0 +1,14 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import Access from '..'
+
+<Meta title='Pages/Access/index' component={Access} args={{ test: 'test' }} />
+
+# Access Page
+
+export const Template = (args) => <Access {...args} />
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

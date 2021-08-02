@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import Button from './'
+
+<Meta title='lib/components/Button' component={Button} args={{ text: 'Button' }} />
+
+# Button
+
+export const Template = (args) => <Button {...args} />
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+  <Story name='outlined' argTypes={{}} args={{ variant: 'outlined' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

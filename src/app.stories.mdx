@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import '@capacitor/core'
+import { Routes } from './pages/router'
+import DataProvider from './lib/utils/useData/DataProvider'
+import ReactRouterChanger from './lib/utils/navigation/ReactRouter/ReactRouterChanger'
+
+<Meta
+  title='App'
+  component={Routes}
+  args={{ pageUrl: '/', signedIn: true, userTeamId: 1 }}
+/>
+
+# App
+
+export const Template = (args) => (
+  <ReactRouterChanger url={args.pageUrl}>
+    <DataProvider>
+      <Routes />
+    </DataProvider>
+  </ReactRouterChanger>
+)
+
+<Canvas>
+  <Story name='App' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
