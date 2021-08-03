@@ -1,5 +1,8 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
 import useTimers from './useTimers'
+import schema from './schema'
+import Code from '@useweb/lib/esm/dataDisplay/Code'
+import Text from '../../lib/components/Text'
 
 <Meta title='data/useTimers' argTypes={{}} args={{ test: 'test' }} />
 
@@ -7,7 +10,12 @@ import useTimers from './useTimers'
 
 export const Template = (args) => {
   const timers = useTimers()
-  return <>useTimers</>
+  return (
+    <>
+      <Text text='Schema' />
+      <Code code={schema} stringify />
+    </>
+  )
 }
 
 <Canvas>
