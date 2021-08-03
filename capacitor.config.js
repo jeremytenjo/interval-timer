@@ -3,7 +3,7 @@ const appConfig = require('./app.config')
 // https://capacitorjs.com/docs/config
 module.exports = {
   appId: 'app.footycity.app',
-  appName: 'starter-capacitorjs',
+  appName: 'my-interval-timer',
   webDir: 'build',
   bundledWebRuntime: false,
   server: {

@@ -1,3 +1,1 @@
-# Capacitor JS Starter
-
-https://capacitorjs.com/
+# Interval TImer

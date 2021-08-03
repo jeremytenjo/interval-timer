@@ -6,7 +6,7 @@ import StorybookTheme from './theme'
 
 const theme = create({
   base: 'light',
-  brandUrl: 'https://github.com/jeremytenjo/starter-capacitorjs',
+  brandUrl: 'https://github.com/jeremytenjo/my-interval-timer',
 })
 
 export const decorators = [

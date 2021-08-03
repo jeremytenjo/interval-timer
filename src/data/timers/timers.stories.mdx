@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import useTimers from './'
+
+<Meta title='useTimers' argTypes={{}} args={{ test: 'test' }} />
+
+# useTimers
+
+export const Template = (args) => {
+  const timers = useTimers()
+  return <>useTimers</>
+}
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

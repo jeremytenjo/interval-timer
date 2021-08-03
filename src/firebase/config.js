@@ -1,10 +1,9 @@
 export default {
-  apiKey: 'AIzaSyDnkiQgeT3oJUIjIwu6rGB8gM33f25IbRI',
-  authDomain: 'starter-capacitorjs.firebaseapp.com',
-  databaseURL: 'https://starter-capacitorjs.firebaseio.com',
-  projectId: 'starter-capacitorjs',
-  storageBucket: 'starter-capacitorjs.appspot.com',
-  messagingSenderId: '941715462908',
-  appId: '1:941715462908:web:ac6a4522459cfb486d1579',
-  measurementId: 'G-9JSY94VR0J',
+  apiKey: 'AIzaSyD2vyg83491gAMVwhDyv6LkW0GXl8HCIHg',
+  authDomain: 'my-interval-timer.firebaseapp.com',
+  projectId: 'my-interval-timer',
+  storageBucket: 'my-interval-timer.appspot.com',
+  messagingSenderId: '658483761530',
+  appId: '1:658483761530:web:c52434f0b66de67d4806c3',
+  measurementId: 'G-83D8302GLZ',
 }

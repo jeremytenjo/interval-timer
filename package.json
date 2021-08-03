@@ -1,6 +1,6 @@
 {
-  "name": "starter-capacitorjs",
-  "description": "Capacitor JS Starter",
+  "name": "my-interval-timer",
+  "description": "Interval Timer",
   "version": "0.0.1",
   "private": true,
   "scripts": {
