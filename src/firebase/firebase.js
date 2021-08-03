@@ -30,6 +30,13 @@ export const FirebaseProvider = ({ children }) => {
   )
 }
 
+/**
+ * @returns {{
+ * firebaseApp
+ * auth
+ * db
+ * }}
+ */
 const useFirebase = () => useContext(FirebaseContext)
 
 export default useFirebase
