@@ -16,7 +16,7 @@ export default function useTimers() {
     data: {
       name: 'Los Angeles',
       state: 'CA',
-      country: 'USAd',
+      country: 'USAs',
     },
   })
 

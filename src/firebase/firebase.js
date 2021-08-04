@@ -9,9 +9,9 @@ import initializeEmulator from './initializeEmulator'
 export const FirebaseContext = createContext(null)
 
 export const FirebaseProvider = ({ children }) => {
-  const firebaseApp = initializeApp(firebaseConfig)
-  const auth = getAuth()
-  const db = getFirestore()
+  const firebaseApp = useMemo(() => initializeApp(firebaseConfig), [])
+  const auth = useMemo(() => getAuth(), [])
+  const db = useMemo(() => getFirestore(), [])
 
   useMemo(() => {
     initializeEmulator({ auth, db })
