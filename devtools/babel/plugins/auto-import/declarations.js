@@ -900,6 +900,10 @@ module.exports = () => {
     { default: 'useOnTrue', path: '@useweb/lib/esm/utils/hooks/useOnTrue/index.js' },
     { default: 'useToggle', path: '@useweb/lib/esm/utils/misc/useToggle/index.js' },
     {
+      default: 'getMyIpAddress',
+      path: '@useweb/lib/esm/utils/network/getMyIpAddress/index.js',
+    },
+    {
       default: 'useIsOnline',
       path: '@useweb/lib/esm/utils/network/useIsOnline/index.js',
     },
@@ -927,6 +931,10 @@ module.exports = () => {
       path: '@useweb/lib/esm/utils/scrolling/preventBodyScroll/index.js',
     },
     { default: 'firebase', path: '@useweb/lib/esm/utils/services/firebase/index.js' },
+    {
+      default: 'initializeFirebaseEmulator',
+      path: '@useweb/lib/esm/utils/services/firebase/initializeFirebaseEmulator/index.js',
+    },
     {
       default: 'Create',
       path: '@useweb/lib/esm/utils/stateManagement/React/Context/Actions/Create/context.create.index.js',

@@ -9,7 +9,7 @@ import faker from 'faker'
 
 import styleEmulatorWarning from './styleEmulatorWarning'
 
-export default function initializeEmulator({
+export default function initializeFirebaseEmulator({
   auth,
   db,
   authEmulatorPort = 9005,

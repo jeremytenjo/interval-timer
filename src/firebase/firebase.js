@@ -3,14 +3,14 @@ import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
 
-import initializeEmulator from './utils/initializeEmulator'
 import firebaseConfig from './config'
+import initializeFirebaseEmulator from './utils/initializeFirebaseEmulator'
 
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore()
 
-initializeEmulator({ auth, db })
+initializeFirebaseEmulator({ auth, db })
 
 export const FirebaseContext = createContext(null)
 
