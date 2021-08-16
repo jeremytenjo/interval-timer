@@ -24,7 +24,7 @@ export default function useTimers() {
     fsetdoc.exec()
   }, [])
 
-  return timers
+  return { data: timers }
 }
 
 function useFirestoreSetDoc({ collection, doc, data }) {
