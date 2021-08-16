@@ -5,24 +5,30 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth'
+import faker from 'faker'
 
 import styleEmulatorWarning from './styleEmulatorWarning'
 
-export default function initializeEmulator({ auth, db }) {
+export default function initializeEmulator({
+  auth,
+  db,
+  authEmulatorPort = 9005,
+  dbEmulatorPort = 9003,
+}) {
   if (process.env.NODE_ENV === 'development') {
-    startAuthEmulator(auth)
-    startFirestoreEmulator(db)
+    auth && startAuthEmulator({ auth, authEmulatorPort })
+    db && startFirestoreEmulator({ db, dbEmulatorPort })
     styleEmulatorWarning()
   }
 }
 
-const startAuthEmulator = (auth) => {
+const startAuthEmulator = ({ auth, authEmulatorPort }) => {
   const testUser = {
-    username: 'test@gmail.com',
+    username: faker.internet.email(),
     password: 'testpassword',
   }
 
-  connectAuthEmulator(auth, 'http://localhost:9005')
+  connectAuthEmulator(auth, `http://localhost:${authEmulatorPort}`)
 
   onAuthStateChanged(auth, (user) => {
     if (!user) {
@@ -35,6 +41,6 @@ const startAuthEmulator = (auth) => {
   })
 }
 
-const startFirestoreEmulator = (db) => {
-  connectFirestoreEmulator(db, 'localhost', 9003)
+const startFirestoreEmulator = ({ db, dbEmulatorPort }) => {
+  connectFirestoreEmulator(db, 'localhost', dbEmulatorPort)
 }

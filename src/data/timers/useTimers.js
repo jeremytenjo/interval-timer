@@ -11,12 +11,12 @@ export default function useTimers() {
   const timers = []
 
   const fsetdoc = useFirestoreSetDoc({
-    collection: 'cities',
+    collection: 'timers',
     doc: 'LA',
     data: {
       name: 'Los Angeles',
       state: 'CA',
-      country: 'USAs',
+      country: 'USA',
     },
   })
 

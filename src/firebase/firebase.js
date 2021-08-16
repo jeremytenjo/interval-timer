@@ -1,22 +1,20 @@
-import React, { createContext, useContext, useMemo } from 'react'
-import { initializeApp } from 'firebase/app'
+import React, { createContext, useContext } from 'react'
 import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
+import { initializeApp } from 'firebase/app'
 
+import initializeEmulator from './utils/initializeEmulator'
 import firebaseConfig from './config'
-import initializeEmulator from './initializeEmulator'
+
+const firebaseApp = initializeApp(firebaseConfig)
+const auth = getAuth()
+const db = getFirestore()
+
+initializeEmulator({ auth, db })
 
 export const FirebaseContext = createContext(null)
 
 export const FirebaseProvider = ({ children }) => {
-  const firebaseApp = useMemo(() => initializeApp(firebaseConfig), [])
-  const auth = useMemo(() => getAuth(), [])
-  const db = useMemo(() => getFirestore(), [])
-
-  useMemo(() => {
-    initializeEmulator({ auth, db })
-  }, [])
-
   return (
     <FirebaseContext.Provider
       value={{
