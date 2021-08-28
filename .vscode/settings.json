@@ -6,5 +6,6 @@
     "titleBar.inactiveBackground": "#004489"
   },
   "prettier.configPath": "./devtools/prettier/config.js",
-  "wordIntellisense.baseDir": "src/lib"
+  "wordIntellisense.baseDir": "src/lib",
+  "quickComponentCreator.prettierConfigFilePath": "devtools/prettier/config.js"
 }

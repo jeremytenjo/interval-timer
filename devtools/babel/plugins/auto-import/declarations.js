@@ -998,6 +998,10 @@ module.exports = () => {
     { default: 'ShellLayout', path: 'lib/components/layouts/ShellLayout/index.js' },
     { default: 'Capacitor', path: 'lib/utils/Capacitor/index.js' },
     { default: 'auth', path: 'lib/utils/firebase/auth/index.js' },
+    {
+      default: 'useFirestoreSetDoc',
+      path: 'lib/utils/firebase/firestore/useFirestoreSetDoc/index.js',
+    },
     { default: 'useGeolocation', path: 'lib/utils/location/useGeolocation/index.js' },
     {
       default: 'ReactRouterChanger',

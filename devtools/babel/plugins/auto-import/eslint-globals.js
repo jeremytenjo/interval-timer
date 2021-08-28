@@ -368,6 +368,7 @@ module.exports = {
   ShellLayout: 'readonly',
   Capacitor: 'readonly',
   auth: 'readonly',
+  useFirestoreSetDoc: 'readonly',
   useGeolocation: 'readonly',
   ReactRouterChanger: 'readonly',
   flattenObject: 'readonly',

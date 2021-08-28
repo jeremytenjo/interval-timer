@@ -1,6 +1,4 @@
-import { doc as firestoreDoc, setDoc as firestoreSetDoc } from 'firebase/firestore'
-
-import useFirebase from '../../firebase/firebase'
+import useFirestoreSetDoc from '../../lib/utils/firebase/firestore/useFirestoreSetDoc'
 
 export default function useTimers() {
   // const timers = useData(
@@ -25,16 +23,4 @@ export default function useTimers() {
   }, [])
 
   return { data: timers }
-}
-
-function useFirestoreSetDoc({ collection, doc, data }) {
-  const firebase = useFirebase()
-
-  const fetcher = async () => {
-    return await firestoreSetDoc(firestoreDoc(firebase.db, collection, doc), data)
-  }
-
-  const hookData = useAsync(fetcher)
-
-  return hookData
 }

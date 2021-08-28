@@ -1,7 +1,7 @@
 import '@capacitor/core'
 import ReactDOM from 'react-dom'
 
-import { FirebaseProvider } from './firebase/firebase'
+import { FirebaseProvider } from './firebase/useFirebase'
 import Router from './pages/router'
 import Theme from './theme/theme'
 import DataProvider from './lib/utils/useData/DataProvider'
