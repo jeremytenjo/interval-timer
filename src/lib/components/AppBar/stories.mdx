@@ -1,0 +1,14 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import AppBar from './'
+
+<Meta title='lib/components/AppBar' component={AppBar} args={{ text: 'AppBar' }} />
+
+# AppBar
+
+export const Template = (args) => <AppBar {...args} />
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -23,6 +23,31 @@ const component = {
       export const Wrapper = styled.div${helpers.addEmptyTemplateLiteral()}
         `,
     },
+    {
+      path: () => `stories/sb.stories.mdx`,
+      template: ({ name }) => `import { Meta } from '@storybook/addon-docs/blocks'
+import ${name} from '../'
+      
+<Meta 
+  title='Lib/${name}' 
+  component={${name}} 
+  argTypes={{}} 
+  args={{}} 
+/>
+
+# ${name}
+
+export const Template = (args) => (
+  <${name} {...args}>
+    ${name}
+  </${name}>
+)
+
+<Story name='default' argTypes={{}} args={{}}>
+  {Template.bind({})}
+</Story>
+`,
+    },
   ],
 }
 
