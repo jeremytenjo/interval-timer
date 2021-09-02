@@ -358,6 +358,7 @@ module.exports = {
   AnimatePresence: 'readonly',
   AnimateSharedLayout: 'readonly',
   Navigation: 'readonly',
+  AppBar: 'readonly',
   Swatch: 'readonly',
   Swatches: 'readonly',
   Typography: 'readonly',

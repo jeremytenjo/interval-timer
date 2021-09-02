@@ -1,4 +1,4 @@
-import GlobalStyles from '@material-ui/core/GlobalStyles'
+import GlobalStyles from '@mui/material/GlobalStyles'
 
 const noMarginPadding = {
   padding: 0,

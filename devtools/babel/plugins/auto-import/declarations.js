@@ -985,6 +985,7 @@ module.exports = () => {
       members: ['BrowserRouter', 'Routes', 'Route', 'Navigation', 'useNavigate'],
       path: 'react-router-dom',
     },
+    { default: 'AppBar', path: 'lib/components/AppBar/index.js' },
     { default: 'Swatch', path: 'lib/components/designSystem/Swatches/Swatch/index.js' },
     { default: 'Swatches', path: 'lib/components/designSystem/Swatches/index.js' },
     { default: 'Typography', path: 'lib/components/designSystem/Typography/index.js' },
