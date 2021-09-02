@@ -8,7 +8,7 @@ export default function Swatch({ name, color }) {
   const textColor = lightOrDarkColor(color) === 'light' ? 'white' : 'black'
 
   return (
-    <Box sx={styles.wrapper} style={{ backgroundColor: color }}>
+    <Box sx={styles.wrapper} style={{ background: color }}>
       <Box sx={styles.text}>
         <span style={{ color: textColor }}>{name}</span>
         <span style={{ color: textColor }}>{color}</span>
