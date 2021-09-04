@@ -28,12 +28,7 @@ const component = {
       template: ({ name }) => `import { Meta } from '@storybook/addon-docs/blocks'
 import ${name} from '../'
       
-<Meta 
-  title='Lib/${name}' 
-  component={${name}} 
-  argTypes={{}} 
-  args={{}} 
-/>
+<Meta title='Lib/components/${name}' component={${name}} argTypes={{}} args={{}} />
 
 # ${name}
 
@@ -102,12 +97,7 @@ const componentWithStory = {
       template: ({ name }) => `import { Meta } from '@storybook/addon-docs/blocks'
 import ${name} from '../'
       
-<Meta 
-  title='Lib/${name}' 
-  component={${name}} 
-  argTypes={{}} 
-  args={{}} 
-/>
+<Meta title='Lib/components${name}' component={${name}} argTypes={{}} args={{}} />
 
 # ${name}
 

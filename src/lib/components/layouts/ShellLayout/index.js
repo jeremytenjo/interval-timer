@@ -1,4 +1,4 @@
-import TopBar from './TopBar'
+import TopBar from './AppBar'
 import BottomNav from './BottomNav'
 
 export default function ShellLayout({ children }) {
