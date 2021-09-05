@@ -1,10 +1,10 @@
 module.exports = async function webpackConfig({ mode = 'development', appConfig = {} }) {
   const isProd = mode === 'production'
   const isDev = mode === 'development'
-  const payload = { isProd, isDev, appConfig }
+  const payload = { isProd, isDev, appConfig, mode }
 
   return {
-    mode: payload.mode,
+    mode,
     entry: require('./options/entry/index.js')(payload),
     output: require('./options/output/index.js')(payload),
     devtool: require('./options/devtool/index.js')(payload),
