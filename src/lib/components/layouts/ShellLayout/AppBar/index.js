@@ -1,8 +1,8 @@
 import Box from '../../../Box'
 
-import Menu from './Menu'
 import * as styles from './styles'
-import Items from './Items'
+import Menu from './containers/Menu'
+import Items from './containers/Items'
 
 export default function ShellLayoutTopBar() {
   return (

@@ -1,6 +1,6 @@
-import Avatar from '../../../../../Avatar'
-import IconButton from '../../../../../IconButton'
-import Popover from '../../../../../Popover'
+import Avatar from '../../../../../../Avatar'
+import IconButton from '../../../../../../IconButton'
+import Popover from '../../../../../../Popover'
 
 export default function ProfilePic() {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -18,12 +18,8 @@ export default function ProfilePic() {
 
   return (
     <>
-      <IconButton>
-        <Avatar
-          sx={{ width: '29px', height: '29px' }}
-          aria-describedby={id}
-          onClick={handleClick}
-        />
+      <IconButton onClick={handleClick}>
+        <Avatar sx={{ width: '29px', height: '29px' }} aria-describedby={id} />
       </IconButton>
 
       <Popover

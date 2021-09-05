@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
+import getIsOsMobile from '../../os/getIsOsMobile'
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -9,6 +11,10 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+const isOsMobile = getIsOsMobile()
+
+console.log(isOsMobile)
 
 export default function DataProvider({ children }) {
   return (

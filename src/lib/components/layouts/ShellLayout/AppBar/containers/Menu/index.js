@@ -1,8 +1,8 @@
-import Menu from '../../../../Menu'
-import MenuItem from '../../../../Menu/MenuItem'
-import Button from '../../../../Button'
-import Chevron from '../../../../icons/Chevron'
-import Box from '../../../../Box'
+import Menu from '../../../../../Menu'
+import MenuItem from '../../../../../Menu/MenuItem'
+import Button from '../../../../../Button'
+import Chevron from '../../../../../icons/Chevron'
+import Box from '../../../../../Box'
 
 export default function TopBarMenu() {
   const menuId = 'TopBarMenu'
