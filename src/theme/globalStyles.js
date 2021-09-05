@@ -14,6 +14,7 @@ export default () => (
         backgroundColor: '#1C1929',
         color: 'white',
         margin: 0,
+        fontFamily: 'SourceSandProRegular',
       },
       p: noMarginPadding,
       h1: noMarginPadding,
