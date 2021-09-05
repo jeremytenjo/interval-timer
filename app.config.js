@@ -1,10 +1,11 @@
+const pkg = require('./package.json')
 const themeTokens = require('./src/theme/tokens')
 
 module.exports = {
   manifestJson: {
     name: 'My Interval Timer',
     short_name: 'Timer',
-    description: `Handy app that helps you keep track of your work and rest periods during workouts.`,
+    description: pkg.description,
     orientation: 'portrait',
     display: 'standalone',
     theme_color: themeTokens.colors.primary.main,

@@ -1,6 +1,6 @@
 {
   "name": "my-interval-timer",
-  "description": "Interval Timer",
+  "description": "Handy app that helps you keep track of your work and rest periods during workouts",
   "version": "0.0.1",
   "private": true,
   "scripts": {
