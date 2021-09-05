@@ -20,7 +20,15 @@ const Row = ({ children, sx = {} }) => {
 const Item = ({ title, time, sx = {} }) => {
   return (
     <Box sx={{ ...sx }}>
-      <Box component='p' sx={{ color: 'grey.light', fontSize: 12, marginBottom: '8px' }}>
+      <Box
+        component='p'
+        sx={{
+          color: 'grey.light',
+          fontSize: 12,
+          marginBottom: '8px',
+          fontFamily: 'SourceSandPro',
+        }}
+      >
         {title}
       </Box>
       <Box component='p' sx={{ fontSize: 18 }}>

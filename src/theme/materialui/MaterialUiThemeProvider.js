@@ -4,10 +4,13 @@ import colors from '../tokens/colors'
 import typography from '../tokens/typography'
 import Button from '../../lib/components/Button/button.mui'
 
+import CssBaseline from './CssBaseline'
+
 const materialTheme = createTheme({
   palette: colors,
   typography,
   components: {
+    ...CssBaseline,
     ...Button,
   },
 })
