@@ -1,43 +1,5 @@
-import Box from '../../../../lib/components/Box'
-
-const Row = ({ children, sx = {} }) => {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-        userSelect: 'none',
-        textTransform: 'uppercase',
-        ...sx,
-      }}
-    >
-      {children}
-    </Box>
-  )
-}
-
-const Item = ({ title, time, sx = {} }) => {
-  return (
-    <Box sx={{ ...sx }}>
-      <Box
-        component='p'
-        sx={{
-          color: 'grey.light',
-          fontSize: 12,
-          marginBottom: '1px',
-        }}
-      >
-        {title}
-      </Box>
-
-      <Box component='p' sx={{ fontSize: 23 }}>
-        {time}
-      </Box>
-    </Box>
-  )
-}
+import Row from './Row'
+import Item from './Item'
 
 const bottomItemsCss = {
   display: 'flex',
