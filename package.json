@@ -80,6 +80,7 @@
     "prettier": "^2.2.1",
     "prettier-plugin-java": "^1.0.1",
     "react": "^17.0.1",
+    "react-countdown-circle-timer": "^2.5.4",
     "react-dom": "^17.0.1",
     "react-hook-form": "^7.0.0-rc.3",
     "react-query": "^3.12.3",

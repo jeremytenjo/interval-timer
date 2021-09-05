@@ -1,4 +1,4 @@
-import Typography from '@material-ui/core/Typography'
+import Typography from '@mui/material/Typography'
 
 /**
  * {@link https://material-ui.com/api/typography/|Docs}

@@ -10,7 +10,7 @@ const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore()
 
-initializeFirebaseEmulator({ auth, db })
+// initializeFirebaseEmulator({ auth, db })
 
 export const FirebaseContext = createContext(null)
 

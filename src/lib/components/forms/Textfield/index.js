@@ -1,4 +1,4 @@
-import MUITextField from '@material-ui/core/TextField'
+import MUITextField from '@mui/material/TextField'
 import { Controller } from 'react-hook-form'
 
 export default function Textfield({

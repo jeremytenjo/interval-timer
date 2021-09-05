@@ -1,5 +1,4 @@
-import { createTheme } from '@material-ui/core/styles'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 import colors from '../tokens/colors'
 import typography from '../tokens/typography'

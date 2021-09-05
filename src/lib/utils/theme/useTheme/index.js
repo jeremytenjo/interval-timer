@@ -1,3 +1,3 @@
-import useTheme from '@material-ui/core/styles/useTheme'
+import useTheme from '@mui/material/styles/useTheme'
 
 export default useTheme

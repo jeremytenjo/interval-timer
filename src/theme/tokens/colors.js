@@ -7,6 +7,9 @@ export default {
     red: 'linear-gradient(83.6deg, #FF5959 8.71%, #FF7676 98.37%)',
   },
   grey: { main: '#8c8c8c', light: '#DEDEDE' },
+  black: {
+    main: '#1C1929',
+  },
   error: {
     main: '#f44336',
   },
