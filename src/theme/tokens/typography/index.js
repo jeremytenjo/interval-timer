@@ -81,6 +81,7 @@ const variants = {
   },
 }
 
-export default variants
-
-export const variantNames = Object.keys(variants)
+module.exports = {
+  variants,
+  variantNames: Object.keys(variants),
+}

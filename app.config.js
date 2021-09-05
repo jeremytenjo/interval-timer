@@ -1,4 +1,4 @@
-const colors = require('./src/theme/tokens/colors')
+const themeTokens = require('./src/theme/tokens')
 
 module.exports = {
   manifestJson: {
@@ -7,8 +7,8 @@ module.exports = {
     description: `Handy app that helps you keep track of your work and rest periods during workouts.`,
     orientation: 'portrait',
     display: 'standalone',
-    theme_color: colors.primary.main,
-    background_color: colors.black.main,
+    theme_color: themeTokens.colors.primary.main,
+    background_color: themeTokens.colors.black.main,
   },
   server: {
     local: {
@@ -17,8 +17,6 @@ module.exports = {
     },
   },
   theme: {
-    tokens: {
-      colors,
-    },
+    tokens: themeTokens,
   },
 }

@@ -9,7 +9,7 @@ import CssBaselineOverrides from './CssBaseline'
 
 const materialTheme = createTheme({
   palette: colors,
-  typography,
+  typography: typography.variants,
   components: {
     ...CssBaselineOverrides,
     ...Button,

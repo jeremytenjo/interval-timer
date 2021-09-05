@@ -14,6 +14,7 @@ const colors = {
     main: '#f44336',
   },
 }
+
 colors.themeColor = colors.black.main
 
 module.exports = colors
