@@ -2,7 +2,7 @@ module.exports = function headHtmlSnippet({ appConfig }) {
   const appColors = appConfig.theme.tokens.colors
 
   return `
-  <title>My Inteval Timer</title>
+  <title>${appConfig.manifestJson.name}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
   <link rel="shortcut icon" href="image/logo/logo.svg">
   <meta name="theme-color" content="${appColors.black.main}">
