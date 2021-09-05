@@ -8,7 +8,7 @@ const getWebpackConfig = require('../getWebpackConfig.js')
 
 ;(async function startDevServer() {
   await genDeclarationsAndEslintGlobals()
-  const webpackConfig = await getWebpackConfig()
+  const webpackConfig = await getWebpackConfig({ appConfig })
   const compiler = webpack(webpackConfig)
   const port = appConfig.server.local.port
   const host = '0.0.0.0'

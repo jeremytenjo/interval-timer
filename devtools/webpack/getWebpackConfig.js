@@ -1,7 +1,7 @@
-module.exports = async function webpackConfig(options = { mode: 'development' }) {
-  const isProd = options.mode === 'production'
-  const isDev = options.mode === 'development'
-  const payload = { ...options, isProd, isDev }
+module.exports = async function webpackConfig({ mode = 'development', appConfig = {} }) {
+  const isProd = mode === 'production'
+  const isDev = mode === 'development'
+  const payload = { isProd, isDev, appConfig }
 
   return {
     mode: payload.mode,

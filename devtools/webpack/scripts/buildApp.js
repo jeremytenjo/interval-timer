@@ -2,12 +2,13 @@ const webpack = require('webpack')
 const chalk = require('chalk')
 
 const getWebpackConfig = require('../getWebpackConfig.js')
+const appConfig = require('../../../app.config')
 
 ;(async function buildApp() {
   console.clear()
   console.log(chalk.cyan('Building app...'))
 
-  const webpackConfig = await getWebpackConfig({ mode: 'production' })
+  const webpackConfig = await getWebpackConfig({ mode: 'production', appConfig })
 
   webpack(webpackConfig, (err, stats) => {
     console.log()

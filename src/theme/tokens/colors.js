@@ -1,4 +1,4 @@
-export default {
+const colors = {
   primary: {
     main: '#5D59FF',
   },
@@ -14,3 +14,6 @@ export default {
     main: '#f44336',
   },
 }
+colors.themeColor = colors.black.main
+
+module.exports = colors
