@@ -26,9 +26,9 @@ export default function TopBarMenu() {
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        variant='text'
-        noGradient
+        variant='noGradient'
         endIcon={<Chevron sx={{ width: '11px' }} />}
+        sx={{ paddingLeft: '8px', paddingRight: '8px' }}
       >
         <Box
           sx={{

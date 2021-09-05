@@ -5,7 +5,7 @@ export default {
     },
     variants: [
       {
-        props: { noGradient: true },
+        props: { variant: 'noGradient' },
         style: {
           background: 'transparent',
         },
