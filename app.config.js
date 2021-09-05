@@ -3,7 +3,8 @@ module.exports = {
     name: 'My Interval Timer',
     short_name: 'Timer',
     description: `Handy app that helps you keep track of your work and rest periods during workouts.`,
-    orientation: 'standalone',
+    orientation: 'portrait',
+    display: 'standalone',
   },
   server: {
     local: {
