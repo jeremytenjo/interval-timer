@@ -1013,6 +1013,7 @@ module.exports = () => {
     { default: 'AppBar', path: 'lib/components/layouts/ShellLayout/AppBar/index.js' },
     { default: 'ShellLayout', path: 'lib/components/layouts/ShellLayout/index.js' },
     { default: 'Capacitor', path: 'lib/utils/Capacitor/index.js' },
+    { default: 'useData', path: 'lib/utils/data/useData/index.js' },
     { default: 'auth', path: 'lib/utils/firebase/auth/index.js' },
     {
       default: 'useFirestoreSetDoc',
@@ -1031,6 +1032,5 @@ module.exports = () => {
       path: 'lib/utils/statusBar/useStatusBarColor/index.js',
     },
     { default: 'useTheme', path: 'lib/utils/theme/useTheme/index.js' },
-    { default: 'useData', path: 'lib/utils/useData/index.js' },
   ]
 }

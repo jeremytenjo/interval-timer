@@ -16,7 +16,7 @@ export default {
         color: 'white',
         borderRadius: '100px',
         background: 'linear-gradient(83.6deg, #5D59FF 8.71%, #9076FF 98.37%)',
-        fontFamily: 'SourceSandProRegular',
+        fontWeight: 'bold',
       },
     },
   },

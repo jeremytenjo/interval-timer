@@ -377,6 +377,7 @@ module.exports = {
   AppBar: 'readonly',
   ShellLayout: 'readonly',
   Capacitor: 'readonly',
+  useData: 'readonly',
   auth: 'readonly',
   useFirestoreSetDoc: 'readonly',
   useGeolocation: 'readonly',
@@ -386,5 +387,4 @@ module.exports = {
   getIsOsMobile: 'readonly',
   useStatusBarColor: 'readonly',
   useTheme: 'readonly',
-  useData: 'readonly',
 }
