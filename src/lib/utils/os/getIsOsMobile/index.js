@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+
 export default function getisOsMobile() {
   let check = false
   ;(function (a) {

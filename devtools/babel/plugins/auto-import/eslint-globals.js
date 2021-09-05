@@ -383,6 +383,7 @@ module.exports = {
   ReactRouterChanger: 'readonly',
   flattenObject: 'readonly',
   objectToArray: 'readonly',
+  getIsOsMobile: 'readonly',
   useStatusBarColor: 'readonly',
   useTheme: 'readonly',
   useData: 'readonly',

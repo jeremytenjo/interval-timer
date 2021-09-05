@@ -14,13 +14,11 @@ const queryClient = new QueryClient({
 
 const isOsMobile = getIsOsMobile()
 
-console.log(isOsMobile)
-
 export default function DataProvider({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools />
+      {!isOsMobile && <ReactQueryDevtools />}
     </QueryClientProvider>
   )
 }

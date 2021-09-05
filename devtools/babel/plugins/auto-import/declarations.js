@@ -1004,11 +1004,11 @@ module.exports = () => {
     { default: 'Volume', path: 'lib/components/icons/Volume/index.js' },
     {
       default: 'ProfilePic',
-      path: 'lib/components/layouts/ShellLayout/AppBar/Items/ProfilePic/index.js',
+      path: 'lib/components/layouts/ShellLayout/AppBar/containers/Items/ProfilePic/index.js',
     },
     {
       default: 'Items',
-      path: 'lib/components/layouts/ShellLayout/AppBar/Items/index.js',
+      path: 'lib/components/layouts/ShellLayout/AppBar/containers/Items/index.js',
     },
     { default: 'AppBar', path: 'lib/components/layouts/ShellLayout/AppBar/index.js' },
     { default: 'ShellLayout', path: 'lib/components/layouts/ShellLayout/index.js' },
@@ -1025,6 +1025,7 @@ module.exports = () => {
     },
     { default: 'flattenObject', path: 'lib/utils/objects/flattenObject/index.js' },
     { default: 'objectToArray', path: 'lib/utils/objects/objectToArray/index.js' },
+    { default: 'getIsOsMobile', path: 'lib/utils/os/getIsOsMobile/index.js' },
     {
       default: 'useStatusBarColor',
       path: 'lib/utils/statusBar/useStatusBarColor/index.js',
