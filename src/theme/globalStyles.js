@@ -8,6 +8,9 @@ const noMarginPadding = {
 export default () => (
   <GlobalStyles
     styles={{
+      html: {
+        overscrollBehaviorY: 'contain',
+      },
       body: {
         webkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
         boxSizing: 'border-box',
@@ -15,6 +18,7 @@ export default () => (
         color: 'white',
         margin: 0,
         fontFamily: 'SourceSandProRegular',
+        overscrollBehaviorY: 'contain',
       },
       p: noMarginPadding,
       h1: noMarginPadding,
