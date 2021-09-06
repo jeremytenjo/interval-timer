@@ -1,8 +1,8 @@
 import Box from '../Box'
 import TextField from '../forms/Textfield'
 import NumberSelector from '../forms/NumberSelector'
-import * as styles from '../TimerEditorCreator/styles'
 
+import * as styles from './styles'
 import Controls from './containers/Controls'
 
 export default function TimerEditorCreator() {
