@@ -1,6 +1,6 @@
-import Box from '../../lib/components/Box'
-import TextField from '../../lib/components/forms/TextField'
-import NumberSelector from '../../lib/components/forms/NumberSelector'
+import Box from 'lib/components/Box'
+import TextField from 'lib/components/forms/TextField'
+import NumberSelector from 'lib/components/forms/NumberSelector'
 
 import Controls from './containers/Controls'
 import * as styles from './styles'
