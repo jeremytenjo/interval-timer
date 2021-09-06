@@ -8,6 +8,8 @@ import * as styles from './styles'
 import ProfilePic from './ProfilePic'
 
 export default function Items() {
+  const navigate = useNavigate()
+
   return (
     <Box component='nav' sx={styles.wrapper}>
       <IconButton>
@@ -18,7 +20,7 @@ export default function Items() {
         <Edit sx={{ width: '18px' }} />
       </IconButton>
 
-      <IconButton>
+      <IconButton onClick={() => navigate('create-timer')}>
         <Plus />
       </IconButton>
 

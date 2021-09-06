@@ -1,11 +1,11 @@
-import AccessRoutes from './Access/routes'
+import CreateTimerRoutes from './CreateTimer/routes'
 import HomeRoutes from './Home/routes'
 
 export function Routes() {
   return (
     <ShellLayout>
       <Suspense fallback={null}>
-        <AccessRoutes />
+        <CreateTimerRoutes />
         <HomeRoutes />
       </Suspense>
     </ShellLayout>

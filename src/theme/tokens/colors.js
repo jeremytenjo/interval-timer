@@ -9,6 +9,10 @@ const colors = {
   grey: { main: '#8c8c8c', light: '#DEDEDE' },
   black: {
     main: '#1C1929',
+    lighther: '#373543',
+  },
+  white: {
+    main: '#fff',
   },
   error: {
     main: '#f44336',

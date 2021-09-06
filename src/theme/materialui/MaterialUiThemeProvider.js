@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import colors from '../tokens/colors'
 import typography from '../tokens/typography'
 import Button from '../../lib/components/Button/button.mui'
+import TextField from '../../lib/components/forms/TextField/textfield.mui'
 
 import CssBaselineOverrides from './CssBaseline'
 
@@ -13,6 +14,7 @@ const materialTheme = createTheme({
   components: {
     ...CssBaselineOverrides,
     ...Button,
+    ...TextField,
   },
 })
 
