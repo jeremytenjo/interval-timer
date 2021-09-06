@@ -4,23 +4,23 @@ const component = {
     {
       path: () => `index.js`,
       template: ({ name, helpers }) => `        
-      import * as S from './styles'
+      import Box from 'lib/components/Box'
+
+      import * as styles from 'styles.js'
 
       export default function ${helpers.changeCase.pascalCase(name)}() {
         return (
-          <S.Wrapper>
+          <Box sx={styles.wrapper}>
            ${name}
-          </S.Wrapper> 
+          </Box> 
         );
       }
         `,
     },
     {
       path: () => `styles.js`,
-      template: ({ helpers }) => `        
-      import styled from 'styled-components'
-
-      export const Wrapper = styled.div${helpers.addEmptyTemplateLiteral()}
+      template: () => `
+      export const wrapper = {}
         `,
     },
     {

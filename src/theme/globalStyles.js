@@ -20,6 +20,9 @@ export default () => (
         fontFamily: 'SourceSandProRegular',
         overscrollBehaviorY: 'contain',
       },
+      '*': {
+        boxSizing: 'border-box',
+      },
       p: noMarginPadding,
       h1: noMarginPadding,
       h2: noMarginPadding,
