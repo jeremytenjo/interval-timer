@@ -7,6 +7,7 @@ module.exports = async function webpackPlugins(payload) {
     require('./react-refresh-webpack-plugin.js')(payload),
     require('./error-overlay-webpack-plugin.js')(payload),
     require('./webpack-pwa-manifest')(payload),
+    require('./webpack-bundle-analyzer')(payload),
     require('./html-webpack-plugin/index.js')(payload),
   ]
 }

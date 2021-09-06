@@ -10,6 +10,7 @@
     "emulators:start": "firebase emulators:start --only auth,firestore",
     "emulators:firestore:export-data": "firebase emulators:export src/data/firestoreEmulatorData",
     "build": "node ./devtools/webpack/scripts/buildApp",
+    "build:analyze": "node ./devtools/webpack/scripts/analyzeBundle",
     "android:run": "npm run android:sync && cap run android",
     "android:open": "npm run android:sync && cap open android",
     "android:sync": "npm run build && cap sync android",
@@ -89,7 +90,11 @@
     "storybook": "^6.2.9",
     "style-loader": "^2.0.0",
     "webpack": "^5.23.0",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-pwa-manifest": "^4.3.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.8.0"
   }
 }
