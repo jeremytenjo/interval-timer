@@ -1,5 +1,5 @@
-import Box from '../../../../lib/components/Box'
-import Button from '../../../../lib/components/Button'
+import Box from '../../../Box'
+import Button from '../../../Button'
 
 import * as styles from './styles'
 
