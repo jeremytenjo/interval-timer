@@ -367,6 +367,7 @@ module.exports = {
   Swatches: 'readonly',
   Typography: 'readonly',
   NumberSelector: 'readonly',
+  Textfield: 'readonly',
   useForm: 'readonly',
   Chevron: 'readonly',
   Edit: 'readonly',

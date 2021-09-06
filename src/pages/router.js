@@ -1,4 +1,5 @@
 import CreateTimerRoutes from './CreateTimer/routes'
+import EditTimerRoutes from './EditTimer/routes'
 import HomeRoutes from './Home/routes'
 
 export function Routes() {
@@ -6,6 +7,7 @@ export function Routes() {
     <ShellLayout>
       <Suspense fallback={null}>
         <CreateTimerRoutes />
+        <EditTimerRoutes />
         <HomeRoutes />
       </Suspense>
     </ShellLayout>

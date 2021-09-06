@@ -997,6 +997,7 @@ module.exports = () => {
     { default: 'Swatches', path: 'lib/components/designSystem/Swatches/index.js' },
     { default: 'Typography', path: 'lib/components/designSystem/Typography/index.js' },
     { default: 'NumberSelector', path: 'lib/components/forms/NumberSelector/index.js' },
+    { default: 'Textfield', path: 'lib/components/forms/Textfield/index.js' },
     { default: 'useForm', path: 'lib/components/forms/useForm/index.js' },
     { default: 'Chevron', path: 'lib/components/icons/Chevron/index.js' },
     { default: 'Edit', path: 'lib/components/icons/Edit/index.js' },

@@ -92,7 +92,8 @@
     "webpack": "^5.23.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-dev-server": "^3.11.2",
-    "webpack-pwa-manifest": "^4.3.0"
+    "webpack-pwa-manifest": "^4.3.0",
+    "zustand": "^3.5.10"
   },
   "devDependencies": {
     "webpack-cli": "^4.8.0"

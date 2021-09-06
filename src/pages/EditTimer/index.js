@@ -6,11 +6,11 @@ import useAppBar from '../../lib/components/layouts/ShellLayout/AppBar/useAppBar
 import Controls from './containers/Controls'
 import * as styles from './styles'
 
-export default function CreateTimerPage() {
+export default function EditTimerPage() {
   const useAppBarData = useAppBar()
 
   useEffect(() => {
-    useAppBarData.updateTitle('Create Timer')
+    useAppBarData.updateTitle('Edit Timer')
   }, [])
 
   return (
