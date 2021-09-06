@@ -16,6 +16,7 @@ const appConfig = require('../../../app.config')
       console.log(chalk.keyword('red')('❌') + ' Build error:')
       console.log()
       console.error(stats?.toJson()?.errors?.[0]?.message)
+      process.exit(1)
     } else {
       console.log(
         stats.toString({
