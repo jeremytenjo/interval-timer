@@ -6,6 +6,7 @@ import Info from './Info'
 export default function Timer() {
   return (
     <Box
+      component='section'
       sx={{
         position: 'fixed',
         top: '50%',
