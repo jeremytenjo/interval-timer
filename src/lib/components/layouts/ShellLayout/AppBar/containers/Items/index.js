@@ -15,14 +15,14 @@ export default function Items() {
   return (
     <Box component='nav' sx={styles.wrapper}>
       {useAppBarData.showEditButton && (
-        <IconButton onClick={() => navigate('edit-timer')}>
+        <IconButton onClick={() => navigate('/edit-timer')}>
           <Edit sx={{ width: '18px' }} />
         </IconButton>
       )}
 
       <VolumeControl />
 
-      <IconButton onClick={() => navigate('create-timer')}>
+      <IconButton onClick={() => navigate('/create-timer')}>
         <Plus />
       </IconButton>
 
