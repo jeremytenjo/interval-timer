@@ -4,7 +4,7 @@ export const wrapper = {
   borderRadius: '100px',
   color: 'black.main',
   width: '100%',
-  textTransform: 'capitalize',
+  textTransform: 'none',
   boxShadow: 'none',
   '&:hover': {
     boxShadow: 'none',
