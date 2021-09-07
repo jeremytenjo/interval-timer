@@ -4,6 +4,7 @@ import Popover from '../../../../../../Popover'
 import Slider from '../../../../../../Slider'
 import VolumeDown from '../../../../../../icons/VolumeDown'
 import VolumeUp from '../../../../../../icons/VolumeUp'
+import Box from '../../../../../../Box'
 
 import * as styles from './styles'
 
@@ -20,6 +21,7 @@ export default function VolumeControl() {
 
   const open = Boolean(anchorEl)
   const id = open ? 'AppBar_VolumeControl' : undefined
+
   return (
     <>
       <IconButton onClick={handleClick}>
@@ -33,7 +35,7 @@ export default function VolumeControl() {
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'right',
+          horizontal: 'center',
         }}
         id={id}
         open={open}
@@ -41,9 +43,16 @@ export default function VolumeControl() {
         onClose={handleClose}
       >
         <Box sx={styles.sliderWrapper}>
-          <VolumeDown />
-          <Slider sx={styles.slider} aria-label='Volume' />
-          <VolumeUp />
+          <Box sx={styles.sliderWrapperInner}>
+            <IconButton>
+              <VolumeDown sx={{ stroke: 'white' }} />
+            </IconButton>
+            <Slider sx={styles.slider} aria-label='Volume' />
+
+            <IconButton>
+              <VolumeUp sx={{ stroke: 'white' }} />
+            </IconButton>
+          </Box>
         </Box>
       </Popover>
     </>
