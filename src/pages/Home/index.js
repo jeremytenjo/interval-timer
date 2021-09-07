@@ -17,10 +17,10 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div>
+    <section>
       <Details />
       <Timer />
       <TimerControls />
-    </div>
+    </section>
   )
 }

@@ -3,14 +3,20 @@ import Button from '../../../../../../Button'
 import Chevron from '../../../../../../icons/Chevron'
 import Box from '../../../../../../Box'
 import Popover from '../../../../../../Popover'
+import useTimers from '../../../../../../../../data/timers/useTimers'
 
 import * as styles from './styles'
 
 export default function TopBarMenu() {
+  const timers = useTimers()
+  const navigate = useNavigate()
+
+  const [anchorEl, setAnchorEl] = useState(null)
+
   const menuId = 'TopBarMenu'
   const menuButtonId = 'TopBarMenu'
-  const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
+  const id = open ? 'AppBar_Menu' : undefined
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -20,7 +26,14 @@ export default function TopBarMenu() {
     setAnchorEl(null)
   }
 
-  const id = open ? 'AppBar_Menu' : undefined
+  const onItemClick = (selectedItem) => {
+    handleClose()
+    timers.setSelectedTimer(selectedItem)
+  }
+
+  useEffect(() => {
+    navigate(`/timer/${timers.selectedTimer.id}`)
+  }, [timers.selectedTimer])
 
   return (
     <Box sx={{ maxWidth: 200 }}>
@@ -44,34 +57,32 @@ export default function TopBarMenu() {
           }}
           component='h1'
         >
-          No Timers saved
+          {(timers.selectedTimer && timers.selectedTimer.name) || 'No Timers Saved'}
         </Box>
       </Button>
 
-      <Popover
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-      >
-        <MenuItem sx={styles.items} onClick={handleClose}>
-          Profile
-        </MenuItem>
-        <MenuItem sx={styles.items} onClick={handleClose}>
-          My account
-        </MenuItem>
-        <MenuItem sx={styles.items} onClick={handleClose}>
-          Logout
-        </MenuItem>
-      </Popover>
+      {timers.data.length ? (
+        <Popover
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+        >
+          {timers.data.map((timer) => (
+            <MenuItem key={timer.id} sx={styles.items} onClick={() => onItemClick(timer)}>
+              {timer.name}
+            </MenuItem>
+          ))}
+        </Popover>
+      ) : null}
     </Box>
   )
 }

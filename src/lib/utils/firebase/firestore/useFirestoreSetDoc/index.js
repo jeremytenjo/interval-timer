@@ -1,7 +1,21 @@
 import { doc as firestoreDoc, setDoc as firestoreSetDoc } from 'firebase/firestore'
 
 import useFirebase from '../../../../../firebase/useFirebase'
+/**
+ * @example   // const fsetdoc = useFirestoreSetDoc({
+  //   collection: 'timers',
+  //   doc: 'LA',
+  //   data: {
+  //     name: 'Los Angeles',
+  //     state: 'CA',
+  //     country: 'USA',
+  //   },
+  // })
 
+  // useEffect(() => {
+  //   fsetdoc.exec()
+  // }, [])
+ */
 export default function useFirestoreSetDoc({ collection, doc, data }) {
   const firebase = useFirebase()
 
