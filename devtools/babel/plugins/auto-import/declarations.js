@@ -1042,7 +1042,6 @@ module.exports = () => {
     },
     { default: 'ShellLayout', path: 'lib/components/layouts/ShellLayout/index.js' },
     { default: 'Capacitor', path: 'lib/utils/Capacitor/index.js' },
-    { default: 'useData', path: 'lib/utils/data/useData/index.js' },
     { default: 'auth', path: 'lib/utils/firebase/auth/index.js' },
     {
       default: 'useFirestoreSetDoc',

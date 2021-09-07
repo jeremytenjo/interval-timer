@@ -391,7 +391,6 @@ module.exports = {
   useAppBar: 'readonly',
   ShellLayout: 'readonly',
   Capacitor: 'readonly',
-  useData: 'readonly',
   auth: 'readonly',
   useFirestoreSetDoc: 'readonly',
   useGeolocation: 'readonly',

@@ -1,11 +1,6 @@
 import useFirestoreSetDoc from '../../lib/utils/firebase/firestore/useFirestoreSetDoc'
 
 export default function useTimers() {
-  // const timers = useData(
-  //   ['timers', 'timerId'],
-  //   firestoreGet(firestore.collection('timers').where('capital', '==', true)),
-  //   { initialData: [] },
-  // )
   const timers = []
 
   const fsetdoc = useFirestoreSetDoc({
