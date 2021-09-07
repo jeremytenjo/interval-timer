@@ -3,10 +3,10 @@ import useAppBar from '../../lib/components/layouts/ShellLayout/AppBar/useAppBar
 import TimerEditorCreator from '../../lib/components/TImerEditorCreator'
 
 export default function CreateTimerPage() {
-  const useAppBarData = useAppBar()
+  const appBarData = useAppBar()
 
   useEffect(() => {
-    useAppBarData.updateTitle('Create Timer')
+    appBarData.updateTitle('Create Timer')
   }, [])
 
   return (
