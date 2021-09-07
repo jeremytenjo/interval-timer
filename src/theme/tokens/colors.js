@@ -1,6 +1,7 @@
 const colors = {
   primary: {
     main: '#5D59FF',
+    light: '#EAEAFF',
   },
   gradient: {
     primary: 'linear-gradient(83.6deg, #5D59FF 8.71%, #9076FF 98.37%)',
