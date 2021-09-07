@@ -6,7 +6,7 @@ module.exports = {
     name: 'My Interval Timer',
     short_name: 'Timer',
     description: pkg.description,
-    orientation: 'portrait',
+    orientation: 'any',
     display: 'standalone',
     theme_color: themeTokens.colors.primary.main,
     background_color: themeTokens.colors.black.main,
