@@ -23,7 +23,6 @@
     "serve": "node ./devtools/webpack/scripts/serveBuiltApp",
     "prettify": "prettier \"**/*.js\" --write --config ./devtools/prettier/config.js --ignore-path ./devtools/prettier/.prettierignore",
     "lint": "eslint ./ --fix",
-    "git:hooks:setup": "git config core.hooksPath .githooks",
     "preinstall": "npm run git:hooks:setup"
   },
   "dependencies": {
