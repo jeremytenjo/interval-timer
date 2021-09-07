@@ -1,10 +1,10 @@
-import VolumeIcon from '../../../../../icons/Volume'
 import Edit from '../../../../../icons/Edit'
 import Plus from '../../../../../icons/Plus'
 import Box from '../../../../../Box'
 import IconButton from '../../../../../IconButton'
 import useAppBar from '../../useAppBar'
 
+import VolumeControl from './VolumeControl'
 import * as styles from './styles'
 import ProfilePic from './ProfilePic'
 
@@ -20,9 +20,7 @@ export default function Items() {
         </IconButton>
       )}
 
-      <IconButton>
-        <VolumeIcon />
-      </IconButton>
+      <VolumeControl />
 
       <IconButton onClick={() => navigate('create-timer')}>
         <Plus />

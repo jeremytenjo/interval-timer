@@ -1021,6 +1021,10 @@ module.exports = () => {
       path: 'lib/components/layouts/ShellLayout/AppBar/containers/Items/ProfilePic/index.js',
     },
     {
+      default: 'VolumeControl',
+      path: 'lib/components/layouts/ShellLayout/AppBar/containers/Items/VolumeControl/index.js',
+    },
+    {
       default: 'Items',
       path: 'lib/components/layouts/ShellLayout/AppBar/containers/Items/index.js',
     },

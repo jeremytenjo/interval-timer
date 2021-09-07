@@ -381,6 +381,7 @@ module.exports = {
   PlusRound: 'readonly',
   Volume: 'readonly',
   ProfilePic: 'readonly',
+  VolumeControl: 'readonly',
   Items: 'readonly',
   Title: 'readonly',
   AppBar: 'readonly',
