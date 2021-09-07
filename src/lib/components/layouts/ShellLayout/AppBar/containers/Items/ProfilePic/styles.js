@@ -9,5 +9,7 @@ export const popopver = {
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: '16px',
+    color: 'white.main',
+    userSelect: 'none',
   },
 }

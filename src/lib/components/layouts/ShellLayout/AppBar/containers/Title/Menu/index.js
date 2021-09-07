@@ -1,8 +1,10 @@
-import Menu from '../../../../../../Menu'
 import MenuItem from '../../../../../../Menu/MenuItem'
 import Button from '../../../../../../Button'
 import Chevron from '../../../../../../icons/Chevron'
 import Box from '../../../../../../Box'
+import Popover from '../../../../../../Popover'
+
+import * as styles from './styles'
 
 export default function TopBarMenu() {
   const menuId = 'TopBarMenu'
@@ -17,6 +19,8 @@ export default function TopBarMenu() {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  const id = open ? 'AppBar_Menu' : undefined
 
   return (
     <Box sx={{ maxWidth: 200 }}>
@@ -43,19 +47,31 @@ export default function TopBarMenu() {
           No Timers saved
         </Box>
       </Button>
-      <Menu
-        id={menuId}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': menuButtonId,
+
+      <Popover
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+        <MenuItem sx={styles.items} onClick={handleClose}>
+          Profile
+        </MenuItem>
+        <MenuItem sx={styles.items} onClick={handleClose}>
+          My account
+        </MenuItem>
+        <MenuItem sx={styles.items} onClick={handleClose}>
+          Logout
+        </MenuItem>
+      </Popover>
     </Box>
   )
 }

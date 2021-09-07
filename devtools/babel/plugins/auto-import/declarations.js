@@ -993,6 +993,7 @@ module.exports = () => {
     { default: 'MenuItem', path: 'lib/components/Menu/MenuItem/index.js' },
     { default: 'Menu', path: 'lib/components/Menu/index.js' },
     { default: 'Popover', path: 'lib/components/Popover/index.js' },
+    { default: 'Slider', path: 'lib/components/Slider/index.js' },
     {
       default: 'Controls',
       path: 'lib/components/TimerEditorCreator/containers/Controls/index.js',
@@ -1016,6 +1017,8 @@ module.exports = () => {
     { default: 'Plus', path: 'lib/components/icons/Plus/index.js' },
     { default: 'PlusRound', path: 'lib/components/icons/PlusRound/index.js' },
     { default: 'Volume', path: 'lib/components/icons/Volume/index.js' },
+    { default: 'VolumeDown', path: 'lib/components/icons/VolumeDown/index.js' },
+    { default: 'VolumeUp', path: 'lib/components/icons/VolumeUp/index.js' },
     {
       default: 'ProfilePic',
       path: 'lib/components/layouts/ShellLayout/AppBar/containers/Items/ProfilePic/index.js',

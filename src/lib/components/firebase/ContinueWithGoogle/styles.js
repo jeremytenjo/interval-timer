@@ -1,5 +1,5 @@
 export const wrapper = {
-  background: '#EAEAFF !important',
+  background: 'white !important',
   padding: '8px',
   borderRadius: '100px',
   color: 'black.main',

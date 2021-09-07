@@ -5,6 +5,7 @@ import colors from '../tokens/colors'
 import typography from '../tokens/typography'
 import Button from '../../lib/components/Button/button.mui'
 import TextField from '../../lib/components/forms/Textfield/textfield.mui'
+import Popover from '../../lib/components/Popover/popover.mui'
 
 import CssBaselineOverrides from './CssBaseline'
 
@@ -15,6 +16,7 @@ const materialTheme = createTheme({
     ...CssBaselineOverrides,
     ...Button,
     ...TextField,
+    ...Popover,
   },
 })
 
