@@ -5,7 +5,7 @@ import NumberSelector from '../forms/NumberSelector'
 import * as styles from './styles'
 import Controls from './containers/Controls'
 
-export default function TimerEditorCreators() {
+export default function TimerEditorCreator() {
   return (
     <Box sx={styles.wrapper}>
       <TextField id='timer-name' placeholder='Name' fullWidth autoComplete='off' />

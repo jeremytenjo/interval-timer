@@ -366,7 +366,7 @@ module.exports = {
   Popover: 'readonly',
   Slider: 'readonly',
   Controls: 'readonly',
-  TimerEditorCreators: 'readonly',
+  TimerEditorCreator: 'readonly',
   Swatch: 'readonly',
   Swatches: 'readonly',
   Typography: 'readonly',

@@ -1,6 +1,6 @@
 import Box from '../../lib/components/Box'
 import useAppBar from '../../lib/components/layouts/ShellLayout/AppBar/useAppBar'
-import TimerEditorCreators from '../../lib/components/TimerEditorCreators'
+import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 
 export default function CreateTimerPage() {
   const appBarData = useAppBar()
@@ -11,7 +11,7 @@ export default function CreateTimerPage() {
 
   return (
     <Box>
-      <TimerEditorCreators type='create' />
+      <TimerEditorCreator type='create' />
     </Box>
   )
 }

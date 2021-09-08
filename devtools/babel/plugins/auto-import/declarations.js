@@ -996,11 +996,11 @@ module.exports = () => {
     { default: 'Slider', path: 'lib/components/Slider/index.js' },
     {
       default: 'Controls',
-      path: 'lib/components/TimerEditorCreators/containers/Controls/index.js',
+      path: 'lib/components/TimerEditorCreator/containers/Controls/index.js',
     },
     {
-      default: 'TimerEditorCreators',
-      path: 'lib/components/TimerEditorCreators/index.js',
+      default: 'TimerEditorCreator',
+      path: 'lib/components/TimerEditorCreator/index.js',
     },
     { default: 'Swatch', path: 'lib/components/designSystem/Swatches/Swatch/index.js' },
     { default: 'Swatches', path: 'lib/components/designSystem/Swatches/index.js' },

@@ -1,6 +1,6 @@
 import useAppBar from '../../lib/components/layouts/ShellLayout/AppBar/useAppBar'
 import useTimers from '../../data/timers/useTimers'
-import TimerEditorCreators from '../../lib/components/TimerEditorCreators'
+import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 
 import Details from './containers/Details'
 import Timer from './containers/Timer'
@@ -28,7 +28,7 @@ export default function HomePage() {
           <TimerControls />
         </>
       ) : (
-        <TimerEditorCreators type='create' />
+        <TimerEditorCreator type='create' />
       )}
     </section>
   )
