@@ -1,3 +1,5 @@
+import useTimers from '../../../../data/timers/useTimers'
+
 import Row from './Row'
 import Item from './Item'
 
@@ -7,11 +9,13 @@ const bottomItemsCss = {
 }
 
 export default function Details() {
+  const timers = useTimers()
+
   return (
     <>
       <Row sx={{ marginTop: '12px' }}>
-        <Item title='Repetitions' time={12} />
-        <Item title='Sets' time={3} sx={{ textAlign: 'right' }} />
+        <Item title='Repetitions' time={timers.selectedTimer.repetitions} />
+        <Item title='Sets' time={timers.selectedTimer.sets} sx={{ textAlign: 'right' }} />
       </Row>
 
       <Row

@@ -1,9 +1,12 @@
 import CountdownCircleTimer from '../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../lib/components/Box'
+import useTimers from '../../../../data/timers/useTimers'
 
 import Info from './Info'
 
 export default function Timer() {
+  const timers = useTimers()
+
   return (
     <Box
       component='section'
@@ -41,8 +44,8 @@ export default function Timer() {
                   width: '100%',
                 }}
               >
-                <Info title='Rest' time='00:50' />
-                <Info title='Workout' time='00:50' />
+                <Info title='Rest' time={timers.selectedTimer.rest} />
+                <Info title='Workout' time={timers.selectedTimer.workout} />
               </Box>
 
               <Info

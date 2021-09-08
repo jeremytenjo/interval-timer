@@ -28,12 +28,8 @@ export default function TopBarMenu() {
 
   const onItemClick = (selectedItem) => {
     handleClose()
-    timers.setSelectedTimer(selectedItem)
+    navigate(`/timer/${selectedItem.id}`)
   }
-
-  useEffect(() => {
-    navigate(`/timer/${timers.selectedTimer.id}`)
-  }, [timers.selectedTimer])
 
   return (
     <Box sx={{ maxWidth: 200 }}>

@@ -22,8 +22,7 @@
     "tests:run": "./devtools/scripts/tests/run",
     "serve": "node ./devtools/webpack/scripts/serveBuiltApp",
     "prettify": "prettier \"**/*.js\" --write --config ./devtools/prettier/config.js --ignore-path ./devtools/prettier/.prettierignore",
-    "lint": "eslint ./ --fix",
-    "preinstall": "npm run git:hooks:setup"
+    "lint": "eslint ./ --fix"
   },
   "dependencies": {
     "@babel/core": "^7.12.17",
@@ -68,7 +67,7 @@
     "filehound": "^1.17.4",
     "firebase": "^9.0.0",
     "framer-motion": "^4.1.11",
-    "history": "^5.0.0",
+    "history": "^5.0.1",
     "html-webpack-plugin": "^5.3.2",
     "install": "^0.13.0",
     "joi": "^17.4.0",

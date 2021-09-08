@@ -14,6 +14,7 @@ module.exports = {
     'cloneElement',
     'useCallback',
     'useReducer',
+    'useMemo',
   ],
   path: 'react',
 }

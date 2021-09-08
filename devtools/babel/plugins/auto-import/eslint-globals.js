@@ -357,6 +357,7 @@ module.exports = {
   useMatchMedia: 'readonly',
   AnimatePresence: 'readonly',
   AnimateSharedLayout: 'readonly',
+  useMemo: 'readonly',
   Navigation: 'readonly',
   CountdownCircleTimer: 'readonly',
   IconButton: 'readonly',
