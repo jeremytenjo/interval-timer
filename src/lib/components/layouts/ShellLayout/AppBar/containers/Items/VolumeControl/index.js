@@ -47,6 +47,7 @@ export default function VolumeControl() {
             <IconButton>
               <VolumeDown sx={{ stroke: 'white' }} />
             </IconButton>
+
             <Slider sx={styles.slider} aria-label='Volume' />
 
             <IconButton>
