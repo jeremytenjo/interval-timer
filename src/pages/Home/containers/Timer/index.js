@@ -1,11 +1,13 @@
 import CountdownCircleTimer from '../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../lib/components/Box'
 import useTimers from '../../../../data/timers/useTimers'
+import useTimeControls from '../TimerControls/useTimeControls'
 
 import Info from './Info'
 
 export default function Timer() {
   const timers = useTimers()
+  const timeControls = useTimeControls()
 
   return (
     <Box
@@ -22,7 +24,8 @@ export default function Timer() {
       }}
     >
       <CountdownCircleTimer
-        isPlaying
+        isPlaying={timeControls.isPlaying}
+        key={timeControls.timerKey}
         size={320}
         duration={50}
         strokeLinecap='square'

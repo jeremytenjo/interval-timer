@@ -7,9 +7,8 @@ const useTimersStore = create((set) => ({
   timers: stubs,
   selectedTimer: undefined,
 
-  setTimers: (newTimers) => set(() => ({ timers: newTimers })),
-  setSelectedTimer: (newselectedTimer) =>
-    set(() => ({ selectedTimer: newselectedTimer })),
+  setTimers: (newValue) => set(() => ({ timers: newValue })),
+  setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
 }))
 
 export default function useTimers() {
