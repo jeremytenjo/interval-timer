@@ -13,7 +13,7 @@ const useTimersStore = create((set) => ({
 }))
 
 export default function useTimers() {
-  const useTimerStore = useTimersStore()
+  const timersSore = useTimersStore()
   const urlParams = useParams()
   const location = useLocation()
 
@@ -21,16 +21,20 @@ export default function useTimers() {
     let selectedTimer = undefined
 
     if (urlParams.timerId) {
-      selectedTimer = useTimerStore.timers.find(
+      selectedTimer = timersSore.timers.find(
         (timer) => timer.id.toString() === urlParams.timerId.toString(),
       )
-      useTimerStore.setSelectedTimer(selectedTimer)
+      timersSore.setSelectedTimer(selectedTimer)
+    } else if (timersSore.timers.length) {
+      timersSore.selectedTimer?.id.toString() !==
+        timersSore?.timers?.[0]?.id.toString() &&
+        timersSore.setSelectedTimer(timersSore.timers[0])
     }
   }, [location.pathname])
 
   return {
-    data: useTimerStore.timers,
-    selectedTimer: useTimerStore.selectedTimer,
-    setSelectedTimer: useTimerStore.setSelectedTimer,
+    data: timersSore.timers,
+    selectedTimer: timersSore.selectedTimer,
+    setSelectedTimer: timersSore.setSelectedTimer,
   }
 }
