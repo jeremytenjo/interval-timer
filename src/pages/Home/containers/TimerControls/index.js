@@ -7,41 +7,23 @@ import useTimeControls from './useTimeControls'
 export default function TimerControls() {
   const timeControls = useTimeControls()
 
-  const onStartClick = () => {
-    timeControls.setIsPlaying(true)
-    timeControls.setIsStarted(true)
-  }
-
-  const onPauseClick = () => {
-    timeControls.setIsPlaying(false)
-  }
-  const onResumeClick = () => {
-    timeControls.setIsPlaying(true)
-  }
-
-  const onStopClick = () => {
-    timeControls.setIsPlaying(false)
-    timeControls.setIsStarted(false)
-    timeControls.setTimerKey()
-  }
-
   return (
     <Box sx={styles.wrapper}>
       {!timeControls.isPlaying && !timeControls.isStarted && (
-        <Button onClick={onStartClick}>Start</Button>
+        <Button onClick={timeControls.startTimer}>Start</Button>
       )}
 
       {timeControls.isStarted && (
         <Box sx={styles.innerWrapper}>
           {timeControls.isStarted && timeControls.isPlaying && (
-            <Button onClick={onPauseClick}>Pause</Button>
+            <Button onClick={timeControls.pauseTimer}>Pause</Button>
           )}
 
           {timeControls.isStarted && !timeControls.isPlaying && (
-            <Button onClick={onResumeClick}>Resume</Button>
+            <Button onClick={timeControls.resumeTimer}>Resume</Button>
           )}
 
-          <Button onClick={onStopClick}>Stop</Button>
+          <Button onClick={timeControls.stopTimer}>Stop</Button>
         </Box>
       )}
     </Box>
