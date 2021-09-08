@@ -4,7 +4,9 @@ import useTimers from '../../../../data/timers/useTimers'
 import useTimeControls from '../TimerControls/useTimeControls'
 
 import Info from './Info'
-
+/**
+ * {@link https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native|docs}
+ */
 export default function Timer() {
   const timers = useTimers()
   const timeControls = useTimeControls()
