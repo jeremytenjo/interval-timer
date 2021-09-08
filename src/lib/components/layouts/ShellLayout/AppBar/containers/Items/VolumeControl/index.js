@@ -10,6 +10,7 @@ import * as styles from './styles'
 
 export default function VolumeControl() {
   const [anchorEl, setAnchorEl] = useState(null)
+  const [volumeAmount, setVolumeAmount] = useState(50)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -17,6 +18,18 @@ export default function VolumeControl() {
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const onVolumeChange = (event, newValue) => {
+    setVolumeAmount(newValue)
+  }
+
+  const mute = () => {
+    setVolumeAmount(0)
+  }
+
+  const setToMaxVolume = () => {
+    setVolumeAmount(100)
   }
 
   const open = Boolean(anchorEl)
@@ -44,13 +57,18 @@ export default function VolumeControl() {
       >
         <Box sx={styles.sliderWrapper}>
           <Box sx={styles.sliderWrapperInner}>
-            <IconButton>
+            <IconButton onClick={mute}>
               <VolumeDown sx={{ stroke: 'white' }} />
             </IconButton>
 
-            <Slider sx={styles.slider} aria-label='Volume' />
+            <Slider
+              sx={styles.slider}
+              aria-label='Volume'
+              value={volumeAmount}
+              onChange={onVolumeChange}
+            />
 
-            <IconButton>
+            <IconButton onClick={setToMaxVolume}>
               <VolumeUp sx={{ stroke: 'white' }} />
             </IconButton>
           </Box>
