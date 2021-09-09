@@ -26,9 +26,9 @@ export default function Timer() {
         isPlaying={timeControls.isPlaying}
         key={timeControls.timerKey}
         size={320}
-        duration={50}
+        duration={timer.duration}
         strokeLinecap='square'
-        colors={'#36B273'}
+        colors={timer.color}
         onComplete={timer.startNextRepetition}
       >
         {({ remainingTime }) => {

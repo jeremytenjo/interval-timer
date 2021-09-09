@@ -8,7 +8,8 @@ export default function useTimer({
 }) {
   //   console.log({ initialRepetitions, initialSets, initialWorkoutTime, initialRestTime })
   const timerControls = useTimerControls()
-  const [type, setType] = useState('Rest')
+  const [type, setType] = useState('Workout')
+  const isRest = type === 'Rest'
 
   const repetitions = initialRepetitions
   const sets = initialSets
@@ -16,13 +17,13 @@ export default function useTimer({
   const restTime = initialRestTime
 
   const startNextRepetition = () => {
-    console.log('startNextRepetition')
-    const nextStep = type === 'Rest' ? 'Workout' : 'Rest'
-
     // if has more reps
+    setType((currentStep) => (currentStep === 'Rest' ? 'Workout' : 'Rest'))
     timerControls.restartTimer()
-    setType(nextStep)
   }
+
+  const duration = isRest ? initialRestTime : initialWorkoutTime
+  const color = isRest ? '#D72E33' : '#36B273'
 
   return {
     repetitions,
@@ -31,5 +32,7 @@ export default function useTimer({
     restTime,
     startNextRepetition,
     type,
+    duration,
+    color,
   }
 }
