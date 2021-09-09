@@ -40,7 +40,7 @@ export default function Timer() {
               </Box>
 
               <Info
-                title='Rest'
+                title={timer.type}
                 time={remainingTime}
                 sx={styles.infoBottom.wrapper}
                 timeSx={styles.infoBottom.time}
