@@ -4,27 +4,24 @@ import useTimers from '../../../../data/timers/useTimers'
 import useTimeControls from '../TimerControls/useTimeControls'
 
 import Info from './Info'
+import useTimer from './useTimer'
+import * as styles from './styles'
+
 /**
  * {@link https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native|docs}
  */
 export default function Timer() {
   const timers = useTimers()
   const timeControls = useTimeControls()
+  const timer = useTimer({
+    initialRepetitions: timers.selectedTimer.repetitions,
+    initialSets: timers.selectedTimer.sets,
+    initialWorkoutTime: timers.selectedTimer.workout,
+    initialRestTime: timers.selectedTimer.rest,
+  })
 
   return (
-    <Box
-      component='section'
-      sx={{
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        width: 'fit-content',
-        height: 'fit-content',
-        margin: 0,
-        transform: 'translate(-50%, -50%)',
-        userSelect: 'none',
-      }}
-    >
+    <Box component='section' sx={styles.wrapper}>
       <CountdownCircleTimer
         isPlaying={timeControls.isPlaying}
         key={timeControls.timerKey}
@@ -35,29 +32,17 @@ export default function Timer() {
       >
         {({ remainingTime }) => {
           return (
-            <Box
-              sx={{
-                width: '100%',
-                padding: '60px',
-              }}
-            >
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridAutoFlow: 'column',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                }}
-              >
-                <Info title='Rest' time={timers.selectedTimer.rest} />
-                <Info title='Workout' time={timers.selectedTimer.workout} />
+            <Box sx={styles.innerWrapper}>
+              <Box sx={styles.infoTop}>
+                <Info title='Rest' time={timer.restTime} />
+                <Info title='Workout' time={timer.workoutTime} />
               </Box>
 
               <Info
                 title='Rest'
                 time={remainingTime}
-                sx={{ transform: 'translateY(20px)' }}
-                timeSx={{ fontSize: '70px', color: 'white' }}
+                sx={styles.infoBottom.wrapper}
+                timeSx={styles.infoBottom.time}
               />
             </Box>
           )

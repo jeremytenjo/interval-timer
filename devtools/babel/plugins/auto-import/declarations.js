@@ -998,10 +998,7 @@ module.exports = () => {
       default: 'Controls',
       path: 'lib/components/TimerEditorCreator/containers/Controls/index.js',
     },
-    {
-      default: 'TimerEditorCreator',
-      path: 'lib/components/TimerEditorCreator/index.js',
-    },
+    { default: 'TimerEditorCreator', path: 'lib/components/TimerEditorCreator/index.js' },
     { default: 'Swatch', path: 'lib/components/designSystem/Swatches/Swatch/index.js' },
     { default: 'Swatches', path: 'lib/components/designSystem/Swatches/index.js' },
     { default: 'Typography', path: 'lib/components/designSystem/Typography/index.js' },
