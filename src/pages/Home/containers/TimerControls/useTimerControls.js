@@ -14,6 +14,11 @@ const useTimerControls = create((set) => ({
       isStarted: false,
       timerKey: state.timerKey + 1,
     })),
+  restartTimer: () =>
+    set((state) => {
+      state.startTimer()
+      return { timerKey: state.timerKey + 1 }
+    }),
 }))
 
 export default useTimerControls

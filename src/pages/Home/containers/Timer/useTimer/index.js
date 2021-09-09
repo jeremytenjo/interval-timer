@@ -1,10 +1,13 @@
+import useTimerControls from '../../TimerControls/useTimerControls'
+
 export default function useTimer({
   initialRepetitions,
   initialSets,
   initialWorkoutTime,
   initialRestTime,
 }) {
-  console.log({ initialRepetitions, initialSets, initialWorkoutTime, initialRestTime })
+  //   console.log({ initialRepetitions, initialSets, initialWorkoutTime, initialRestTime })
+  const timerControls = useTimerControls()
 
   const repetitions = initialRepetitions
   const sets = initialSets
@@ -13,6 +16,9 @@ export default function useTimer({
 
   const startNextRepetition = () => {
     console.log('startNextRepetition')
+
+    // if has more reps
+    timerControls.restartTimer()
   }
 
   return {
