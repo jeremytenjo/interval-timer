@@ -29,6 +29,7 @@ export default function Timer() {
         duration={50}
         strokeLinecap='square'
         colors={'#36B273'}
+        onComplete={timer.startNextRepetition}
       >
         {({ remainingTime }) => {
           return (

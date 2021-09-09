@@ -11,10 +11,15 @@ export default function useTimer({
   const workoutTime = initialWorkoutTime
   const restTime = initialRestTime
 
+  const startNextRepetition = () => {
+    console.log('startNextRepetition')
+  }
+
   return {
     repetitions,
     sets,
     workoutTime,
     restTime,
+    startNextRepetition,
   }
 }
