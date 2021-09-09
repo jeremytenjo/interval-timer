@@ -1,7 +1,7 @@
 import CountdownCircleTimer from '../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../lib/components/Box'
 import useTimers from '../../../../data/timers/useTimers'
-import useTimeControls from '../TimerControls/useTimeControls'
+import useTimerControls from '../TimerControls/useTimerControls'
 
 import Info from './Info'
 import useTimer from './useTimer'
@@ -12,7 +12,7 @@ import * as styles from './styles'
  */
 export default function Timer() {
   const timers = useTimers()
-  const timeControls = useTimeControls()
+  const timeControls = useTimerControls()
   const timer = useTimer({
     initialRepetitions: timers.selectedTimer.repetitions,
     initialSets: timers.selectedTimer.sets,

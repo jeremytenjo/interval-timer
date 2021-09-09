@@ -2,10 +2,10 @@ import Box from '../../../../lib/components/Box'
 import Button from '../../../../lib/components/Button'
 
 import * as styles from './styles'
-import useTimeControls from './useTimeControls'
+import useTimerControls from './useTimerControls'
 
 export default function TimerControls() {
-  const timeControls = useTimeControls()
+  const timeControls = useTimerControls()
 
   return (
     <Box sx={styles.wrapper}>

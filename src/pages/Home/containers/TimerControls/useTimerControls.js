@@ -1,6 +1,6 @@
 import create from 'zustand'
 
-const useTimeControls = create((set) => ({
+const useTimerControls = create((set) => ({
   isPlaying: false,
   isStarted: false,
   timerKey: 1,
@@ -16,4 +16,4 @@ const useTimeControls = create((set) => ({
     })),
 }))
 
-export default useTimeControls
+export default useTimerControls
