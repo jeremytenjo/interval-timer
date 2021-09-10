@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth'
-import faker from 'faker'
 
 import styleEmulatorWarning from './styleEmulatorWarning'
 
@@ -24,7 +23,7 @@ export default function initializeFirebaseEmulator({
 
 const startAuthEmulator = ({ auth, authEmulatorPort }) => {
   const testUser = {
-    username: faker.internet.email(),
+    username: 'test@gmail.com',
     password: 'testpassword',
   }
 
