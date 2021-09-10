@@ -89,7 +89,5 @@
     "webpack-pwa-manifest": "^4.3.0",
     "zustand": "^3.5.10"
   },
-  "devDependencies": {
-    "webpack-cli": "^4.8.0"
-  }
+  "devDependencies": {}
 }
