@@ -74,7 +74,6 @@
     "lodash": "^4.17.21",
     "my-local-ip": "^1.0.0",
     "node-emoji": "^1.10.0",
-    "npm": "^7.6.3",
     "prettier": "^2.2.1",
     "prettier-plugin-java": "^1.0.1",
     "react": "^17.0.1",
