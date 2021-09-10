@@ -39,7 +39,6 @@
     "@check-light-or-dark/color": "^1.0.3",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
-    "@mui/icons-material": "^5.0.0-rc.0",
     "@mui/material": "^5.0.0-rc.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@storybook/addon-controls": "^6.2.9",
