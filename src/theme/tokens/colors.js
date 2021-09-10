@@ -21,5 +21,6 @@ const colors = {
 }
 
 colors.themeColor = colors.black.main
+colors.backgroundColor = colors.black.main
 
 module.exports = colors

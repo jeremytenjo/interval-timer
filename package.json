@@ -45,6 +45,7 @@
     "@storybook/addon-controls": "^6.2.9",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/react": "^6.2.9",
+    "@useweb/button": "0.0.4",
     "@useweb/lib": "^0.27.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-auto-import": "^1.1.0",
