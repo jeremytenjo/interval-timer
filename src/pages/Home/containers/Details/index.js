@@ -1,33 +1,26 @@
-import useTimers from '../../../../data/timers/useTimers'
+import useTimer from '../Timer/useTimer'
 
+import * as styles from './styles'
 import Row from './Row'
 import Item from './Item'
 
-const bottomItemsCss = {
-  display: 'flex',
-  flexDirection: 'column-reverse',
-}
-
 export default function Details() {
-  const timers = useTimers()
+  const timer = useTimer()
 
   return (
     <>
-      <Row sx={{ marginTop: '12px' }}>
-        <Item title='Repetitions' time={timers.selectedTimer.repetitions} />
-        <Item title='Sets' time={timers.selectedTimer.sets} sx={{ textAlign: 'right' }} />
+      <Row sx={styles.upperRow}>
+        <Item title='Repetitions' time={timer.repetitions} />
+        <Item title='Sets' time={timer.sets} sx={{ textAlign: 'right' }} />
       </Row>
 
-      <Row
-        sx={{
-          position: 'fixed',
-          bottom: '80px',
-          left: 0,
-          right: 0,
-        }}
-      >
-        <Item title='Remaining' time={60} sx={{ ...bottomItemsCss }} />
-        <Item title='Total' time={60} sx={{ ...bottomItemsCss, textAlign: 'right' }} />
+      <Row sx={styles.bottomRow}>
+        <Item title='Remaining' time={60} sx={{ ...styles.bottomItemsCss }} />
+        <Item
+          title='Total'
+          time={60}
+          sx={{ ...styles.bottomItemsCss, textAlign: 'right' }}
+        />
       </Row>
     </>
   )

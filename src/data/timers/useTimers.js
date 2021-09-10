@@ -1,6 +1,8 @@
 import create from 'zustand'
 import { useLocation } from 'react-router-dom'
 
+import useTimer from '../../pages/Home/containers/Timer/useTimer'
+
 import stubs from './stubs'
 
 const useTimersStore = create((set) => ({
@@ -12,7 +14,8 @@ const useTimersStore = create((set) => ({
 }))
 
 export default function useTimers() {
-  const timersSore = useTimersStore()
+  const timersStore = useTimersStore()
+  const timer = useTimer()
   const urlParams = useParams()
   const location = useLocation()
 
@@ -20,20 +23,31 @@ export default function useTimers() {
     let selectedTimer = undefined
 
     if (urlParams.timerId) {
-      selectedTimer = timersSore.timers.find(
+      selectedTimer = timersStore.timers.find(
         (timer) => timer.id.toString() === urlParams.timerId.toString(),
       )
-      timersSore.setSelectedTimer(selectedTimer)
-    } else if (timersSore.timers.length) {
-      timersSore.selectedTimer?.id.toString() !==
-        timersSore?.timers?.[0]?.id.toString() &&
-        timersSore.setSelectedTimer(timersSore.timers[0])
+      timersStore.setSelectedTimer(selectedTimer)
+    } else if (timersStore.timers.length) {
+      timersStore.selectedTimer?.id.toString() !==
+        timersStore?.timers?.[0]?.id.toString() &&
+        timersStore.setSelectedTimer(timersStore.timers[0])
     }
   }, [location.pathname])
 
+  useEffect(() => {
+    console.log(timersStore.selectedTimer)
+
+    if (timersStore.selectedTimer) {
+      timer.setInitialRepetitions(timersStore.selectedTimer.repetitions)
+      timer.setInitialSets(timersStore.selectedTimer.sets)
+      timer.setInitialWorkoutTime(timersStore.selectedTimer.workout)
+      timer.setInitialRestTime(timersStore.selectedTimer.rest)
+    }
+  }, [timersStore.selectedTimer])
+
   return {
-    data: timersSore.timers,
-    selectedTimer: timersSore.selectedTimer,
-    setSelectedTimer: timersSore.setSelectedTimer,
+    data: timersStore.timers,
+    selectedTimer: timersStore.selectedTimer,
+    setSelectedTimer: timersStore.setSelectedTimer,
   }
 }

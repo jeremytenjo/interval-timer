@@ -11,14 +11,8 @@ import * as styles from './styles'
  * {@link https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native|docs}
  */
 export default function Timer() {
-  const timers = useTimers()
   const timeControls = useTimerControls()
-  const timer = useTimer({
-    initialRepetitions: timers.selectedTimer.repetitions,
-    initialSets: timers.selectedTimer.sets,
-    initialWorkoutTime: timers.selectedTimer.workout,
-    initialRestTime: timers.selectedTimer.rest,
-  })
+  const timer = useTimer()
 
   return (
     <Box component='section' sx={styles.wrapper}>

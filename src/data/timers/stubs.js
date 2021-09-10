@@ -13,7 +13,7 @@ export default [
     name: 'Lower Body',
     repetitions: 8,
     sets: 2,
-    rest: 20,
-    workout: 20,
+    rest: 7,
+    workout: 5,
   },
 ]
