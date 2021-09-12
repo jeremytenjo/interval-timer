@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { useMemo } from 'react'
 
 import useTimerControls from '../../TimerControls/useTimerControls'
 
@@ -30,10 +31,12 @@ export default function useTimer() {
   const duration = isRest ? timerStore.totalRestTime : timerStore.totalWorkoutTime
   const color = isRest ? '#D72E33' : '#36B273'
 
-  const repetitions = !timerControls.isStarted
-    ? timerStore.totalRepetitions
-    : trackedRepetitions
-  const sets = !timerControls.isStarted ? timerStore.totalSets : trackedSteps
+  const repetitions = useMemo(() => {
+    return !timerControls.isStarted ? timerStore.totalRepetitions : trackedRepetitions
+  }, [timerControls.isStarted])
+  const sets = useMemo(() => {
+    return !timerControls.isStarted ? timerStore.totalSets : trackedSteps
+  }, [timerControls.isStarted])
 
   const resetTimer = () => {
     setTrackedRepetitions(timerStore.totalRepetitions)
