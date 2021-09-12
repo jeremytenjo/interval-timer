@@ -22,7 +22,8 @@
     "tests:run": "./devtools/scripts/tests/run",
     "serve": "node ./devtools/webpack/scripts/serveBuiltApp",
     "prettify": "prettier \"**/*.js\" --write --config ./devtools/prettier/config.js --ignore-path ./devtools/prettier/.prettierignore",
-    "lint": "eslint ./ --fix"
+    "lint": "eslint ./ --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/core": "^7.12.17",
