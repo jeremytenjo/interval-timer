@@ -43,11 +43,16 @@ export default function useTimer() {
   }
 
   const startNextRepetition = () => {
-    const nextRepetition = timerStore.trackedRepetitions - 1
+    const nextType = timerStore.type === 'Rest' ? 'Workout' : 'Rest'
 
-    // if has more reps
-    timerStore.setTrackedRepetitions(nextRepetition)
-    timerStore.setType(timerStore.type === 'Rest' ? 'Workout' : 'Rest')
+    if (nextType === 'Workout') {
+      const nextRepetition = timerStore.trackedRepetitions - 1
+
+      // if has more reps
+      timerStore.setTrackedRepetitions(nextRepetition)
+    }
+
+    timerStore.setType(nextType)
     timerControls.restartTimer()
   }
 
