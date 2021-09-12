@@ -16,11 +16,11 @@ export default function Timer() {
   return (
     <Box component='section' sx={styles.wrapper}>
       <CountdownCircleTimer
+        size={320}
+        strokeLinecap='square'
         isPlaying={timeControls.isPlaying}
         key={timeControls.timerKey}
-        size={320}
         duration={timer.duration}
-        strokeLinecap='square'
         colors={timer.color}
         onComplete={timer.startNextRepetition}
       >
