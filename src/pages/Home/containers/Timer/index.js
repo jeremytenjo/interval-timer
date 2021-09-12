@@ -1,6 +1,5 @@
 import CountdownCircleTimer from '../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../lib/components/Box'
-import useTimers from '../../../../data/timers/useTimers'
 import useTimerControls from '../TimerControls/useTimerControls'
 
 import Info from './Info'
