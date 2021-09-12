@@ -34,7 +34,7 @@ export default function useTimer() {
     ? timerStore.totalRepetitions
     : timerStore.trackedRepetitions
 
-  const sets = !timerControls.isStarted ? timerStore.totalSets : timerStore.trackedSteps
+  const sets = !timerControls.isStarted ? timerStore.totalSets : timerStore.trackedSets
 
   const resetTimer = () => {
     timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
