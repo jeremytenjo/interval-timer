@@ -7,7 +7,7 @@ context('Navigation', () => {
     cy.get('.dropdown-menu').contains('Navigation').click()
   })
 
-  it('cy.go() - go back or forward in the browser\'s history', () => {
+  it("cy.go() - go back or forward in the browser's history", () => {
     // https://on.cypress.io/go
 
     cy.location('pathname').should('include', 'navigation')
@@ -44,11 +44,11 @@ context('Navigation', () => {
     // Pass options to the visit
     cy.visit('http://localhost:8080/commands/navigation', {
       timeout: 50000, // increase total time for the visit to resolve
-      onBeforeLoad (contentWindow) {
+      onBeforeLoad(contentWindow) {
         // contentWindow is the remote page's window object
         expect(typeof contentWindow === 'object').to.be.true
       },
-      onLoad (contentWindow) {
+      onLoad(contentWindow) {
         // contentWindow is the remote page's window object
         expect(typeof contentWindow === 'object').to.be.true
       },

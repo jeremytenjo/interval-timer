@@ -23,7 +23,8 @@ export default function useFirestoreSetDoc({ collection, doc, data }) {
     return await firestoreSetDoc(firestoreDoc(firebase.db, collection, doc), data)
   }
 
-  const hookData = useAsync(fetcher)
+  // const hookData = useAsync(fetcher)
 
-  return hookData
+  // return hookData
+  return {}
 }

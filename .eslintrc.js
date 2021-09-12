@@ -3,14 +3,14 @@ const globals = require('./devtools/babel/plugins/auto-import/eslint-globals.js'
 module.exports = {
   globals: {
     MyGlobal: true,
-    ...globals
+    ...globals,
   },
   env: {
     browser: true,
     commonjs: true,
     node: true,
     es6: true,
-    'cypress/globals': true
+    'cypress/globals': true,
   },
   ignorePatterns: ['node_modules', 'build', '.env', 'ios', 'android', 'dist'],
   plugins: ['react', 'babel', 'react-hooks', 'import', 'cypress'],
@@ -18,29 +18,29 @@ module.exports = {
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 9,
     sourceType: 'module',
     babelOptions: {
-      configFile: './devtools/babel/config.js'
-    }
+      configFile: './devtools/babel/config.js',
+    },
   },
   settings: {
     react: {
       createClass: 'createReactClass',
       pragma: 'React',
-      version: 'detect'
+      version: 'detect',
     },
-    propWrapperFunctions: ['forbidExtraProps']
+    propWrapperFunctions: ['forbidExtraProps'],
   },
   rules: {
     'import/order': [
       'error',
       {
         groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
-        'newlines-between': 'always'
-      }
+        'newlines-between': 'always',
+      },
     ],
     'prefer-const': 2,
     'no-var': 2,
@@ -66,8 +66,8 @@ module.exports = {
     'react/jsx-no-undef': [
       2,
       {
-        allowGlobals: true
-      }
-    ]
-  }
+        allowGlobals: true,
+      },
+    ],
+  },
 }
