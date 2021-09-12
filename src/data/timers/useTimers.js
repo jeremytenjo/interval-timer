@@ -35,13 +35,11 @@ export default function useTimers() {
   }, [location.pathname])
 
   useEffect(() => {
-    console.log(timersStore.selectedTimer)
-
     if (timersStore.selectedTimer) {
-      timer.setInitialRepetitions(timersStore.selectedTimer.repetitions)
-      timer.setInitialSets(timersStore.selectedTimer.sets)
-      timer.setInitialWorkoutTime(timersStore.selectedTimer.workout)
-      timer.setInitialRestTime(timersStore.selectedTimer.rest)
+      timer.setTotalRepetitions(timersStore.selectedTimer.repetitions)
+      timer.setTotalSets(timersStore.selectedTimer.sets)
+      timer.setTotalWorkoutTime(timersStore.selectedTimer.workout)
+      timer.setTotalRestTime(timersStore.selectedTimer.rest)
     }
   }, [timersStore.selectedTimer])
 

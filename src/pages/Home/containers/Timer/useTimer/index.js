@@ -3,15 +3,15 @@ import create from 'zustand'
 import useTimerControls from '../../TimerControls/useTimerControls'
 
 const useTimerStore = create((set) => ({
-  initialRepetitions: 0,
-  initialSets: 0,
-  initialWorkoutTime: 0,
-  initialRestTime: 0,
+  totalRepetitions: 0,
+  totalSets: 0,
+  totalWorkoutTime: 0,
+  totalRestTime: 0,
 
-  setInitialRepetitions: (newValue) => set(() => ({ initialRepetitions: newValue })),
-  setInitialSets: (newValue) => set(() => ({ initialSets: newValue })),
-  setInitialWorkoutTime: (newValue) => set(() => ({ initialWorkoutTime: newValue })),
-  setInitialRestTime: (newValue) => set(() => ({ initialRestTime: newValue })),
+  setTotalRepetitions: (newValue) => set(() => ({ totalRepetitions: newValue })),
+  setTotalSets: (newValue) => set(() => ({ totalSets: newValue })),
+  setTotalWorkoutTime: (newValue) => set(() => ({ totalWorkoutTime: newValue })),
+  setTotalRestTime: (newValue) => set(() => ({ totalRestTime: newValue })),
 }))
 
 export default function useTimer() {
@@ -19,20 +19,32 @@ export default function useTimer() {
   const timerControls = useTimerControls()
   const [type, setType] = useState('Workout')
 
-  const [repetitions, setRepetitions] = useState(timerStore.initialRepetitions)
-  const [sets, setSets] = useState(timerStore.initialSets)
+  const [trackedRepetitions, setTrackedRepetitions] = useState(
+    timerStore.totalRepetitions,
+  )
+  const [trackedSteps, setTrackedSets] = useState(timerStore.totalSets)
 
   const isRest = type === 'Rest'
-  const workoutTime = timerStore.initialWorkoutTime
-  const restTime = timerStore.initialRestTime
-  const duration = isRest ? timerStore.initialRestTime : timerStore.initialWorkoutTime
+  const workoutTime = timerStore.totalWorkoutTime
+  const restTime = timerStore.totalRestTime
+  const duration = isRest ? timerStore.totalRestTime : timerStore.totalWorkoutTime
   const color = isRest ? '#D72E33' : '#36B273'
 
+  const repetitions = !timerControls.isStarted
+    ? timerStore.totalRepetitions
+    : trackedRepetitions
+  const sets = !timerControls.isStarted ? timerStore.totalSets : trackedSteps
+
+  const resetTimer = () => {
+    setTrackedRepetitions(timerStore.totalRepetitions)
+    setTrackedSets(timerStore.totalSets)
+  }
+
   const startNextRepetition = () => {
-    const nextRepetition = repetitions - 1
+    const nextRepetition = trackedRepetitions - 1
 
     // if has more reps
-    setRepetitions(nextRepetition)
+    setTrackedRepetitions(nextRepetition)
     setType((currentStep) => (currentStep === 'Rest' ? 'Workout' : 'Rest'))
     timerControls.restartTimer()
   }
@@ -46,6 +58,7 @@ export default function useTimer() {
     type,
     duration,
     color,
+    resetTimer,
     ...timerStore,
   }
 }
