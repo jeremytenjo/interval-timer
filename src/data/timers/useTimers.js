@@ -37,7 +37,9 @@ export default function useTimers() {
   useEffect(() => {
     if (timersStore.selectedTimer) {
       timer.setTotalRepetitions(timersStore.selectedTimer.repetitions)
+      timer.setTrackedRepetitions(timersStore.selectedTimer.repetitions)
       timer.setTotalSets(timersStore.selectedTimer.sets)
+      timer.setTrackedSets(timersStore.selectedTimer.sets)
       timer.setTotalWorkoutTime(timersStore.selectedTimer.workout)
       timer.setTotalRestTime(timersStore.selectedTimer.rest)
     }
