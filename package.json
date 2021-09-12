@@ -63,6 +63,7 @@
     "eslint-webpack-plugin": "^2.5.2",
     "filehound": "^1.17.4",
     "firebase": "^9.0.0",
+    "format-duration": "^1.4.0",
     "framer-motion": "^4.1.11",
     "history": "^5.0.1",
     "html-webpack-plugin": "^5.3.2",

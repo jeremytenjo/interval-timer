@@ -1,3 +1,5 @@
+import formatDuration from 'format-duration'
+
 import Box from '../../../../../lib/components/Box'
 
 export default function Info({ time, title, sx = {}, titleSx = {}, timeSx = {} }) {
@@ -7,7 +9,7 @@ export default function Info({ time, title, sx = {}, titleSx = {}, timeSx = {} }
         component='p'
         sx={{ color: 'grey.light', fontSize: 23, lineHeight: 1, ...timeSx }}
       >
-        {time}
+        {formatDuration(time * 1000)}
       </Box>
 
       <Box

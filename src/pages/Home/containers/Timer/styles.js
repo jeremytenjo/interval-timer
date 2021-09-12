@@ -27,6 +27,6 @@ export const infoBottom = {
   },
   time: {
     fontSize: '70px',
-    color: 'white',
+    color: 'white.main',
   },
 }

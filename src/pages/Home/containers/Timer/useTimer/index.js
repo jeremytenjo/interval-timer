@@ -63,7 +63,7 @@ export default function useTimer() {
     }
 
     console.log({ nextRepetition, nextSet })
-
+    // TODO
     if (nextRepetition !== 0 && nextSet !== 0) {
       timerStore.setType(nextType)
       timerControls.restartTimer()
