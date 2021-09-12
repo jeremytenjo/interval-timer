@@ -12,6 +12,18 @@ import * as styles from './styles'
 export default function Timer() {
   const timeControls = useTimerControls()
   const timer = useTimer()
+  const elapsedTime = useRef(0)
+  const currentRemainingTime = useRef(0)
+
+  const updateElapsedTime = (newRemainingTiming) => {
+    if (timeControls.isStarted) {
+      if (currentRemainingTime.current !== newRemainingTiming) {
+        elapsedTime.current = elapsedTime.current + 1
+        console.log(elapsedTime.current)
+      }
+      currentRemainingTime.current = newRemainingTiming
+    }
+  }
 
   return (
     <Box component='section' sx={styles.wrapper}>
@@ -25,6 +37,8 @@ export default function Timer() {
         onComplete={timer.startNextRepetition}
       >
         {({ remainingTime }) => {
+          updateElapsedTime(remainingTime)
+
           return (
             <Box sx={styles.innerWrapper}>
               <Box sx={styles.infoTop}>
