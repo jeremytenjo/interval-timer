@@ -15,10 +15,15 @@ export default function Details() {
       </Row>
 
       <Row sx={styles.bottomRow}>
-        <Item title='Remaining' time={60} sx={{ ...styles.bottomItemsCss }} />
+        <Item
+          title='Remaining'
+          time={timer.remainingTime}
+          sx={{ ...styles.bottomItemsCss }}
+        />
+
         <Item
           title='Total'
-          time={60}
+          time={timer.totalTime}
           sx={{ ...styles.bottomItemsCss, textAlign: 'right' }}
         />
       </Row>

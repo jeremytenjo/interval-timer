@@ -1,4 +1,5 @@
 import create from 'zustand'
+import formatDuration from 'format-duration'
 
 import useTimerControls from '../../TimerControls/useTimerControls'
 
@@ -73,6 +74,15 @@ export default function useTimer() {
     }
   }
 
+  const remainingTime = 90
+  const totalTime = formatDuration(
+    1000 *
+      timerStore.totalRepetitions *
+      timerStore.totalSets *
+      timerStore.totalRestTime *
+      timerStore.totalWorkoutTime,
+  )
+
   return {
     repetitions,
     sets,
@@ -82,6 +92,8 @@ export default function useTimer() {
     duration,
     color,
     resetTimer,
+    remainingTime,
+    totalTime,
     ...timerStore,
   }
 }
