@@ -25,6 +25,14 @@ export default function useTimer() {
   const timerStore = useTimerStore()
   const timerControls = useTimerControls()
 
+  const totalTime = formatDuration(
+    1000 *
+      timerStore.totalRepetitions *
+      timerStore.totalSets *
+      timerStore.totalRestTime *
+      timerStore.totalWorkoutTime,
+  )
+  const remainingTime = 90
   const isRest = timerStore.type === 'Rest'
   const workoutTime = timerStore.totalWorkoutTime
   const restTime = timerStore.totalRestTime
@@ -63,7 +71,7 @@ export default function useTimer() {
       }
     }
 
-    console.log({ nextRepetition, nextSet })
+    // console.log({ nextRepetition, nextSet })
     // TODO
     if (nextRepetition !== 0 && nextSet !== 0) {
       timerStore.setType(nextType)
@@ -73,15 +81,6 @@ export default function useTimer() {
       timerControls.stopTimer()
     }
   }
-
-  const remainingTime = 90
-  const totalTime = formatDuration(
-    1000 *
-      timerStore.totalRepetitions *
-      timerStore.totalSets *
-      timerStore.totalRestTime *
-      timerStore.totalWorkoutTime,
-  )
 
   return {
     repetitions,
