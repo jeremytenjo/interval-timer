@@ -1,5 +1,4 @@
 import create from 'zustand'
-import { useMemo } from 'react'
 
 import useTimerControls from '../../TimerControls/useTimerControls'
 
