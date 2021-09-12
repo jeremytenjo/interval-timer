@@ -3,10 +3,10 @@ export default [
   {
     id: 1,
     name: 'Upper Body',
-    repetitions: 12,
-    sets: 3,
-    rest: 10,
-    workout: 10,
+    repetitions: 2,
+    sets: 2,
+    rest: 5,
+    workout: 5,
   },
   {
     id: 2,
