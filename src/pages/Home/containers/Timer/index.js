@@ -15,13 +15,21 @@ export default function Timer() {
   const elapsedTime = useRef(0)
   const currentRemainingTime = useRef(0)
 
+  useEffect(() => {
+    if (!timeControls.isStarted) {
+      elapsedTime.current = 0
+    }
+  }, [timeControls.isStarted])
+
   const updateElapsedTime = (newRemainingTiming) => {
     if (timeControls.isStarted) {
       if (currentRemainingTime.current !== newRemainingTiming) {
         elapsedTime.current = elapsedTime.current + 1
-        console.log(elapsedTime.current)
+        timer.setElapsedTime(elapsedTime.current)
       }
       currentRemainingTime.current = newRemainingTiming
+    } else {
+      elapsedTime.current = 0
     }
   }
 

@@ -1,5 +1,6 @@
 import create from 'zustand'
 import formatDuration from 'format-duration'
+import { useMemo } from 'react'
 
 import useTimerControls from '../../TimerControls/useTimerControls'
 
@@ -11,6 +12,7 @@ const useTimerStore = create((set) => ({
   trackedRepetitions: 0,
   trackedSets: 0,
   type: 'Workout',
+  elapsedTime: 0,
 
   setTotalRepetitions: (newValue) => set(() => ({ totalRepetitions: newValue })),
   setTotalSets: (newValue) => set(() => ({ totalSets: newValue })),
@@ -19,20 +21,24 @@ const useTimerStore = create((set) => ({
   setTrackedRepetitions: (newValue) => set(() => ({ trackedRepetitions: newValue })),
   setTrackedSets: (newValue) => set(() => ({ trackedSets: newValue })),
   setType: (newValue) => set(() => ({ type: newValue })),
+  setElapsedTime: (newValue) => set(() => ({ elapsedTime: newValue })),
 }))
 
 export default function useTimer() {
   const timerStore = useTimerStore()
   const timerControls = useTimerControls()
-
-  const totalTime = formatDuration(
+  const totalTimeRaw =
     1000 *
-      timerStore.totalRepetitions *
-      timerStore.totalSets *
-      timerStore.totalRestTime *
-      timerStore.totalWorkoutTime,
+    timerStore.totalRepetitions *
+    timerStore.totalSets *
+    timerStore.totalRestTime *
+    timerStore.totalWorkoutTime
+  const totalTime = formatDuration(totalTimeRaw)
+  const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime * 1000
+  const remainingTime = useMemo(
+    () => formatDuration(remainingTimeRaw),
+    [remainingTimeRaw],
   )
-  const remainingTime = 90
   const isRest = timerStore.type === 'Rest'
   const workoutTime = timerStore.totalWorkoutTime
   const restTime = timerStore.totalRestTime
