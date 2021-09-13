@@ -1,5 +1,4 @@
-import Box from 'lib/components/Box'
-
+import Box from '../../Box'
 import PlusRound from '../../icons/PlusRound'
 import MinusRound from '../../icons/MinusRound'
 import IconButton from '../../IconButton'
