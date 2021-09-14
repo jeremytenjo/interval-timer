@@ -37,3 +37,14 @@ export const info = {
     padding: '0px',
   },
 }
+
+export const dialog = {
+  '& .MuiGrid-root': {
+    '& .MuiButton-root': {
+      background: 'white !important',
+    },
+  },
+  '& .MuiIconButton-root': {
+    display: 'none',
+  },
+}

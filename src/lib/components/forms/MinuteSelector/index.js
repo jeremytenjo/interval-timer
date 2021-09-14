@@ -39,6 +39,7 @@ export default function MinuteSelector({ title, onChange = () => null }) {
             renderInput={(params) => {
               return <TextField {...params} />
             }}
+            DialogProps={{ PaperProps: { sx: styles.dialog } }}
           />
         </LocalizationProvider>
       </Box>
