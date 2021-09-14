@@ -7,13 +7,39 @@ import * as styles from './styles'
 import Controls from './containers/Controls'
 
 export default function TimerEditorCreator({ type = 'edit' }) {
+  const updateValue = ({ data, id }) => {
+    console.log({ data, id })
+  }
+
   return (
     <Box sx={styles.wrapper}>
-      <TextField id='timer-name' placeholder='Name' fullWidth autoComplete='off' />
-      <MinuteSelector title='Rest' id='rest' />
-      <MinuteSelector title='Workout' id='workout' />
-      <NumberSelector title='Repetitions' id='repetitions' />
-      <NumberSelector title='Sets' id='sets' />
+      <TextField
+        id='timer-name'
+        placeholder='Name'
+        fullWidth
+        autoComplete='off'
+        onChange={(data) => updateValue({ id: 'name', data: data.target.value })}
+      />
+      <MinuteSelector
+        title='Rest'
+        id='rest'
+        onChange={(data) => updateValue({ id: 'rest', data })}
+      />
+      <MinuteSelector
+        title='Workout'
+        id='workout'
+        onChange={(data) => updateValue({ id: 'workout', data })}
+      />
+      <NumberSelector
+        title='Repetitions'
+        id='repetitions'
+        onChange={(data) => updateValue({ id: 'repetitions', data })}
+      />
+      <NumberSelector
+        title='Sets'
+        id='sets'
+        onChange={(data) => updateValue({ id: 'sets', data })}
+      />
 
       <Controls />
     </Box>

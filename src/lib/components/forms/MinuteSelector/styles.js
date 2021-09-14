@@ -9,29 +9,31 @@ export const wrapper = {
   display: 'grid',
   gridAutoFlow: 'column',
   justifyContent: 'space-between',
-  gridTemplateColumns: 'auto 160px',
+  gridTemplateColumns: 'auto 99px',
   alignItems: 'center',
+  height: '55px',
 }
 
-export const inputs = {
+export const info = {
   display: 'grid',
-  gridAutoFlow: 'column',
   alignItems: 'center',
+  width: '102px',
+
+  '& *': {
+    border: 'transparent !important',
+  },
+  '& .MuiFormControl-root': {
+    width: '102px',
+  },
+  '& .MuiOutlinedInput-root': {
+    width: '102px',
+  },
+  '& svg': {
+    fill: '#9076FF',
+  },
   '& input': {
-    backgroundColor: 'transparent',
-    textAlign: 'center',
-    border: 'transparent',
-    color: 'white.main',
-    width: '30px',
-    fontSize: '16px',
-    '&:active': {
-      backgroundColor: 'transparent',
-      border: 'transparent',
-    },
-    '&:focus': {
-      backgroundColor: 'transparent',
-      border: 'transparent',
-      outline: 'none',
-    },
+    height: 'fit-content',
+    lineHeight: 'normal',
+    padding: '0px',
   },
 }

@@ -5,34 +5,47 @@ import IconButton from '../../IconButton'
 
 import * as styles from './styles'
 
-export default function NumberSelector({ title, id, stepperTime = 5 }) {
+export default function NumberSelector({
+  title,
+  id,
+  stepperTime = 5,
+  onChange = () => null,
+}) {
   const [timeNumber, setTimeNumber] = useState(1)
 
   const onPlusClick = () => {
     const nextNumber = parseInt(timeNumber, 10) + stepperTime
     if (nextNumber === 6) {
       setTimeNumber(5)
-    } else setTimeNumber(nextNumber)
+      onChange(5)
+    } else {
+      setTimeNumber(nextNumber)
+      onChange(nextNumber)
+    }
   }
 
   const onMinusClick = () => {
     const nextNumber = parseInt(timeNumber, 10) - stepperTime
     if (nextNumber <= 1) {
       setTimeNumber(1)
+      onChange(1)
     } else {
       setTimeNumber(nextNumber)
+      onChange(nextNumber)
     }
   }
 
-  const onChange = (e) => {
-    const value = e.target.value
+  const handleChange = (e) => {
+    const value = parseInt(e.target.value, 10)
 
     setTimeNumber(value)
+    onChange(value)
   }
 
   const onBlur = () => {
     if (timeNumber <= 0) {
       setTimeNumber(1)
+      onChange(1)
     }
   }
 
@@ -51,7 +64,7 @@ export default function NumberSelector({ title, id, stepperTime = 5 }) {
             name={id + '-number'}
             placeholder={'1'}
             value={timeNumber}
-            onChange={onChange}
+            onChange={handleChange}
             onBlur={onBlur}
           />
         </Box>
