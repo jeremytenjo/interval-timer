@@ -62,29 +62,41 @@ export default function useTimer() {
     const nextRepetition = timerStore.trackedRepetitions - 1
     const nextSet = timerStore.trackedSets - 1
 
+    console.log({ nextRepetition, nextSet })
+
+    // End
+    if (nextSet === 0) {
+      resetTimer()
+      timerControls.restartTimer()
+      return
+    }
+
+    // On rest start
+    if (nextType === 'Rest') {
+      timerStore.setType(nextType)
+      timerControls.restartTimer()
+    }
+
+    // On workout start
     if (nextType === 'Workout') {
+      // if no more repetitions
       if (nextRepetition === 0) {
         timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
 
         if (nextSet === 0) {
+          timerStore.setTrackedSets(timerStore.totalSets)
           resetTimer()
         } else {
+          timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
           timerStore.setTrackedSets(nextSet)
+          timerControls.restartTimer()
         }
       } else {
-        // if has more reps
+        // if has more repetitions
         timerStore.setTrackedRepetitions(nextRepetition)
+        timerStore.setType(nextType)
+        timerControls.restartTimer()
       }
-    }
-
-    // console.log({ nextRepetition, nextSet })
-    // TODO
-    if (nextRepetition !== 0 && nextSet !== 0) {
-      timerStore.setType(nextType)
-      timerControls.restartTimer()
-    } else {
-      resetTimer()
-      timerControls.stopTimer()
     }
   }
 
