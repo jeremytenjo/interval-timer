@@ -10,6 +10,11 @@ export default () => (
     styles={{
       html: {
         overscrollBehaviorY: 'contain',
+        '& input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button':
+          {
+            '-webkit-appearance': 'none',
+            margin: '0px',
+          },
       },
       body: {
         webkitTapHighlightColor: 'rgba(0, 0, 0, 0)',

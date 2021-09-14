@@ -10,7 +10,7 @@ export default function EditTimerPage() {
   }, [])
 
   return (
-    <Box>
+    <Box sx={{ paddingBottom: '80px' }}>
       <TimerEditorCreator type='edit' />
     </Box>
   )
