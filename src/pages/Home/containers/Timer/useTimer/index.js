@@ -55,6 +55,7 @@ export default function useTimer() {
     timerStore.setType('Workout')
     timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
     timerStore.setTrackedSets(timerStore.totalSets)
+    timerControls.stopTimer()
   }
 
   const startNextRepetition = () => {
