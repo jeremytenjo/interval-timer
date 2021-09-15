@@ -1,7 +1,4 @@
-import TimePicker from '@mui/lab/TimePicker'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-
+import TimePicker from '../../time/TimePicker'
 import Box from '../../Box'
 import TextField from '../Textfield/index'
 
@@ -26,22 +23,20 @@ export default function MinuteSelector({ title, onChange = () => null }) {
       <p className='title'>{title}</p>
 
       <Box sx={styles.info}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <TimePicker
-            ampm={false}
-            ampmInClock={false}
-            views={['minutes', 'seconds']}
-            inputFormat='mm:ss'
-            mask='__:__'
-            label='Minutes and seconds'
-            value={value}
-            onChange={updateValue}
-            renderInput={(params) => {
-              return <TextField {...params} />
-            }}
-            DialogProps={{ PaperProps: { sx: styles.dialog } }}
-          />
-        </LocalizationProvider>
+        <TimePicker
+          ampm={false}
+          ampmInClock={false}
+          views={['minutes', 'seconds']}
+          inputFormat='mm:ss'
+          mask='__:__'
+          label='Minutes and seconds'
+          value={value}
+          onChange={updateValue}
+          renderInput={(params) => {
+            return <TextField {...params} />
+          }}
+          DialogProps={{ PaperProps: { sx: styles.dialog } }}
+        />
       </Box>
     </Box>
   )
