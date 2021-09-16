@@ -12,7 +12,7 @@ export default () => (
         overscrollBehaviorY: 'contain',
         '& input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button':
           {
-            '-webkit-appearance': 'none',
+            WebkitAppearance: 'none',
             margin: '0px',
           },
       },
