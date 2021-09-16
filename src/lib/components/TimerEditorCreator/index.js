@@ -27,6 +27,11 @@ export default function TimerEditorCreator({
     sets,
   }
 
+  const totalSeconds = ({ minutes, seconds }) => {
+    const total = minutes * 60 + seconds
+    return total
+  }
+
   const updateValue = ({ data, id }) => {
     if (id === 'name') {
       setName(data)
@@ -37,22 +42,25 @@ export default function TimerEditorCreator({
     }
 
     if (id === 'rest') {
-      console.log(data)
-      setRest(data)
+      const restSeconds = totalSeconds({ minutes: data.minutes, seconds: data.seconds })
+
+      setRest(restSeconds)
     }
 
     if (id === 'workout') {
-      console.log(data)
-      setWorkout(data)
+      const workoutSeconds = totalSeconds({
+        minutes: data.minutes,
+        seconds: data.seconds,
+      })
+
+      setWorkout(workoutSeconds)
     }
 
     if (id === 'repetitions') {
-      console.log(data)
       setRepetitions(data)
     }
 
     if (id === 'sets') {
-      console.log(data)
       setSets(data)
     }
   }
@@ -74,7 +82,7 @@ export default function TimerEditorCreator({
     const isValid = validate()
 
     if (isValid) {
-      onSaveTimer()
+      onSaveTimer(payload)
     }
   }
 

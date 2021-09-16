@@ -11,11 +11,13 @@ export default function CreateTimerPage() {
     appBarData.updateTitle('Create Timer')
   }, [])
 
-  const onSaveTimer = () => {
+  const onSaveTimer = (payload) => {
+    console.log(payload)
     snackbar.show({ message: 'Timer Saved' })
   }
 
-  const onStartTimer = () => {
+  const onStartTimer = (payload) => {
+    console.log(payload)
     console.log('start timer')
   }
 
