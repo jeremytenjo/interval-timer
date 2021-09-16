@@ -13,13 +13,15 @@ const getWebpackConfig = require('../getWebpackConfig.js')
   const port = appConfig.server.local.port
   const host = '0.0.0.0'
   const devServerOptions = {
-    open: false,
     host,
+    open: false,
     hot: true,
-    overlay: true,
-    clientLogLevel: 'silent',
-    stats: 'errors-only',
     historyApiFallback: true,
+    compress: true,
+    client: {
+      overlay: true,
+      logging: 'error',
+    },
   }
   const server = new WebpackDevServer(compiler, devServerOptions)
 
