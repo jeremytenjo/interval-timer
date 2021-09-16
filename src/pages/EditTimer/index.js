@@ -9,6 +9,12 @@ export default function EditTimerPage() {
   const snackbar = useSnackBar()
   const timers = useTimers()
 
+  const defaultName = timers?.selectedTimer?.name || ''
+  const restDefaultValue = timers?.selectedTimer?.rest * 1000 || 1000
+  const workoutDefaultValue = timers?.selectedTimer?.workout * 1000 || 1000
+  const repetitionsDefaultValue = timers?.selectedTimer?.repetitions || 1
+  const setsDefaultValue = timers?.selectedTimer?.sets || 1
+
   useEffect(() => {
     appBarData.updateTitle('Edit Timer')
   }, [])
@@ -23,11 +29,9 @@ export default function EditTimerPage() {
     console.log('start timer')
   }
 
-  const defaultName = timers?.selectedTimer?.name || ''
-  const restDefaultValue = timers?.selectedTimer?.rest * 1000 || 1000
-  const workoutDefaultValue = timers?.selectedTimer?.workout * 1000 || 1000
-  const repetitionsDefaultValue = timers?.selectedTimer?.repetitions || 1
-  const setsDefaultValue = timers?.selectedTimer?.sets || 1
+  const handleRemoveButtonClick = () => {
+    console.log('delete ' + timers?.selectedTimer.name)
+  }
 
   return (
     <Box sx={{ paddingBottom: '80px' }}>
@@ -39,6 +43,7 @@ export default function EditTimerPage() {
         workoutDefaultValue={workoutDefaultValue}
         repetitionsDefaultValue={repetitionsDefaultValue}
         setsDefaultValue={setsDefaultValue}
+        onRemoveButtonClick={handleRemoveButtonClick}
       />
     </Box>
   )

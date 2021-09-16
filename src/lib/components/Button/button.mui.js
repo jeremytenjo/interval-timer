@@ -10,6 +10,12 @@ export default {
           background: 'transparent',
         },
       },
+      {
+        props: { variant: 'text' },
+        style: {
+          background: 'transparent',
+        },
+      },
     ],
     styleOverrides: {
       root: {

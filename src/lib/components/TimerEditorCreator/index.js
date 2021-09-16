@@ -3,6 +3,7 @@ import TextField from '../forms/Textfield'
 import NumberSelector from '../forms/NumberSelector'
 import MinuteSelector from '../forms/MinuteSelector'
 
+import DeleteTimer from './containers/DeleteTimer'
 import * as styles from './styles'
 import Controls from './containers/Controls'
 
@@ -14,6 +15,7 @@ export default function TimerEditorCreator({
   workoutDefaultValue = 1000,
   repetitionsDefaultValue = 1,
   setsDefaultValue = 1,
+  onRemoveButtonClick,
 }) {
   // fields
   const [name, setName] = useState(null)
@@ -135,6 +137,9 @@ export default function TimerEditorCreator({
         defaultValue={setsDefaultValue}
         onChange={(data) => updateValue({ id: 'sets', data })}
       />
+
+      {onRemoveButtonClick && <DeleteTimer onDelete={onRemoveButtonClick} />}
+
       <Controls onSave={onSave} onStart={onStart} />
     </Box>
   )
