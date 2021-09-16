@@ -9,6 +9,7 @@ import Controls from './containers/Controls'
 export default function TimerEditorCreator({
   onStartTimer = () => null,
   onSaveTimer = () => null,
+  defaultName = null,
   restDefaultValue = 1000,
   workoutDefaultValue = 1000,
   repetitionsDefaultValue = 1,
@@ -99,6 +100,7 @@ export default function TimerEditorCreator({
       <TextField
         id='timer-name'
         placeholder='Name'
+        defaultValue={defaultName}
         fullWidth
         autoComplete='off'
         onChange={(data) => updateValue({ id: 'name', data: data.target.value })}
