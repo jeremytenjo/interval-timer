@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext } from 'react'
+import Slide from '@mui/material/Slide'
 
 import Snackbar from '..'
 import Alert from '../../Alert'
@@ -34,6 +35,7 @@ export const SnackBarProvider = ({ children }) => {
         key={vertical + horizontal}
         severity='success'
         sx={{ bottom: '80px' }}
+        TransitionComponent={Slide}
       >
         <Alert severity='success'>{message}</Alert>
       </Snackbar>
