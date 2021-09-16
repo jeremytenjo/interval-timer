@@ -7,9 +7,12 @@ import * as styles from './styles'
 import Controls from './containers/Controls'
 
 export default function TimerEditorCreator({
-  type = 'edit',
   onStartTimer = () => null,
   onSaveTimer = () => null,
+  restDefaultValue = 1000,
+  workoutDefaultValue = 1000,
+  repetitionsDefaultValue = 1,
+  setsDefaultValue = 1,
 }) {
   // fields
   const [name, setName] = useState(null)
@@ -106,23 +109,28 @@ export default function TimerEditorCreator({
       <MinuteSelector
         title='Rest'
         id='rest'
+        defaultValue={restDefaultValue}
         onChange={(data) => updateValue({ id: 'rest', data })}
       />
 
       <MinuteSelector
         title='Workout'
         id='workout'
+        defaultValue={workoutDefaultValue}
         onChange={(data) => updateValue({ id: 'workout', data })}
       />
 
       <NumberSelector
         title='Repetitions'
         id='repetitions'
+        defaultValue={repetitionsDefaultValue}
         onChange={(data) => updateValue({ id: 'repetitions', data })}
       />
+
       <NumberSelector
         title='Sets'
         id='sets'
+        defaultValue={setsDefaultValue}
         onChange={(data) => updateValue({ id: 'sets', data })}
       />
       <Controls onSave={onSave} onStart={onStart} />

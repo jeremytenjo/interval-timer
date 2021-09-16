@@ -2,7 +2,9 @@ import VolumeControlUi from './ui'
 
 // hanlde phone volume
 export default function VolumeControl() {
-  const updateVolume = (newValue) => {}
+  const updateVolume = (newValue) => {
+    console.log(newValue)
+  }
 
   const mute = () => {}
 

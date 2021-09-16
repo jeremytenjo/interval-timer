@@ -4,7 +4,7 @@ import { getAuth } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
 
 import firebaseConfig from './config'
-import initializeFirebaseEmulator from './utils/initializeFirebaseEmulator'
+// import initializeFirebaseEmulator from './utils/initializeFirebaseEmulator'
 
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()

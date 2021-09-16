@@ -23,11 +23,7 @@ export default function CreateTimerPage() {
 
   return (
     <Box sx={{ paddingBottom: '80px' }}>
-      <TimerEditorCreator
-        type='create'
-        onSaveTimer={onSaveTimer}
-        onStartTimer={onStartTimer}
-      />
+      <TimerEditorCreator onSaveTimer={onSaveTimer} onStartTimer={onStartTimer} />
     </Box>
   )
 }

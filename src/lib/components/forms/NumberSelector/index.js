@@ -10,8 +10,9 @@ export default function NumberSelector({
   id,
   stepperTime = 5,
   onChange = () => null,
+  defaultValue = 1,
 }) {
-  const [timeNumber, setTimeNumber] = useState(1)
+  const [timeNumber, setTimeNumber] = useState(defaultValue)
 
   const onPlusClick = () => {
     const nextNumber = parseInt(timeNumber, 10) + stepperTime

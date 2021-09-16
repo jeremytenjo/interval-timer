@@ -4,8 +4,12 @@ import TextField from '../Textfield/index'
 
 import * as styles from './styles'
 
-export default function MinuteSelector({ title, onChange = () => null }) {
-  const [value, setValue] = React.useState(new Date(1000))
+export default function MinuteSelector({
+  title,
+  onChange = () => null,
+  defaultValue = 1000,
+}) {
+  const [value, setValue] = React.useState(new Date(defaultValue))
 
   const updateValue = (newValue) => {
     const minutes = newValue.getMinutes()
