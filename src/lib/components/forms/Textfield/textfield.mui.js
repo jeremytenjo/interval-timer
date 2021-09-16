@@ -7,12 +7,13 @@ export default {
     styleOverrides: {
       root: {
         color: 'white',
-        backgroundColor: '#373543',
         borderRadius: '7px 70px 70px 7px',
         '& .Mui-focused': {
           borderColor: 'red',
         },
         '& .MuiOutlinedInput-root': {
+          backgroundColor: '#373543',
+          borderRadius: '7px 70px 70px 7px',
           '&:hover fieldset': {
             borderColor: 'transparent',
           },
