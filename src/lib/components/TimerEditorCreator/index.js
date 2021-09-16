@@ -102,11 +102,13 @@ export default function TimerEditorCreator({
         helperText={nameError ? 'Missing name' : undefined}
         error={nameError}
       />
+
       <MinuteSelector
         title='Rest'
         id='rest'
         onChange={(data) => updateValue({ id: 'rest', data })}
       />
+
       <MinuteSelector
         title='Workout'
         id='workout'
