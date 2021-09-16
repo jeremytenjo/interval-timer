@@ -5,6 +5,7 @@ import TextField from '../Textfield/index'
 import * as styles from './styles'
 
 export default function MinuteSelector({ title, onChange = () => null }) {
+  // TODO add default value to 1 second
   const [value, setValue] = React.useState(new Date(0))
 
   const updateValue = (newValue) => {
