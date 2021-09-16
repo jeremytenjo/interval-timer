@@ -2,23 +2,86 @@ import Box from '../Box'
 import TextField from '../forms/Textfield'
 import NumberSelector from '../forms/NumberSelector'
 import MinuteSelector from '../forms/MinuteSelector'
-import useSnackBar from '../Snackbar/useSnackbar'
 
 import * as styles from './styles'
 import Controls from './containers/Controls'
 
-export default function TimerEditorCreator({ type = 'edit' }) {
-  const snackbar = useSnackBar()
+export default function TimerEditorCreator({
+  type = 'edit',
+  onStartTimer = () => null,
+  onSaveTimer = () => null,
+}) {
+  // fields
+  const [name, setName] = useState(null)
+  const [nameError, setNameError] = useState(null)
+  const [rest, setRest] = useState(1)
+  const [workout, setWorkout] = useState(1)
+  const [repetitions, setRepetitions] = useState(1)
+  const [sets, setSets] = useState(1)
+
+  const payload = {
+    name,
+    rest,
+    workout,
+    repetitions,
+    sets,
+  }
 
   const updateValue = ({ data, id }) => {
-    console.log({ data, id })
+    if (id === 'name') {
+      setName(data)
+
+      if (data) {
+        setNameError(false)
+      }
+    }
+
+    if (id === 'rest') {
+      console.log(data)
+      setRest(data)
+    }
+
+    if (id === 'workout') {
+      console.log(data)
+      setWorkout(data)
+    }
+
+    if (id === 'repetitions') {
+      console.log(data)
+      setRepetitions(data)
+    }
+
+    if (id === 'sets') {
+      console.log(data)
+      setSets(data)
+    }
+  }
+
+  const validate = () => {
+    let valid = false
+    const hasName = payload.name
+
+    if (hasName) {
+      valid = true
+    } else {
+      setNameError(true)
+    }
+
+    return valid
   }
 
   const onSave = () => {
-    snackbar.show({ message: 'Timer Saved' })
+    const isValid = validate()
+
+    if (isValid) {
+      onSaveTimer()
+    }
   }
 
-  const onStart = () => {}
+  const onStart = () => {
+    console.log(payload)
+    onStartTimer(payload)
+  }
 
   return (
     <Box sx={styles.wrapper}>
@@ -28,6 +91,8 @@ export default function TimerEditorCreator({ type = 'edit' }) {
         fullWidth
         autoComplete='off'
         onChange={(data) => updateValue({ id: 'name', data: data.target.value })}
+        helperText={nameError ? 'Missing name' : undefined}
+        error={nameError}
       />
 
       <MinuteSelector

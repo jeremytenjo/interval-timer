@@ -33,6 +33,7 @@ export const SnackBarProvider = ({ children }) => {
         onClose={hide}
         key={vertical + horizontal}
         severity='success'
+        sx={{ bottom: '80px' }}
       >
         <Alert severity='success'>{message}</Alert>
       </Snackbar>
