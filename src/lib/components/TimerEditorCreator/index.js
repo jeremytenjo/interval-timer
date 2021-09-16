@@ -102,13 +102,11 @@ export default function TimerEditorCreator({
         helperText={nameError ? 'Missing name' : undefined}
         error={nameError}
       />
-
       <MinuteSelector
         title='Rest'
         id='rest'
         onChange={(data) => updateValue({ id: 'rest', data })}
       />
-
       <MinuteSelector
         title='Workout'
         id='workout'
@@ -120,13 +118,11 @@ export default function TimerEditorCreator({
         id='repetitions'
         onChange={(data) => updateValue({ id: 'repetitions', data })}
       />
-
       <NumberSelector
         title='Sets'
         id='sets'
         onChange={(data) => updateValue({ id: 'sets', data })}
       />
-
       <Controls onSave={onSave} onStart={onStart} />
     </Box>
   )
