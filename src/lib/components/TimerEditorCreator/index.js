@@ -18,12 +18,12 @@ export default function TimerEditorCreator({
   onRemoveButtonClick,
 }) {
   // fields
-  const [name, setName] = useState(null)
+  const [name, setName] = useState(defaultName)
   const [nameError, setNameError] = useState(null)
-  const [rest, setRest] = useState(1)
-  const [workout, setWorkout] = useState(1)
-  const [repetitions, setRepetitions] = useState(1)
-  const [sets, setSets] = useState(1)
+  const [rest, setRest] = useState(restDefaultValue)
+  const [workout, setWorkout] = useState(workoutDefaultValue)
+  const [repetitions, setRepetitions] = useState(repetitionsDefaultValue)
+  const [sets, setSets] = useState(setsDefaultValue)
 
   const payload = {
     name,
