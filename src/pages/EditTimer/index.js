@@ -8,6 +8,7 @@ export default function EditTimerPage() {
   const appBarData = useAppBar()
   const snackbar = useSnackBar()
   const timers = useTimers()
+  const navigate = useNavigate()
 
   const defaultName = timers?.selectedTimer?.name || ''
   const restDefaultValue = timers?.selectedTimer?.rest * 1000 || 1000
@@ -31,6 +32,11 @@ export default function EditTimerPage() {
 
   const handleRemoveButtonClick = () => {
     console.log('delete ' + timers?.selectedTimer.name)
+    // TODO delete timer in database
+
+    snackbar.show({ message: 'Timer Deleted' })
+
+    navigate('/')
   }
 
   return (

@@ -23,8 +23,8 @@ export default function DeleteTimer({ onDelete = () => null }) {
         onConfirm={onConfirm}
         onCancel={hide}
         open={open}
-        title='Delete timer'
-        text='Are you sure you want to delete timer ?'
+        title='Delete timer?'
+        confirmText='Delete'
       />
 
       <Button variant='text' sx={{ width: 'fit-content' }} onClick={show}>
