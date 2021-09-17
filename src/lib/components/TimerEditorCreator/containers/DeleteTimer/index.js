@@ -27,7 +27,11 @@ export default function DeleteTimer({ onDelete = () => null }) {
         confirmText='Delete'
       />
 
-      <Button variant='text' sx={{ width: 'fit-content' }} onClick={show}>
+      <Button
+        variant='text'
+        sx={{ width: 'fit-content', color: 'error.main' }}
+        onClick={show}
+      >
         Delete
       </Button>
     </>
