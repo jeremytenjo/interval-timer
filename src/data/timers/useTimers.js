@@ -45,9 +45,18 @@ export default function useTimers() {
     }
   }, [timersStore.selectedTimer])
 
+  const updateTimer = ({ id, data }) => {
+    if (!id) {
+      console.warn('missing timer id')
+      return
+    }
+    console.log(id, data)
+  }
+
   return {
     data: timersStore.timers,
     selectedTimer: timersStore.selectedTimer,
     setSelectedTimer: timersStore.setSelectedTimer,
+    updateTimer,
   }
 }
