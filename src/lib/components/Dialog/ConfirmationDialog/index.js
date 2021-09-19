@@ -27,10 +27,12 @@ export default function ConfirmationDialog({
       <DialogTitle>{title}</DialogTitle>
       {text && <DialogContent dividers>{text}</DialogContent>}
       <DialogActions>
-        <Button autoFocus onClick={onCancel}>
+        <Button variant='text' autoFocus onClick={onCancel}>
           {cancelText}
         </Button>
-        <Button onClick={handleConfirm}>{confirmText}</Button>
+        <Button variant='text' onClick={handleConfirm}>
+          {confirmText}
+        </Button>
       </DialogActions>
     </Dialog>
   )

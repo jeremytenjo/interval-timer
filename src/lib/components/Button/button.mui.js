@@ -14,6 +14,7 @@ export default {
         props: { variant: 'text' },
         style: {
           background: 'transparent',
+          color: 'black',
         },
       },
     ],
