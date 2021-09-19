@@ -47,4 +47,11 @@ export const dialog = {
   '& .MuiIconButton-root': {
     display: 'none',
   },
+  '& .MuiDialogActions-root': {
+    '& button': {
+      color: 'black.main',
+      background: 'transparent',
+      boxShadow: 'none',
+    },
+  },
 }
