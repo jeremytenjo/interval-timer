@@ -40,6 +40,7 @@ export default function EditTimerPage() {
   return (
     <Box sx={{ paddingBottom: '80px' }}>
       <TimerEditorCreator
+        key={defaultName}
         onSaveTimer={onSaveTimer}
         onStartTimer={onStartTimer}
         defaultName={defaultName}

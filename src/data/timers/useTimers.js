@@ -2,6 +2,7 @@ import create from 'zustand'
 import { useLocation } from 'react-router-dom'
 
 import useTimer from '../../pages/Home/containers/Timer/useTimer'
+import arrayDB from '../../lib/utils/array/arrayDB'
 
 import stubs from './stubs'
 
@@ -46,11 +47,15 @@ export default function useTimers() {
   }, [timersStore.selectedTimer])
 
   const updateTimer = ({ id, data }) => {
-    console.log(id, data)
+    console.log(timersStore.timers)
     if (!id) {
       console.warn('missing timer id')
     } else {
-      console.log('HERE!')
+      const updatedData = arrayDB.update(timersStore.timers, {
+        id,
+        data,
+      })
+      console.log(updatedData)
     }
   }
 

@@ -21,7 +21,6 @@ const TitleText = ({ title }) => {
 }
 
 export default function Title() {
-  // TODO keep title sync with url timerId
   const appBar = useAppBar()
 
   return <div>{appBar.title ? <TitleText title={appBar.title} /> : <Menu />}</div>
