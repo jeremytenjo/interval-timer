@@ -28,7 +28,7 @@ export default function useTimers() {
         (timer) => timer.id.toString() === urlParams.timerId.toString(),
       )
       timersStore.setSelectedTimer(selectedTimer)
-    } else if (timersStore.timers.length) {
+    } else if (!urlParams.timerId && !timersStore.selectedTimer) {
       timersStore.selectedTimer?.id.toString() !==
         timersStore?.timers?.[0]?.id.toString() &&
         timersStore.setSelectedTimer(timersStore.timers[0])
