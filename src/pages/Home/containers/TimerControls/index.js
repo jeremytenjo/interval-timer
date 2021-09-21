@@ -7,11 +7,6 @@ import * as styles from './styles'
 export default function TimerControls() {
   const timer = useTimer()
 
-  const stopTimer = () => {
-    timer.stopTimer()
-    timer.resetTimer()
-  }
-
   return (
     <Box sx={styles.wrapper}>
       {!timer.isPlaying && !timer.isStarted && (
@@ -28,7 +23,7 @@ export default function TimerControls() {
             <Button onClick={timer.resumeTimer}>Resume</Button>
           )}
 
-          <Button onClick={stopTimer}>Stop</Button>
+          <Button onClick={timer.resetTimer}>Stop</Button>
         </Box>
       )}
     </Box>

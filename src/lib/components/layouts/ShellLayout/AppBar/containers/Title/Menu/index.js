@@ -31,7 +31,6 @@ export default function TopBarMenu() {
   const onItemClick = (selectedItem) => {
     handleClose()
     timer.resetTimer()
-    timer.stopTimer()
     navigate(`/timer/${selectedItem.id}`)
   }
 
