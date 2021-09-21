@@ -2,7 +2,7 @@ import Edit from '../../../../../icons/Edit'
 import Plus from '../../../../../icons/Plus'
 import Box from '../../../../../Box'
 import IconButton from '../../../../../IconButton'
-import useAppBar from '../../useAppBar'
+import useAppBar from '../../../../../../../globalState/useAppBar'
 import useTimers from '../../../../../../../data/timers/useTimers'
 
 import VolumeControl from './VolumeControl'

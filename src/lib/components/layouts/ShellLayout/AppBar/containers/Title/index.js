@@ -1,4 +1,4 @@
-import useAppBar from '../../useAppBar'
+import useAppBar from '../../../../../../../globalState/useAppBar'
 import BackArrow from '../../../../../icons/BackArrow'
 import Box from '../../../../../Box'
 import Iconbutton from '../../../../../IconButton'

@@ -1,4 +1,4 @@
-import useAppBar from '../../lib/components/layouts/ShellLayout/AppBar/useAppBar'
+import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 

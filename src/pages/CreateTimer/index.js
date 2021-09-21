@@ -1,5 +1,5 @@
 import Box from '../../lib/components/Box'
-import useAppBar from '../../lib/components/layouts/ShellLayout/AppBar/useAppBar'
+import useAppBar from '../../globalState/useAppBar'
 import useSnackBar from '../../lib/components/Snackbar/useSnackbar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 
