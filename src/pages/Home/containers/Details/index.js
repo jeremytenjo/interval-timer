@@ -1,4 +1,4 @@
-import useTimer from '../Timer/useTimer'
+import useTimer from '../../../../globalState/useTimer'
 
 import * as styles from './styles'
 import Row from './Row'

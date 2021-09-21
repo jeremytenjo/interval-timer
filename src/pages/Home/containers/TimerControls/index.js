@@ -1,6 +1,6 @@
 import Box from '../../../../lib/components/Box'
 import Button from '../../../../lib/components/Button'
-import useTimer from '../Timer/useTimer'
+import useTimer from '../../../../globalState/useTimer'
 
 import * as styles from './styles'
 

@@ -4,7 +4,7 @@ import Chevron from '../../../../../../icons/Chevron'
 import Box from '../../../../../../Box'
 import Popover from '../../../../../../Popover'
 import useTimers from '../../../../../../../../data/timers/useTimers'
-import useTimer from '../../../../../../../../pages/Home/containers/Timer/useTimer'
+import useTimer from '../../../../../../../../globalState/useTimer'
 
 import * as styles from './styles'
 

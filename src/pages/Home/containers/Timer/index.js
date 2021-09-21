@@ -1,8 +1,8 @@
 import CountdownCircleTimer from '../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../lib/components/Box'
+import useTimer from '../../../../globalState/useTimer'
 
 import Info from './Info'
-import useTimer from './useTimer'
 import * as styles from './styles'
 
 /**

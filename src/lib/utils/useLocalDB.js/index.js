@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+// TODO create useweb npm package
 export default function useLocalDb(initialData = []) {
   const [data, setData] = useState(initialData)
 

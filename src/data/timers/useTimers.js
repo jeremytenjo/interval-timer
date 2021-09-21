@@ -1,7 +1,7 @@
 import create from 'zustand'
 import { useLocation } from 'react-router-dom'
 
-import useTimer from '../../pages/Home/containers/Timer/useTimer'
+import useTimer from '../../globalState/useTimer'
 import arrayDB from '../../lib/utils/array/arrayDB'
 
 import stubs from './stubs'
