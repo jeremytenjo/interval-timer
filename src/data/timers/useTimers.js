@@ -48,21 +48,17 @@ export default function useTimers() {
 
   const updateTimer = ({ id, data }) => {
     console.log(timersStore.timers)
-    if (!id) {
-      console.warn('missing timer id')
-    } else {
-      const updatedData = arrayDB.update(timersStore.timers, {
-        id,
-        data,
-      })
-      console.log(updatedData)
-    }
+    const updatedData = arrayDB.update(timersStore.timers, {
+      id,
+      data,
+    })
+    console.log(updatedData)
+    timersStore.setTimers(updatedData)
   }
 
   return {
     data: timersStore.timers,
     selectedTimer: timersStore.selectedTimer,
-    setSelectedTimer: timersStore.setSelectedTimer,
     updateTimer,
   }
 }
