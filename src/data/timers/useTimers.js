@@ -47,6 +47,10 @@ export default function useTimers() {
   }, [timersStore.selectedTimer])
 
   const updateTimer = ({ id, data }) => {
+    console.log('updateTimer')
+    // TODO update timer in database
+
+    // TODO update timer in global state
     console.log(timersStore.timers)
     const updatedData = arrayDB.update(timersStore.timers, {
       id,
@@ -56,9 +60,25 @@ export default function useTimers() {
     timersStore.setTimers(updatedData)
   }
 
+  const removeTimer = ({ id }) => {
+    console.log('removeTimer' + id)
+    // TODO remove timer in database
+
+    // TODO remove timer in global state
+  }
+
+  const addTimer = ({ data }) => {
+    console.log('addTimer' + data)
+    // TODO add timer in database
+
+    // TODO add timer in global state
+  }
+
   return {
     data: timersStore.timers,
     selectedTimer: timersStore.selectedTimer,
     updateTimer,
+    removeTimer,
+    addTimer,
   }
 }

@@ -21,6 +21,7 @@ export default function EditTimerPage() {
   }, [])
 
   const onSaveTimer = (payload) => {
+    // TODO make into hook to handle loading, error, etc states
     timers.updateTimer({ id: timers.selectedTimer.id, data: payload })
     snackbar.show({ message: 'Timer Saved' })
   }
@@ -31,9 +32,9 @@ export default function EditTimerPage() {
   }
 
   const handleRemoveButtonClick = () => {
-    console.log('delete ' + timers?.selectedTimer.name)
-    // TODO delete timer in database
-    snackbar.show({ message: 'Timer Deleted' })
+    // TODO make into hook to handle loading, error, etc states
+    timers.removeTimer({ id: timers?.selectedTimer.id })
+    snackbar.show({ message: 'Timer Removed' })
     navigate('/')
   }
 
