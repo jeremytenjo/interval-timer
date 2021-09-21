@@ -6,28 +6,28 @@ import * as styles from './styles'
 import useTimerControls from './useTimerControls'
 
 export default function TimerControls() {
-  const timeControls = useTimerControls()
+  const timerControls = useTimerControls()
   const timer = useTimer()
 
   const stopTimer = () => {
-    timeControls.stopTimer()
+    timerControls.stopTimer()
     timer.resetTimer()
   }
 
   return (
     <Box sx={styles.wrapper}>
-      {!timeControls.isPlaying && !timeControls.isStarted && (
-        <Button onClick={timeControls.startTimer}>Start</Button>
+      {!timerControls.isPlaying && !timerControls.isStarted && (
+        <Button onClick={timerControls.startTimer}>Start</Button>
       )}
 
-      {timeControls.isStarted && (
+      {timerControls.isStarted && (
         <Box sx={styles.innerWrapper}>
-          {timeControls.isStarted && timeControls.isPlaying && (
-            <Button onClick={timeControls.pauseTimer}>Pause</Button>
+          {timerControls.isStarted && timerControls.isPlaying && (
+            <Button onClick={timerControls.pauseTimer}>Pause</Button>
           )}
 
-          {timeControls.isStarted && !timeControls.isPlaying && (
-            <Button onClick={timeControls.resumeTimer}>Resume</Button>
+          {timerControls.isStarted && !timerControls.isPlaying && (
+            <Button onClick={timerControls.resumeTimer}>Resume</Button>
           )}
 
           <Button onClick={stopTimer}>Stop</Button>
