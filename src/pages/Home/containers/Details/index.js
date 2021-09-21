@@ -1,5 +1,4 @@
 import useTimer from '../Timer/useTimer'
-import useTimerControls from '../TimerControls/useTimerControls'
 
 import * as styles from './styles'
 import Row from './Row'
@@ -7,7 +6,6 @@ import Item from './Item'
 
 export default function Details() {
   const timer = useTimer()
-  const timerControls = useTimerControls()
 
   return (
     <>
@@ -19,7 +17,7 @@ export default function Details() {
       <Row sx={styles.bottomRow}>
         <Item
           title='Remaining'
-          time={timerControls.isStarted ? timer.remainingTime : timer.totalTime}
+          time={timer.isStarted ? timer.remainingTime : timer.totalTime}
           sx={{ ...styles.bottomItemsCss }}
         />
 

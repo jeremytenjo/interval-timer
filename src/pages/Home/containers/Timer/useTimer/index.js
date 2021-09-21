@@ -2,9 +2,8 @@ import create from 'zustand'
 import formatDuration from 'format-duration'
 import { useMemo } from 'react'
 
-import useTimerControls from '../../TimerControls/useTimerControls'
-
 const useTimerStore = create((set) => ({
+  // timer info
   totalRepetitions: 0,
   totalSets: 0,
   totalWorkoutTime: 0,
@@ -22,11 +21,30 @@ const useTimerStore = create((set) => ({
   setTrackedSets: (newValue) => set(() => ({ trackedSets: newValue })),
   setType: (newValue) => set(() => ({ type: newValue })),
   setElapsedTime: (newValue) => set(() => ({ elapsedTime: newValue })),
+
+  // timer controls
+  isPlaying: false,
+  isStarted: false,
+  timerKey: 1,
+
+  startTimer: () => set(() => ({ isPlaying: true, isStarted: true })),
+  pauseTimer: () => set(() => ({ isPlaying: false })),
+  resumeTimer: () => set(() => ({ isPlaying: true })),
+  stopTimer: () =>
+    set((state) => ({
+      isPlaying: false,
+      isStarted: false,
+      timerKey: state.timerKey + 1,
+    })),
+  restartTimer: () =>
+    set((state) => {
+      state.startTimer()
+      return { timerKey: state.timerKey + 1 }
+    }),
 }))
 
 export default function useTimer() {
   const timerStore = useTimerStore()
-  const timerControls = useTimerControls()
   const totalTimeRaw =
     1000 *
     timerStore.totalRepetitions *
@@ -45,17 +63,17 @@ export default function useTimer() {
   const duration = isRest ? timerStore.totalRestTime : timerStore.totalWorkoutTime
   const color = isRest ? '#D72E33' : '#36B273'
 
-  const repetitions = !timerControls.isStarted
+  const repetitions = !timerStore.isStarted
     ? timerStore.totalRepetitions
     : timerStore.trackedRepetitions
 
-  const sets = !timerControls.isStarted ? timerStore.totalSets : timerStore.trackedSets
+  const sets = !timerStore.isStarted ? timerStore.totalSets : timerStore.trackedSets
 
   const resetTimer = () => {
     timerStore.setType('Workout')
     timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
     timerStore.setTrackedSets(timerStore.totalSets)
-    timerControls.stopTimer()
+    timerStore.stopTimer()
   }
 
   const startNextRepetition = () => {
@@ -66,7 +84,7 @@ export default function useTimer() {
     // On rest start
     if (nextType === 'Rest') {
       timerStore.setType(nextType)
-      timerControls.restartTimer()
+      timerStore.restartTimer()
     }
 
     // On workout start
@@ -81,14 +99,14 @@ export default function useTimer() {
         // if has more repetitions
         timerStore.setTrackedRepetitions(nextRepetition)
         timerStore.setType(nextType)
-        timerControls.restartTimer()
+        timerStore.restartTimer()
       }
 
       // if no more repetitions
       if (nextRepetition === 0 && nextSet === 1) {
         timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
         timerStore.setTrackedSets(nextSet)
-        timerControls.restartTimer()
+        timerStore.restartTimer()
       }
     }
   }

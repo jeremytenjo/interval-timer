@@ -5,7 +5,6 @@ import Box from '../../../../../../Box'
 import Popover from '../../../../../../Popover'
 import useTimers from '../../../../../../../../data/timers/useTimers'
 import useTimer from '../../../../../../../../pages/Home/containers/Timer/useTimer'
-import useTimerControls from '../../../../../../../../pages/Home/containers/TimerControls/useTimerControls'
 
 import * as styles from './styles'
 
@@ -13,7 +12,6 @@ export default function TopBarMenu() {
   const timers = useTimers()
   const navigate = useNavigate()
   const timer = useTimer()
-  const timerControl = useTimerControls()
 
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -33,7 +31,7 @@ export default function TopBarMenu() {
   const onItemClick = (selectedItem) => {
     handleClose()
     timer.resetTimer()
-    timerControl.stopTimer()
+    timer.stopTimer()
     navigate(`/timer/${selectedItem.id}`)
   }
 

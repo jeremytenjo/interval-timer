@@ -1,6 +1,5 @@
 import CountdownCircleTimer from '../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../lib/components/Box'
-import useTimerControls from '../TimerControls/useTimerControls'
 
 import Info from './Info'
 import useTimer from './useTimer'
@@ -10,19 +9,18 @@ import * as styles from './styles'
  * {@link https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native|docs}
  */
 export default function Timer() {
-  const timeControls = useTimerControls()
   const timer = useTimer()
   const elapsedTime = useRef(0)
   const currentRemainingTime = useRef(0)
 
   useEffect(() => {
-    if (!timeControls.isStarted) {
+    if (!timer.isStarted) {
       elapsedTime.current = 0
     }
-  }, [timeControls.isStarted])
+  }, [timer.isStarted])
 
   const updateElapsedTime = (newRemainingTiming) => {
-    if (timeControls.isStarted) {
+    if (timer.isStarted) {
       if (currentRemainingTime.current !== newRemainingTiming) {
         elapsedTime.current = elapsedTime.current + 1
         timer.setElapsedTime(elapsedTime.current)
@@ -38,8 +36,8 @@ export default function Timer() {
       <CountdownCircleTimer
         size={320}
         strokeLinecap='square'
-        isPlaying={timeControls.isPlaying}
-        key={timeControls.timerKey}
+        isPlaying={timer.isPlaying}
+        key={timer.timerKey}
         duration={timer.duration}
         colors={timer.color}
         onComplete={timer.startNextRepetition}
