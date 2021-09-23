@@ -26,6 +26,7 @@ export default function useAuth() {
   const snackbar = useSnackBar()
 
   const signInWithGoogle = async () => {
+    authStore.signingIn(true)
     try {
       const auth = getAuth()
       const result = await signInWithPopup(auth, provider)
@@ -36,6 +37,8 @@ export default function useAuth() {
       authStore.setUser({ ...user, accessToken })
     } catch (error) {
       snackbar.show({ message: error.message, severity: 'error' })
+    } finally {
+      authStore.signingIn(false)
     }
   }
 
