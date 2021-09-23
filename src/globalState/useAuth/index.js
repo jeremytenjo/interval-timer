@@ -26,7 +26,7 @@ export default function useAuth() {
   const snackbar = useSnackBar()
 
   const signInWithGoogle = async () => {
-    authStore.signingIn(true)
+    authStore.setSigningIn(true)
 
     try {
       const auth = getAuth()
@@ -39,7 +39,7 @@ export default function useAuth() {
     } catch (error) {
       snackbar.show({ message: error.message, severity: 'error' })
     } finally {
-      authStore.signingIn(false)
+      authStore.setSigningIn(false)
     }
   }
 
