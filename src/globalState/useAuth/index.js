@@ -27,6 +27,7 @@ export default function useAuth() {
 
   const signInWithGoogle = async () => {
     authStore.signingIn(true)
+
     try {
       const auth = getAuth()
       const result = await signInWithPopup(auth, provider)
