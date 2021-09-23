@@ -4,9 +4,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from 'firebase/auth'
 
-import useFirebase from '../../firebase/useFirebase'
 import useSnackBar from '../../lib/components/Snackbar/useSnackbar'
 
 const provider = new GoogleAuthProvider()
@@ -29,29 +29,19 @@ export default function useAuth() {
     try {
       const auth = getAuth()
       const result = await signInWithPopup(auth, provider)
-      // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result)
-      const token = credential.accessToken
-      // The signed-in user info.
+      const accessToken = credential.accessToken
       const user = result.user
-      // ...
-      console.log({ user })
-      authStore.setUser(user)
+      authStore.setUser({ ...user, accessToken })
     } catch (error) {
-      // Handle Errors here.
-      const errorCode = error.code
-      const errorMessage = error.message
-      // The email of the user's account used.
-      const email = error.email
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error)
-      // ...
-      console.log({ error })
-      snackbar.show({ message: error, type: 'error' })
+      snackbar.show({ message: error.message, type: 'error' })
     }
   }
 
-  const signOutFromGoogle = () => {}
+  const signOutFromGoogle = async () => {
+    const auth = getAuth()
+    await signOut(auth)
+  }
 
   useEffect(() => {
     const auth = getAuth()

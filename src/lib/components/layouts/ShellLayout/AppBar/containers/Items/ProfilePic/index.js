@@ -54,7 +54,7 @@ export default function ProfilePic() {
         <Box sx={styles.popopver}>
           {auth.user ? (
             <>
-              <ListItemButton>
+              <ListItemButton onClick={auth.signOutFromGoogle}>
                 <ListItemIcon sx={{ minWidth: '35px' }}>
                   <SignOut sx={{ width: '17px' }} />
                 </ListItemIcon>
