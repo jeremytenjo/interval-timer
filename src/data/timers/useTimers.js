@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import useTimer from '../../globalState/useTimer'
 import arrayDB from '../../lib/utils/array/arrayDB'
 
+import useGetTimers from './handlers/useGetData'
 import stubs from './stubs'
 
 const useTimersStore = create((set) => ({
@@ -19,6 +20,16 @@ export default function useTimers() {
   const timer = useTimer()
   const urlParams = useParams()
   const location = useLocation()
+
+  const getTimers = useGetTimers()
+  console.log(getTimers)
+  // const add = useFirestore()
+  // const update = useFirestore()
+  // const remove = useFirestore()
+
+  useEffect(() => {
+    getTimers.exec()
+  }, [])
 
   useEffect(() => {
     let selectedTimer = undefined
