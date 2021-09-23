@@ -47,9 +47,10 @@ export default function useAuth() {
       const credential = GoogleAuthProvider.credentialFromError(error)
       // ...
       console.log({ error })
-      snackbar.show({ message: error })
+      snackbar.show({ message: error, type: 'error' })
     }
   }
+
   const signOutFromGoogle = () => {}
 
   useEffect(() => {
