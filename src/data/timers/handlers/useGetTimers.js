@@ -3,12 +3,7 @@ import useAsync from '@useweb/use-async'
 
 import useFirebase from '../../../firebase/useFirebase'
 
-export default function useGetTimers({
-  userId,
-  localTimers,
-  updateLocalTimers,
-  selectedTimer,
-}) {
+export default function useGetTimers({ userId, updateLocalTimers, selectedTimer }) {
   const firebase = useFirebase()
   const navigate = useNavigate()
 

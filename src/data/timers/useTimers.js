@@ -2,7 +2,6 @@ import create from 'zustand'
 import { useLocation } from 'react-router-dom'
 
 import useTimer from '../../globalState/useTimer'
-import arrayDB from '../../lib/utils/array/arrayDB'
 import useAuth from '../../globalState/useAuth'
 
 import useGetTimers from './handlers/useGetTimers'
@@ -24,30 +23,19 @@ export default function useTimers() {
   const urlParams = useParams()
   const location = useLocation()
   const auth = useAuth()
-  const userId = auth?.user?.uid
 
-  // handlers
-  const getTimers = useGetTimers({
-    userId,
+  const handlerPayload = {
+    userId: auth?.user?.uid,
     localTimers: timersStore.timers,
     updateLocalTimers: timersStore.setTimers,
     selectedTimer: timersStore.selectedTimer,
-  })
-  const addTimer = useAddTimer({
-    userId,
-    localTimers: timersStore.timers,
-    updateLocalTimers: timersStore.setTimers,
-  })
-  const updateTimer = useUpdateTimer({
-    userId,
-    localTimers: timersStore.timers,
-    updateLocalTimers: timersStore.setTimers,
-  })
-  const removeTimer = useRemoveTimer({
-    userId,
-    localTimers: timersStore.timers,
-    updateLocalTimers: timersStore.setTimers,
-  })
+  }
+
+  // handlers
+  const getTimers = useGetTimers(handlerPayload)
+  const addTimer = useAddTimer(handlerPayload)
+  const updateTimer = useUpdateTimer(handlerPayload)
+  const removeTimer = useRemoveTimer(handlerPayload)
 
   useEffect(() => {
     let selectedTimer = undefined
