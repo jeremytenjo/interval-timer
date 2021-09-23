@@ -7,6 +7,8 @@ import useAuth from '../../globalState/useAuth'
 
 import useGetTimers from './handlers/useGetTimers'
 import useAddTimer from './handlers/useAddTimer'
+import useUpdateTimer from './handlers/useUpdateTimer'
+import useRemoveTimer from './handlers/useRemoveTimer'
 
 const useTimersStore = create((set) => ({
   timers: [],
@@ -21,21 +23,32 @@ export default function useTimers() {
   const timer = useTimer()
   const urlParams = useParams()
   const location = useLocation()
+  const navigate = useNavigate()
   const auth = useAuth()
-  const getTimers = useGetTimers({ userId: auth?.user?.uid })
-  const addTimer = useAddTimer({ userId: auth?.user?.uid })
-  // const updateTimer = useUpdateTimer()
-  // const removeTimer = useRemoveTimer()
+  const userId = auth?.user?.uid
+  const getTimers = useGetTimers({
+    userId,
+    localTimers: timersStore.timers,
+    updateLocalTimers: timersStore.setTimers,
+  })
+  const addTimer = useAddTimer({
+    userId,
+    localTimers: timersStore.timers,
+    updateLocalTimers: timersStore.setTimers,
+  })
+  const updateTimer = useUpdateTimer({
+    userId,
+    localTimers: timersStore.timers,
+    updateLocalTimers: timersStore.setTimers,
+  })
+  const removeTimer = useRemoveTimer({
+    userId,
+    localTimers: timersStore.timers,
+    updateLocalTimers: timersStore.setTimers,
+  })
 
   useEffect(() => {
-    if (addTimer.result) {
-      const updatedTimers = arrayDB.add(timersStore.timers, { data: addTimer.result })
-      timersStore.setTimers(updatedTimers)
-    }
-  }, [addTimer.result])
-
-  useEffect(() => {
-    if (auth?.user?.uid) {
+    if (userId) {
       getTimers.exec()
     }
   }, [auth.user])
@@ -43,8 +56,19 @@ export default function useTimers() {
   useEffect(() => {
     if (getTimers.result) {
       timersStore.setTimers(getTimers.result)
+
+      if (!timersStore.selectedTimer && getTimers.result.length) {
+        navigate(`/timer/${getTimers.result[0].id}`)
+      }
     }
   }, [getTimers.result])
+
+  useEffect(() => {
+    if (addTimer.result) {
+      const updatedTimers = arrayDB.add(timersStore.timers, { data: addTimer.result })
+      timersStore.setTimers(updatedTimers)
+    }
+  }, [addTimer.result])
 
   useEffect(() => {
     let selectedTimer = undefined
@@ -71,27 +95,6 @@ export default function useTimers() {
       timer.setTotalRestTime(timersStore.selectedTimer.rest)
     }
   }, [timersStore.selectedTimer])
-
-  const updateTimer = ({ id, data }) => {
-    console.log('updateTimer')
-    // TODO update timer in database
-
-    // TODO update timer in global state
-    console.log(timersStore.timers)
-    const updatedData = arrayDB.update(timersStore.timers, {
-      id,
-      data,
-    })
-    console.log(updatedData)
-    timersStore.setTimers(updatedData)
-  }
-
-  const removeTimer = ({ id }) => {
-    console.log('removeTimer' + id)
-    // TODO remove timer in database
-
-    // TODO remove timer in global state
-  }
 
   return {
     data: timersStore.timers,
