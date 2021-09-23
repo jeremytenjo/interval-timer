@@ -32,9 +32,10 @@ export default function useAuth() {
       const credential = GoogleAuthProvider.credentialFromResult(result)
       const accessToken = credential.accessToken
       const user = result.user
+
       authStore.setUser({ ...user, accessToken })
     } catch (error) {
-      snackbar.show({ message: error.message, type: 'error' })
+      snackbar.show({ message: error.message, severity: 'error' })
     }
   }
 

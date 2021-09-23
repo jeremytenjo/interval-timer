@@ -8,11 +8,13 @@ export const SnackBarContext = createContext(null)
 
 export const SnackBarProvider = ({ children }) => {
   const [open, setShow] = useState(null)
+  const [severity, setSeverity] = useState('success')
   const [message, setMessage] = useState('')
   const vertical = 'bottom'
   const horizontal = 'center'
 
-  const show = ({ message = '' }) => {
+  const show = ({ message = '', severity = 'success' }) => {
+    setSeverity(severity)
     setShow(true)
     setMessage(message)
   }
@@ -33,7 +35,7 @@ export const SnackBarProvider = ({ children }) => {
         open={open}
         onClose={hide}
         key={vertical + horizontal}
-        severity='success'
+        severity={severity}
         sx={{ bottom: '80px' }}
         TransitionComponent={Slide}
         autoHideDuration={3000}
