@@ -41,6 +41,7 @@ export default function useAuth() {
   const signOutFromGoogle = async () => {
     const auth = getAuth()
     await signOut(auth)
+    authStore.setUser(false)
   }
 
   useEffect(() => {

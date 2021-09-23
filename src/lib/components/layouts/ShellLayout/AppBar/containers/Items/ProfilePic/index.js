@@ -15,6 +15,12 @@ import * as styles from './styles'
 export default function ProfilePic() {
   const auth = useAuth()
   const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const id = open ? 'AppBar_ProfilePic' : undefined
+
+  useEffect(() => {
+    handleClose()
+  }, [auth.user])
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -23,9 +29,6 @@ export default function ProfilePic() {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
-  const open = Boolean(anchorEl)
-  const id = open ? 'AppBar_ProfilePic' : undefined
 
   return (
     <>
