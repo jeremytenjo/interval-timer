@@ -22,7 +22,7 @@ export default function EditTimerPage() {
 
   const onSaveTimer = (payload) => {
     // TODO make into hook to handle loading, error, etc states
-    timers.updateTimer({ id: timers.selectedTimer.id, data: payload })
+    timers.updateTimer.exec({ id: timers.selectedTimer.id, data: payload })
     snackbar.show({ message: 'Timer Saved' })
   }
 

@@ -5,8 +5,9 @@ const validate = (item, options = { validate: 'item' }) => {
 export default {
   add: (array = [], { data, insertMethod = 'push' }) => {
     validate(data)
+
     const newData = array.slice()
-    newData[insertMethod.insert](data)
+    newData[insertMethod](data)
 
     return newData
   },
@@ -24,7 +25,7 @@ export default {
   remove: (array = [], { id, idKey = 'id' }) => {
     validate(id, { validate: 'id' })
     let newData = array.slice()
-    newData = newData.filter((item) => item[idKey] === id)
+    newData = newData.filter((item) => item[idKey] !== id)
 
     return newData
   },

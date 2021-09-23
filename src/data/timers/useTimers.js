@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom'
 
 import useTimer from '../../globalState/useTimer'
 import arrayDB from '../../lib/utils/array/arrayDB'
+import useAuth from '../../globalState/useAuth'
 
-import useGetTimers from './handlers/useGetData'
-import stubs from './stubs'
+import useGetTimers from './handlers/useGetTimers'
+import useAddTimer from './handlers/useAddTimer'
 
 const useTimersStore = create((set) => ({
-  timers: stubs,
+  timers: [],
   selectedTimer: undefined,
 
   setTimers: (newValue) => set(() => ({ timers: newValue })),
@@ -20,11 +21,30 @@ export default function useTimers() {
   const timer = useTimer()
   const urlParams = useParams()
   const location = useLocation()
+  const auth = useAuth()
+  const getTimers = useGetTimers({ userId: auth?.user?.uid })
+  const addTimer = useAddTimer({ userId: auth?.user?.uid })
+  // const updateTimer = useUpdateTimer()
+  // const removeTimer = useRemoveTimer()
 
-  const getTimers = useGetTimers()
-  // const add = useFirestore()
-  // const update = useFirestore()
-  // const remove = useFirestore()
+  useEffect(() => {
+    if (addTimer.result) {
+      const updatedTimers = arrayDB.add(timersStore.timers, { data: addTimer.result })
+      timersStore.setTimers(updatedTimers)
+    }
+  }, [addTimer.result])
+
+  useEffect(() => {
+    if (auth?.user?.uid) {
+      getTimers.exec()
+    }
+  }, [auth.user])
+
+  useEffect(() => {
+    if (getTimers.result) {
+      timersStore.setTimers(getTimers.result)
+    }
+  }, [getTimers.result])
 
   useEffect(() => {
     let selectedTimer = undefined
@@ -71,13 +91,6 @@ export default function useTimers() {
     // TODO remove timer in database
 
     // TODO remove timer in global state
-  }
-
-  const addTimer = ({ data }) => {
-    console.log('addTimer' + data)
-    // TODO add timer in database
-
-    // TODO add timer in global state
   }
 
   return {

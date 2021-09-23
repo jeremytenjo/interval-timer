@@ -4,7 +4,7 @@ import Box from '../../../../../Box'
 import Iconbutton from '../../../../../IconButton'
 
 import * as styles from './styles'
-import Menu from './Menu'
+import TimersDropdown from './TimersDropdown'
 
 const TitleText = ({ title }) => {
   const navigate = useNavigate()
@@ -23,5 +23,7 @@ const TitleText = ({ title }) => {
 export default function Title() {
   const appBar = useAppBar()
 
-  return <div>{appBar.title ? <TitleText title={appBar.title} /> : <Menu />}</div>
+  return (
+    <div>{appBar.title ? <TitleText title={appBar.title} /> : <TimersDropdown />}</div>
+  )
 }

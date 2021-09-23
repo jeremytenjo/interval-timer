@@ -8,15 +8,15 @@ import useTimer from '../../../../../../../../globalState/useTimer'
 
 import * as styles from './styles'
 
-export default function TopBarMenu() {
+export default function TimersDropdown() {
   const timers = useTimers()
   const navigate = useNavigate()
   const timer = useTimer()
 
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const menuId = 'TopBarMenu'
-  const menuButtonId = 'TopBarMenu'
+  const menuId = 'TimersDropdown'
+  const menuButtonId = 'TimersDropdown'
   const open = Boolean(anchorEl)
   const id = open ? 'AppBar_Menu' : undefined
 

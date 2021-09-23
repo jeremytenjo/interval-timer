@@ -86,7 +86,6 @@ export default function TimerEditorCreator({
 
   const onSave = () => {
     const isValid = validate()
-
     if (isValid) {
       onSaveTimer(payload)
     }

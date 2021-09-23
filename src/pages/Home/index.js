@@ -1,6 +1,6 @@
 import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
-import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
+import CreateTimerPage from '../CreateTimer'
 
 import Details from './containers/Details'
 import Timer from './containers/Timer'
@@ -28,7 +28,7 @@ export default function HomePage() {
           <TimerControls />
         </>
       ) : (
-        <TimerEditorCreator type='create' />
+        <CreateTimerPage />
       )}
     </section>
   )
