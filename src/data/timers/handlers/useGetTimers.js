@@ -34,7 +34,7 @@ export default function useGetTimers({ userId, updateLocalTimers, selectedTimer 
     if (getTimers.result) {
       updateLocalTimers(getTimers.result)
 
-      if (!selectedTimer && getTimers.length) {
+      if (!selectedTimer && getTimers.result.length) {
         navigate(`/timer/${getTimers.result[0].id}`)
       }
     }
