@@ -3,8 +3,14 @@ import useAsync from '@useweb/use-async'
 
 import useFirebase from '../../../firebase/useFirebase'
 
-export default function useGetTimers({ userId }) {
+export default function useGetTimers({
+  userId,
+  localTimers,
+  updateLocalTimers,
+  selectedTimer,
+}) {
   const firebase = useFirebase()
+  const navigate = useNavigate()
 
   const fetcher = async () => {
     const data = []
@@ -21,7 +27,23 @@ export default function useGetTimers({ userId }) {
     return data
   }
 
-  const timers = useAsync(fetcher)
+  const getTimers = useAsync(fetcher)
 
-  return timers
+  useEffect(() => {
+    if (userId) {
+      getTimers.exec()
+    }
+  }, [userId])
+
+  useEffect(() => {
+    if (getTimers.result) {
+      updateLocalTimers(getTimers.result)
+
+      if (!selectedTimer && getTimers.length) {
+        navigate(`/timer/${getTimers.result[0].id}`)
+      }
+    }
+  }, [getTimers.result])
+
+  return getTimers
 }

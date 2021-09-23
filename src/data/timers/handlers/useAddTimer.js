@@ -1,9 +1,10 @@
 import { collection, addDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
 
+import arrayDB from '../../../lib/utils/array/arrayDB'
 import useFirebase from '../../../firebase/useFirebase'
 
-export default function useAddTimer({ userId }) {
+export default function useAddTimer({ userId, updateLocalTimers, localTimers }) {
   const firebase = useFirebase()
 
   const fetcher = async (payload) => {
@@ -20,7 +21,14 @@ export default function useAddTimer({ userId }) {
     return createdTimer
   }
 
-  const timers = useAsync(fetcher)
+  const addTimer = useAsync(fetcher)
 
-  return timers
+  useEffect(() => {
+    if (addTimer.result) {
+      const updatedTimers = arrayDB.add(localTimers, { data: addTimer.result })
+      updateLocalTimers(updatedTimers)
+    }
+  }, [addTimer.result])
+
+  return addTimer
 }

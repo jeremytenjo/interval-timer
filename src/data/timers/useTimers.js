@@ -23,13 +23,15 @@ export default function useTimers() {
   const timer = useTimer()
   const urlParams = useParams()
   const location = useLocation()
-  const navigate = useNavigate()
   const auth = useAuth()
   const userId = auth?.user?.uid
+
+  // handlers
   const getTimers = useGetTimers({
     userId,
     localTimers: timersStore.timers,
     updateLocalTimers: timersStore.setTimers,
+    selectedTimer: timersStore.selectedTimer,
   })
   const addTimer = useAddTimer({
     userId,
@@ -46,29 +48,6 @@ export default function useTimers() {
     localTimers: timersStore.timers,
     updateLocalTimers: timersStore.setTimers,
   })
-
-  useEffect(() => {
-    if (userId) {
-      getTimers.exec()
-    }
-  }, [auth.user])
-
-  useEffect(() => {
-    if (getTimers.result) {
-      timersStore.setTimers(getTimers.result)
-
-      if (!timersStore.selectedTimer && getTimers.result.length) {
-        navigate(`/timer/${getTimers.result[0].id}`)
-      }
-    }
-  }, [getTimers.result])
-
-  useEffect(() => {
-    if (addTimer.result) {
-      const updatedTimers = arrayDB.add(timersStore.timers, { data: addTimer.result })
-      timersStore.setTimers(updatedTimers)
-    }
-  }, [addTimer.result])
 
   useEffect(() => {
     let selectedTimer = undefined
