@@ -27,6 +27,7 @@ export default function useAuth() {
 
   const signInWithGoogle = async () => {
     authStore.setSigningIn(true)
+    authStore.setError(false)
 
     try {
       const auth = getAuth()
@@ -38,6 +39,7 @@ export default function useAuth() {
       authStore.setUser({ ...user, accessToken })
     } catch (error) {
       snackbar.show({ message: error.message, severity: 'error' })
+      authStore.setError(error)
     } finally {
       authStore.setSigningIn(false)
     }
