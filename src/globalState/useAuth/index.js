@@ -47,7 +47,7 @@ export default function useAuth() {
   useEffect(() => {
     const auth = getAuth()
 
-    onAuthStateChanged(auth, (user) => {
+    const cleanOnAuthStateChanged = onAuthStateChanged(auth, (user) => {
       if (user) authStore.setUser(user)
       else {
         if (user !== null) {
@@ -55,6 +55,10 @@ export default function useAuth() {
         }
       }
     })
+
+    return () => {
+      cleanOnAuthStateChanged()
+    }
   }, [])
 
   return {
