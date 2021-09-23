@@ -1,12 +1,19 @@
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+
 import Avatar from '../../../../../../Avatar'
 import IconButton from '../../../../../../IconButton'
 import Popover from '../../../../../../Popover'
 import ContinueWithGoogle from '../../../../../../firebase/ContinueWithGoogle'
 import Box from '../../../../../../Box'
+import useAuth from '../../../../../../../../globalState/useAuth'
+import SignOut from '../../../../../../icons/SignOut'
 
 import * as styles from './styles'
 
 export default function ProfilePic() {
+  const auth = useAuth()
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleClick = (event) => {
@@ -23,7 +30,11 @@ export default function ProfilePic() {
   return (
     <>
       <IconButton onClick={handleClick}>
-        <Avatar sx={{ width: '29px', height: '29px' }} aria-describedby={id} />
+        <Avatar
+          sx={{ width: '29px', height: '29px' }}
+          aria-describedby={id}
+          src={auth?.user?.photoURL}
+        />
       </IconButton>
 
       <Popover
@@ -41,8 +52,21 @@ export default function ProfilePic() {
         onClose={handleClose}
       >
         <Box sx={styles.popopver}>
-          <p className='title'>Sync timers across devices</p>
-          <ContinueWithGoogle />
+          {auth.user ? (
+            <>
+              <ListItemButton>
+                <ListItemIcon sx={{ minWidth: '35px' }}>
+                  <SignOut sx={{ width: '17px' }} />
+                </ListItemIcon>
+                <ListItemText sx={{ color: 'white.main' }} primary='Sign Out' />
+              </ListItemButton>
+            </>
+          ) : (
+            <>
+              <p className='title'>Sync timers across devices</p>
+              <ContinueWithGoogle />
+            </>
+          )}
         </Box>
       </Popover>
     </>

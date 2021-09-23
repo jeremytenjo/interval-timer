@@ -22,14 +22,9 @@ export default function useTimers() {
   const location = useLocation()
 
   const getTimers = useGetTimers()
-  console.log(getTimers)
   // const add = useFirestore()
   // const update = useFirestore()
   // const remove = useFirestore()
-
-  useEffect(() => {
-    getTimers.exec()
-  }, [])
 
   useEffect(() => {
     let selectedTimer = undefined
