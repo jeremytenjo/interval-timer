@@ -46,20 +46,17 @@ const useTimerStore = create((set) => ({
 export default function useTimer() {
   const timerStore = useTimerStore()
   const totalTimeRaw =
-    1000 *
-    timerStore.totalRepetitions *
-    timerStore.totalSets *
-    timerStore.totalRestTime *
-    timerStore.totalWorkoutTime
+    timerStore.totalRepetitions * timerStore.totalWorkoutTime +
+    timerStore.totalSets * timerStore.totalRestTime
   const totalTime = formatDuration(totalTimeRaw)
-  const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime * 1000
+  const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime
   const remainingTime = useMemo(
     () => formatDuration(remainingTimeRaw),
     [remainingTimeRaw],
   )
   const isRest = timerStore.type === 'Rest'
-  const workoutTime = timerStore.totalWorkoutTime
-  const restTime = timerStore.totalRestTime
+  const workoutTime = timerStore.totalWorkoutTime / 1000
+  const restTime = timerStore.totalRestTime / 1000
   const duration = isRest ? timerStore.totalRestTime : timerStore.totalWorkoutTime
   const color = isRest ? '#D72E33' : '#36B273'
 
