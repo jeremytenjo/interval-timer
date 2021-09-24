@@ -46,8 +46,8 @@ const useTimerStore = create((set) => ({
 export default function useTimer() {
   const timerStore = useTimerStore()
   const totalTimeRaw =
-    timerStore.totalRepetitions * timerStore.totalWorkoutTime +
-    timerStore.totalSets * timerStore.totalRestTime
+    timerStore.totalRepetitions * timerStore.totalWorkoutTime * 1000 +
+    timerStore.totalSets * timerStore.totalRestTime * 1000
   const totalTime = formatDuration(totalTimeRaw)
   const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime
   const remainingTime = useMemo(
