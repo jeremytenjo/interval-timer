@@ -8,8 +8,14 @@ import useUpdateTimer from './handlers/useUpdateTimer'
 import useRemoveTimer from './handlers/useRemoveTimer'
 import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 
+const getLocalStorageTimers = () => {
+  // TODO get default timers from storage https://capacitorjs.com/docs/apis/storage
+  const localStorageTimers = []
+  return localStorageTimers
+}
+
 const useTimersStore = create((set) => ({
-  timers: [],
+  timers: getLocalStorageTimers(),
   selectedTimer: undefined,
 
   setTimers: (newValue) => set(() => ({ timers: newValue })),
@@ -20,10 +26,15 @@ export default function useTimers() {
   const timersStore = useTimersStore()
   const auth = useAuth()
 
+  const updateLocalTimers = (updatedTimers) => {
+    // TODO save to local storage https://capacitorjs.com/docs/apis/storage
+    timersStore.setTimers(updatedTimers)
+  }
+
   const handlerPayload = {
     userId: auth?.user?.uid,
     localTimers: timersStore.timers,
-    updateLocalTimers: timersStore.setTimers,
+    updateLocalTimers,
     selectedTimer: timersStore.selectedTimer,
     setSelectedTimer: timersStore.setSelectedTimer,
   }
