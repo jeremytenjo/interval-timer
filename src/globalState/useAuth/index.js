@@ -13,8 +13,8 @@ const provider = new GoogleAuthProvider()
 
 const useAuthStore = create((set) => ({
   user: '',
-  signingIn: '',
-  error: '',
+  signingIn: false,
+  error: false,
 
   setUser: (newValue) => set(() => ({ user: newValue })),
   setSigningIn: (newValue) => set(() => ({ signingIn: newValue })),
