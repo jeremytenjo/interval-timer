@@ -17,6 +17,13 @@ export default {
           borderRadius: '7px',
         },
       },
+      {
+        props: { severity: 'error' },
+        style: {
+          background: 'rgb(255 0 0 / 32%)',
+          borderRadius: '7px',
+        },
+      },
     ],
   },
 }

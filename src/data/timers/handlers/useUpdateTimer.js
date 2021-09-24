@@ -1,26 +1,43 @@
-import { collection, addDoc } from 'firebase/firestore'
+import { updateDoc, doc, serverTimestamp } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
 
 import useFirebase from '../../../firebase/useFirebase'
+import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 
-export default function useUpdateTimer({ userId }) {
+export default function useUpdateTimer() {
   const firebase = useFirebase()
+  const snackbar = useSnackBar()
 
-  const fetcher = async (payload) => {
-    const newTimer = {
-      ...payload,
-      userId,
-    }
-    const docRef = await addDoc(collection(firebase.db, 'timers'), newTimer)
-    const createdTimer = {
-      ...newTimer,
-      id: docRef.id,
+  const fetcher = async ({ id, data }) => {
+    const docRef = doc(firebase.db, 'timers', id)
+    delete data.id
+    const updatedTimer = {
+      ...data,
+      timestamp: serverTimestamp(),
     }
 
-    return createdTimer
+    await updateDoc(docRef, updatedTimer)
+
+    return updatedTimer
   }
 
-  const timers = useAsync(fetcher)
+  const udpateTimer = useAsync(fetcher)
 
-  return timers
+  useEffect(() => {
+    if (udpateTimer.result) {
+      snackbar.show({ message: 'Timer Updated' })
+    }
+  }, [udpateTimer.result])
+
+  useEffect(() => {
+    if (udpateTimer.error) {
+      console.log(udpateTimer.error)
+      snackbar.show({
+        message: 'Error updating timer, please try again',
+        severity: 'error',
+      })
+    }
+  }, [udpateTimer.error])
+
+  return udpateTimer
 }
