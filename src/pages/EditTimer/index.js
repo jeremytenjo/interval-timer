@@ -1,12 +1,10 @@
 import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
-import useSnackBar from '../../lib/components/Snackbar/useSnackbar'
 import useTimers from '../../data/timers/useTimers'
 
 export default function EditTimerPage() {
   const appBarData = useAppBar()
-  const snackbar = useSnackBar()
   const timers = useTimers()
   const navigate = useNavigate()
 
@@ -32,7 +30,6 @@ export default function EditTimerPage() {
   const handleRemoveButtonClick = () => {
     // TODO make into hook to handle loading, error, etc states
     timers.removeTimer({ id: timers?.selectedTimer.id })
-    snackbar.show({ message: 'Timer Removed' })
     navigate('/')
   }
 

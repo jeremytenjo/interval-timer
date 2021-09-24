@@ -20,8 +20,8 @@ export default function TimerEditorCreator({
   // fields
   const [name, setName] = useState(defaultName)
   const [nameError, setNameError] = useState(null)
-  const [rest, setRest] = useState(restDefaultValue)
-  const [workout, setWorkout] = useState(workoutDefaultValue)
+  const [rest, setRest] = useState(restDefaultValue / 1000)
+  const [workout, setWorkout] = useState(workoutDefaultValue / 1000)
   const [repetitions, setRepetitions] = useState(repetitionsDefaultValue)
   const [sets, setSets] = useState(setsDefaultValue)
 

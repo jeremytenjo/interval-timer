@@ -11,8 +11,6 @@ export default function Info({ time, title, sx = {}, titleSx = {}, timeSx = {} }
           color: 'grey.light',
           fontSize: 23,
           lineHeight: 1,
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
           ...timeSx,
         }}
       >
