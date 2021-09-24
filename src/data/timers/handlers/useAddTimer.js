@@ -3,9 +3,12 @@ import useAsync from '@useweb/use-async'
 
 import arrayDB from '../../../lib/utils/array/arrayDB'
 import useFirebase from '../../../firebase/useFirebase'
+import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
+import useShowError from '../../../lib/components/feedback/useShowError'
 
 export default function useAddTimer({ userId, updateLocalTimers, localTimers }) {
   const firebase = useFirebase()
+  const snackbar = useSnackBar()
 
   const fetcher = async (payload) => {
     const newTimer = {
@@ -22,6 +25,8 @@ export default function useAddTimer({ userId, updateLocalTimers, localTimers }) 
   }
 
   const addTimer = useAsync(fetcher)
+
+  useShowError(addTimer.error, 'Error adding timer, please try again')
 
   useEffect(() => {
     if (addTimer.result) {

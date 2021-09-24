@@ -3,6 +3,7 @@ import useAsync from '@useweb/use-async'
 import create from 'zustand'
 
 import useFirebase from '../../../firebase/useFirebase'
+import useShowError from '../../../lib/components/feedback/useShowError'
 
 const useGetTimersStore = create((set) => ({
   called: false,
@@ -35,6 +36,8 @@ export default function useGetTimers({
   }
 
   const getTimers = useAsync(fetcher)
+
+  useShowError(getTimers.error, 'Error loading timers, please try again')
 
   useEffect(() => {
     if ((userId && !getTimersStore.called) || refetch) {
