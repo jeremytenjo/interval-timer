@@ -49,6 +49,7 @@ export default function useTimer() {
     timerStore.totalRepetitions * timerStore.totalWorkoutTime * 1000 +
     timerStore.totalSets * timerStore.totalRestTime * 1000
   const totalTime = formatDuration(totalTimeRaw)
+  // TODO fix remainingTimeRaw
   const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime
   const remainingTime = useMemo(
     () => formatDuration(remainingTimeRaw),
