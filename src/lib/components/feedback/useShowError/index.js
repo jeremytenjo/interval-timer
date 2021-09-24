@@ -5,7 +5,7 @@ export default function useShowError(error, errorMessage) {
 
   useEffect(() => {
     if (error) {
-      console.warn(error)
+      console.error(error)
       snackbar.show({
         message: errorMessage,
         severity: 'error',

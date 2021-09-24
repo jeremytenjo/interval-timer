@@ -35,7 +35,7 @@ export default function useUpdateTimer({ localTimers, updateLocalTimers }) {
       })
 
       updateLocalTimers(updatedTimers)
-      snackbar.show({ message: 'Timer Updated' })
+      snackbar.show({ message: 'Timer saved' })
     }
   }, [udpateTimer.result])
 

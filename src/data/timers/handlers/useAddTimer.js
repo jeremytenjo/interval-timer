@@ -32,6 +32,7 @@ export default function useAddTimer({ userId, updateLocalTimers, localTimers }) 
     if (addTimer.result) {
       const updatedTimers = arrayDB.add(localTimers, { data: addTimer.result })
       updateLocalTimers(updatedTimers)
+      snackbar.show({ message: 'Timer saved' })
     }
   }, [addTimer.result])
 
