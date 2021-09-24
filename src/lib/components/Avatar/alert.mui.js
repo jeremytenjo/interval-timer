@@ -3,6 +3,7 @@ export default {
     styleOverrides: {
       root: {
         backdropFilter: 'saturate(180%) blur(20px)',
+        borderRadius: '7px',
         color: 'white',
         '& svg': {
           color: 'white',
@@ -14,14 +15,12 @@ export default {
         props: { severity: 'success' },
         style: {
           background: 'rgb(0 255 43 / 32%)',
-          borderRadius: '7px',
         },
       },
       {
         props: { severity: 'error' },
         style: {
           background: 'rgb(255 0 0 / 32%)',
-          borderRadius: '7px',
         },
       },
     ],

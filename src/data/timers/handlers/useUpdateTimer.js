@@ -31,7 +31,7 @@ export default function useUpdateTimer() {
 
   useEffect(() => {
     if (udpateTimer.error) {
-      console.log(udpateTimer.error)
+      console.warn(udpateTimer.error)
       snackbar.show({
         message: 'Error updating timer, please try again',
         severity: 'error',

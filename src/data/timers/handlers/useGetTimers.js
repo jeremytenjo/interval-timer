@@ -8,6 +8,7 @@ export default function useGetTimers({ userId, updateLocalTimers, selectedTimer 
   const navigate = useNavigate()
 
   const fetcher = async () => {
+    console.log('HERE!')
     const data = []
     const q = query(collection(firebase.db, 'timers'), where('userId', '==', userId))
     const querySnapshot = await getDocs(q)
@@ -25,7 +26,7 @@ export default function useGetTimers({ userId, updateLocalTimers, selectedTimer 
   const getTimers = useAsync(fetcher)
 
   useEffect(() => {
-    if (userId) {
+    if (userId && !selectedTimer) {
       getTimers.exec()
     }
   }, [userId])
