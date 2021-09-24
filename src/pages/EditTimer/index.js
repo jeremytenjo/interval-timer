@@ -6,7 +6,6 @@ import useTimers from '../../data/timers/useTimers'
 export default function EditTimerPage() {
   const appBarData = useAppBar()
   const timers = useTimers()
-  const navigate = useNavigate()
 
   const defaultName = timers?.selectedTimer?.name || ''
   const restDefaultValue = timers?.selectedTimer?.rest * 1000 || 1000
@@ -23,14 +22,15 @@ export default function EditTimerPage() {
   }
 
   const onStartTimer = (payload) => {
-    console.log(payload)
-    console.log('start timer')
+    // TODO start timer
+    console.log({ payload })
+    // navigate(`/timer/${payload.id}`)
   }
 
   const handleRemoveButtonClick = () => {
-    // TODO make into hook to handle loading, error, etc states
-    timers.removeTimer({ id: timers?.selectedTimer.id })
-    navigate('/')
+    if (timers?.selectedTimer?.id) {
+      timers.removeTimer.exec({ id: timers?.selectedTimer?.id })
+    }
   }
 
   return (
