@@ -19,7 +19,6 @@ export default function useUpdateSelectedTimer({
 
   useEffect(() => {
     if (selectedTimer) {
-      console.log(selectedTimer)
       timer.setTotalRepetitions(selectedTimer.repetitions)
       timer.setTrackedRepetitions(selectedTimer.repetitions)
       timer.setTotalSets(selectedTimer.sets)

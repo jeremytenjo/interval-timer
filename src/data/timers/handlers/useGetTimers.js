@@ -1,14 +1,25 @@
 import { collection, query, where, getDocs } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
+import create from 'zustand'
 
 import useFirebase from '../../../firebase/useFirebase'
 
-export default function useGetTimers({ userId, updateLocalTimers, selectedTimer }) {
+const useGetTimersStore = create((set) => ({
+  called: false,
+  setCalled: (newValue) => set(() => ({ called: newValue })),
+}))
+
+export default function useGetTimers({
+  userId,
+  updateLocalTimers,
+  selectedTimer,
+  refetch,
+}) {
+  const getTimersStore = useGetTimersStore()
   const firebase = useFirebase()
   const navigate = useNavigate()
 
   const fetcher = async () => {
-    console.log('HERE!')
     const data = []
     const q = query(collection(firebase.db, 'timers'), where('userId', '==', userId))
     const querySnapshot = await getDocs(q)
@@ -26,8 +37,9 @@ export default function useGetTimers({ userId, updateLocalTimers, selectedTimer 
   const getTimers = useAsync(fetcher)
 
   useEffect(() => {
-    if (userId && !selectedTimer) {
+    if ((userId && !getTimersStore.called) || refetch) {
       getTimers.exec()
+      getTimersStore.setCalled(true)
     }
   }, [userId])
 

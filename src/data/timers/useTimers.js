@@ -1,7 +1,5 @@
 import create from 'zustand'
-import { useLocation } from 'react-router-dom'
 
-import useTimer from '../../globalState/useTimer'
 import useAuth from '../../globalState/useAuth'
 
 import useGetTimers from './handlers/useGetTimers'
