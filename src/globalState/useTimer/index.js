@@ -55,8 +55,8 @@ export default function useTimer() {
     [remainingTimeRaw],
   )
   const isRest = timerStore.type === 'Rest'
-  const workoutTime = timerStore.totalWorkoutTime / 1000
-  const restTime = timerStore.totalRestTime / 1000
+  const workoutTime = timerStore.totalWorkoutTime
+  const restTime = timerStore.totalRestTime
   const duration = isRest ? timerStore.totalRestTime : timerStore.totalWorkoutTime
   const color = isRest ? '#D72E33' : '#36B273'
 
