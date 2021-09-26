@@ -7,8 +7,11 @@ import useShowError from '../../../lib/components/feedback/useShowError'
 import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
 
 const useGetTimersStore = create((set) => ({
-  called: false,
-  setCalled: (newValue) => set(() => ({ called: newValue })),
+  firestoreCalled: false,
+  setFirestoreCalled: (newValue) => set(() => ({ firestoreCalled: newValue })),
+
+  localStorageCalled: false,
+  setLocalStorageCalled: (newValue) => set(() => ({ localStorageCalled: newValue })),
 }))
 
 export default function useGetTimers({
@@ -20,7 +23,7 @@ export default function useGetTimers({
   const getTimersStore = useGetTimersStore()
   const firebase = useFirebase()
   const navigate = useNavigate()
-  const localTimers = useLocalStorage({ key: 'timers' })
+  const getLocalTimers = useLocalStorage({ action: 'get', key: 'timers' })
 
   const getFierstoreTimers = useAsync(async () => {
     const data = []
@@ -38,20 +41,33 @@ export default function useGetTimers({
   })
 
   useShowError(
-    getFierstoreTimers.error || localTimers.get.error,
+    getFierstoreTimers.error || getLocalTimers.error,
     'Error loading timers, please try again',
   )
 
+  // Local Storage
   useEffect(() => {
-    if (!getTimersStore.called) {
-      localTimers.get.exec()
+    if (!getTimersStore.localStorageCalled) {
+      getLocalTimers.exec()
+      getTimersStore.setLocalStorageCalled(true)
     }
   }, [])
 
   useEffect(() => {
-    if ((userId && !getTimersStore.called) || refetch) {
+    if (getLocalTimers.result) {
+      updateLocalTimers(getLocalTimers.result)
+
+      if (!selectedTimer && getLocalTimers.result.length) {
+        navigate(`/timer/${getLocalTimers.result[0].id}`)
+      }
+    }
+  }, [getLocalTimers.result])
+
+  // Firestore Storage
+  useEffect(() => {
+    if ((userId && !getTimersStore.firestoreCalled) || refetch) {
       getFierstoreTimers.exec()
-      getTimersStore.setCalled(true)
+      getTimersStore.setFirestoreCalled(true)
     }
   }, [userId])
 
@@ -64,6 +80,4 @@ export default function useGetTimers({
       }
     }
   }, [getFierstoreTimers.result])
-
-  return getFierstoreTimers
 }

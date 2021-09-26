@@ -20,10 +20,10 @@ const useTimersStore = create((set) => ({
 export default function useTimers() {
   const timersStore = useTimersStore()
   const auth = useAuth()
-  const localStorage = useLocalStorage()
+  const localStorage = useLocalStorage({ action: 'set' })
 
   const updateLocalTimers = (updatedTimers) => {
-    localStorage.set.exec({ key: 'timers', value: updatedTimers })
+    localStorage.exec({ key: 'timers', value: updatedTimers })
     timersStore.setTimers(updatedTimers)
   }
 
