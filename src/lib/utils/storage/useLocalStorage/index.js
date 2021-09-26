@@ -15,5 +15,9 @@ export default function useLocalStorage({ key } = {}) {
     await Storage.set({ key: data.key, value: valueStringifyed })
   })
 
-  return { get, set }
+  const remove = useAsync(async () => {
+    await Storage.remove({ key })
+  })
+
+  return { get, set, remove }
 }
