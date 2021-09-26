@@ -2,8 +2,6 @@ import create from 'zustand'
 import formatDuration from 'format-duration'
 import { useMemo } from 'react'
 
-import { KeepAwake, AllowSleep } from '../../lib/utils/navigator/useAwake'
-
 const useTimerStore = create((set) => ({
   // timer info
   totalRepetitions: 0,
@@ -30,13 +28,13 @@ const useTimerStore = create((set) => ({
   timerKey: 1,
 
   startTimer: () => {
-    KeepAwake()
+    // TODO KeepAwake()
     set(() => ({ isPlaying: true, isStarted: true }))
   },
   pauseTimer: () => set(() => ({ isPlaying: false })),
   resumeTimer: () => set(() => ({ isPlaying: true })),
   stopTimer: () => {
-    AllowSleep()
+    // TODO AllowSleep()
     set((state) => ({
       isPlaying: false,
       isStarted: false,

@@ -5,6 +5,7 @@ export const KeepAwake = CapacitorKeepAwake.keepAwake
 export const AllowSleep = CapacitorKeepAwake.allowSleep
 
 export default function useAwake() {
+  // TODO crate capacitor plugin
   const keepAwake = CapacitorKeepAwake.keepAwake
   const allowSleep = CapacitorKeepAwake.allowSleep
 
