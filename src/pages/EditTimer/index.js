@@ -2,10 +2,12 @@ import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 import useTimers from '../../data/timers/useTimers'
+import useTimer from '../../globalState/useTimer'
 
 export default function EditTimerPage() {
   const appBarData = useAppBar()
   const timers = useTimers()
+  const timer = useTimer()
 
   const defaultName = timers?.selectedTimer?.name || ''
   const restDefaultValue = timers?.selectedTimer?.rest * 1000 || 1000
@@ -23,8 +25,9 @@ export default function EditTimerPage() {
 
   const onStartTimer = (payload) => {
     // TODO start timer
-    console.log({ payload })
+    console.log(payload)
     // navigate(`/timer/${payload.id}`)
+    timer.startTimer(payload)
   }
 
   const handleRemoveButtonClick = () => {

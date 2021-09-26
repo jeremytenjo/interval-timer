@@ -125,6 +125,12 @@ export default function useTimer() {
     resetTimer,
     remainingTime,
     totalTime,
-    ...timerStore,
+    startTimer: timerStore.startTimer,
+    setTotalRepetitions: timerStore.setTotalRepetitions,
+    setTrackedRepetitions: timerStore.setTrackedRepetitions,
+    setTotalSets: timerStore.setTotalSets,
+    setTrackedSets: timerStore.setTrackedSets,
+    setTotalWorkoutTime: timerStore.setTotalWorkoutTime,
+    setTotalRestTime: timerStore.setTotalRestTime,
   }
 }
