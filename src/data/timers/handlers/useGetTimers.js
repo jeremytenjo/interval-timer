@@ -4,6 +4,7 @@ import create from 'zustand'
 
 import useFirebase from '../../../firebase/useFirebase'
 import useShowError from '../../../lib/components/feedback/useShowError'
+import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
 
 const useGetTimersStore = create((set) => ({
   called: false,
@@ -19,8 +20,9 @@ export default function useGetTimers({
   const getTimersStore = useGetTimersStore()
   const firebase = useFirebase()
   const navigate = useNavigate()
+  const localTimers = useLocalStorage({ key: 'timers' })
 
-  const fetcher = async () => {
+  const getFierstoreTimers = useAsync(async () => {
     const data = []
     const q = query(collection(firebase.db, 'timers'), where('userId', '==', userId))
     const querySnapshot = await getDocs(q)
@@ -33,28 +35,35 @@ export default function useGetTimers({
     })
 
     return data
-  }
+  })
 
-  const getTimers = useAsync(fetcher)
+  useShowError(
+    getFierstoreTimers.error || localTimers.get.error,
+    'Error loading timers, please try again',
+  )
 
-  useShowError(getTimers.error, 'Error loading timers, please try again')
+  useEffect(() => {
+    if (!getTimersStore.called) {
+      localTimers.get.exec()
+    }
+  }, [])
 
   useEffect(() => {
     if ((userId && !getTimersStore.called) || refetch) {
-      getTimers.exec()
+      getFierstoreTimers.exec()
       getTimersStore.setCalled(true)
     }
   }, [userId])
 
   useEffect(() => {
-    if (getTimers.result) {
-      updateLocalTimers(getTimers.result)
+    if (getFierstoreTimers.result) {
+      updateLocalTimers(getFierstoreTimers.result)
 
-      if (!selectedTimer && getTimers.result.length) {
-        navigate(`/timer/${getTimers.result[0].id}`)
+      if (!selectedTimer && getFierstoreTimers.result.length) {
+        navigate(`/timer/${getFierstoreTimers.result[0].id}`)
       }
     }
-  }, [getTimers.result])
+  }, [getFierstoreTimers.result])
 
-  return getTimers
+  return getFierstoreTimers
 }

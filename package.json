@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^2.1.0",
+    "@capacitor/storage": "^1.2.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@mui/lab": "^5.0.0-alpha.47",
