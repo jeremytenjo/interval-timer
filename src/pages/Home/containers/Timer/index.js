@@ -6,7 +6,7 @@ import Info from './Info'
 import * as styles from './styles'
 
 /**
- * {@link https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native|docs}
+ * [Docs](https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native)
  */
 export default function Timer() {
   const timer = useTimer()

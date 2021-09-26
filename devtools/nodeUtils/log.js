@@ -2,7 +2,7 @@ const emoji = require('node-emoji')
 const chalk = require('chalk')
 
 /**
- * {@link https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json|Emojis}
+ * [Emoji List](https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
  *
  * @example
  * log(`hello`)

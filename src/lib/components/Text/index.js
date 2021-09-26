@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography'
 
 /**
- * {@link https://material-ui.com/api/typography/|Docs}
+ * [Docs](https://material-ui.com/api/typography/)
  */
 export default function Text({ text, as, variant = 'body1', ...props }) {
   return (
