@@ -1,6 +1,9 @@
 import { Storage } from '@capacitor/storage'
 import useAsync from '@useweb/use-async'
 
+/**
+ * [Docs](https://capacitorjs.com/docs/apis/storage)
+ */
 export default function useLocalStorage({ action = 'get', key } = {}) {
   return useAsync(async (data) => {
     if (action === 'get') {
