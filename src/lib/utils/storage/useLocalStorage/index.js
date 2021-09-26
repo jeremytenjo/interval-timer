@@ -2,7 +2,12 @@ import { Storage } from '@capacitor/storage'
 import useAsync from '@useweb/use-async'
 
 /**
+ * Actions: get | set | remove
+ *
  * [Docs](https://capacitorjs.com/docs/apis/storage)
+ *
+ * @example
+ * const getLocalTimers = useLocalStorage({ action: 'get', key: 'timers' })
  */
 export default function useLocalStorage({ action = 'get', key } = {}) {
   return useAsync(async (data) => {
