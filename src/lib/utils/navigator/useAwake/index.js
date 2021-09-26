@@ -1,3 +1,4 @@
+// https://github.com/capacitor-community/keep-awake
 import { KeepAwake as CapacitorKeepAwake } from '@capacitor-community/keep-awake'
 
 export const KeepAwake = CapacitorKeepAwake.keepAwake
