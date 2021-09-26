@@ -3,6 +3,7 @@ import Slide from '@mui/material/Slide'
 
 import Snackbar from '..'
 import Alert from '../../Alert'
+import gtag from '../../../utils/analytics/gtag'
 
 export const SnackBarContext = createContext(null)
 
@@ -17,6 +18,13 @@ export const SnackBarProvider = ({ children }) => {
     setSeverity(severity)
     setShow(true)
     setMessage(message)
+
+    if (severity === 'error') {
+      gtag('event', 'exception', {
+        exDescription: message,
+        exFatal: false,
+      })
+    }
   }
 
   const hide = () => {

@@ -11,6 +11,11 @@ module.exports = {
     theme_color: themeTokens.colors.primary.main,
     background_color: themeTokens.colors.black.main,
   },
+  analytics: {
+    google: {
+      measurementId: 'G-83D8302GLZ',
+    },
+  },
   server: {
     local: {
       port: 3001,

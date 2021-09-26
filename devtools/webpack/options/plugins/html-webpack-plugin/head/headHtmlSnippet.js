@@ -1,3 +1,5 @@
+const gTag = require('./analytics/google/gTag')
+
 module.exports = function headHtmlSnippet({ appConfig }) {
   const appColors = appConfig.theme.tokens.colors
 
@@ -9,6 +11,9 @@ module.exports = function headHtmlSnippet({ appConfig }) {
     appConfig.manifestJson.description || 'App description'
   }">
   <meta name="theme-color" content="${appColors.themeColor || 'white'}">
+
+  ${appConfig?.analytics?.google && gTag(appConfig?.analytics?.google)}
+
   <style> 
     html { 
       background-color: ${appColors.backgroundColor || 'white'}; 

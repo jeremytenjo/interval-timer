@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const headHtmlSnippet = require('./headHtmlSnippet')
+const headHtmlSnippet = require('./head/headHtmlSnippet')
 
 module.exports = function getHtmlWebpackPlugin(payload) {
   return new HtmlWebpackPlugin({
