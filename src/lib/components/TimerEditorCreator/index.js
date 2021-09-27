@@ -1,3 +1,5 @@
+import { useParams } from 'react-router'
+
 import Box from '../Box'
 import TextField from '../forms/Textfield'
 import NumberSelector from '../forms/NumberSelector'
@@ -24,8 +26,10 @@ export default function TimerEditorCreator({
   const [workout, setWorkout] = useState(workoutDefaultValue / 1000)
   const [repetitions, setRepetitions] = useState(repetitionsDefaultValue)
   const [sets, setSets] = useState(setsDefaultValue)
+  const params = useParams()
 
   const payload = {
+    id: params.timerId,
     name,
     rest,
     workout,
@@ -92,7 +96,6 @@ export default function TimerEditorCreator({
   }
 
   const onStart = () => {
-    console.log(payload)
     onStartTimer(payload)
   }
 

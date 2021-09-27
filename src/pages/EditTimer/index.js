@@ -25,7 +25,7 @@ export default function EditTimerPage() {
 
   const onStartTimer = (payload) => {
     // TODO start timer
-    console.log(payload)
+    console.log({ payload })
     // navigate(`/timer/${payload.id}`)
     timer.startTimer(payload)
   }
