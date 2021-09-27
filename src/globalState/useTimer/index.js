@@ -3,6 +3,7 @@ import formatDuration from 'format-duration'
 import { useMemo } from 'react'
 
 import handleNextRepetition from './handlers/handleNextRepetition'
+import handleResetTimer from './handlers/handleResetTimer'
 
 const useTimerStore = create((set) => ({
   // timer info
@@ -74,16 +75,9 @@ export default function useTimer() {
 
   const sets = !timerStore.isStarted ? timerStore.totalSets : timerStore.trackedSets
 
-  const resetTimer = () => {
-    timerStore.setType('Workout')
-    timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
-    timerStore.setTrackedSets(timerStore.totalSets)
-    timerStore.stopTimer()
-  }
+  const resetTimer = () => handleResetTimer({ timerStore })
 
-  const startNextRepetition = () => {
-    handleNextRepetition({ timerStore, resetTimer })
-  }
+  const startNextRepetition = () => handleNextRepetition({ timerStore, resetTimer })
 
   return {
     repetitions,
