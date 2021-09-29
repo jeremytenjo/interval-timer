@@ -21,6 +21,7 @@ export default function CreateTimerPage() {
   }
 
   const onStartTimer = (payload) => {
+    // TODO handle unsaved playback
     navigate(`/timer/unsaved`)
     timer.startTimer(payload)
   }

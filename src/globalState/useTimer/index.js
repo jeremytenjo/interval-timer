@@ -2,9 +2,11 @@ import create from 'zustand'
 
 import KeepAwake from '../../lib/utils/Capacitor/KeepAwake'
 
+import useTimerMetadata from './handlers/useTimerMetadata'
 import handleNextRepetition from './handlers/handleNextRepetition'
 import handleResetTimer from './handlers/handleResetTimer'
-import useTimerMetadata from './handlers/useTimerMetadata'
+import handleStartTimer from './handlers/handleStartTimer'
+import handleStopTimer from './handlers/handleStopTimer'
 
 const useTimerStore = create((set) => ({
   // timer info
@@ -67,18 +69,9 @@ export default function useTimer() {
 
   const startNextRepetition = () => handleNextRepetition({ timerStore, resetTimer })
 
-  const startTimer = (payload) => {
-    if (payload) {
-      // TODO set new payload
-    }
-    KeepAwake.keepAwake()
-    timerStore.startTimer()
-  }
+  const startTimer = (payload) => handleStartTimer({ timerStore, payload })
 
-  const stopTimer = () => {
-    KeepAwake.allowSleep()
-    timerStore.stopTimer()
-  }
+  const stopTimer = () => handleStopTimer({ timerStore })
 
   return {
     repetitions,
