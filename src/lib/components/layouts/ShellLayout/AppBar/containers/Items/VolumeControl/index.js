@@ -1,14 +1,21 @@
+import useTimerSound from '../../../../../../../../globalState/useTimerSound'
+
 import VolumeControlUi from './ui'
 
-// hanlde phone volume
 export default function VolumeControl() {
+  const timerSound = useTimerSound()
+
   const updateVolume = (newValue) => {
-    console.log(newValue)
+    timerSound.updateVolume(newValue)
   }
 
-  const mute = () => {}
+  const mute = () => {
+    timerSound.updateVolume(0)
+  }
 
-  const setToMaxVolume = () => {}
+  const setToMaxVolume = () => {
+    timerSound.updateVolume(100)
+  }
 
   return (
     <VolumeControlUi

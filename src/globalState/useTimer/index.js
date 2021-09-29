@@ -1,7 +1,7 @@
 import create from 'zustand'
 
 import useTimerMetadata from './handlers/useTimerMetadata'
-import handleNextRepetition from './handlers/handleNextRepetition'
+import useNextRepetition from './handlers/useNextRepetition'
 import handleResetTimer from './handlers/handleResetTimer'
 import handleStartTimer from './handlers/handleStartTimer'
 import handleStopTimer from './handlers/handleStopTimer'
@@ -65,7 +65,7 @@ export default function useTimer() {
 
   const resetTimer = () => handleResetTimer({ timerStore })
 
-  const startNextRepetition = () => handleNextRepetition({ timerStore, resetTimer })
+  const startNextRepetition = useNextRepetition({ timerStore, resetTimer })
 
   const startTimer = (payload) => handleStartTimer({ timerStore, payload })
 
