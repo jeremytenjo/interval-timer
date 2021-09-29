@@ -27,4 +27,10 @@ export default function useUpdateSelectedTimer({
       timer.setTotalRestTime(selectedTimer.rest)
     }
   }, [selectedTimer])
+
+  const updateSelectedTimer = (payload) => {
+    setSelectedTimer(payload)
+  }
+
+  return updateSelectedTimer
 }

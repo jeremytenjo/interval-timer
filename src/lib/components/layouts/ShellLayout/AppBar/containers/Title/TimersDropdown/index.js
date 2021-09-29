@@ -56,7 +56,7 @@ export default function TimersDropdown() {
           }}
           component='h1'
         >
-          {(timers.selectedTimer && timers.selectedTimer.name) || 'No Timers Saved'}
+          {(timers.selectedTimer && timers.selectedTimer.name) || 'Timers'}
         </Box>
       </Button>
 

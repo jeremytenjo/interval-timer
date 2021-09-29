@@ -5,6 +5,7 @@ export default function handleNextRepetition({ timerStore, resetTimer }) {
 
   // On rest start
   if (nextType === 'Rest') {
+    // TODO play rest sound
     timerStore.setType(nextType)
     timerStore.restartTimer()
   }
@@ -16,6 +17,8 @@ export default function handleNextRepetition({ timerStore, resetTimer }) {
       resetTimer()
       return
     }
+
+    // TODO play start workout sound
 
     if (nextRepetition !== 0) {
       // if has more repetitions

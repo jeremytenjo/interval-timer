@@ -36,7 +36,7 @@ export default function useTimers() {
   }
 
   // handlers
-  useUpdateSelectedTimer(handlerPayload)
+  const updateSelectedTimer = useUpdateSelectedTimer(handlerPayload)
   useGetTimers(handlerPayload)
   const addTimer = useAddTimer(handlerPayload)
   const updateTimer = useUpdateTimer(handlerPayload)
@@ -48,5 +48,6 @@ export default function useTimers() {
     updateTimer,
     removeTimer,
     addTimer,
+    updateSelectedTimer,
   }
 }
