@@ -15,11 +15,9 @@ export default function useTimerMetadata({ timerStore }) {
   const restTime = timerStore.totalRestTime
   const duration = isRest ? timerStore.totalRestTime : timerStore.totalWorkoutTime
   const color = isRest ? '#D72E33' : '#36B273'
-
   const repetitions = !timerStore.isStarted
     ? timerStore.totalRepetitions
     : timerStore.trackedRepetitions
-
   const sets = !timerStore.isStarted ? timerStore.totalSets : timerStore.trackedSets
 
   return {
