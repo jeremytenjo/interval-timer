@@ -5,6 +5,4 @@
  *
  * [Docs](https://developers.google.com/analytics/devguides/collection/gtagjs)
  */
-export default function gtag() {
-  return gtag
-}
+export default gtag
