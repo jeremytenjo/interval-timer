@@ -11,6 +11,7 @@ export default function useAddTimer({ userId, updateLocalTimers, localTimers }) 
   const snackbar = useSnackBar()
 
   const fetcher = async (payload) => {
+    delete payload.id
     const newTimer = {
       ...payload,
       userId,

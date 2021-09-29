@@ -34,7 +34,6 @@ export default function TimersDropdown() {
     navigate(`/timer/${selectedItem.id}`)
   }
 
-  // TODO make sure dropdown updates when timers are removed and updated
   return (
     <Box sx={{ maxWidth: 200 }}>
       <Button
