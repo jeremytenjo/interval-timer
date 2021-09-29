@@ -12,7 +12,7 @@ const useTimerStore = create((set) => ({
   totalRestTime: 0,
   trackedRepetitions: 0,
   trackedSets: 0,
-  type: 'Workout',
+  type: 'Rest',
   elapsedTime: 0,
 
   setTotalRepetitions: (newValue) => set(() => ({ totalRepetitions: newValue })),
