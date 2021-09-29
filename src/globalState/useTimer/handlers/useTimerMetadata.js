@@ -1,17 +1,15 @@
 import formatDuration from 'format-duration'
-import { useMemo } from 'react'
 
 export default function useTimerMetadata({ timerStore }) {
   const totalTimeRaw =
-    timerStore.totalRepetitions * timerStore.totalWorkoutTime * 1000 +
-    timerStore.totalSets * timerStore.totalRestTime * 1000
+    timerStore.totalRepetitions *
+      timerStore.totalWorkoutTime *
+      timerStore.totalSets *
+      1000 +
+    timerStore.totalSets * timerStore.totalRestTime * timerStore.totalRepetitions * 1000
   const totalTime = formatDuration(totalTimeRaw)
-  // TODO fix remainingTimeRaw
-  const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime
-  const remainingTime = useMemo(
-    () => formatDuration(remainingTimeRaw),
-    [remainingTimeRaw],
-  )
+  const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime * 1000
+  const remainingTime = formatDuration(remainingTimeRaw)
   const isRest = timerStore.type === 'Rest'
   const workoutTime = timerStore.totalWorkoutTime
   const restTime = timerStore.totalRestTime
