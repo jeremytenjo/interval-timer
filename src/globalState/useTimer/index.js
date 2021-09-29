@@ -1,7 +1,5 @@
 import create from 'zustand'
 
-import KeepAwake from '../../lib/utils/Capacitor/KeepAwake'
-
 import useTimerMetadata from './handlers/useTimerMetadata'
 import handleNextRepetition from './handlers/handleNextRepetition'
 import handleResetTimer from './handlers/handleResetTimer'
