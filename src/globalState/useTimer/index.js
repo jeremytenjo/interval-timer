@@ -1,5 +1,7 @@
 import create from 'zustand'
 
+import KeepAwake from '../../lib/utils/Capacitor/KeepAwake'
+
 import handleNextRepetition from './handlers/handleNextRepetition'
 import handleResetTimer from './handlers/handleResetTimer'
 import useTimerMetadata from './handlers/useTimerMetadata'
@@ -30,13 +32,11 @@ const useTimerStore = create((set) => ({
   timerKey: 1,
 
   startTimer: () => {
-    // TODO KeepAwake()
     set(() => ({ isPlaying: true, isStarted: true }))
   },
   pauseTimer: () => set(() => ({ isPlaying: false })),
   resumeTimer: () => set(() => ({ isPlaying: true })),
   stopTimer: () => {
-    // TODO AllowSleep()
     set((state) => ({
       isPlaying: false,
       isStarted: false,
@@ -67,6 +67,19 @@ export default function useTimer() {
 
   const startNextRepetition = () => handleNextRepetition({ timerStore, resetTimer })
 
+  const startTimer = (payload) => {
+    if (payload) {
+      // TODO set new payload
+    }
+    KeepAwake.keepAwake()
+    timerStore.startTimer()
+  }
+
+  const stopTimer = () => {
+    KeepAwake.allowSleep()
+    timerStore.stopTimer()
+  }
+
   return {
     repetitions,
     sets,
@@ -79,5 +92,7 @@ export default function useTimer() {
     remainingTime,
     totalTime,
     ...timerStore,
+    startTimer,
+    stopTimer,
   }
 }

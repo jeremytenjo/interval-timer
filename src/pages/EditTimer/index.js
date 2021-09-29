@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router'
+
 import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
@@ -8,6 +10,7 @@ export default function EditTimerPage() {
   const appBarData = useAppBar()
   const timers = useTimers()
   const timer = useTimer()
+  const navigate = useNavigate()
 
   const defaultName = timers?.selectedTimer?.name || ''
   const restDefaultValue = timers?.selectedTimer?.rest * 1000 || 1000
@@ -24,10 +27,8 @@ export default function EditTimerPage() {
   }
 
   const onStartTimer = (payload) => {
-    // TODO start timer
-    console.log({ payload })
-    // navigate(`/timer/${payload.id}`)
-    timer.startTimer(payload)
+    navigate(`/timer/${payload.id}`)
+    timer.startTimer()
   }
 
   const handleRemoveButtonClick = () => {

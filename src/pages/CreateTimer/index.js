@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router'
+
 import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
@@ -8,6 +10,7 @@ export default function CreateTimerPage() {
   const appBarData = useAppBar()
   const timers = useTimers()
   const timer = useTimer()
+  const navigate = useNavigate()
 
   useEffect(() => {
     appBarData.updateTitle('Create Timer')
@@ -18,9 +21,7 @@ export default function CreateTimerPage() {
   }
 
   const onStartTimer = (payload) => {
-    // TODO start timer
-    console.log(payload)
-    // navigate(`/timer/${payload.id}`)
+    navigate(`/timer/unsaved`)
     timer.startTimer(payload)
   }
 
