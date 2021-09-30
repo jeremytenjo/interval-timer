@@ -66,7 +66,7 @@ export default function ProfilePic() {
           {auth.user ? (
             <>
               <ListItemButton onClick={onSettingsClick}>
-                <ListItemIcon sx={{ minWidth: '35px' }}>
+                <ListItemIcon sx={{ minWidth: '35px', transform: 'translateX(-3px)' }}>
                   <Settings sx={{ width: '22px', color: 'white.main' }} />
                 </ListItemIcon>
                 <ListItemText sx={{ color: 'white.main' }} primary='Settings' />
