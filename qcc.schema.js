@@ -129,7 +129,7 @@ module.exports = [
   },
   {
     type: 'Page',
-    file: [
+    files: [
       {
         path: () => 'index.js',
         template: ({ name }) => `export default function ${name}Page() {}`,
