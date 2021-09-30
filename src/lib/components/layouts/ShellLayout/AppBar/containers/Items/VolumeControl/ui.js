@@ -5,6 +5,7 @@ import Slider from '../../../../../../Slider'
 import VolumeDown from '../../../../../../icons/VolumeDown'
 import VolumeUp from '../../../../../../icons/VolumeUp'
 import Box from '../../../../../../Box'
+import VolumeMuted from '../../../../../../icons/VolumeMuted'
 
 import * as styles from './styles'
 
@@ -12,6 +13,7 @@ export default function VolumeControlUi({
   onMute = () => null,
   onSetToMaxVolume = () => null,
   onVolumeChange = () => null,
+  isMuted,
 }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [volumeAmount, setVolumeAmount] = useState(50)
@@ -45,7 +47,7 @@ export default function VolumeControlUi({
   return (
     <>
       <IconButton onClick={handleClick}>
-        <VolumeIcon />
+        {isMuted ? <VolumeMuted /> : <VolumeIcon />}
       </IconButton>
 
       <Popover
