@@ -11,8 +11,9 @@ const useVolumeStore = create((set) => ({
 
 export default function useVolume() {
   const volumeStore = useVolumeStore()
-  const getLocalStorageVolume = useLocalStorage({ action: 'get', key: 'volume' })
-  const setLocalStorageVolume = useLocalStorage({ action: 'set', key: 'volume' })
+  const localStorageKey = 'volume'
+  const getLocalStorageVolume = useLocalStorage({ action: 'get', key: localStorageKey })
+  const setLocalStorageVolume = useLocalStorage({ action: 'set', key: localStorageKey })
   const volumeInDecimals = volumeStore.volume / 100
   const isMuted = useVolumeStore.volume === 0
 
