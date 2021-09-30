@@ -34,6 +34,7 @@ export default function ProfilePic() {
   }
 
   const onSettingsClick = () => {
+    handleClose()
     navigate('/settings')
   }
 
