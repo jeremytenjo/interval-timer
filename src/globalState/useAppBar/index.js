@@ -1,6 +1,6 @@
 import create from 'zustand'
 
-const useAppBar = create((set) => ({
+const useAppBarStore = create((set) => ({
   title: '',
   showEditButton: false,
 
@@ -8,4 +8,26 @@ const useAppBar = create((set) => ({
   setShowEditButton: (show) => set(() => ({ showEditButton: show })),
 }))
 
-export default useAppBar
+export default function useAppBar({
+  title,
+  showEditButton,
+  hideEditButtonOnUnmount,
+} = {}) {
+  const appBarStore = useAppBarStore()
+
+  useEffect(() => {
+    appBarStore.setShowEditButton(showEditButton)
+
+    appBarStore.updateTitle(title)
+
+    return () => {
+      if (hideEditButtonOnUnmount) {
+        appBarStore.setShowEditButton(false)
+      }
+    }
+  }, [title, showEditButton])
+
+  return {
+    title: appBarStore.title,
+  }
+}

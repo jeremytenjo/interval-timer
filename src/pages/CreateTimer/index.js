@@ -7,14 +7,10 @@ import useTimers from '../../data/timers/useTimers'
 import useTimer from '../../globalState/useTimer'
 
 export default function CreateTimerPage() {
-  const appBarData = useAppBar()
+  useAppBar({ title: 'Create Timer' })
   const timers = useTimers()
   const timer = useTimer()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    appBarData.updateTitle('Create Timer')
-  }, [])
 
   const onSaveTimer = (payload) => {
     timers.addTimer.exec(payload)

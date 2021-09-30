@@ -7,7 +7,7 @@ import useTimers from '../../data/timers/useTimers'
 import useTimer from '../../globalState/useTimer'
 
 export default function EditTimerPage() {
-  const appBarData = useAppBar()
+  useAppBar({ title: 'Edit Timer' })
   const timers = useTimers()
   const timer = useTimer()
   const navigate = useNavigate()
@@ -17,10 +17,6 @@ export default function EditTimerPage() {
   const workoutDefaultValue = timers?.selectedTimer?.workout * 1000 || 1000
   const repetitionsDefaultValue = timers?.selectedTimer?.repetitions || 1
   const setsDefaultValue = timers?.selectedTimer?.sets || 1
-
-  useEffect(() => {
-    appBarData.updateTitle('Edit Timer')
-  }, [])
 
   const onSaveTimer = (payload) => {
     timers.updateTimer.exec({ id: timers.selectedTimer.id, data: payload })

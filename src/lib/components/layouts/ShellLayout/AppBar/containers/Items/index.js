@@ -11,7 +11,7 @@ import ProfilePic from './ProfilePic'
 
 export default function Items() {
   const navigate = useNavigate()
-  const useAppBarData = useAppBar()
+  const appBar = useAppBar()
   const timers = useTimers()
 
   const onEditClick = () => {
@@ -21,7 +21,7 @@ export default function Items() {
 
   return (
     <Box component='nav' sx={styles.wrapper}>
-      {!!timers.data.length && useAppBarData.showEditButton && (
+      {!!timers.data.length && !appBar.title && (
         <IconButton onClick={onEditClick}>
           <Edit sx={{ width: '18px' }} />
         </IconButton>

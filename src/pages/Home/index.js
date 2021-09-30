@@ -7,17 +7,8 @@ import Timer from './containers/Timer'
 import TimerControls from './containers/TimerControls'
 
 export default function HomePage() {
-  const appBarData = useAppBar()
+  useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
   const timers = useTimers()
-
-  useEffect(() => {
-    appBarData.updateTitle(false)
-    appBarData.setShowEditButton(true)
-
-    return () => {
-      appBarData.setShowEditButton(false)
-    }
-  }, [])
 
   return (
     <section>
