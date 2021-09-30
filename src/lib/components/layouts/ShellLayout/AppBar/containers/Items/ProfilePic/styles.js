@@ -13,3 +13,7 @@ export const popopver = {
     userSelect: 'none',
   },
 }
+
+export const listItem = {
+  display: 'grid',
+}

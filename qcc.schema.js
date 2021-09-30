@@ -127,4 +127,25 @@ module.exports = [
       },
     ],
   },
+  {
+    type: 'Page',
+    file: [
+      {
+        path: () => 'index.js',
+        template: ({ name }) => `export default function ${name}Page() {}`,
+      },
+      {
+        path: () => 'routes.js',
+        template: ({ name }) => `const ${name} = lazy(() => import('./'))
+
+        export default function ${name}Routes() {
+          return (
+            <Routes>
+              <Route path='/' element={<${name} />} />
+            </Routes>
+          )
+        }`,
+      },
+    ],
+  },
 ]

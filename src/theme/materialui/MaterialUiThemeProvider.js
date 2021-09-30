@@ -7,6 +7,7 @@ import Button from '../../lib/components/Button/button.mui'
 import TextField from '../../lib/components/forms/Textfield/textfield.mui'
 import Popover from '../../lib/components/Popover/popover.mui'
 import Alert from '../../lib/components/Avatar/alert.mui'
+import ListItemButton from '../../lib/components/ListItemButton/listItemButton.mui'
 
 import CssBaselineOverrides from './CssBaseline'
 
@@ -19,6 +20,7 @@ const materialTheme = createTheme({
     ...TextField,
     ...Popover,
     ...Alert,
+    ...ListItemButton,
   },
 })
 
