@@ -4,23 +4,40 @@ import useLocalStorage from '../../../../lib/utils/storage/useLocalStorage'
 
 const useVolumeStore = create((set) => ({
   volume: 50,
+  fetchedLocalVolume: false,
   setVolume: (newValue) => set(() => ({ volume: newValue })),
+  setFetchedLocalVolume: (newValue) => set(() => ({ fetchedLocalVolume: newValue })),
 }))
 
 export default function useVolume() {
   const volumeStore = useVolumeStore()
-  const localStorageVolume = useLocalStorage({ action: 'get', key: 'volume' })
-  const isMuted = useVolumeStore.volume === 0
+  const getLocalStorageVolume = useLocalStorage({ action: 'get', key: 'volume' })
+  const setLocalStorageVolume = useLocalStorage({ action: 'set', key: 'volume' })
   const volumeInDecimals = volumeStore.volume / 100
+  const isMuted = useVolumeStore.volume === 0
 
   useEffect(() => {
-    console.log(localStorageVolume.exec())
+    if (!volumeStore.fetchedLocalVolume) {
+      getLocalStorageVolume.exec()
+      volumeStore.setFetchedLocalVolume(true)
+    }
   }, [])
+
+  useEffect(() => {
+    volumeStore.setVolume(
+      getLocalStorageVolume.result === null ? 50 : getLocalStorageVolume.result,
+    )
+  }, [getLocalStorageVolume.result])
+
+  const updateVolume = (newValue) => {
+    setLocalStorageVolume.exec({ value: newValue })
+    volumeStore.setVolume(newValue)
+  }
 
   return {
     isMuted,
     volumeInDecimals,
     volume: volumeStore.volume,
-    updateVolume: volumeStore.setVolume,
+    updateVolume,
   }
 }

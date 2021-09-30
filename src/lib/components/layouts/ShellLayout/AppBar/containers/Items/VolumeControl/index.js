@@ -23,6 +23,8 @@ export default function VolumeControl() {
       onMute={mute}
       onSetToMaxVolume={setToMaxVolume}
       isMuted={volume.isMuted}
+      defaultValue={volume.volume}
+      updateVolume={volume.updateVolume}
     />
   )
 }

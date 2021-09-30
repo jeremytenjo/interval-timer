@@ -8,6 +8,9 @@ import useAsync from '@useweb/use-async'
  *
  * @example
  * const getLocalTimers = useLocalStorage({ action: 'get', key: 'timers' })
+ *
+ * const setLocalTimers = useLocalStorage({ action: 'set', key: 'timers' })
+ * setLocalTimers({key: 'timers', value: data})
  */
 export default function useLocalStorage({ action = 'get', key } = {}) {
   return useAsync(async (data) => {
@@ -21,7 +24,7 @@ export default function useLocalStorage({ action = 'get', key } = {}) {
     if (action === 'set') {
       const valueStringifyed = JSON.stringify(data.value)
 
-      await Storage.set({ key: data.key, value: valueStringifyed })
+      await Storage.set({ key: key || data.key, value: valueStringifyed })
     }
 
     if (action === 'remove') {

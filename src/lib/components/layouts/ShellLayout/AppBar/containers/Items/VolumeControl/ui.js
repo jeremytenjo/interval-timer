@@ -12,11 +12,11 @@ import * as styles from './styles'
 export default function VolumeControlUi({
   onMute = () => null,
   onSetToMaxVolume = () => null,
-  onVolumeChange = () => null,
   isMuted,
+  defaultValue,
+  updateVolume,
 }) {
   const [anchorEl, setAnchorEl] = useState(null)
-  const [volumeAmount, setVolumeAmount] = useState(50)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -26,18 +26,17 @@ export default function VolumeControlUi({
     setAnchorEl(null)
   }
 
-  const updateVolume = (event, newValue) => {
-    setVolumeAmount(newValue)
-    onVolumeChange(newValue)
+  const onVolumeChange = (_, value) => {
+    updateVolume(value)
   }
 
   const mute = () => {
-    setVolumeAmount(0)
+    updateVolume(0)
     onMute()
   }
 
   const setToMaxVolume = () => {
-    setVolumeAmount(100)
+    updateVolume(100)
     onSetToMaxVolume()
   }
 
@@ -72,9 +71,10 @@ export default function VolumeControlUi({
 
             <Slider
               sx={styles.slider}
+              defaultValue={defaultValue}
               aria-label='Volume'
-              value={volumeAmount}
-              onChange={updateVolume}
+              value={defaultValue}
+              onChange={onVolumeChange}
             />
 
             <IconButton onClick={setToMaxVolume}>
