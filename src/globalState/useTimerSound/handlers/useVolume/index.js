@@ -15,7 +15,7 @@ export default function useVolume() {
   const getLocalStorageVolume = useLocalStorage({ action: 'get', key: localStorageKey })
   const setLocalStorageVolume = useLocalStorage({ action: 'set', key: localStorageKey })
   const volumeInDecimals = volumeStore.volume / 100
-  const isMuted = useVolumeStore.volume === 0
+  const isMuted = volumeStore.volume === 0
 
   useEffect(() => {
     if (!volumeStore.fetchedLocalVolume) {
