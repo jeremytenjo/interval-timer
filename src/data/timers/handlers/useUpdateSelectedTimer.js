@@ -10,10 +10,11 @@ export default function useUpdateSelectedTimer({
 
   useEffect(() => {
     if (urlParams.timerId) {
-      const selectedTimer = localTimers.find(
+      const newSelectedTimer = localTimers.find(
         (timer) => timer.id.toString() === urlParams.timerId.toString(),
       )
-      setSelectedTimer(selectedTimer)
+
+      setSelectedTimer(newSelectedTimer)
     }
   }, [urlParams.timerId, localTimers])
 
