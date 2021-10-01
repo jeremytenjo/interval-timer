@@ -1,7 +1,7 @@
 import { collection, addDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
+import arrayDB from '@useweb/array-db'
 
-import arrayDB from '../../../lib/utils/array/arrayDB'
 import useFirebase from '../../../firebase/useFirebase'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../lib/components/feedback/useShowError'

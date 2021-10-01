@@ -1,9 +1,9 @@
 import { updateDoc, doc, serverTimestamp } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
+import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../firebase/useFirebase'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
-import arrayDB from '../../../lib/utils/array/arrayDB'
 import useShowError from '../../../lib/components/feedback/useShowError'
 
 export default function useUpdateTimer({ localTimers, updateLocalTimers }) {
