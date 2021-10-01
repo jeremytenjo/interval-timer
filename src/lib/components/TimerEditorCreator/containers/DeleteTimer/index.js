@@ -1,8 +1,10 @@
+import useTimers from '../../../../../data/timers/useTimers'
 import Button from '../../../Button'
 import ConfirmationDialog from '../../../Dialog/ConfirmationDialog'
 
 export default function DeleteTimer({ onDelete = () => null }) {
   const [open, setOpen] = useState(false)
+  const timers = useTimers()
 
   const show = () => {
     setOpen(true)
@@ -23,7 +25,7 @@ export default function DeleteTimer({ onDelete = () => null }) {
         onConfirm={onConfirm}
         onCancel={hide}
         open={open}
-        title='Delete timer?'
+        title={`Delete ${timers.selectedTimer.name} timer?`}
         confirmText='Delete'
       />
 
