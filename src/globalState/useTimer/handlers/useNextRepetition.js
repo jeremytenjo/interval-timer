@@ -17,23 +17,26 @@ export default function useNextRepetition({ timerStore, resetTimer }) {
 
     // On workout start
     if (nextType === 'Workout') {
-      // if no more reps or sets
-      if (nextRepetition === 0 && nextSet === 0) {
+      const hasMoreRepetitions = nextRepetition !== 0
+      const noMoreRepetitions = nextRepetition === 0
+      const noMoreSets = nextSet === 0
+      const isFinished = noMoreRepetitions && noMoreSets
+      const isLastSet = nextSet === 1
+
+      if (isFinished) {
         resetTimer()
         return
       }
 
       timerSound.playWorkoutSound()
 
-      if (nextRepetition !== 0) {
-        // if has more repetitions
+      if (hasMoreRepetitions) {
         timerStore.setTrackedRepetitions(nextRepetition)
         timerStore.setType(nextType)
         timerStore.restartTimer()
       }
 
-      // if no more repetitions
-      if (nextRepetition === 0 && nextSet === 1) {
+      if (noMoreRepetitions && isLastSet) {
         timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
         timerStore.setTrackedSets(nextSet)
         timerStore.restartTimer()
