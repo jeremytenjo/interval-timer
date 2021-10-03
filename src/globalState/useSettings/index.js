@@ -1,5 +1,7 @@
 import create from 'zustand'
 
+import useSaveSettings from './handlers/useSaveSettings'
+
 const useSettingsStore = create((set) => ({
   example: true,
 
@@ -9,11 +11,13 @@ const useSettingsStore = create((set) => ({
 export default function useSettings() {
   const settingsStore = useSettingsStore()
 
-  const updateExample = (newValue) => {
-    settingsStore.setExample(newValue)
+  const payload = {
+    settingsStore,
   }
 
+  const saveSettings = useSaveSettings(payload)
+
   return {
-    updateExample,
+    saveSettings,
   }
 }

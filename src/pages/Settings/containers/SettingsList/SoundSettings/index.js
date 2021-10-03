@@ -2,7 +2,6 @@ import SoundSettingsUi from './SoundSettingsUi'
 import useSoundsSettings from './SoundSettingsUi/useSoundsSettings'
 
 export default function SoundSettings() {
-  // TODO add settings, pick wourkout sound, pick rest sound from beep or voice
   const soundSettings = useSoundsSettings()
 
   return (

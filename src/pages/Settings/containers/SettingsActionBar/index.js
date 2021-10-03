@@ -1,6 +1,9 @@
+import useSettings from '../../../../globalState/useSettings'
+
 import SettingsActionBarUi from './SettingsActionBarUi'
 
 export default function SettingsActionBar() {
-  // TODO add useSettings
-  return <SettingsActionBarUi onSave />
+  const settings = useSettings()
+
+  return <SettingsActionBarUi onSave={settings.saveSettings.exec} />
 }
