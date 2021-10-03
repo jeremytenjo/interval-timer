@@ -1,20 +1,18 @@
-import Box from '../../../../lib/components/Box'
 import Button from '../../../../lib/components/Button'
 import useTimer from '../../../../globalState/useTimer'
-
-import * as styles from './styles'
+import BottomBar from '../../../../lib/components/BottomBar'
 
 export default function TimerControls() {
   const timer = useTimer()
 
   return (
-    <Box sx={styles.wrapper}>
+    <BottomBar>
       {!timer.isPlaying && !timer.isStarted && (
         <Button onClick={timer.startTimer}>Start</Button>
       )}
 
       {timer.isStarted && (
-        <Box sx={styles.innerWrapper}>
+        <>
           {timer.isStarted && timer.isPlaying && (
             <Button onClick={timer.pauseTimer}>Pause</Button>
           )}
@@ -24,8 +22,8 @@ export default function TimerControls() {
           )}
 
           <Button onClick={timer.resetTimer}>Stop</Button>
-        </Box>
+        </>
       )}
-    </Box>
+    </BottomBar>
   )
 }

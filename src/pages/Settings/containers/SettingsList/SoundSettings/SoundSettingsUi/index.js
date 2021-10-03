@@ -2,23 +2,69 @@ import Box from 'lib/components/Box'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Accordion from '@mui/material/Accordion'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
 
 import Text from '../../../../../../lib/components/Text'
 
 import * as styles from './styles.js'
 
-export default function SoundSettingsUi() {
+export default function SoundSettingsUi({
+  onVoiceWorkoutSoundSelected,
+  onToneWorkoutSoundSelected,
+  onVoiceRestSoundSelected,
+  onToneRestSoundSelected,
+}) {
   return (
     <Box sx={styles.wrapper}>
       <Accordion>
         <AccordionSummary aria-controls='panel1a-content' id='panel1a-header'>
           <Text text='Sound' />
         </AccordionSummary>
-        <AccordionDetails>
-          <Text
-            text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-      lacus ex, sit amet blandit leo lobortis eget.'
-          />
+
+        <AccordionDetails sx={{ display: 'grid', justifyContent: 'start' }}>
+          <FormControl component='fieldset'>
+            <FormLabel component='legend'>Workout Sound</FormLabel>
+            <RadioGroup aria-label='gender' name='row-radio-buttons-group'>
+              <FormControlLabel
+                value='voice'
+                control={<Radio />}
+                label='Voice'
+                labelPlacement='start'
+                sx={{ textAlign: 'left' }}
+              />
+              <FormControlLabel
+                value='male'
+                control={<Radio />}
+                label='Beep'
+                labelPlacement='start'
+                sx={{ textAlign: 'left' }}
+              />
+            </RadioGroup>
+          </FormControl>
+
+          <FormControl component='fieldset'>
+            <FormLabel component='legend'>Rest Sound</FormLabel>
+            <RadioGroup aria-label='gender' name='row-radio-buttons-group'>
+              <FormControlLabel
+                value='voice'
+                control={<Radio />}
+                label='Voice'
+                labelPlacement='start'
+                sx={{ textAlign: 'left' }}
+              />
+              <FormControlLabel
+                value='male'
+                control={<Radio />}
+                label='Beep'
+                labelPlacement='start'
+                sx={{ textAlign: 'left' }}
+              />
+            </RadioGroup>
+          </FormControl>
         </AccordionDetails>
       </Accordion>
     </Box>

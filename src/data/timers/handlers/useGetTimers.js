@@ -58,7 +58,8 @@ export default function useGetTimers({
       updateLocalTimers(getLocalTimers.result)
 
       if (!selectedTimer && getLocalTimers.result.length) {
-        navigate(`/timer/${getLocalTimers.result[0].id}`)
+        // TODO fix, avoid navigating to /timers when on settings page
+        // navigate(`/timer/${getLocalTimers.result[0].id}`)
       }
     }
   }, [getLocalTimers.result])
@@ -76,7 +77,8 @@ export default function useGetTimers({
       updateLocalTimers(getFierstoreTimers.result)
 
       if (!selectedTimer && getFierstoreTimers.result.length) {
-        navigate(`/timer/${getFierstoreTimers.result[0].id}`)
+        // TODO fix, avoid navigating to /timers when on settings page
+        // navigate(`/timer/${getFierstoreTimers.result[0].id}`)
       }
     }
   }, [getFierstoreTimers.result])

@@ -1,0 +1,21 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks'
+import BottomBar from '../'
+      
+<Meta 
+  title='Lib/components/BottomBar' 
+  component={BottomBar} 
+  argTypes={{}} 
+  args={{}} 
+/>
+
+# BottomBar
+
+export const Template = (args) => (
+  <BottomBar {...args}>
+    BottomBar
+  </BottomBar>
+)
+
+<Story name='default' argTypes={{}} args={{}}>
+  {Template.bind({})}
+</Story>
