@@ -1,3 +1,13 @@
+/**
+ * Input `useDataStore` returns `dataStore`
+ */
+const generateUseVariable = (string) => {
+  let newValue = string.substring(3)
+  newValue = newValue.charAt(0).toLowerCase() + newValue.slice(1)
+
+  return newValue
+}
+
 const component = {
   type: 'Simple Component',
   files: [
@@ -149,6 +159,33 @@ module.exports = [
               <Route path='/' element={<${name} />} />
             </Routes>
           )
+        }`,
+      },
+    ],
+  },
+  {
+    type: 'Global State',
+    files: [
+      {
+        path: () => 'index.js',
+        template: ({ name }) => `import create from 'zustand'
+
+        const ${name}Store = create((set) => ({
+          example: true,
+        
+          setExample: (newValue) => set(() => ({ example: newValue })),
+        }))
+
+        export default function ${name}() {
+          const ${generateUseVariable(`${name}Store`)} = ${name}Store()
+
+          const updateExample = (newValue) => {
+            ${generateUseVariable(`${name}Store`)}.setExample(newValue)
+          }
+
+          return {
+            updateExample
+          }
         }`,
       },
     ],

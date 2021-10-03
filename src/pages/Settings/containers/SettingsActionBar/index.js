@@ -1,10 +1,6 @@
-import BottomBar from '../../../../lib/components/BottomBar'
-import Button from '../../../../lib/components/Button'
+import SettingsActionBarUi from './SettingsActionBarUi'
 
 export default function SettingsActionBar() {
-  return (
-    <BottomBar>
-      <Button>Save</Button>
-    </BottomBar>
-  )
+  // TODO add useSettings
+  return <SettingsActionBarUi onSave />
 }
