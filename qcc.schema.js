@@ -25,10 +25,15 @@ const component = {
     },
     {
       path: () => `stories/sb.stories.mdx`,
-      template: ({ name }) => `import { Meta } from '@storybook/addon-docs/blocks'
+      template: ({ name }) => `import { Meta, Story } from '@storybook/addon-docs/blocks'
 import ${name} from '../'
       
-<Meta title='Lib/components/${name}' component={${name}} argTypes={{}} args={{}} />
+<Meta 
+  title='Lib/components/${name}' 
+  component={${name}} 
+  argTypes={{}} 
+  args={{}} 
+/>
 
 # ${name}
 

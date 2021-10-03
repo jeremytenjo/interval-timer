@@ -1,15 +1,16 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta, Story } from '@storybook/addon-docs/blocks'
 import SoundSettings from '../'
-      
-<Meta title='Lib/components/SoundSettings' component={SoundSettings} argTypes={{}} args={{}} />
+
+<Meta
+  title='Lib/components/SoundSettings'
+  component={SoundSettings}
+  argTypes={{}}
+  args={{}}
+/>
 
 # SoundSettings
 
-export const Template = (args) => (
-  <SoundSettings {...args}>
-    SoundSettings
-  </SoundSettings>
-)
+export const Template = (args) => <SoundSettings {...args}>SoundSettings</SoundSettings>
 
 <Story name='default' argTypes={{}} args={{}}>
   {Template.bind({})}
