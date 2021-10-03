@@ -6,7 +6,7 @@ const component = {
       template: ({ name, helpers }) => `        
       import Box from 'lib/components/Box'
 
-      import * as styles from 'styles.js'
+      import * as styles from './styles.js'
 
       export default function ${helpers.changeCase.pascalCase(name)}() {
         return (

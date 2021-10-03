@@ -1,8 +1,14 @@
 import useAppBar from '../../globalState/useAppBar'
+import Box from '../../lib/components/Box'
+
+import SettingsList from './containers/SettingsList'
 
 export default function SettingsPage() {
   useAppBar({ title: 'Settings' })
 
-  // TODO add settings, pick wourkout sound, pick rest sound from beep or voice
-  return 'settings'
+  return (
+    <Box className='centerPage'>
+      <SettingsList />
+    </Box>
+  )
 }

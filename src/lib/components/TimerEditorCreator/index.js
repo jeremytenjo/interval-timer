@@ -100,7 +100,7 @@ export default function TimerEditorCreator({
   }
 
   return (
-    <Box sx={styles.wrapper}>
+    <Box sx={styles.wrapper} className='centerPage'>
       <TextField
         id='timer-name'
         placeholder='Name'

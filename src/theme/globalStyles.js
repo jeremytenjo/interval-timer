@@ -35,6 +35,11 @@ export default () => (
       h4: noMarginPadding,
       h5: noMarginPadding,
       h6: noMarginPadding,
+      '.centerPage': {
+        padding: '20px',
+        maxWidth: '500px',
+        margin: 'auto',
+      },
     }}
   />
 )
