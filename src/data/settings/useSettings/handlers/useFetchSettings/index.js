@@ -1,8 +1,8 @@
 import useAsync from '@useweb/use-async'
 import useOnTrue from '@useweb/use-on-true'
 
-import useSnackbar from '../../../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
+import defaultSettings from '../../defaultSettings'
 
 export default function useFetchSettings({ settingsStore }) {
   const fetcher = async () => {
@@ -17,6 +17,12 @@ export default function useFetchSettings({ settingsStore }) {
   useOnTrue(fetchSettings.result, () => {
     settingsStore.setSettings(fetchSettings.result)
   })
+
+  // if not signed in use default settings
+
+  // fetch in local storage
+
+  // fetch in firestore
 
   return fetchSettings
 }

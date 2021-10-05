@@ -6,7 +6,7 @@ import useShowError from '../../../../../lib/components/feedback/useShowError'
 
 export default function useUpdateSetting({ settingsStore }) {
   const fetcher = async ({ setting, type, data }) => {
-    // TODO fetch settings from firebase
+    // TODO update settings from firebase
     console.log(setting, type, data)
     return true
   }
@@ -18,6 +18,10 @@ export default function useUpdateSetting({ settingsStore }) {
   useOnTrue(updateSetting.result, () => {
     settingsStore.setSettings(updateSetting.result)
   })
+
+  // save in local storage
+
+  // save in firestore
 
   return updateSetting
 }

@@ -21,5 +21,9 @@ export default function useSaveSettings() {
     snackbar.show({ message: 'Settings saved' })
   })
 
+  // save in local storage
+
+  // save in firestore
+
   return saveSettings
 }

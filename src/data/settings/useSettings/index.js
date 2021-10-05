@@ -1,11 +1,12 @@
 import create from 'zustand'
 
+import defaultSettings from './defaultSettings'
 import useSaveSettings from './handlers/useSaveSettings'
 import useFetchSettings from './handlers/useFetchSettings'
 import useUpdateSetting from './handlers/useUpdateSetting'
 
 const useSettingsStore = create((set) => ({
-  settings: true,
+  settings: defaultSettings,
   setSettings: (newValue) => set(() => ({ settings: newValue })),
 }))
 
