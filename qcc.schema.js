@@ -190,4 +190,33 @@ module.exports = [
       },
     ],
   },
+  {
+    type: 'Async Hook',
+    files: [
+      {
+        path: () => 'index.js',
+        template: ({ name }) => `import useAsync from '@useweb/use-async'
+        import useOnTrue from '@useweb/use-on-true'
+        
+        import useSnackbar from '../../../../../lib/components/Snackbar/useSnackbar'
+        import useShowError from '../../../../../lib/components/feedback/useShowError'
+        
+        export default function ${name}() {
+          const fetcher = async () => {
+            return true
+          }
+        
+          const ${generateUseVariable(`${name}`)} = useAsync(fetcher)
+        
+          useShowError(${generateUseVariable(`${name}`)}.error, 'Error, please try again')
+        
+          useOnTrue(${generateUseVariable(`${name}`)}.result, () => {
+            console.log(${generateUseVariable(`${name}`)}.result)
+          })
+        
+          return ${generateUseVariable(`${name}`)}
+        }`,
+      },
+    ],
+  },
 ]

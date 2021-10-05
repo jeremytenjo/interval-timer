@@ -1,11 +1,13 @@
 import create from 'zustand'
 
 import useSaveSettings from './handlers/useSaveSettings'
+import useFetchSettings from './handlers/useFetchSettings'
+import useUpdateSetting from './handlers/useUpdateSetting'
 
 const useSettingsStore = create((set) => ({
-  example: true,
+  settings: true,
 
-  setExample: (newValue) => set(() => ({ example: newValue })),
+  setSettings: (newValue) => set(() => ({ settings: newValue })),
 }))
 
 export default function useSettings() {
@@ -16,18 +18,12 @@ export default function useSettings() {
   }
 
   const saveSettings = useSaveSettings(payload)
-
-  // TODO add settings, pick wourkout sound, pick rest sound from beep or voice
-  const udpateWorkoutSoundSelection = (value) => {
-    console.log(value)
-  }
-  const updateRestSoundSelection = (value) => {
-    console.log(value)
-  }
+  const fetchSettings = useFetchSettings(payload)
+  const updateSetting = useUpdateSetting(payload)
 
   return {
     saveSettings,
-    udpateWorkoutSoundSelection,
-    updateRestSoundSelection,
+    fetchSettings,
+    updateSetting,
   }
 }

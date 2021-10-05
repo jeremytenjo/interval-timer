@@ -8,6 +8,8 @@ export default function useSaveSettings() {
   const snackbar = useSnackbar()
 
   const fetcher = async () => {
+    // TODO save settings to firebase
+
     return true
   }
 
