@@ -1,9 +1,11 @@
 import useTimerSound from '../../useTimerSound'
+import KeepAwake from '../../../lib/utils/Capacitor/KeepAwake'
 
 export default function useNextRepetition({ timerStore, resetTimer }) {
   const timerSound = useTimerSound()
 
   const nextRepetition = () => {
+    KeepAwake.keepAwake()
     const nextType = timerStore.type === 'Rest' ? 'Workout' : 'Rest'
     const nextRepetition = timerStore.trackedRepetitions - 1
     const nextSet = timerStore.trackedSets - 1
