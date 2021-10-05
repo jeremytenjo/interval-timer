@@ -15,8 +15,12 @@ export default function Items() {
   const timers = useTimers()
 
   const onEditClick = () => {
-    const editTimerUrl = '/edit-timer/' + timers?.selectedTimer.id
-    navigate(editTimerUrl)
+    const editTimerId = timers?.selectedTimer?.id || timers.data[0]?.id
+    const editTimerUrl = '/edit-timer/' + editTimerId
+
+    if (editTimerId) {
+      navigate(editTimerUrl)
+    }
   }
 
   return (

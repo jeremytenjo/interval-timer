@@ -1,4 +1,5 @@
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import useOnTrue from '@useweb/use-on-true'
 
 import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
@@ -11,11 +12,12 @@ import TimerControls from './containers/TimerControls'
 export default function HomePage() {
   useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
   const timers = useTimers()
-  const params = useParams()
+  const urlParams = useParams()
+  const navigate = useNavigate()
 
-  console.log(params)
-  // TODO redirest
-  // navigate(`/timer/${getFierstoreTimers.result[0].id}`)
+  useOnTrue(!urlParams.timerId && !!timers.data.length, () => {
+    navigate(`/timer/${timers.data[0].id}`)
+  })
 
   return (
     <section>
