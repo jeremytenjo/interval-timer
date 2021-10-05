@@ -6,7 +6,6 @@ import useUpdateSetting from './handlers/useUpdateSetting'
 
 const useSettingsStore = create((set) => ({
   settings: true,
-
   setSettings: (newValue) => set(() => ({ settings: newValue })),
 }))
 
