@@ -1,12 +1,12 @@
 import create from 'zustand'
 
+import workoutMp3 from '../../../public/sounds/workout/1.mp3'
+
 import useVolume from './handlers/useVolume'
 
 const useTimerSoundStore = create((set) => ({
-  workoutSoundUrl:
-    'https://firebasestorage.googleapis.com/v0/b/my-interval-timer.appspot.com/o/sounds%2Fworkout%2F1.mp3?alt=media&token=65d8f092-0b88-46eb-9cb9-bc9a6e6f1eea',
-  restSoundUrl:
-    'https://firebasestorage.googleapis.com/v0/b/my-interval-timer.appspot.com/o/sounds%2Fworkout%2F1.mp3?alt=media&token=65d8f092-0b88-46eb-9cb9-bc9a6e6f1eea',
+  workoutSoundUrl: workoutMp3,
+  restSoundUrl: workoutMp3,
   setWorkoutSoundUrl: (newValue) => set(() => ({ workoutSoundUrl: newValue })),
   setRestSoundUrl: (newValue) => set(() => ({ restSoundUrl: newValue })),
 }))
