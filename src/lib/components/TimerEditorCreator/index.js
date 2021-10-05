@@ -17,6 +17,7 @@ export default function TimerEditorCreator({
   repetitionsDefaultValue = 1,
   setsDefaultValue = 1,
   onRemoveButtonClick,
+  saveButtonText,
 }) {
   // fields
   const [name, setName] = useState(defaultName)
@@ -137,7 +138,7 @@ export default function TimerEditorCreator({
 
       {onRemoveButtonClick && <DeleteTimer onDelete={onRemoveButtonClick} />}
 
-      <Controls onSave={onSave} />
+      <Controls onSave={onSave} saveButtonText={saveButtonText} />
     </Box>
   )
 }

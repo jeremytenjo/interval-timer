@@ -4,7 +4,7 @@ import useAuth from '../../../globalState/useAuth'
 import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
 
 import useGetTimers from './handlers/useGetTimers'
-import useAddTimer from './handlers/useAddTimer'
+import useCreateTimer from './handlers/useCreateTimer'
 import useUpdateTimer from './handlers/useUpdateTimer'
 import useRemoveTimer from './handlers/useRemoveTimer'
 import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
@@ -39,7 +39,7 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
   // handlers
   const updateSelectedTimer = useUpdateSelectedTimer(handlerPayload)
   useGetTimers(handlerPayload)
-  const addTimer = useAddTimer(handlerPayload)
+  const createTimer = useCreateTimer(handlerPayload)
   const updateTimer = useUpdateTimer(handlerPayload)
   const removeTimer = useRemoveTimer(handlerPayload)
 
@@ -48,7 +48,7 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
     selectedTimer: timersStore.selectedTimer,
     updateTimer,
     removeTimer,
-    addTimer,
+    createTimer,
     updateSelectedTimer,
   }
 }

@@ -13,11 +13,11 @@ export default function CreateTimerPage() {
   const navigate = useNavigate()
 
   const onSaveTimer = (payload) => {
-    timers.addTimer.exec(payload)
+    timers.createTimer.exec(payload)
   }
 
-  useOnTrue(timers.addTimer.result, () => {
-    navigate(`/timer/${timers.addTimer.result.id}`)
+  useOnTrue(timers.createTimer.result, () => {
+    navigate(`/timer/${timers.createTimer.result.id}`)
   })
 
   return (

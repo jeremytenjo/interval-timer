@@ -6,7 +6,7 @@ import useFirebase from '../../../../firebase/useFirebase'
 import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../../lib/components/feedback/useShowError'
 
-export default function useAddTimer({ userId, updateLocalTimers, localTimers }) {
+export default function useCreateTimer({ userId, updateLocalTimers, localTimers }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -25,17 +25,17 @@ export default function useAddTimer({ userId, updateLocalTimers, localTimers }) 
     return createdTimer
   }
 
-  const addTimer = useAsync(fetcher)
+  const createTimer = useAsync(fetcher)
 
-  useShowError(addTimer.error, 'Error adding timer, please try again')
+  useShowError(createTimer.error, 'Error creating timer, please try again')
 
   useEffect(() => {
-    if (addTimer.result) {
-      const updatedTimers = arrayDB.add(localTimers, { data: addTimer.result })
+    if (createTimer.result) {
+      const updatedTimers = arrayDB.add(localTimers, { data: createTimer.result })
       updateLocalTimers(updatedTimers)
       snackbar.show({ message: 'Timer saved' })
     }
-  }, [addTimer.result])
+  }, [createTimer.result])
 
-  return addTimer
+  return createTimer
 }

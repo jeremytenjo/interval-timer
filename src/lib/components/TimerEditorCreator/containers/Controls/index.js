@@ -1,10 +1,10 @@
 import BottomBar from '../../../BottomBar'
 import Button from '../../../Button'
 
-export default function Controls({ onSave }) {
+export default function Controls({ onSave, saveButtonText = 'Save' }) {
   return (
     <BottomBar>
-      <Button onClick={onSave}>Save</Button>
+      <Button onClick={onSave}>{saveButtonText}</Button>
     </BottomBar>
   )
 }
