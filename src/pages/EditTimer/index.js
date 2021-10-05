@@ -1,15 +1,14 @@
 import { useNavigate } from 'react-router'
+import useOnTrue from '@useweb/use-on-true'
 
 import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 import useTimers from '../../data/timers/useTimers'
-import useTimer from '../../globalState/useTimer'
 
 export default function EditTimerPage() {
   useAppBar({ title: 'Edit Timer' })
   const timers = useTimers()
-  const timer = useTimer()
   const navigate = useNavigate()
 
   const defaultName = timers?.selectedTimer?.name || ''
@@ -18,13 +17,12 @@ export default function EditTimerPage() {
   const repetitionsDefaultValue = timers?.selectedTimer?.repetitions || 1
   const setsDefaultValue = timers?.selectedTimer?.sets || 1
 
+  useOnTrue(timers.updateTimer.result, () => {
+    navigate(`/timer/${timers.updateTimer.result.id}`)
+  })
+
   const onSaveTimer = (payload) => {
     timers.updateTimer.exec({ id: timers.selectedTimer.id, data: payload })
-  }
-
-  const onStartTimer = (payload) => {
-    navigate(`/timer/${payload.id}`)
-    timer.startTimer()
   }
 
   const handleRemoveButtonClick = () => {
@@ -38,7 +36,6 @@ export default function EditTimerPage() {
       <TimerEditorCreator
         key={defaultName}
         onSaveTimer={onSaveTimer}
-        onStartTimer={onStartTimer}
         defaultName={defaultName}
         restDefaultValue={restDefaultValue}
         workoutDefaultValue={workoutDefaultValue}

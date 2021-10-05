@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router'
+import useOnTrue from '@useweb/use-on-true'
 
 import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
@@ -9,22 +10,19 @@ import useTimer from '../../globalState/useTimer'
 export default function CreateTimerPage() {
   useAppBar({ title: 'Create Timer' })
   const timers = useTimers()
-  const timer = useTimer()
   const navigate = useNavigate()
 
   const onSaveTimer = (payload) => {
     timers.addTimer.exec(payload)
   }
 
-  const onStartTimer = (payload) => {
-    timers.updateSelectedTimer(payload)
-    timer.startTimer(payload)
-    navigate(`/`)
-  }
+  useOnTrue(timers.addTimer.result, () => {
+    navigate(`/timer/${timers.addTimer.result.id}`)
+  })
 
   return (
     <Box sx={{ paddingBottom: '80px' }}>
-      <TimerEditorCreator onSaveTimer={onSaveTimer} onStartTimer={onStartTimer} />
+      <TimerEditorCreator onSaveTimer={onSaveTimer} />
     </Box>
   )
 }

@@ -10,7 +10,6 @@ import * as styles from './styles'
 import Controls from './containers/Controls'
 
 export default function TimerEditorCreator({
-  onStartTimer = () => null,
   onSaveTimer = () => null,
   defaultName = null,
   restDefaultValue = 1000,
@@ -95,10 +94,6 @@ export default function TimerEditorCreator({
     }
   }
 
-  const onStart = () => {
-    onStartTimer(payload)
-  }
-
   return (
     <Box sx={styles.wrapper} className='centerPage'>
       <TextField
@@ -142,7 +137,7 @@ export default function TimerEditorCreator({
 
       {onRemoveButtonClick && <DeleteTimer onDelete={onRemoveButtonClick} />}
 
-      <Controls onSave={onSave} onStart={onStart} />
+      <Controls onSave={onSave} />
     </Box>
   )
 }
