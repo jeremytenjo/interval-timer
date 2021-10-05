@@ -28,7 +28,7 @@ export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
       })
 
       updateLocalTimers(updatedTimers)
-      snackbar.show({ message: 'Timer deleted' })
+      snackbar.show({ message: 'Timer removed' })
 
       if (updatedTimers.length) {
         navigate(`/timer/${updatedTimers[0].id}`)
