@@ -37,8 +37,8 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
   }
 
   // handlers
-  const updateSelectedTimer = useUpdateSelectedTimer(handlerPayload)
   useGetTimers(handlerPayload)
+  const updateSelectedTimer = useUpdateSelectedTimer(handlerPayload)
   const createTimer = useCreateTimer(handlerPayload)
   const updateTimer = useUpdateTimer(handlerPayload)
   const removeTimer = useRemoveTimer(handlerPayload)

@@ -4,18 +4,18 @@ import useOnTrue from '@useweb/use-on-true'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
 import defaultSettings from '../../defaultSettings'
 
-export default function useFetchSettings({ settingsStore }) {
+export default function useGetSettings({ settingsStore }) {
   const fetcher = async () => {
     // TODO fetch settings from firebase
     return true
   }
 
-  const fetchSettings = useAsync(fetcher)
+  const getSettings = useAsync(fetcher)
 
-  useShowError(fetchSettings.error, 'Error fetching settings, please try again')
+  useShowError(getSettings.error, 'Error fetching settings, please try again')
 
-  useOnTrue(fetchSettings.result, () => {
-    settingsStore.setSettings(fetchSettings.result)
+  useOnTrue(getSettings.result, () => {
+    settingsStore.setSettings(getSettings.result)
   })
 
   // if not signed in use default settings
@@ -24,5 +24,5 @@ export default function useFetchSettings({ settingsStore }) {
 
   // fetch in firestore
 
-  return fetchSettings
+  return getSettings
 }

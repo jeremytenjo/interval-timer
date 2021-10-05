@@ -1,8 +1,10 @@
 import create from 'zustand'
 
+import useAuth from '../../../globalState/useAuth'
+
 import defaultSettings from './defaultSettings'
 import useSaveSettings from './handlers/useSaveSettings'
-import useFetchSettings from './handlers/useFetchSettings'
+import useGetSettings from './handlers/useGetSettings'
 import useUpdateSetting from './handlers/useUpdateSetting'
 
 const useSettingsStore = create((set) => ({
@@ -12,18 +14,19 @@ const useSettingsStore = create((set) => ({
 
 export default function useSettings() {
   const settingsStore = useSettingsStore()
+  const auth = useAuth()
 
   const payload = {
     settingsStore,
+    userId: auth?.user?.uid,
   }
 
+  useGetSettings(payload)
   const saveSettings = useSaveSettings(payload)
-  const fetchSettings = useFetchSettings(payload)
   const updateSetting = useUpdateSetting(payload)
 
   return {
     saveSettings,
-    fetchSettings,
     updateSetting,
   }
 }
