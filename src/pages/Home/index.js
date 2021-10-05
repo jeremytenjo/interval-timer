@@ -8,7 +8,7 @@ import TimerControls from './containers/TimerControls'
 
 export default function HomePage() {
   useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
-  const timers = useTimers()
+  const timers = useTimers({ navigateToLoadedTimerOnLoad: true })
 
   return (
     <section>

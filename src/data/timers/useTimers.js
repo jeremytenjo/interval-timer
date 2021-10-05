@@ -17,7 +17,7 @@ const useTimersStore = create((set) => ({
   setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
 }))
 
-export default function useTimers() {
+export default function useTimers({ navigateToLoadedTimerOnLoad } = {}) {
   const timersStore = useTimersStore()
   const auth = useAuth()
   const setLocalStorage = useLocalStorage({ action: 'set' })
@@ -33,6 +33,7 @@ export default function useTimers() {
     updateLocalTimers,
     selectedTimer: timersStore.selectedTimer,
     setSelectedTimer: timersStore.setSelectedTimer,
+    navigateToLoadedTimerOnLoad,
   }
 
   // handlers

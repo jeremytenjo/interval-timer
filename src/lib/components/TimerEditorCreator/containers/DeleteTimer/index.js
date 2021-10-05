@@ -25,7 +25,7 @@ export default function DeleteTimer({ onDelete = () => null }) {
         onConfirm={onConfirm}
         onCancel={hide}
         open={open}
-        title={`Delete ${timers.selectedTimer.name} timer?`}
+        title={`Delete ${timers.selectedTimer?.name} timer?`}
         confirmText='Delete'
       />
 
