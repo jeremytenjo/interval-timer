@@ -1,3 +1,5 @@
+import { useParams } from 'react-router'
+
 import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
 import CreateTimerPage from '../CreateTimer'
@@ -8,7 +10,12 @@ import TimerControls from './containers/TimerControls'
 
 export default function HomePage() {
   useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
-  const timers = useTimers({ navigateToLoadedTimerOnLoad: true })
+  const timers = useTimers()
+  const params = useParams()
+
+  console.log(params)
+  // TODO redirest
+  // navigate(`/timer/${getFierstoreTimers.result[0].id}`)
 
   return (
     <section>

@@ -18,6 +18,7 @@ export default function SoundSettingsUi({
   onVoiceRestSoundSelected,
   onToneRestSoundSelected,
 }) {
+  // TODO add prop handlers
   return (
     <Box sx={styles.wrapper}>
       <Accordion>

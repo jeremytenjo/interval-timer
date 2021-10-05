@@ -14,6 +14,7 @@ const useTimerStore = create((set) => ({
   totalRestTime: 0,
   trackedRepetitions: 0,
   trackedSets: 0,
+  // TODO set to workout and fix
   type: 'Rest',
   elapsedTime: 0,
 
