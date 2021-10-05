@@ -4,7 +4,6 @@ import Slide from '@mui/material/Slide'
 import Snackbar from '..'
 import Alert from '../../Alert'
 import gtag from '../../../utils/analytics/gtag'
-
 export const SnackBarContext = createContext(null)
 
 export const SnackBarProvider = ({ children }) => {
@@ -44,7 +43,12 @@ export const SnackBarProvider = ({ children }) => {
         onClose={hide}
         key={vertical + horizontal}
         severity={severity}
-        sx={{ bottom: '80px' }}
+        sx={{
+          bottom: {
+            xs: '80px',
+            ms: '80px',
+          },
+        }}
         TransitionComponent={Slide}
         autoHideDuration={5000}
       >
