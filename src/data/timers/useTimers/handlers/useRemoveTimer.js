@@ -2,9 +2,9 @@ import { doc, deleteDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
 
-import useFirebase from '../../../firebase/useFirebase'
-import useShowError from '../../../lib/components/feedback/useShowError'
-import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
+import useFirebase from '../../../../firebase/useFirebase'
+import useShowError from '../../../../lib/components/feedback/useShowError'
+import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
 
 export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
   const firebase = useFirebase()

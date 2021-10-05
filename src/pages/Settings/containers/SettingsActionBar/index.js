@@ -1,4 +1,4 @@
-import useSettings from '../../../../globalState/useSettings'
+import useSettings from '../../../../data/settings/useSettings'
 
 import SettingsActionBarUi from './SettingsActionBarUi'
 

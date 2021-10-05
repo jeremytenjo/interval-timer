@@ -1,4 +1,4 @@
-import useTimer from '../../../globalState/useTimer'
+import useTimer from '../../../../globalState/useTimer'
 
 export default function useUpdateSelectedTimer({
   localTimers,

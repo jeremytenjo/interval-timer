@@ -13,12 +13,17 @@ import Text from '../../../../../../lib/components/Text'
 import * as styles from './styles.js'
 
 export default function SoundSettingsUi({
-  onVoiceWorkoutSoundSelected,
-  onToneWorkoutSoundSelected,
-  onVoiceRestSoundSelected,
-  onToneRestSoundSelected,
+  onWorkoutSoundSelectionChange,
+  onRestSoundSelectionChange,
 }) {
-  // TODO add prop handlers
+  const handleOnWorkoutSoundSelectionChange = (_, value) => {
+    onWorkoutSoundSelectionChange(value)
+  }
+
+  const handleOnRestSoundSelectionChange = (_, value) => {
+    onRestSoundSelectionChange(value)
+  }
+
   return (
     <Box sx={styles.wrapper}>
       <Accordion>
@@ -29,7 +34,11 @@ export default function SoundSettingsUi({
         <AccordionDetails sx={{ display: 'grid', justifyContent: 'start' }}>
           <FormControl component='fieldset'>
             <FormLabel component='legend'>Workout Sound</FormLabel>
-            <RadioGroup aria-label='gender' name='row-radio-buttons-group'>
+            <RadioGroup
+              aria-label='workout sound'
+              name='row-radio-buttons-group'
+              onChange={handleOnWorkoutSoundSelectionChange}
+            >
               <FormControlLabel
                 value='voice'
                 control={<Radio />}
@@ -38,7 +47,7 @@ export default function SoundSettingsUi({
                 sx={{ textAlign: 'left' }}
               />
               <FormControlLabel
-                value='male'
+                value='beep'
                 control={<Radio />}
                 label='Beep'
                 labelPlacement='start'
@@ -49,7 +58,11 @@ export default function SoundSettingsUi({
 
           <FormControl component='fieldset'>
             <FormLabel component='legend'>Rest Sound</FormLabel>
-            <RadioGroup aria-label='gender' name='row-radio-buttons-group'>
+            <RadioGroup
+              aria-label='rest sound'
+              name='row-radio-buttons-group'
+              onChange={handleOnRestSoundSelectionChange}
+            >
               <FormControlLabel
                 value='voice'
                 control={<Radio />}
@@ -58,7 +71,7 @@ export default function SoundSettingsUi({
                 sx={{ textAlign: 'left' }}
               />
               <FormControlLabel
-                value='male'
+                value='beep'
                 control={<Radio />}
                 label='Beep'
                 labelPlacement='start'

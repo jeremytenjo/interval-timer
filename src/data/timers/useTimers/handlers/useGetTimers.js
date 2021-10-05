@@ -3,9 +3,9 @@ import useAsync from '@useweb/use-async'
 import create from 'zustand'
 import useOnTrue from '@useweb/use-on-true'
 
-import useFirebase from '../../../firebase/useFirebase'
-import useShowError from '../../../lib/components/feedback/useShowError'
-import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
+import useFirebase from '../../../../firebase/useFirebase'
+import useShowError from '../../../../lib/components/feedback/useShowError'
+import useLocalStorage from '../../../../lib/utils/storage/useLocalStorage'
 
 const useGetTimersStore = create((set) => ({
   firestoreCalled: false,

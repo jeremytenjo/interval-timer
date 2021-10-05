@@ -1,7 +1,7 @@
 import create from 'zustand'
 
-import useAuth from '../../globalState/useAuth'
-import useLocalStorage from '../../lib/utils/storage/useLocalStorage'
+import useAuth from '../../../globalState/useAuth'
+import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
 
 import useGetTimers from './handlers/useGetTimers'
 import useAddTimer from './handlers/useAddTimer'

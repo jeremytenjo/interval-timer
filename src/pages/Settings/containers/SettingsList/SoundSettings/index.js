@@ -1,15 +1,14 @@
+import useSettings from '../../../../../data/settings/useSettings'
+
 import SoundSettingsUi from './SoundSettingsUi'
-import useSoundsSettings from './SoundSettingsUi/useSoundsSettings'
 
 export default function SoundSettings() {
-  const soundSettings = useSoundsSettings()
+  const settings = useSettings()
 
   return (
     <SoundSettingsUi
-      onVoiceWorkoutSoundSelected={soundSettings.onVoiceWorkoutSoundSelected}
-      onToneWorkoutSoundSelected={soundSettings.onToneWorkoutSoundSelected}
-      onVoiceRestSoundSelected={soundSettings.onVoiceRestSoundSelected}
-      onToneRestSoundSelected={soundSettings.onToneRestSoundSelected}
+      onWorkoutSoundSelectionChange={settings.udpateWorkoutSoundSelection}
+      onRestSoundSelectionChange={settings.updateRestSoundSelection}
     />
   )
 }
