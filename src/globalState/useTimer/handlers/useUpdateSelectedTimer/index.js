@@ -15,9 +15,9 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
     timerStore.setTotalWorkoutTime(newSelectedTimer.workout)
     timerStore.setTotalRestTime(newSelectedTimer.rest)
 
-    resetTimer()
-
     timerStore.setSelectedTimer(newSelectedTimer)
+
+    resetTimer()
 
     if (location.pathname !== redirectUrl) {
       navigate(redirectUrl)
