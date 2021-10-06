@@ -7,7 +7,7 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
-export default function useCreate({ userId, updateData, data, collectionName }) {
+export default function useCreate({ userId, updateData, data: allData, collectionName }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -37,7 +37,9 @@ export default function useCreate({ userId, updateData, data, collectionName }) 
       }
     }
 
-    return createdItem
+    const updatedData = arrayDB.add(allData, { data: createdItem })
+
+    return { createdItem, updatedData }
   }
 
   const create = useAsync(fetcher)
@@ -48,9 +50,7 @@ export default function useCreate({ userId, updateData, data, collectionName }) 
   )
 
   useOntrue(create.result, () => {
-    const updatedTimers = arrayDB.add(data, { data: create.result })
-
-    updateData(updatedTimers)
+    updateData(create.result.updatedData)
     snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
   })
 

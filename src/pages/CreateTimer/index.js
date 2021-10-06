@@ -16,7 +16,7 @@ export default function CreateTimerPage() {
   }
 
   useOnTrue(timers.create.result, () => {
-    timer.setSelectedTimer(timers.create.result)
+    timer.setSelectedTimer(timers.create.result.createdItem)
   })
 
   return (
