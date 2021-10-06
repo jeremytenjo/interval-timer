@@ -36,7 +36,7 @@
     "@useweb/array-db": "0.0.1",
     "@useweb/capitalize": "0.0.1",
     "@useweb/remove-last-character": "0.0.1",
-    "@useweb/use-async": "0.0.1",
+    "@useweb/use-async": "^0.1.0",
     "@useweb/use-on-true": "0.0.1",
     "firebase": "^9.0.0",
     "format-duration": "^1.4.0",
