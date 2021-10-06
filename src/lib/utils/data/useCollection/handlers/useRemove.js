@@ -22,16 +22,16 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
     return id
   }
 
-  const removeTimer = useAsync(fetcher)
+  const remove = useAsync(fetcher)
 
   useShowError(
-    removeTimer.error,
+    remove.error,
     `Error removing ${collectionName.singularized}, please try again`,
   )
 
-  useOnTrue(removeTimer.result, () => {
+  useOnTrue(remove.result, () => {
     const removedItem = arrayDB.remove(data, {
-      id: removeTimer.result,
+      id: remove.result,
     })
 
     updateData(removedItem)
@@ -44,5 +44,5 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
     }
   })
 
-  return removeTimer
+  return remove
 }
