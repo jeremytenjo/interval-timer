@@ -1,4 +1,7 @@
+import capitalize from '@useweb/capitalize'
+
 import useAuth from '../../../../globalState/useAuth'
+import singularize from '../../string/singularize'
 
 import useGet from './handlers/useGet'
 import useCreate from './handlers/useCreate'
@@ -13,7 +16,12 @@ export default function useCollection(
 
   const handlerPayload = {
     userId: auth?.user?.uid,
-    collectionName,
+    collectionName: {
+      raw: collectionName,
+      singularized: singularize(collectionName),
+      capitalized: capitalize(collectionName),
+      capitalizedSingularized: capitalize(singularize(collectionName)),
+    },
     showLocalStorageDataIfNoUserSignedIn,
   }
 

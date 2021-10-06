@@ -16,7 +16,7 @@ export default function useGet({
   const firestoreFetcher = async () => {
     const data = []
     const q = query(
-      collection(firebase.db, collectionName),
+      collection(firebase.db, collectionName.raw),
       where('userId', '==', userId),
     )
     const querySnapshot = await getDocs(q)
@@ -31,11 +31,11 @@ export default function useGet({
     return data
   }
 
-  const swrKey = () => (userId ? collectionName : null)
+  const swrKey = () => (userId ? collectionName.raw : null)
 
   const dataFetch = useSWRImmutable(swrKey, firestoreFetcher)
-  const getLocalStorageData = useLocalStorage({ action: 'get', key: collectionName })
-  const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName })
+  const getLocalStorageData = useLocalStorage({ action: 'get', key: collectionName.raw })
+  const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
   useOnTrue(!dataFetch.data, () => {
     getLocalStorageData.exec()
@@ -45,7 +45,7 @@ export default function useGet({
     setLocalStorageData.exec({ value: dataFetch.data })
   })
 
-  useShowError(dataFetch.error, `Error fetching ${collectionName}, please try again.`)
+  useShowError(dataFetch.error, `Error fetching ${collectionName.raw}, please try again.`)
 
   const update = (newData) => {
     setLocalStorageData.exec({ value: newData })

@@ -26,7 +26,10 @@ export default function useCreate({ userId, updateData, data, collectionName }) 
       }
     } else {
       // update firestore
-      const docRef = await addDoc(collection(firebase.db, collectionName), createdItem)
+      const docRef = await addDoc(
+        collection(firebase.db, collectionName.raw),
+        createdItem,
+      )
 
       createdItem = {
         ...createdItem,
@@ -39,12 +42,15 @@ export default function useCreate({ userId, updateData, data, collectionName }) 
 
   const create = useAsync(fetcher)
 
-  useShowError(create.error, 'Error creating timer, please try again')
+  useShowError(
+    create.error,
+    `Error creating ${collectionName.singularized}, please try again`,
+  )
 
   useOntrue(create.result, () => {
     const updatedTimers = arrayDB.add(data, { data: create.result })
     updateData(updatedTimers)
-    snackbar.show({ message: 'Timer saved' })
+    snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
   })
 
   return create

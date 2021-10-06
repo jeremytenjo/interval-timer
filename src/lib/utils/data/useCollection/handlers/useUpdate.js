@@ -23,7 +23,7 @@ export default function useUpdate({ data, updateData, userId, collectionName }) 
     if (!userId) return updateItem
     else {
       // update firestore
-      const docRef = doc(firebase.db, collectionName, id)
+      const docRef = doc(firebase.db, collectionName.raw, id)
       await updateDoc(docRef, updateItem)
 
       return updateItem
@@ -32,7 +32,10 @@ export default function useUpdate({ data, updateData, userId, collectionName }) 
 
   const update = useAsync(fetcher)
 
-  useShowError(update.error, 'Error updating timer, please try again')
+  useShowError(
+    update.error,
+    `Error updating ${collectionName.singularized}, please try again`,
+  )
 
   useOnTrue(update.result, () => {
     const updateItems = arrayDB.update(data, {
@@ -41,7 +44,7 @@ export default function useUpdate({ data, updateData, userId, collectionName }) 
     })
 
     updateData(updateItems)
-    snackbar.show({ message: 'Timer updated' })
+    snackbar.show({ message: `${collectionName.capitalizedSingularized} updated` })
   })
 
   return update

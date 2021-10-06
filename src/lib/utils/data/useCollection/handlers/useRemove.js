@@ -16,7 +16,7 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
 
   const fetcher = async ({ id }) => {
     if (userId) {
-      await deleteDoc(doc(firebase.db, collectionName, id))
+      await deleteDoc(doc(firebase.db, collectionName.raw, id))
     }
 
     return id
@@ -24,7 +24,10 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
 
   const removeTimer = useAsync(fetcher)
 
-  useShowError(removeTimer.error, 'Error removing timer, please try again')
+  useShowError(
+    removeTimer.error,
+    `Error removing ${collectionName.singularized}, please try again`,
+  )
 
   useOnTrue(removeTimer.result, () => {
     const removedItem = arrayDB.remove(data, {
@@ -32,7 +35,7 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
     })
 
     updateData(removedItem)
-    snackbar.show({ message: 'Timer removed' })
+    snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
 
     if (removedItem.length) {
       timer.setSelectedTimer(removedItem[0])
