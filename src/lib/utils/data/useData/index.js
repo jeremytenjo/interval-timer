@@ -10,7 +10,6 @@ export default function useData({ key, fetcher }) {
   const getLocalStorageData = useLocalStorage({ action: 'get', key })
   const setLocalStorageData = useLocalStorage({ action: 'set', key })
   const auth = useAuth()
-  console.log(auth)
 
   useOnTrue(!dataFetch.data, () => {
     getLocalStorageData.exec()
@@ -28,7 +27,10 @@ export default function useData({ key, fetcher }) {
   }
 
   const isFetching = !dataFetch.data && !dataFetch.error
-  const data = !dataFetch.data && isFetching ? getLocalStorageData.result : dataFetch.data
+  const data =
+    (!dataFetch.data && isFetching) || !auth.user
+      ? getLocalStorageData.result
+      : dataFetch.data
   const error = dataFetch.error
 
   return {
