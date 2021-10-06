@@ -1,5 +1,6 @@
 import { doc, deleteDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
+import useOnTrue from '@useweb/use-on-true'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../firebase/useFirebase'
@@ -23,22 +24,20 @@ export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
 
   useShowError(removeTimer.error, 'Error removing timer, please try again')
 
-  useEffect(() => {
-    if (removeTimer.result) {
-      const updatedTimers = arrayDB.remove(localTimers, {
-        id: removeTimer.result,
-      })
+  useOnTrue(removeTimer.result, () => {
+    const updatedTimers = arrayDB.remove(localTimers, {
+      id: removeTimer.result,
+    })
 
-      updateLocalTimers(updatedTimers)
-      snackbar.show({ message: 'Timer removed' })
+    updateLocalTimers(updatedTimers)
+    snackbar.show({ message: 'Timer removed' })
 
-      if (updatedTimers.length) {
-        timer.setSelectedTimer(updatedTimers[0])
-      } else {
-        navigate('/create-timer')
-      }
+    if (updatedTimers.length) {
+      timer.setSelectedTimer(updatedTimers[0])
+    } else {
+      navigate('/create-timer')
     }
-  }, [removeTimer.result])
+  })
 
   return removeTimer
 }
