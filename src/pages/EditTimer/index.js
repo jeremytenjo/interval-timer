@@ -18,7 +18,6 @@ export default function EditTimerPage() {
   const setsDefaultValue = timer?.selectedTimer?.sets || 1
 
   useOnTrue(timers.updateTimer.result, () => {
-    console.log('1')
     timer.setSelectedTimer(timers.updateTimer.result)
   })
 
