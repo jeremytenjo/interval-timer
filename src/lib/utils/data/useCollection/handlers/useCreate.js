@@ -7,7 +7,13 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
-export default function useCreate({ userId, updateData, data: allData, collectionName }) {
+export default function useCreate({
+  userId,
+  updateData,
+  data: allData,
+  collectionName,
+  onCreate,
+}) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -38,7 +44,11 @@ export default function useCreate({ userId, updateData, data: allData, collectio
     }
 
     const updatedData = arrayDB.add(allData, { data: createdItem })
-    return { createdItem, updatedData, disableSnackbar }
+    const returnData = { createdItem, updatedData, disableSnackbar }
+
+    onCreate && onCreate(returnData)
+
+    return returnData
   }
 
   const create = useAsync(fetcher)

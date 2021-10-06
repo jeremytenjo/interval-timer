@@ -10,6 +10,7 @@ export default function useGet({
   userId,
   collectionName,
   showLocalStorageDataIfNoUserSignedIn,
+  onGet,
 }) {
   const firebase = useFirebase()
 
@@ -28,6 +29,7 @@ export default function useGet({
       })
     })
 
+    onGet && onGet(data)
     return data
   }
 

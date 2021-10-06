@@ -7,7 +7,13 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 
-export default function useRemove({ data, updateData, userId, collectionName }) {
+export default function useRemove({
+  data,
+  updateData,
+  userId,
+  collectionName,
+  onRemove,
+}) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -20,7 +26,11 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
       await deleteDoc(doc(firebase.db, collectionName.raw, id))
     }
 
-    return { removedItemId: id, remainingItems }
+    const returnData = { removedItemId: id, remainingItems }
+
+    onRemove && onRemove(returnData)
+
+    return returnData
   }
 
   const remove = useAsync(fetcher)

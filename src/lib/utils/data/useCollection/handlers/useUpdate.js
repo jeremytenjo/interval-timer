@@ -7,7 +7,13 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
-export default function useUpdate({ data: allData, updateData, userId, collectionName }) {
+export default function useUpdate({
+  data: allData,
+  updateData,
+  userId,
+  collectionName,
+  onUpdate,
+}) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -28,7 +34,11 @@ export default function useUpdate({ data: allData, updateData, userId, collectio
       await updateDoc(doc(firebase.db, collectionName.raw, id), updatedItem)
     }
 
-    return { updatedItem, updatedItems }
+    const returnData = { updatedItem, updatedItems }
+
+    onUpdate && onUpdate(returnData)
+
+    return returnData
   }
 
   const update = useAsync(fetcher)

@@ -10,7 +10,14 @@ import useUpdate from './handlers/useUpdate'
 
 export default function useCollection(
   collectionName,
-  { showLocalStorageDataIfNoUserSignedIn = true, defaultData } = {},
+  {
+    showLocalStorageDataIfNoUserSignedIn = true,
+    defaultData,
+    onGet,
+    onCreate,
+    onRemove,
+    onUpdate,
+  } = {},
 ) {
   const auth = useAuth()
 
@@ -24,6 +31,10 @@ export default function useCollection(
     },
     showLocalStorageDataIfNoUserSignedIn,
     defaultData,
+    onGet,
+    onCreate,
+    onRemove,
+    onUpdate,
   }
 
   const get = useGet(handlerPayload)
@@ -32,8 +43,8 @@ export default function useCollection(
   handlerPayload.data = get.data
 
   const create = useCreate(handlerPayload)
-  const remove = useRemove(handlerPayload)
   const update = useUpdate(handlerPayload)
+  const remove = useRemove(handlerPayload)
 
   return {
     get,
