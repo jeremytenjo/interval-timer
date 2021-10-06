@@ -8,7 +8,7 @@ import useShowError from '../../../../lib/components/feedback/useShowError'
 import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
 import useTimer from '../../../../globalState/useTimer'
 
-export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
+export default function useRemoveTimer({ timers, updateTimers }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
   const navigate = useNavigate()
@@ -25,11 +25,11 @@ export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
   useShowError(removeTimer.error, 'Error removing timer, please try again')
 
   useOnTrue(removeTimer.result, () => {
-    const updatedTimers = arrayDB.remove(localTimers, {
+    const updatedTimers = arrayDB.remove(timers, {
       id: removeTimer.result,
     })
 
-    updateLocalTimers(updatedTimers)
+    updateTimers(updatedTimers)
     snackbar.show({ message: 'Timer removed' })
 
     if (updatedTimers.length) {

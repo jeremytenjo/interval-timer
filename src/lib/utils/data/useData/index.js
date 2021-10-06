@@ -5,15 +5,16 @@ import useShowError from '../../../components/feedback/useShowError'
 export default function useData({ key, fetcher }) {
   // TODO get data from local storage
   // TODO fetch dataFetch after local storage get
-  //   const getLocalData = useLocalStorage({ action: 'get', key })
+  // const setLocalStorage = useLocalStorage({ action: 'set' })
+
+  // TODO const getLocalData = useLocalStorage({ action: 'get', key })
 
   const dataFetch = useSWRImmutable(key, fetcher)
-
-  console.log(dataFetch)
 
   useShowError(dataFetch.error, `Error fetching ${key}, please try again.`)
 
   const update = (newData) => {
+    // TODO setLocalStorage.exec({ key: 'timers', value: updatedTimers })
     dataFetch.mutate(newData)
   }
 

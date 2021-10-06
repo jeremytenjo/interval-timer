@@ -7,7 +7,7 @@ import useFirebase from '../../../../firebase/useFirebase'
 import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../../lib/components/feedback/useShowError'
 
-export default function useUpdateTimer({ localTimers, updateLocalTimers }) {
+export default function useUpdateTimer({ timers, updateTimers }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -29,12 +29,12 @@ export default function useUpdateTimer({ localTimers, updateLocalTimers }) {
   useShowError(udpateTimer.error, 'Error updating timer, please try again')
 
   useOnTrue(udpateTimer.result, () => {
-    const updatedTimers = arrayDB.update(localTimers, {
+    const updatedTimers = arrayDB.update(timers, {
       data: udpateTimer.result,
       id: udpateTimer.result.id,
     })
 
-    updateLocalTimers(updatedTimers)
+    updateTimers(updatedTimers)
     snackbar.show({ message: 'Timer saved' })
   })
 

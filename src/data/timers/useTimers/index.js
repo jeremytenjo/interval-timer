@@ -1,5 +1,4 @@
 import useAuth from '../../../globalState/useAuth'
-import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
 import useTimer from '../../../globalState/useTimer'
 
 import useGetTimers from './handlers/useGetTimers'
@@ -10,23 +9,21 @@ import useRemoveTimer from './handlers/useRemoveTimer'
 export default function useTimers() {
   const timer = useTimer()
   const auth = useAuth()
-  const setLocalStorage = useLocalStorage({ action: 'set' })
 
-  const updateLocalTimers = (updatedTimers) => {
-    setLocalStorage.exec({ key: 'timers', value: updatedTimers })
-    // timersStore.setTimers(updatedTimers)
-  }
+  const userId = auth?.user?.uid
+
+  const getTimers = useGetTimers({ userId })
 
   const handlerPayload = {
-    userId: auth?.user?.uid,
-    updateLocalTimers,
+    userId,
     selectedTimer: timer.selectedTimer,
+    updateTimers: getTimers.update,
+    timers: getTimers.data,
   }
 
-  const getTimers = useGetTimers(handlerPayload)
   const createTimer = useCreateTimer(handlerPayload)
-  const updateTimer = useUpdateTimer(handlerPayload)
   const removeTimer = useRemoveTimer(handlerPayload)
+  const updateTimer = useUpdateTimer(handlerPayload)
 
   return {
     data: getTimers.data,
