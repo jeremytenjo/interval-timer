@@ -20,7 +20,7 @@ export default function useSelectedTimer() {
     setSelectedTimer: selectedTimerStore.setSelectedTimer,
   }
 
-  // useUpdateSelectedTimer(handlerPayload)
+  useUpdateSelectedTimer(handlerPayload)
 
   const setSelectedTimer = (newValue) => {
     selectedTimerStore.setSelectedTimer(newValue)
