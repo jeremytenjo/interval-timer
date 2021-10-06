@@ -1,10 +1,10 @@
 import Button from '../../../Button'
 import ConfirmationDialog from '../../../Dialog/ConfirmationDialog'
-import useSelectedTimer from '../../../../../globalState/useSelectedTimer'
+import useTimer from '../../../../../globalState/useTimer'
 
 export default function DeleteTimer({ onDelete = () => null }) {
   const [open, setOpen] = useState(false)
-  const selectedTimer = useSelectedTimer()
+  const timer = useTimer()
 
   const show = () => {
     setOpen(true)
@@ -25,7 +25,7 @@ export default function DeleteTimer({ onDelete = () => null }) {
         onConfirm={onConfirm}
         onCancel={hide}
         open={open}
-        title={`Delete ${selectedTimer.selectedTimer?.name} timer?`}
+        title={`Delete ${timer.selectedTimer?.name} timer?`}
         confirmText='Delete'
       />
 

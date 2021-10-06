@@ -4,30 +4,31 @@ import Box from '../../lib/components/Box'
 import useAppBar from '../../globalState/useAppBar'
 import TimerEditorCreator from '../../lib/components/TimerEditorCreator'
 import useTimers from '../../data/timers/useTimers'
-import useSelectedTimer from '../../globalState/useSelectedTimer'
+import useTimer from '../../globalState/useTimer'
 
 export default function EditTimerPage() {
   useAppBar({ title: 'Edit Timer' })
   const timers = useTimers()
-  const selectedTimer = useSelectedTimer()
+  const timer = useTimer()
 
-  const defaultName = selectedTimer?.selectedTimer?.name || ''
-  const restDefaultValue = selectedTimer?.selectedTimer?.rest * 1000 || 1000
-  const workoutDefaultValue = selectedTimer?.selectedTimer?.workout * 1000 || 1000
-  const repetitionsDefaultValue = selectedTimer?.selectedTimer?.repetitions || 1
-  const setsDefaultValue = selectedTimer?.selectedTimer?.sets || 1
+  const defaultName = timer?.selectedTimer?.name || ''
+  const restDefaultValue = timer?.selectedTimer?.rest * 1000 || 1000
+  const workoutDefaultValue = timer?.selectedTimer?.workout * 1000 || 1000
+  const repetitionsDefaultValue = timer?.selectedTimer?.repetitions || 1
+  const setsDefaultValue = timer?.selectedTimer?.sets || 1
 
   useOnTrue(timers.updateTimer.result, () => {
-    selectedTimer.setSelectedTimer(timers.updateTimer.result)
+    console.log('1')
+    timer.setSelectedTimer(timers.updateTimer.result)
   })
 
   const onSaveTimer = (payload) => {
-    timers.updateTimer.exec({ id: selectedTimer.selectedTimer.id, data: payload })
+    timers.updateTimer.exec({ id: timer.selectedTimer.id, data: payload })
   }
 
   const handleRemoveButtonClick = () => {
-    if (selectedTimer?.selectedTimer?.id) {
-      timers.removeTimer.exec({ id: selectedTimer?.selectedTimer?.id })
+    if (timer?.selectedTimer?.id) {
+      timers.removeTimer.exec({ id: timer?.selectedTimer?.id })
     }
   }
 

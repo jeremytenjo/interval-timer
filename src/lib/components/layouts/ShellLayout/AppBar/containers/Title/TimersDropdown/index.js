@@ -5,14 +5,12 @@ import Box from '../../../../../../Box'
 import Popover from '../../../../../../Popover'
 import useTimers from '../../../../../../../../data/timers/useTimers'
 import useTimer from '../../../../../../../../globalState/useTimer'
-import useSelectedTimer from '../../../../../../../../globalState/useSelectedTimer'
 
 import * as styles from './styles'
 
 export default function TimersDropdown() {
   const timers = useTimers()
   const timer = useTimer()
-  const selectedTimer = useSelectedTimer()
 
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -31,8 +29,7 @@ export default function TimersDropdown() {
 
   const onItemClick = (selectedItem) => {
     handleClose()
-    selectedTimer.setSelectedTimer(selectedItem)
-    timer.resetTimer()
+    timer.setSelectedTimer(selectedItem)
   }
 
   return (
@@ -57,7 +54,7 @@ export default function TimersDropdown() {
           }}
           component='h1'
         >
-          {selectedTimer?.selectedTimer?.name || 'Timers'}
+          {timer.selectedTimer?.name || 'Timers'}
         </Box>
       </Button>
 

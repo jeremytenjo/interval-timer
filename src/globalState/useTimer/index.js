@@ -5,9 +5,13 @@ import useNextRepetition from './handlers/useNextRepetition'
 import handleResetTimer from './handlers/handleResetTimer'
 import handleStartTimer from './handlers/handleStartTimer'
 import handleStopTimer from './handlers/handleStopTimer'
-import useUpdateTimer from './handlers/useUpdateTimer'
+import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 
 const useTimerStore = create((set) => ({
+  // selected timer
+  selectedTimer: false,
+  setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
+
   // timer info
   totalRepetitions: 0,
   totalSets: 0,
@@ -77,7 +81,7 @@ export default function useTimer() {
 
   const startNextRepetition = useNextRepetition({ ...handlerPayload, resetTimer })
 
-  useUpdateTimer(handlerPayload)
+  useUpdateSelectedTimer({ ...handlerPayload, resetTimer })
 
   return {
     repetitions,

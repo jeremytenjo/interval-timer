@@ -2,7 +2,7 @@ import create from 'zustand'
 
 import useAuth from '../../../globalState/useAuth'
 import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
-import useSelectedTimer from '../../../globalState/useSelectedTimer'
+import useTimer from '../../../globalState/useTimer'
 
 import useGetTimers from './handlers/useGetTimers'
 import useCreateTimer from './handlers/useCreateTimer'
@@ -16,7 +16,7 @@ const useTimersStore = create((set) => ({
 
 export default function useTimers() {
   const timersStore = useTimersStore()
-  const selectedTimer = useSelectedTimer()
+  const timer = useTimer()
   const auth = useAuth()
   const setLocalStorage = useLocalStorage({ action: 'set' })
 
@@ -29,7 +29,7 @@ export default function useTimers() {
     userId: auth?.user?.uid,
     localTimers: timersStore.timers,
     updateLocalTimers,
-    selectedTimer: selectedTimer.selectedTimer,
+    selectedTimer: timer.selectedTimer,
   }
 
   useGetTimers(handlerPayload)
