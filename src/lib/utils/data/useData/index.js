@@ -5,7 +5,11 @@ import useShowError from '../../../components/feedback/useShowError'
 import useLocalStorage from '../../storage/useLocalStorage'
 import useAuth from '../../../../globalState/useAuth'
 
-export default function useData({ key, fetcher }) {
+export default function useData({
+  key,
+  fetcher,
+  showLocalStorageDataIfNoUserSignedIn = true,
+}) {
   const dataFetch = useSWRImmutable(key, fetcher)
   const getLocalStorageData = useLocalStorage({ action: 'get', key })
   const setLocalStorageData = useLocalStorage({ action: 'set', key })
@@ -28,7 +32,8 @@ export default function useData({ key, fetcher }) {
 
   const isFetching = !dataFetch.data && !dataFetch.error
   const data =
-    (!dataFetch.data && isFetching) || !auth.user
+    (!dataFetch.data && isFetching) ||
+    (showLocalStorageDataIfNoUserSignedIn && !auth.user)
       ? getLocalStorageData.result
       : dataFetch.data
   const error = dataFetch.error
