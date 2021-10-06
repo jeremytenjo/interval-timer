@@ -6,8 +6,9 @@ import useVolume from './handlers/useVolume'
 
 const useTimerSoundStore = create((set) => ({
   workoutSoundUrl: workoutMp3,
-  restSoundUrl: workoutMp3,
   setWorkoutSoundUrl: (newValue) => set(() => ({ workoutSoundUrl: newValue })),
+
+  restSoundUrl: workoutMp3,
   setRestSoundUrl: (newValue) => set(() => ({ restSoundUrl: newValue })),
 }))
 
