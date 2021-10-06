@@ -58,7 +58,7 @@ export default function TimersDropdown() {
         </Box>
       </Button>
 
-      {timers.data?.length ? (
+      {timers.get.data?.length ? (
         <Popover
           anchorOrigin={{
             vertical: 'bottom',
@@ -73,7 +73,7 @@ export default function TimersDropdown() {
           anchorEl={anchorEl}
           onClose={handleClose}
         >
-          {timers.data.map((timer) => (
+          {timers.get.data.map((timer) => (
             <MenuItem key={timer.id} sx={styles.items} onClick={() => onItemClick(timer)}>
               {timer.name}
             </MenuItem>

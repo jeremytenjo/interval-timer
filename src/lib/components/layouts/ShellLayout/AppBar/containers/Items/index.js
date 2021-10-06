@@ -15,7 +15,7 @@ export default function Items() {
   const timers = useTimers()
 
   const onEditClick = () => {
-    const editTimerId = timers?.selectedTimer?.id || timers.data[0]?.id
+    const editTimerId = timers?.selectedTimer?.id || timers.get.data[0]?.id
     const editTimerUrl = '/edit-timer/' + editTimerId
 
     if (editTimerId) {
@@ -25,7 +25,7 @@ export default function Items() {
 
   return (
     <Box component='nav' sx={styles.wrapper}>
-      {!!timers?.data?.length && !appBar.title && (
+      {!!timers?.get?.data?.length && !appBar.title && (
         <IconButton onClick={onEditClick}>
           <Edit sx={{ width: '18px' }} />
         </IconButton>

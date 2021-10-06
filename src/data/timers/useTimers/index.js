@@ -26,7 +26,7 @@ export default function useTimers() {
   const update = useUpdateTimer(handlerPayload)
 
   return {
-    data: get.data,
+    get,
     update,
     remove,
     create,
