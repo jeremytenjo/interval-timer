@@ -1,6 +1,6 @@
 import create from 'zustand'
 
-import useLocalStorage from '../../../../lib/utils/storage/useLocalStorage'
+import useLocalStorage from '../../../../../../lib/utils/storage/useLocalStorage'
 
 const useVolumeStore = create((set) => ({
   volume: 50,

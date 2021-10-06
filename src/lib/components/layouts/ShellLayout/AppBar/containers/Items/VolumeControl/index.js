@@ -1,20 +1,20 @@
-import useVolume from '../../../../../../../../globalState/useTimerSound/handlers/useVolume'
+import useTimer from '../../../../../../../../globalState/useTimer'
 
 import VolumeControlUi from './ui'
 
 export default function VolumeControl() {
-  const volume = useVolume()
+  const timer = useTimer()
 
   const updateVolume = (newValue) => {
-    volume.updateVolume(newValue)
+    timer.volume.updateVolume(newValue)
   }
 
   const mute = () => {
-    volume.updateVolume(0)
+    timer.volume.updateVolume(0)
   }
 
   const setToMaxVolume = () => {
-    volume.updateVolume(100)
+    timer.volume.updateVolume(100)
   }
 
   return (
@@ -22,9 +22,9 @@ export default function VolumeControl() {
       onVolumeChange={updateVolume}
       onMute={mute}
       onSetToMaxVolume={setToMaxVolume}
-      isMuted={volume.isMuted}
-      defaultValue={volume.volume}
-      updateVolume={volume.updateVolume}
+      isMuted={timer.volume.isMuted}
+      defaultValue={timer.volume.volume}
+      updateVolume={timer.volume.updateVolume}
     />
   )
 }

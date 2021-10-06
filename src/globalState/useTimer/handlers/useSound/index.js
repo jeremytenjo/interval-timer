@@ -1,6 +1,6 @@
 import create from 'zustand'
 
-import workoutMp3 from '../../../public/sounds/workout/1.mp3'
+import workoutMp3 from '../../../../../public/sounds/workout/1.mp3'
 
 import useVolume from './handlers/useVolume'
 
@@ -35,5 +35,9 @@ export default function useTimerSound() {
   return {
     playRestSound,
     playWorkoutSound,
+    isMuted: volume.isMuted,
+    volumeInDecimals: volume.volumeInDecimals,
+    volume: volume.volume,
+    updateVolume: volume.updateVolume,
   }
 }

@@ -6,6 +6,7 @@ import handleResetTimer from './handlers/handleResetTimer'
 import handleStartTimer from './handlers/handleStartTimer'
 import handleStopTimer from './handlers/handleStopTimer'
 import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
+import useTimerSound from './handlers/useSound'
 
 const useTimerStore = create((set) => ({
   // selected timer
@@ -83,6 +84,8 @@ export default function useTimer() {
 
   const udpateSelectedtimer = useUpdateSelectedTimer({ ...handlerPayload, resetTimer })
 
+  const sound = useTimerSound()
+
   return {
     repetitions,
     sets,
@@ -95,6 +98,7 @@ export default function useTimer() {
     remainingTime,
     totalTime,
     ...timerStore,
+    ...sound,
     startTimer,
     stopTimer,
     setSelectedTimer: udpateSelectedtimer.setSelectedTimer,
