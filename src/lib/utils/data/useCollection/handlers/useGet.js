@@ -52,16 +52,16 @@ export default function useGet({
     dataFetch.mutate(newData, false)
   }
 
-  const isFetching = !dataFetch.data && !dataFetch.error
+  const loading = !dataFetch.data && !dataFetch.error
   const data =
-    !dataFetch.data && isFetching && showLocalStorageDataIfNoUserSignedIn && !userId
+    !dataFetch.data && loading && showLocalStorageDataIfNoUserSignedIn && !userId
       ? getLocalStorageData.result
       : dataFetch.data
   const error = dataFetch.error
 
   return {
     data,
-    isFetching,
+    loading,
     error,
     update,
   }
