@@ -1,12 +1,15 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import { useTimersStore } from '../../../../data/timers/useTimers'
+import useData from '../../../../lib/utils/data/useData'
 
 export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const navigate = useNavigate()
   const location = useLocation()
+  const timers = useData({ key: 'timers' })
 
   const setSelectedTimer = (newSelectedTimer) => {
+    if (!newSelectedTimer) return null
+
     const redirectUrl = `/timer/${newSelectedTimer.id}`
 
     timerStore.setTotalRepetitions(newSelectedTimer.repetitions)
@@ -26,8 +29,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   }
 
   const setSelectedTimerById = (timerId) => {
-    const timers = useTimersStore.getState().timers
-    const selectedTimer = timers.find((timer) => timer.id === timerId)
+    const selectedTimer = timers.data.find((timer) => timer?.id === timerId)
 
     setSelectedTimer(selectedTimer)
   }

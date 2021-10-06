@@ -25,7 +25,7 @@ export default function Items() {
 
   return (
     <Box component='nav' sx={styles.wrapper}>
-      {!!timers.data.length && !appBar.title && (
+      {!!timers?.data?.length && !appBar.title && (
         <IconButton onClick={onEditClick}>
           <Edit sx={{ width: '18px' }} />
         </IconButton>

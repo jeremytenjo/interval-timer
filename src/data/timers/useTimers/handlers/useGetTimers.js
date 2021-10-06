@@ -1,19 +1,9 @@
 import { collection, query, where, getDocs } from 'firebase/firestore'
-import create from 'zustand'
 
 import useFirebase from '../../../../firebase/useFirebase'
-import useGetData from '../../../../lib/utils/data/useGetData'
+import useData from '../../../../lib/utils/data/useData'
 
-const useGetTimersStore = create((set) => ({
-  firestoreCalled: false,
-  setFirestoreCalled: (newValue) => set(() => ({ firestoreCalled: newValue })),
-
-  localStorageCalled: false,
-  setLocalStorageCalled: (newValue) => set(() => ({ localStorageCalled: newValue })),
-}))
-
-export default function useGetTimers({ userId, updateLocalTimers }) {
-  const getTimersStore = useGetTimersStore()
+export default function useGetTimers({ userId }) {
   const firebase = useFirebase()
 
   const firestoreFetcher = async () => {
@@ -31,14 +21,10 @@ export default function useGetTimers({ userId, updateLocalTimers }) {
     return data
   }
 
-  useGetData({
-    userId,
-    firestoreFetcher,
-    key: 'timers',
-    updateData: updateLocalTimers,
-    firestoreCalled: getTimersStore.firestoreCalled,
-    setFirestoreCalled: getTimersStore.setFirestoreCalled,
-    localStorageCalled: getTimersStore.localStorageCalled,
-    setLocalStorageCalled: getTimersStore.setLocalStorageCalled,
+  const timers = useData({
+    key: () => (userId ? 'timers' : null),
+    fetcher: firestoreFetcher,
   })
+
+  return timers
 }

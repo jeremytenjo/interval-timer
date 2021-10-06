@@ -58,7 +58,7 @@ export default function TimersDropdown() {
         </Box>
       </Button>
 
-      {timers.data.length ? (
+      {timers.data?.length ? (
         <Popover
           anchorOrigin={{
             vertical: 'bottom',
