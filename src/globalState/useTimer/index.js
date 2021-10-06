@@ -97,6 +97,7 @@ export default function useTimer() {
     ...timerStore,
     startTimer,
     stopTimer,
+    setSelectedTimer: udpateSelectedtimer.setSelectedTimer,
     setSelectedTimerById: udpateSelectedtimer.setSelectedTimerById,
   }
 }
