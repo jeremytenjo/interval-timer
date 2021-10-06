@@ -1,25 +1,34 @@
 import useSWRImmutable from 'swr/immutable'
+import useOnTrue from '@useweb/use-on-true'
 
 import useShowError from '../../../components/feedback/useShowError'
+import useLocalStorage from '../../storage/useLocalStorage'
 
 export default function useData({ key, fetcher }) {
-  // TODO get data from local storage
-  // TODO fetch dataFetch after local storage get
-  // const setLocalStorage = useLocalStorage({ action: 'set' })
-
-  // TODO const getLocalData = useLocalStorage({ action: 'get', key })
+  const getLocalStorageData = useLocalStorage({ action: 'get', key })
+  const setLocalStorageData = useLocalStorage({ action: 'set', key })
 
   const dataFetch = useSWRImmutable(key, fetcher)
+
+  useOnTrue(!dataFetch.data, () => {
+    getLocalStorageData.exec()
+  })
+
+  useOnTrue(dataFetch.data, () => {
+    setLocalStorageData.exec({ value: dataFetch.data })
+  })
 
   useShowError(dataFetch.error, `Error fetching ${key}, please try again.`)
 
   const update = (newData) => {
-    // TODO setLocalStorage.exec({ key: 'timers', value: updatedTimers })
+    setLocalStorageData.exec({ value: newData })
     dataFetch.mutate(newData)
   }
 
+  const data = !dataFetch.data ? getLocalStorageData.result : dataFetch.data
+
   return {
-    data: dataFetch.data,
+    data,
     isFetching: !dataFetch.data && !dataFetch.error,
     error: dataFetch.error,
     update,
