@@ -45,7 +45,7 @@ export default function useUpdate({
     onError: (error) => {
       showError.show({
         error,
-        errorMessage: `Error updating ${collectionName.singularized}, please try again`,
+        message: `Error updating ${collectionName.singularized}, please try again`,
       })
     },
     onResult: (result) => {

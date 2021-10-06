@@ -1,6 +1,6 @@
 import useSnackBar from '../../Snackbar/useSnackbar'
 
-export default function useShowError(defaultError, errorMessage, disableEffect) {
+export default function useShowError(defaultError, errorMessage) {
   const snackbar = useSnackBar()
 
   const show = ({ error = defaultError, message }) => {
@@ -12,7 +12,7 @@ export default function useShowError(defaultError, errorMessage, disableEffect) 
   }
 
   useEffect(() => {
-    if (defaultError && !disableEffect) {
+    if (defaultError) {
       show({ error: defaultError, message: errorMessage })
     }
   }, [defaultError])

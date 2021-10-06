@@ -37,7 +37,7 @@ export default function useRemove({
     onError: (error) => {
       showError.show({
         error,
-        errorMessage: `Error removing ${collectionName.singularized}, please try again`,
+        message: `Error removing ${collectionName.singularized}, please try again`,
       })
     },
     onResult: (result) => {

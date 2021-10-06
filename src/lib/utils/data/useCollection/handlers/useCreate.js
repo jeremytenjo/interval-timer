@@ -55,7 +55,7 @@ export default function useCreate({
     onError: (error) => {
       showError.show({
         error,
-        errorMessage: `Error creating ${collectionName.singularized}, please try again`,
+        message: `Error creating ${collectionName.singularized}, please try again`,
       })
     },
     onResult: (result) => {
