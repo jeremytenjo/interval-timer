@@ -2,6 +2,7 @@ import create from 'zustand'
 
 import useAuth from '../../../globalState/useAuth'
 import useLocalStorage from '../../../lib/utils/storage/useLocalStorage'
+import useSelectedTimer from '../../../globalState/useSelectedTimer'
 
 import useGetTimers from './handlers/useGetTimers'
 import useCreateTimer from './handlers/useCreateTimer'
@@ -11,14 +12,12 @@ import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 
 const useTimersStore = create((set) => ({
   timers: [],
-  selectedTimer: undefined,
-
   setTimers: (newValue) => set(() => ({ timers: newValue })),
-  setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
 }))
 
 export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
   const timersStore = useTimersStore()
+  const selectedTimer = useSelectedTimer()
   const auth = useAuth()
   const setLocalStorage = useLocalStorage({ action: 'set' })
 
@@ -31,8 +30,8 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
     userId: auth?.user?.uid,
     localTimers: timersStore.timers,
     updateLocalTimers,
-    selectedTimer: timersStore.selectedTimer,
-    setSelectedTimer: timersStore.setSelectedTimer,
+    selectedTimer: selectedTimer.selectedTimer,
+    setSelectedTimer: selectedTimer.setSelectedTimer,
     navigateToFetchedTimerOnLoad,
   }
 
@@ -45,7 +44,6 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
 
   return {
     data: timersStore.timers,
-    selectedTimer: timersStore.selectedTimer,
     updateTimer,
     removeTimer,
     createTimer,

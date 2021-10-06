@@ -3,6 +3,7 @@ import useOnTrue from '@useweb/use-on-true'
 
 import useShowError from '../../../../../lib/components/feedback/useShowError'
 import defaultSettings from '../../defaultSettings'
+import useGetData from '../../../../../lib/utils/data/useGetData'
 
 export default function useGetSettings({ settingsStore }) {
   const fetcher = async () => {
@@ -10,19 +11,14 @@ export default function useGetSettings({ settingsStore }) {
     return true
   }
 
-  const getSettings = useAsync(fetcher)
-
-  useShowError(getSettings.error, 'Error fetching settings, please try again')
-
-  useOnTrue(getSettings.result, () => {
-    settingsStore.setSettings(getSettings.result)
-  })
-
-  // if not signed in use default settings
-
-  // fetch in local storage
-
-  // fetch in firestore
-
-  return getSettings
+  // useGetData({
+  //   userId,
+  //   firestoreFetcher,
+  //   key: 'timers',
+  //   updateData: updateLocalTimers,
+  //   firestoreCalled: getTimersStore.firestoreCalled,
+  //   setFirestoreCalled: getTimersStore.setFirestoreCalled,
+  //   localStorageCalled: getTimersStore.localStorageCalled,
+  //   setLocalStorageCalled: getTimersStore.setLocalStorageCalled,
+  // })
 }

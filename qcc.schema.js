@@ -171,9 +171,11 @@ module.exports = [
         template: ({ name }) => `import create from 'zustand'
 
         const ${name}Store = create((set) => ({
-          example: true,
+          ${generateUseVariable(`${name}`)}: true,
         
-          setExample: (newValue) => set(() => ({ example: newValue })),
+          setExample: (newValue) => set(() => ({ ${generateUseVariable(
+            `${name}`,
+          )}: newValue })),
         }))
 
         export default function ${name}() {
@@ -184,6 +186,9 @@ module.exports = [
           }
 
           return {
+            ${generateUseVariable(`${name}`)}: ${generateUseVariable(
+          `${name}Store`,
+        )}.${generateUseVariable(`${name}`)},
             updateExample
           }
         }`,

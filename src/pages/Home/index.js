@@ -4,6 +4,7 @@ import useOnTrue from '@useweb/use-on-true'
 import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
 import CreateTimerPage from '../CreateTimer'
+import useSelectedTimer from '../../globalState/useSelectedTimer'
 
 import Details from './containers/Details'
 import Timer from './containers/Timer'
@@ -14,6 +15,7 @@ export default function HomePage() {
   const timers = useTimers()
   const urlParams = useParams()
   const navigate = useNavigate()
+  const selectedTimer = useSelectedTimer()
 
   useOnTrue(!urlParams.timerId && !!timers.data.length, () => {
     navigate(`/timer/${timers.data[0].id}`)
@@ -21,7 +23,7 @@ export default function HomePage() {
 
   return (
     <section>
-      {timers.selectedTimer ? (
+      {selectedTimer.selectedTimer ? (
         <>
           <Details />
           <Timer />
