@@ -25,9 +25,8 @@ export default function useData({ key, fetcher }) {
     dataFetch.mutate(newData, false)
   }
 
-  const isFetchingFirestore = !dataFetch.data && !dataFetch.error
-  const data =
-    !dataFetch.data && isFetchingFirestore ? getLocalStorageData.result : dataFetch.data
+  const isFetching = !dataFetch.data && !dataFetch.error
+  const data = !dataFetch.data && isFetching ? getLocalStorageData.result : dataFetch.data
   const error = dataFetch.error
 
   if (getLocalStorageData.result) {
@@ -36,7 +35,7 @@ export default function useData({ key, fetcher }) {
   }
   return {
     data,
-    isFetching: isFetchingFirestore,
+    isFetching,
     error,
     update,
   }
