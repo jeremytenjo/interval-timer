@@ -1,4 +1,5 @@
 import create from 'zustand'
+import useOnTrue from '@useweb/use-on-true'
 
 import useLocalStorage from '../../../../../../lib/utils/storage/useLocalStorage'
 
@@ -25,16 +26,14 @@ export default function useVolume() {
     }
   }, [])
 
-  useEffect(() => {
-    volumeStore.setVolume(
-      getLocalStorageVolume.result === null ? 50 : getLocalStorageVolume.result,
-    )
-  }, [getLocalStorageVolume.result])
-
   const updateVolume = (newValue) => {
     setLocalStorageVolume.exec({ value: newValue })
     volumeStore.setVolume(newValue)
   }
+
+  useOnTrue(getLocalStorageVolume.result, () => {
+    updateVolume(getLocalStorageVolume.result)
+  })
 
   return {
     isMuted,
