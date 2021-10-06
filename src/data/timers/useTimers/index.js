@@ -8,7 +8,6 @@ import useGetTimers from './handlers/useGetTimers'
 import useCreateTimer from './handlers/useCreateTimer'
 import useUpdateTimer from './handlers/useUpdateTimer'
 import useRemoveTimer from './handlers/useRemoveTimer'
-import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 
 const useTimersStore = create((set) => ({
   timers: [],
@@ -35,9 +34,7 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
     navigateToFetchedTimerOnLoad,
   }
 
-  // handlers
   useGetTimers(handlerPayload)
-  const updateSelectedTimer = useUpdateSelectedTimer(handlerPayload)
   const createTimer = useCreateTimer(handlerPayload)
   const updateTimer = useUpdateTimer(handlerPayload)
   const removeTimer = useRemoveTimer(handlerPayload)
@@ -47,6 +44,5 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
     updateTimer,
     removeTimer,
     createTimer,
-    updateSelectedTimer,
   }
 }

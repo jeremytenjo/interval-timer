@@ -1,5 +1,9 @@
 import create from 'zustand'
 
+import useTimers from '../../data/timers/useTimers'
+
+import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
+
 const useSelectedTimerStore = create((set) => ({
   selectedTimer: false,
   setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
@@ -7,6 +11,16 @@ const useSelectedTimerStore = create((set) => ({
 
 export default function useSelectedTimer() {
   const selectedTimerStore = useSelectedTimerStore()
+  // const timers = useTimers()
+
+  const handlerPayload = {
+    // localTimers: timers.data,
+    localTimers: [],
+    selectedTimer: selectedTimerStore.selectedTimer,
+    setSelectedTimer: selectedTimerStore.setSelectedTimer,
+  }
+
+  // useUpdateSelectedTimer(handlerPayload)
 
   const setSelectedTimer = (newValue) => {
     selectedTimerStore.setSelectedTimer(newValue)

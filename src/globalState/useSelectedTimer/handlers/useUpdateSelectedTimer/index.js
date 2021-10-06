@@ -1,4 +1,4 @@
-import useTimer from '../../../../globalState/useTimer'
+import useTimer from '../../../useTimer'
 
 export default function useUpdateSelectedTimer({
   localTimers,
@@ -28,10 +28,4 @@ export default function useUpdateSelectedTimer({
       timer.setTotalRestTime(selectedTimer.rest)
     }
   }, [selectedTimer])
-
-  const updateSelectedTimer = (payload) => {
-    setSelectedTimer(payload)
-  }
-
-  return updateSelectedTimer
 }
