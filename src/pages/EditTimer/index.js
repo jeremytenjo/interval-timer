@@ -18,7 +18,7 @@ export default function EditTimerPage() {
   const setsDefaultValue = timer?.selectedTimer?.sets || 1
 
   useOnTrue(timers.update.result, () => {
-    timer.setSelectedTimer(timers.update.result)
+    timer.setSelectedTimer(timers.update.result.updatedItem)
   })
 
   const onSaveTimer = (payload) => {

@@ -7,27 +7,28 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
-export default function useUpdate({ data, updateData, userId, collectionName }) {
+export default function useUpdate({ data: allData, updateData, userId, collectionName }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
   const fetcher = async ({ id, data }) => {
     delete data.id
-    const updateItem = {
+    const updatedItem = {
       ...data,
       id,
       timestamp: serverTimestamp(),
     }
 
-    // update only locally
-    if (!userId) return updateItem
-    else {
-      // update firestore
-      const docRef = doc(firebase.db, collectionName.raw, id)
-      await updateDoc(docRef, updateItem)
+    const updatedItems = arrayDB.update(allData, {
+      data: updatedItem,
+      id: id,
+    })
 
-      return updateItem
+    if (userId) {
+      await updateDoc(doc(firebase.db, collectionName.raw, id), updatedItem)
     }
+
+    return { updatedItem, updatedItems }
   }
 
   const update = useAsync(fetcher)
@@ -38,12 +39,7 @@ export default function useUpdate({ data, updateData, userId, collectionName }) 
   )
 
   useOnTrue(update.result, () => {
-    const updateItems = arrayDB.update(data, {
-      data: update.result,
-      id: update.result.id,
-    })
-
-    updateData(updateItems)
+    updateData(update.result.updatedItems)
     snackbar.show({ message: `${collectionName.capitalizedSingularized} updated` })
   })
 

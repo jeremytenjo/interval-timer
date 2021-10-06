@@ -12,11 +12,15 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
   const snackbar = useSnackBar()
 
   const fetcher = async ({ id }) => {
+    const remainingItems = arrayDB.remove(data, {
+      id,
+    })
+
     if (userId) {
       await deleteDoc(doc(firebase.db, collectionName.raw, id))
     }
 
-    return { removedItemId: id }
+    return { removedItemId: id, remainingItems }
   }
 
   const remove = useAsync(fetcher)
@@ -27,11 +31,7 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
   )
 
   useOnTrue(remove.result, () => {
-    const removedItem = arrayDB.remove(data, {
-      id: remove.result.removedItemId,
-    })
-
-    updateData(removedItem)
+    updateData(remove.result.remainingItems)
     snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
   })
 
