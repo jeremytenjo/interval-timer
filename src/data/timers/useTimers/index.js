@@ -23,13 +23,13 @@ export default function useTimers() {
     selectedTimer: timer.selectedTimer,
   }
 
-  const getData = useGetTimers(handlerPayload)
+  const getTimers = useGetTimers(handlerPayload)
   const createTimer = useCreateTimer(handlerPayload)
   const updateTimer = useUpdateTimer(handlerPayload)
   const removeTimer = useRemoveTimer(handlerPayload)
 
   return {
-    data: getData.data,
+    data: getTimers.data,
     updateTimer,
     removeTimer,
     createTimer,

@@ -1,11 +1,11 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import useGetData from '../../../../lib/utils/data/useGetData'
+import useData from '../../../../lib/utils/data/useData'
 
 export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const navigate = useNavigate()
   const location = useLocation()
-  const timers = useGetData({ key: 'timers' })
+  const timers = useData({ key: 'timers' })
 
   const setSelectedTimer = (newSelectedTimer) => {
     if (!newSelectedTimer) return null

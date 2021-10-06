@@ -1,7 +1,7 @@
 import { collection, query, where, getDocs } from 'firebase/firestore'
 
 import useFirebase from '../../../../firebase/useFirebase'
-import useGetData from '../../../../lib/utils/data/useGetData'
+import useData from '../../../../lib/utils/data/useData'
 
 export default function useGetTimers({ userId }) {
   const firebase = useFirebase()
@@ -25,7 +25,7 @@ export default function useGetTimers({ userId }) {
     return data
   }
 
-  const timers = useGetData({
+  const timers = useData({
     key: () => (userId ? collectionName : null),
     fetcher: firestoreFetcher,
   })
