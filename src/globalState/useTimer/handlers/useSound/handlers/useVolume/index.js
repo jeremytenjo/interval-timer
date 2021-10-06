@@ -31,7 +31,7 @@ export default function useVolume() {
     volumeStore.setVolume(newValue)
   }
 
-  useOnTrue(getLocalStorageVolume.result, () => {
+  useOnTrue(typeof getLocalStorageVolume.result === 'number', () => {
     updateVolume(getLocalStorageVolume.result)
   })
 
