@@ -12,14 +12,25 @@ export default function useCreateTimer({ userId, updateTimers, timers }) {
 
   const fetcher = async (payload) => {
     delete payload.id
-    const newTimer = {
+    let createdTimer = {
       ...payload,
       userId,
     }
-    const docRef = await addDoc(collection(firebase.db, 'timers'), newTimer)
-    const createdTimer = {
-      ...newTimer,
-      id: docRef.id,
+
+    // update only locally
+    if (!userId) {
+      createdTimer = {
+        ...createdTimer,
+        id: Date.now().toString(),
+      }
+    } else {
+      // update firestore
+      const docRef = await addDoc(collection(firebase.db, 'timers'), createdTimer)
+
+      createdTimer = {
+        ...createdTimer,
+        id: docRef.id,
+      }
     }
 
     return createdTimer
