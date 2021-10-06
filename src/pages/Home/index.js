@@ -16,14 +16,14 @@ export default function HomePage() {
   const timer = useTimer()
 
   useEffect(() => {
-    if (!urlParams.timerId && !!timers?.get?.data?.length) {
-      timer.setSelectedTimer(timers?.get?.data?.[0])
+    if (!urlParams.timerId && !!timers.get?.data?.length) {
+      timer.setSelectedTimer(timers.get?.data?.[0])
     }
 
-    if (urlParams.timerId && !!timers?.get?.data?.length) {
+    if (urlParams.timerId && !!timers.get?.data?.length) {
       timer.setSelectedTimerById(urlParams.timerId)
     }
-  }, [urlParams.timerId, timers?.get?.data])
+  }, [urlParams.timerId, timers.get?.data])
 
   return (
     <section>
