@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 
 import { useTimersStore } from '../../../../data/timers/useTimers'
+
 export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const navigate = useNavigate()
   const location = useLocation()
