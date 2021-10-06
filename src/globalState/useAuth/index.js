@@ -12,9 +12,9 @@ import useSnackBar from '../../lib/components/Snackbar/useSnackbar'
 const provider = new GoogleAuthProvider()
 
 const useAuthStore = create((set) => ({
-  user: '',
-  signingIn: false,
-  error: false,
+  user: undefined,
+  signingIn: undefined,
+  error: undefined,
 
   setUser: (newValue) => set(() => ({ user: newValue })),
   setSigningIn: (newValue) => set(() => ({ signingIn: newValue })),

@@ -3,11 +3,14 @@ import useOnTrue from '@useweb/use-on-true'
 
 import useShowError from '../../../components/feedback/useShowError'
 import useLocalStorage from '../../storage/useLocalStorage'
+import useAuth from '../../../../globalState/useAuth'
 
 export default function useData({ key, fetcher }) {
   const dataFetch = useSWRImmutable(key, fetcher)
   const getLocalStorageData = useLocalStorage({ action: 'get', key })
   const setLocalStorageData = useLocalStorage({ action: 'set', key })
+  const auth = useAuth()
+  console.log(auth)
 
   useOnTrue(!dataFetch.data, () => {
     getLocalStorageData.exec()
