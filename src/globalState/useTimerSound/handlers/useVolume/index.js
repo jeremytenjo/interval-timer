@@ -4,8 +4,9 @@ import useLocalStorage from '../../../../lib/utils/storage/useLocalStorage'
 
 const useVolumeStore = create((set) => ({
   volume: 50,
-  fetchedLocalVolume: false,
   setVolume: (newValue) => set(() => ({ volume: newValue })),
+
+  fetchedLocalVolume: false,
   setFetchedLocalVolume: (newValue) => set(() => ({ fetchedLocalVolume: newValue })),
 }))
 
