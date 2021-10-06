@@ -10,9 +10,8 @@ export default function useTimers() {
   const timer = useTimer()
   const auth = useAuth()
 
-  const userId = auth?.user?.uid
   const handlerPayload = {
-    userId,
+    userId: auth?.user?.uid,
   }
 
   const get = useGetTimers(handlerPayload)
