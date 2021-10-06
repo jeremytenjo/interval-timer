@@ -1,6 +1,5 @@
 import { collection, addDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
-import useOntrue from '@useweb/use-on-true'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
@@ -16,6 +15,7 @@ export default function useCreate({
 }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
+  const showError = useShowError()
 
   const fetcher = async ({ data, disableSnackbar } = {}) => {
     delete data.id
@@ -51,17 +51,18 @@ export default function useCreate({
     return returnData
   }
 
-  const create = useAsync(fetcher)
-
-  useShowError(
-    create.error,
-    `Error creating ${collectionName.singularized}, please try again`,
-  )
-
-  useOntrue(create.result, () => {
-    updateData(create.result.updatedData)
-    !create.result.disableSnackbar &&
-      snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
+  const create = useAsync(fetcher, {
+    onError: (error) => {
+      showError.show({
+        error,
+        errorMessage: `Error creating ${collectionName.singularized}, please try again`,
+      })
+    },
+    onResult: (result) => {
+      updateData(result.updatedData)
+      !result.disableSnackbar &&
+        snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
+    },
   })
 
   return create

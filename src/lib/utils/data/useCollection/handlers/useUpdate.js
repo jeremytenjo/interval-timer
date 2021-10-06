@@ -1,7 +1,6 @@
 import { updateDoc, doc, serverTimestamp } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
-import useOnTrue from '@useweb/use-on-true'
 
 import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
@@ -16,6 +15,7 @@ export default function useUpdate({
 }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
+  const showError = useShowError()
 
   const fetcher = async ({ id, data }) => {
     delete data.id
@@ -41,16 +41,17 @@ export default function useUpdate({
     return returnData
   }
 
-  const update = useAsync(fetcher)
-
-  useShowError(
-    update.error,
-    `Error updating ${collectionName.singularized}, please try again`,
-  )
-
-  useOnTrue(update.result, () => {
-    updateData(update.result.updatedItems)
-    snackbar.show({ message: `${collectionName.capitalizedSingularized} updated` })
+  const update = useAsync(fetcher, {
+    onError: (error) => {
+      showError.show({
+        error,
+        errorMessage: `Error updating ${collectionName.singularized}, please try again`,
+      })
+    },
+    onResult: (result) => {
+      updateData(result.updatedItems)
+      snackbar.show({ message: `${collectionName.capitalizedSingularized} updated` })
+    },
   })
 
   return update

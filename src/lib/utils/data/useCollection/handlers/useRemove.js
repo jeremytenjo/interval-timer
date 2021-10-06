@@ -1,6 +1,5 @@
 import { doc, deleteDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
-import useOnTrue from '@useweb/use-on-true'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
@@ -16,6 +15,7 @@ export default function useRemove({
 }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
+  const showError = useShowError()
 
   const fetcher = async ({ id }) => {
     const remainingItems = arrayDB.remove(data, {
@@ -33,16 +33,17 @@ export default function useRemove({
     return returnData
   }
 
-  const remove = useAsync(fetcher)
-
-  useShowError(
-    remove.error,
-    `Error removing ${collectionName.singularized}, please try again`,
-  )
-
-  useOnTrue(remove.result, () => {
-    updateData(remove.result.remainingItems)
-    snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
+  const remove = useAsync(fetcher, {
+    onError: (error) => {
+      showError.show({
+        error,
+        errorMessage: `Error removing ${collectionName.singularized}, please try again`,
+      })
+    },
+    onResult: (result) => {
+      updateData(result.remainingItems)
+      snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
+    },
   })
 
   return remove
