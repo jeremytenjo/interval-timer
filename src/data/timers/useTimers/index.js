@@ -12,23 +12,23 @@ export default function useTimers() {
 
   const userId = auth?.user?.uid
 
-  const getTimers = useGetTimers({ userId })
+  const get = useGetTimers({ userId })
 
   const handlerPayload = {
     userId,
     selectedTimer: timer.selectedTimer,
-    updateTimers: getTimers.update,
-    timers: getTimers.data,
+    updateTimers: get.update,
+    timers: get.data,
   }
 
-  const createTimer = useCreateTimer(handlerPayload)
-  const removeTimer = useRemoveTimer(handlerPayload)
-  const updateTimer = useUpdateTimer(handlerPayload)
+  const create = useCreateTimer(handlerPayload)
+  const remove = useRemoveTimer(handlerPayload)
+  const update = useUpdateTimer(handlerPayload)
 
   return {
-    data: getTimers.data,
-    updateTimer,
-    removeTimer,
-    createTimer,
+    data: get.data,
+    update,
+    remove,
+    create,
   }
 }

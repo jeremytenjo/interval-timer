@@ -17,17 +17,17 @@ export default function EditTimerPage() {
   const repetitionsDefaultValue = timer?.selectedTimer?.repetitions || 1
   const setsDefaultValue = timer?.selectedTimer?.sets || 1
 
-  useOnTrue(timers.updateTimer.result, () => {
-    timer.setSelectedTimer(timers.updateTimer.result)
+  useOnTrue(timers.update.result, () => {
+    timer.setSelectedTimer(timers.update.result)
   })
 
   const onSaveTimer = (payload) => {
-    timers.updateTimer.exec({ id: timer.selectedTimer.id, data: payload })
+    timers.update.exec({ id: timer.selectedTimer.id, data: payload })
   }
 
   const handleRemoveButtonClick = () => {
     if (timer?.selectedTimer?.id) {
-      timers.removeTimer.exec({ id: timer?.selectedTimer?.id })
+      timers.remove.exec({ id: timer?.selectedTimer?.id })
     }
   }
 
