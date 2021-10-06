@@ -98,7 +98,7 @@ export default function useTimer() {
     remainingTime,
     totalTime,
     ...timerStore,
-    ...sound,
+    sound,
     startTimer,
     stopTimer,
     setSelectedTimer: udpateSelectedtimer.setSelectedTimer,
