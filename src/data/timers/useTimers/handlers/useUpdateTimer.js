@@ -7,21 +7,27 @@ import useFirebase from '../../../../firebase/useFirebase'
 import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../../lib/components/feedback/useShowError'
 
-export default function useUpdateTimer({ timers, updateTimers }) {
+export default function useUpdateTimer({ timers, updateTimers, userId }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
   const fetcher = async ({ id, data }) => {
-    const docRef = doc(firebase.db, 'timers', id)
     delete data.id
     const updatedTimer = {
       ...data,
+      id,
       timestamp: serverTimestamp(),
     }
 
-    await updateDoc(docRef, updatedTimer)
+    // update only locally
+    if (!userId) return updatedTimer
+    else {
+      // update firestore
+      const docRef = doc(firebase.db, 'timers', id)
+      await updateDoc(docRef, updatedTimer)
 
-    return { ...updatedTimer, id }
+      return updatedTimer
+    }
   }
 
   const udpateTimer = useAsync(fetcher)
@@ -35,7 +41,7 @@ export default function useUpdateTimer({ timers, updateTimers }) {
     })
 
     updateTimers(updatedTimers)
-    snackbar.show({ message: 'Timer saved' })
+    snackbar.show({ message: 'Timer updated' })
   })
 
   return udpateTimer
