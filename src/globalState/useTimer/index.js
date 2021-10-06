@@ -81,7 +81,7 @@ export default function useTimer() {
 
   const startNextRepetition = useNextRepetition({ ...handlerPayload, resetTimer })
 
-  useUpdateSelectedTimer({ ...handlerPayload, resetTimer })
+  const udpateSelectedtimer = useUpdateSelectedTimer({ ...handlerPayload, resetTimer })
 
   return {
     repetitions,
@@ -97,5 +97,6 @@ export default function useTimer() {
     ...timerStore,
     startTimer,
     stopTimer,
+    setSelectedTimerById: udpateSelectedtimer.setSelectedTimerById,
   }
 }

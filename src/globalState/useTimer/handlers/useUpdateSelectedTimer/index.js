@@ -1,6 +1,8 @@
 import useOnTrue from '@useweb/use-on-true'
 import { useNavigate } from 'react-router-dom'
 
+import { useTimersStore } from '../../../../data/timers/useTimers'
+
 export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const navigate = useNavigate()
   const urlParams = useParams()
@@ -19,4 +21,12 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
       navigate(`/timer/${timerStore.selectedTimer.id}`)
     }
   })
+
+  const setSelectedTimerById = (timerId) => {
+    const timers = useTimersStore.getState().timers
+    const selectedTimer = timers.find((timer) => timer.id === timerId)
+    timerStore.setSelectedTimer(selectedTimer)
+  }
+
+  return { setSelectedTimerById }
 }

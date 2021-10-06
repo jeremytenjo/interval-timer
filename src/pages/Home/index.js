@@ -1,5 +1,4 @@
 import { useParams } from 'react-router'
-import useOnTrue from '@useweb/use-on-true'
 
 import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
@@ -16,9 +15,15 @@ export default function HomePage() {
   const urlParams = useParams()
   const timer = useTimer()
 
-  useOnTrue(!urlParams.timerId && !!timers.data.length, () => {
-    timer.setSelectedTimer(timers.data[0])
-  })
+  useEffect(() => {
+    if (!urlParams.timerId && !!timers.data.length) {
+      timer.setSelectedTimer(timers.data[0])
+    }
+
+    if (urlParams.timerId && !!timers.data.length) {
+      timer.setSelectedTimerById(urlParams.timerId)
+    }
+  }, [urlParams.timerId, timers.data])
 
   return (
     <section>

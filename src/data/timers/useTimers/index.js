@@ -9,7 +9,7 @@ import useCreateTimer from './handlers/useCreateTimer'
 import useUpdateTimer from './handlers/useUpdateTimer'
 import useRemoveTimer from './handlers/useRemoveTimer'
 
-const useTimersStore = create((set) => ({
+export const useTimersStore = create((set) => ({
   timers: [],
   setTimers: (newValue) => set(() => ({ timers: newValue })),
 }))
