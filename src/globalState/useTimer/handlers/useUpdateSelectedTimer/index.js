@@ -29,11 +29,12 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   }
 
   const setSelectedTimerById = (timerId) => {
-    if (timers.data) {
-      const selectedTimer = timers.data.find((timer) => timer?.id === timerId)
+    console.log({ timersdata: timers.data })
+    if (!timers.data) return null
 
-      setSelectedTimer(selectedTimer)
-    }
+    const selectedTimer = timers.data.find((timer) => timer?.id === timerId)
+    console.log('HERE222')
+    setSelectedTimer(selectedTimer)
   }
 
   return { setSelectedTimer, setSelectedTimerById }

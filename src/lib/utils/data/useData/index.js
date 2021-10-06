@@ -22,15 +22,21 @@ export default function useData({ key, fetcher }) {
 
   const update = (newData) => {
     setLocalStorageData.exec({ value: newData })
-    dataFetch.mutate(newData)
+    dataFetch.mutate(newData, false)
   }
 
-  const data = !dataFetch.data ? getLocalStorageData.result : dataFetch.data
+  const isFetching = !dataFetch.data && !dataFetch.error
+  const data = !dataFetch.data && isFetching ? getLocalStorageData.result : dataFetch.data
+  const error = dataFetch.error
 
+  if (getLocalStorageData.result) {
+    console.log(getLocalStorageData.result)
+    console.log({ data })
+  }
   return {
     data,
-    isFetching: !dataFetch.data && !dataFetch.error,
-    error: dataFetch.error,
+    isFetching,
+    error,
     update,
   }
 }

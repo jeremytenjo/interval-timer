@@ -21,6 +21,7 @@ export default function HomePage() {
     }
 
     if (urlParams.timerId && !!timers.get?.data?.length) {
+      console.log('HERE1!')
       timer.setSelectedTimerById(urlParams.timerId)
     }
   }, [urlParams.timerId, timers.get?.data])
