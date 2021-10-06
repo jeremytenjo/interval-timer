@@ -11,7 +11,6 @@ import * as styles from './styles'
 
 export default function TimersDropdown() {
   const timers = useTimers()
-  const navigate = useNavigate()
   const timer = useTimer()
   const selectedTimer = useSelectedTimer()
 
@@ -32,8 +31,8 @@ export default function TimersDropdown() {
 
   const onItemClick = (selectedItem) => {
     handleClose()
+    selectedTimer.setSelectedTimer(selectedItem)
     timer.resetTimer()
-    navigate(`/timer/${selectedItem.id}`)
   }
 
   return (

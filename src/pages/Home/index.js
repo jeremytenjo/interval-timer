@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import useOnTrue from '@useweb/use-on-true'
 
 import useAppBar from '../../globalState/useAppBar'
@@ -14,11 +14,10 @@ export default function HomePage() {
   useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
   const timers = useTimers()
   const urlParams = useParams()
-  const navigate = useNavigate()
   const selectedTimer = useSelectedTimer()
 
   useOnTrue(!urlParams.timerId && !!timers.data.length, () => {
-    navigate(`/timer/${timers.data[0].id}`)
+    selectedTimer.setSelectedTimer(timers.data[0])
   })
 
   return (

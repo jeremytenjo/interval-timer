@@ -13,14 +13,7 @@ export default function useSelectedTimer() {
   const selectedTimerStore = useSelectedTimerStore()
   // const timers = useTimers()
 
-  const handlerPayload = {
-    // localTimers: timers.data,
-    localTimers: [],
-    selectedTimer: selectedTimerStore.selectedTimer,
-    setSelectedTimer: selectedTimerStore.setSelectedTimer,
-  }
-
-  useUpdateSelectedTimer(handlerPayload)
+  // useUpdateSelectedTimer(handlerPayload)
 
   const setSelectedTimer = (newValue) => {
     selectedTimerStore.setSelectedTimer(newValue)

@@ -5,11 +5,13 @@ import arrayDB from '@useweb/array-db'
 import useFirebase from '../../../../firebase/useFirebase'
 import useShowError from '../../../../lib/components/feedback/useShowError'
 import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
+import useSelectedTimer from '../../../../globalState/useSelectedTimer'
 
 export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
   const navigate = useNavigate()
+  const selectedTimer = useSelectedTimer()
 
   const fetcher = async ({ id }) => {
     await deleteDoc(doc(firebase.db, 'timers', id))
@@ -31,7 +33,7 @@ export default function useRemoveTimer({ localTimers, updateLocalTimers }) {
       snackbar.show({ message: 'Timer removed' })
 
       if (updatedTimers.length) {
-        navigate(`/timer/${updatedTimers[0].id}`)
+        selectedTimer.setSelectedTimer(updatedTimers[0])
       } else {
         navigate('/create-timer')
       }

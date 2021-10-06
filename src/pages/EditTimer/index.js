@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router'
 import useOnTrue from '@useweb/use-on-true'
 
 import Box from '../../lib/components/Box'
@@ -10,7 +9,6 @@ import useSelectedTimer from '../../globalState/useSelectedTimer'
 export default function EditTimerPage() {
   useAppBar({ title: 'Edit Timer' })
   const timers = useTimers()
-  const navigate = useNavigate()
   const selectedTimer = useSelectedTimer()
 
   const defaultName = selectedTimer?.selectedTimer?.name || ''
@@ -20,7 +18,7 @@ export default function EditTimerPage() {
   const setsDefaultValue = selectedTimer?.selectedTimer?.sets || 1
 
   useOnTrue(timers.updateTimer.result, () => {
-    navigate(`/timer/${timers.updateTimer.result.id}`)
+    selectedTimer.setSelectedTimer(timers.updateTimer.result)
   })
 
   const onSaveTimer = (payload) => {
