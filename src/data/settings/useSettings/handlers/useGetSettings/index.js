@@ -10,15 +10,4 @@ export default function useGetSettings({ settingsStore }) {
     // TODO fetch settings from firebase
     return true
   }
-
-  // useGetData({
-  //   userId,
-  //   firestoreFetcher,
-  //   key: 'timers',
-  //   updateData: updateLocalTimers,
-  //   firestoreCalled: getTimersStore.firestoreCalled,
-  //   setFirestoreCalled: getTimersStore.setFirestoreCalled,
-  //   localStorageCalled: getTimersStore.localStorageCalled,
-  //   setLocalStorageCalled: getTimersStore.setLocalStorageCalled,
-  // })
 }

@@ -1,14 +1,18 @@
 import { collection, query, where, getDocs } from 'firebase/firestore'
 
 import useFirebase from '../../../../firebase/useFirebase'
-import useData from '../../../../lib/utils/data/useData'
+import useGetData from '../../../../lib/utils/data/useGetData'
 
 export default function useGetTimers({ userId }) {
   const firebase = useFirebase()
+  const collectionName = 'timers'
 
   const firestoreFetcher = async () => {
     const data = []
-    const q = query(collection(firebase.db, 'timers'), where('userId', '==', userId))
+    const q = query(
+      collection(firebase.db, collectionName),
+      where('userId', '==', userId),
+    )
     const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc) => {
@@ -21,8 +25,8 @@ export default function useGetTimers({ userId }) {
     return data
   }
 
-  const timers = useData({
-    key: () => (userId ? 'timers' : null),
+  const timers = useGetData({
+    key: () => (userId ? collectionName : null),
     fetcher: firestoreFetcher,
   })
 

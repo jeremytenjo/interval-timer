@@ -1,44 +1,18 @@
-import useOnTrue from '@useweb/use-on-true'
-import useAsync from '@useweb/use-async'
+import useSWRImmutable from 'swr/immutable'
 
 import useShowError from '../../../components/feedback/useShowError'
-import useLocalStorage from '../../storage/useLocalStorage'
 
-export default function useGetData({
-  userId,
-  firestoreFetcher,
-  key,
-  updateData,
-  firestoreCalled,
-  setFirestoreCalled,
-  localStorageCalled,
-  setLocalStorageCalled,
-}) {
-  const getLocalData = useLocalStorage({ action: 'get', key })
-  const getFierstoreData = useAsync(firestoreFetcher)
+export default function useData({ key, fetcher }) {
+  // TODO fetch dataFetch after local storage get
+  //   const getLocalData = useLocalStorage({ action: 'get', key })
 
-  useShowError(
-    getLocalData.error || getFierstoreData.error,
-    `Error getting ${key}, please try again.`,
-  )
+  const dataFetch = useSWRImmutable(key, fetcher)
 
-  // Local Storage
-  useOnTrue(userId && !localStorageCalled && !firestoreCalled, () => {
-    getLocalData.exec()
-    setLocalStorageCalled(true)
-  })
+  useShowError(dataFetch.error, `Error fetching ${key}, please try again.`)
 
-  useOnTrue(getLocalData.result, () => {
-    updateData(getLocalData.result)
-  })
-
-  // Firestore Storage
-  useOnTrue(userId && !firestoreCalled, () => {
-    getFierstoreData.exec()
-    setFirestoreCalled(true)
-  })
-
-  useOnTrue(getFierstoreData.result, () => {
-    updateData(getFierstoreData.result)
-  })
+  return {
+    data: dataFetch.data,
+    isFetching: !dataFetch.data && !dataFetch.error,
+    error: dataFetch.error,
+  }
 }
