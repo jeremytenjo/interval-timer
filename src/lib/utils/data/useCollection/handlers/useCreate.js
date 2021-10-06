@@ -11,10 +11,10 @@ export default function useCreate({ userId, updateData, data: allData, collectio
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
-  const fetcher = async (payload) => {
-    delete payload.id
+  const fetcher = async ({ data, disableSnackbar } = {}) => {
+    delete data.id
     let createdItem = {
-      ...payload,
+      ...data,
       userId,
     }
 
@@ -38,8 +38,7 @@ export default function useCreate({ userId, updateData, data: allData, collectio
     }
 
     const updatedData = arrayDB.add(allData, { data: createdItem })
-
-    return { createdItem, updatedData }
+    return { createdItem, updatedData, disableSnackbar }
   }
 
   const create = useAsync(fetcher)
@@ -51,7 +50,8 @@ export default function useCreate({ userId, updateData, data: allData, collectio
 
   useOntrue(create.result, () => {
     updateData(create.result.updatedData)
-    snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
+    !create.result.disableSnackbar &&
+      snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
   })
 
   return create

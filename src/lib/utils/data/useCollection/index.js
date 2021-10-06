@@ -10,7 +10,7 @@ import useUpdate from './handlers/useUpdate'
 
 export default function useCollection(
   collectionName,
-  { showLocalStorageDataIfNoUserSignedIn = true } = {},
+  { showLocalStorageDataIfNoUserSignedIn = true, defaultData } = {},
 ) {
   const auth = useAuth()
 
@@ -23,6 +23,7 @@ export default function useCollection(
       capitalizedSingularized: capitalize(singularize(collectionName)),
     },
     showLocalStorageDataIfNoUserSignedIn,
+    defaultData,
   }
 
   const get = useGet(handlerPayload)

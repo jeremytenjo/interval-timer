@@ -7,18 +7,28 @@ export default function SoundSettings() {
   const setting = 'sound'
 
   const updateWorkoutSound = (newValue) => {
-    settings.updateSetting.exec({
-      setting,
-      type: 'workout',
-      data: newValue,
+    const type = 'workout'
+    const id = setting + type
+    settings.update.exec({
+      id,
+      data: {
+        setting,
+        type,
+        data: newValue,
+      },
     })
   }
 
   const updateRestSound = (newValue) => {
-    settings.updateSetting.exec({
-      setting,
-      type: 'rest',
-      data: newValue,
+    const type = 'rest'
+    const id = setting + type
+    settings.update.exec({
+      id,
+      data: {
+        setting,
+        type,
+        data: newValue,
+      },
     })
   }
 

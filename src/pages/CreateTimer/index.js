@@ -12,7 +12,7 @@ export default function CreateTimerPage() {
   const timer = useTimer()
 
   const onSaveTimer = (payload) => {
-    timers.create.exec(payload)
+    timers.create.exec({ data: payload })
   }
 
   useOnTrue(timers.create.result, () => {
