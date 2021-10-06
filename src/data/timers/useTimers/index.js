@@ -14,7 +14,7 @@ const useTimersStore = create((set) => ({
   setTimers: (newValue) => set(() => ({ timers: newValue })),
 }))
 
-export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
+export default function useTimers() {
   const timersStore = useTimersStore()
   const selectedTimer = useSelectedTimer()
   const auth = useAuth()
@@ -30,8 +30,6 @@ export default function useTimers({ navigateToFetchedTimerOnLoad } = {}) {
     localTimers: timersStore.timers,
     updateLocalTimers,
     selectedTimer: selectedTimer.selectedTimer,
-    setSelectedTimer: selectedTimer.setSelectedTimer,
-    navigateToFetchedTimerOnLoad,
   }
 
   useGetTimers(handlerPayload)
