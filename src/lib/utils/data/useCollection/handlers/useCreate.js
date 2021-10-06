@@ -1,12 +1,13 @@
 import { collection, addDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
+import useOntrue from '@useweb/use-on-true'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
-export default function useCreate({ userId, udpateData, data, collectionName }) {
+export default function useCreate({ userId, updateData, data, collectionName }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
 
@@ -40,13 +41,11 @@ export default function useCreate({ userId, udpateData, data, collectionName }) 
 
   useShowError(create.error, 'Error creating timer, please try again')
 
-  useEffect(() => {
-    if (create.result) {
-      const updatedTimers = arrayDB.add(data, { data: create.result })
-      udpateData(updatedTimers)
-      snackbar.show({ message: 'Timer saved' })
-    }
-  }, [create.result])
+  useOntrue(create.result, () => {
+    const updatedTimers = arrayDB.add(data, { data: create.result })
+    updateData(updatedTimers)
+    snackbar.show({ message: 'Timer saved' })
+  })
 
   return create
 }
