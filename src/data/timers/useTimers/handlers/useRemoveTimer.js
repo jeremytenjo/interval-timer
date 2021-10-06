@@ -8,14 +8,16 @@ import useShowError from '../../../../lib/components/feedback/useShowError'
 import useSnackBar from '../../../../lib/components/Snackbar/useSnackbar'
 import useTimer from '../../../../globalState/useTimer'
 
-export default function useRemoveTimer({ timers, updateTimers }) {
+export default function useRemoveTimer({ timers, updateTimers, userId }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
   const navigate = useNavigate()
   const timer = useTimer()
 
   const fetcher = async ({ id }) => {
-    await deleteDoc(doc(firebase.db, 'timers', id))
+    if (userId) {
+      await deleteDoc(doc(firebase.db, 'timers', id))
+    }
 
     return id
   }
