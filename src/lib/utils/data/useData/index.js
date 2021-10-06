@@ -29,10 +29,6 @@ export default function useData({ key, fetcher }) {
   const data = !dataFetch.data && isFetching ? getLocalStorageData.result : dataFetch.data
   const error = dataFetch.error
 
-  if (getLocalStorageData.result) {
-    console.log(getLocalStorageData.result)
-    console.log({ data })
-  }
   return {
     data,
     isFetching,

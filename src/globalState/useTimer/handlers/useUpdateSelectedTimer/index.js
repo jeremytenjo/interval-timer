@@ -1,11 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import useData from '../../../../lib/utils/data/useData'
-
 export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const navigate = useNavigate()
   const location = useLocation()
-  const timers = useData({ key: 'timers' })
 
   const setSelectedTimer = (newSelectedTimer) => {
     if (!newSelectedTimer) return null
@@ -28,12 +25,11 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
     }
   }
 
-  const setSelectedTimerById = (timerId) => {
-    console.log({ timersdata: timers.data })
-    if (!timers.data) return null
+  const setSelectedTimerById = (timerId, timers) => {
+    if (!timers) return null
 
-    const selectedTimer = timers.data.find((timer) => timer?.id === timerId)
-    console.log('HERE222')
+    const selectedTimer = timers.find((timer) => timer?.id === timerId)
+
     setSelectedTimer(selectedTimer)
   }
 
