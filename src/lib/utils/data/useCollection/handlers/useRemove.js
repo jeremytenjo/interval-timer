@@ -6,20 +6,17 @@ import arrayDB from '@useweb/array-db'
 import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
-import useTimer from '../../../../../globalState/useTimer'
 
 export default function useRemove({ data, updateData, userId, collectionName }) {
   const firebase = useFirebase()
   const snackbar = useSnackBar()
-  const navigate = useNavigate()
-  const timer = useTimer()
 
   const fetcher = async ({ id }) => {
     if (userId) {
       await deleteDoc(doc(firebase.db, collectionName.raw, id))
     }
 
-    return id
+    return { removedItemId: id }
   }
 
   const remove = useAsync(fetcher)
@@ -31,17 +28,11 @@ export default function useRemove({ data, updateData, userId, collectionName }) 
 
   useOnTrue(remove.result, () => {
     const removedItem = arrayDB.remove(data, {
-      id: remove.result,
+      id: remove.result.removedItemId,
     })
 
     updateData(removedItem)
     snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
-
-    if (removedItem.length) {
-      timer.setSelectedTimer(removedItem[0])
-    } else {
-      navigate('/create-timer')
-    }
   })
 
   return remove

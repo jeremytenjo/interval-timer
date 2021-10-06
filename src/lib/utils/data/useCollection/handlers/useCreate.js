@@ -49,6 +49,7 @@ export default function useCreate({ userId, updateData, data, collectionName }) 
 
   useOntrue(create.result, () => {
     const updatedTimers = arrayDB.add(data, { data: create.result })
+
     updateData(updatedTimers)
     snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
   })
