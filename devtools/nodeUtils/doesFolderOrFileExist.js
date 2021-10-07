@@ -4,4 +4,6 @@ const fs = require('fs')
  * @example
  * doesFolderOrFileExist(dir)
  */
-module.exports = (path) => fs.existsSync(path)
+module.exports = function doesFolderOrFileExist(path) {
+  return fs.existsSync(path)
+}
