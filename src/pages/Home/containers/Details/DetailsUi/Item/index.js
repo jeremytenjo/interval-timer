@@ -1,4 +1,4 @@
-import Box from '../../../../../lib/components/Box'
+import Box from 'lib/components/Box'
 
 export default function Item({ title, time, sx = {} }) {
   return (
