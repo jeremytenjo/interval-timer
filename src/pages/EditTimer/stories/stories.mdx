@@ -1,0 +1,14 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import EditTimer from '..'
+
+<Meta title='Pages/EditTimer/index' component={EditTimer} args={{ test: 'test' }} />
+
+# Edit Timer Page
+
+export const Template = (args) => <EditTimer {...args} />
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

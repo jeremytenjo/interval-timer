@@ -1,0 +1,14 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import Settings from '..'
+
+<Meta title='Pages/Settings/index' component={Settings} args={{ test: 'test' }} />
+
+# Settings Page
+
+export const Template = (args) => <Settings {...args} />
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

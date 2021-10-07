@@ -1,0 +1,14 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import CreateTimer from '..'
+
+<Meta title='Pages/CreateTimer/index' component={CreateTimer} args={{ test: 'test' }} />
+
+# Create Timer Page
+
+export const Template = (args) => <CreateTimer {...args} />
+
+<Canvas>
+  <Story name='default' argTypes={{}} args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
