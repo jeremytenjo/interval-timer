@@ -1,3 +1,5 @@
+import VolumeDown from '../../../../../../../../lib/components/icons/VolumeDown'
+
 import SoundSettingsUi from './SoundSettingsUi'
 
 export default function SoundSettings() {
@@ -29,5 +31,11 @@ export default function SoundSettings() {
     },
   ]
 
-  return <SoundSettingsUi title='Sound' fields={fields} />
+  return (
+    <SoundSettingsUi
+      title='Sound'
+      titleIcon={<VolumeDown sx={{ stroke: 'white' }} />}
+      fields={fields}
+    />
+  )
 }

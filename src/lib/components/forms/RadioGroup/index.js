@@ -7,25 +7,47 @@ import FormLabel from '@mui/material/FormLabel'
 
 export default function RadioGroup({ name, title, defaultValue, options = [] }) {
   const methods = useFormContext()
-  // TODO style https://www.figma.com/file/yrds3NAEgd2IjUlQmHugpk/Interval-Timer?node-id=392%3A268
+
   return (
     <Controller
       name={name}
       control={methods.control}
       defaultValue={defaultValue}
       render={({ field }) => (
-        <FormControl component='fieldset' {...field}>
+        <FormControl
+          component='fieldset'
+          {...field}
+          sx={{
+            width: '100%',
+            '.MuiFormLabel-root': {
+              color: 'grey.light',
+              fontWeight: 'bold',
+              marginBottom: '20px',
+            },
+            '.MuiFormControlLabel-root': {
+              justifyContent: 'space-between',
+              margin: '0px',
+            },
+          }}
+        >
           <FormLabel component='legend'>{title}</FormLabel>
           <RadioGroupMui
             aria-label={title}
             name='row-radio-buttons-group'
             defaultValue={defaultValue}
+            sx={{ display: 'grid' }}
           >
             {options.map((option) => (
               <FormControlLabel
                 key={option.value}
                 value={option.value}
-                control={<Radio />}
+                control={
+                  <Radio
+                    sx={{
+                      color: 'white.main',
+                    }}
+                  />
+                }
                 label={option.label}
                 labelPlacement='start'
                 sx={{ textAlign: 'left' }}

@@ -5,14 +5,15 @@ import RadioGroup from '../../../../../../../../../lib/components/forms/RadioGro
 
 import * as styles from './styles.js'
 
-export default function SoundSettingsUi({ fields, title }) {
+export default function SoundSettingsUi({ fields, title, titleIcon }) {
   return (
     <Box sx={styles.wrapper}>
-      <Accordion title={title}>
+      <Accordion title={title} titleIcon={titleIcon}>
         {fields.map(
           (field) =>
             field.type === 'radioGroup' && (
               <RadioGroup
+                titleIcon={titleIcon}
                 key={field.name}
                 name={field.name}
                 title={field.title}

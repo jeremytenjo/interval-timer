@@ -4,22 +4,21 @@ import AccordionMui from '@mui/material/Accordion'
 
 import Text from '../Text'
 
-export default function Accordion({ title, children }) {
-  // TODO style https://www.figma.com/file/yrds3NAEgd2IjUlQmHugpk/Interval-Timer?node-id=392%3A268
+import * as styles from './styles'
 
+export default function Accordion({ title, children, titleIcon }) {
   return (
     <AccordionMui sx={{ borderRadius: '10px' }}>
       <AccordionSummary
-        sx={{ color: 'white.main', backgroundColor: '#373543' }}
+        sx={styles.accordionSummary.wrapper}
         aria-controls='panel1a-content'
         id='panel1a-header'
       >
-        <Text text={title} />
+        {titleIcon}
+        <Text sx={styles.accordionSummary.title} text={title} />
       </AccordionSummary>
 
-      <AccordionDetails sx={{ display: 'grid', justifyContent: 'start' }}>
-        {children}
-      </AccordionDetails>
+      <AccordionDetails sx={styles.accordionDetails.wrapper}>{children}</AccordionDetails>
     </AccordionMui>
   )
 }
