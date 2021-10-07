@@ -1,3 +1,7 @@
+export const wrapper = {
+  backgroundColor: 'transparent',
+}
+
 export const accordionSummary = {
   wrapper: {
     color: 'white.main',
@@ -22,5 +26,6 @@ export const accordionDetails = {
     color: 'white.main',
     padding: '30px',
     gridGap: '30px',
+    borderRadius: '0 0 20px 20px',
   },
 }

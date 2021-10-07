@@ -8,7 +8,7 @@ import * as styles from './styles'
 
 export default function Accordion({ title, children, titleIcon }) {
   return (
-    <AccordionMui sx={{ borderRadius: '10px' }}>
+    <AccordionMui sx={styles.wrapper}>
       <AccordionSummary
         sx={styles.accordionSummary.wrapper}
         aria-controls='panel1a-content'
