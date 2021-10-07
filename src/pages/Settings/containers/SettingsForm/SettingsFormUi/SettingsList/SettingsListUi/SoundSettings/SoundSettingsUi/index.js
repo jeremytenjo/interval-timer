@@ -1,7 +1,4 @@
 import Box from 'lib/components/Box'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import Accordion from '@mui/material/Accordion'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -9,7 +6,7 @@ import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import { useFormContext, Controller } from 'react-hook-form'
 
-import Text from '../../../../../../../../../lib/components/Text'
+import Accordion from '../../../../../../../../../lib/components/Accordion'
 
 import * as styles from './styles.js'
 
@@ -20,68 +17,62 @@ export default function SoundSettingsUi() {
 
   return (
     <Box sx={styles.wrapper}>
-      <Accordion>
-        <AccordionSummary aria-controls='panel1a-content' id='panel1a-header'>
-          <Text text='Sound' />
-        </AccordionSummary>
+      <Accordion title='Sound'>
+        <Controller
+          name='workoutSound'
+          control={methods.control}
+          defaultValue='voice'
+          render={({ field }) => (
+            <FormControl component='fieldset' {...field}>
+              <FormLabel component='legend'>Workout Sound</FormLabel>
+              <RadioGroup aria-label='workout sound' name='row-radio-buttons-group'>
+                <FormControlLabel
+                  value='voice'
+                  control={<Radio />}
+                  label='Voice'
+                  labelPlacement='start'
+                  sx={{ textAlign: 'left' }}
+                />
 
-        <AccordionDetails sx={{ display: 'grid', justifyContent: 'start' }}>
-          <Controller
-            name='workoutSound'
-            control={methods.control}
-            defaultValue='voice'
-            render={({ field }) => (
-              <FormControl component='fieldset' {...field}>
-                <FormLabel component='legend'>Workout Sound</FormLabel>
-                <RadioGroup aria-label='workout sound' name='row-radio-buttons-group'>
-                  <FormControlLabel
-                    value='voice'
-                    control={<Radio />}
-                    label='Voice'
-                    labelPlacement='start'
-                    sx={{ textAlign: 'left' }}
-                  />
+                <FormControlLabel
+                  value='beep'
+                  control={<Radio />}
+                  label='Beep'
+                  labelPlacement='start'
+                  sx={{ textAlign: 'left' }}
+                />
+              </RadioGroup>
+            </FormControl>
+          )}
+        />
 
-                  <FormControlLabel
-                    value='beep'
-                    control={<Radio />}
-                    label='Beep'
-                    labelPlacement='start'
-                    sx={{ textAlign: 'left' }}
-                  />
-                </RadioGroup>
-              </FormControl>
-            )}
-          />
+        <Controller
+          name='restSound'
+          control={methods.control}
+          defaultValue='voice'
+          render={({ field }) => (
+            <FormControl component='fieldset' {...field}>
+              <FormLabel component='legend'>Rest Sound</FormLabel>
+              <RadioGroup aria-label='rest sound' name='row-radio-buttons-group'>
+                <FormControlLabel
+                  value='voice'
+                  control={<Radio />}
+                  label='Voice'
+                  labelPlacement='start'
+                  sx={{ textAlign: 'left' }}
+                />
 
-          <Controller
-            name='restSound'
-            control={methods.control}
-            defaultValue='voice'
-            render={({ field }) => (
-              <FormControl component='fieldset' {...field}>
-                <FormLabel component='legend'>Rest Sound</FormLabel>
-                <RadioGroup aria-label='rest sound' name='row-radio-buttons-group'>
-                  <FormControlLabel
-                    value='voice'
-                    control={<Radio />}
-                    label='Voice'
-                    labelPlacement='start'
-                    sx={{ textAlign: 'left' }}
-                  />
-
-                  <FormControlLabel
-                    value='beep'
-                    control={<Radio />}
-                    label='Beep'
-                    labelPlacement='start'
-                    sx={{ textAlign: 'left' }}
-                  />
-                </RadioGroup>
-              </FormControl>
-            )}
-          />
-        </AccordionDetails>
+                <FormControlLabel
+                  value='beep'
+                  control={<Radio />}
+                  label='Beep'
+                  labelPlacement='start'
+                  sx={{ textAlign: 'left' }}
+                />
+              </RadioGroup>
+            </FormControl>
+          )}
+        />
       </Accordion>
     </Box>
   )
