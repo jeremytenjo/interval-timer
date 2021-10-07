@@ -5,6 +5,7 @@ import AccordionMui from '@mui/material/Accordion'
 import Text from '../Text'
 
 export default function Accordion({ title, children }) {
+  // TODO style
   return (
     <AccordionMui>
       <AccordionSummary aria-controls='panel1a-content' id='panel1a-header'>
