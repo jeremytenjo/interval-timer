@@ -1,1 +1,3 @@
-export const wrapper = {}
+export const wrapper = {
+  paddingBottom: '80px',
+}

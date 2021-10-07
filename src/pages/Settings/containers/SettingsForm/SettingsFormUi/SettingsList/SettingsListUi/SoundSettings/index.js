@@ -1,9 +1,11 @@
 import VolumeDown from '../../../../../../../../lib/components/icons/VolumeDown'
-import defaultSettings from '../../../../../../../../data/settings/useSettings/defaultSettings'
+import useSettings from '../../../../../../../../data/settings/useSettings'
 
 import SoundSettingsUi from './SoundSettingsUi'
 
 export default function SoundSettings() {
+  const settings = useSettings()
+
   const options = [
     {
       value: 'voice',
@@ -19,17 +21,21 @@ export default function SoundSettings() {
       type: 'radioGroup',
       name: 'sound_workoutSound',
       title: 'Workout Sound',
-      defaultValue: defaultSettings.sound_workoutSound,
+      defaultValue: settings?.currentUserSettings?.sound_workoutSound,
       options,
     },
     {
       type: 'radioGroup',
       name: 'sound_restSound',
       title: 'Rest Sound',
-      defaultValue: defaultSettings.sound_restSound,
+      defaultValue: settings?.currentUserSettings?.sound_restSound,
       options,
     },
   ]
 
-  return <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
+  return (
+    !settings.get.fetching && (
+      <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
+    )
+  )
 }

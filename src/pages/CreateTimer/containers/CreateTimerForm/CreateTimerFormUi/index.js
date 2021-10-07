@@ -6,7 +6,7 @@ import * as styles from './styles.js'
 
 export default function CreateTimerFormUi({ onSaveTimer }) {
   return (
-    <Box sx={{ paddingBottom: '80px' }}>
+    <Box sx={styles.wrapper}>
       <TimerEditorCreator onSaveTimer={onSaveTimer} />
     </Box>
   )

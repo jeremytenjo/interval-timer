@@ -7,7 +7,7 @@ import {
   signOut,
 } from 'firebase/auth'
 
-import useSnackBar from '../../lib/components/Snackbar/useSnackbar'
+import useShowError from '../../lib/components/feedback/useShowError'
 
 const provider = new GoogleAuthProvider()
 
@@ -23,7 +23,7 @@ const useAuthStore = create((set) => ({
 
 export default function useAuth() {
   const authStore = useAuthStore()
-  const snackbar = useSnackBar()
+  const showError = useShowError()
 
   const signInWithGoogle = async () => {
     authStore.setSigningIn(true)
@@ -38,7 +38,7 @@ export default function useAuth() {
 
       authStore.setUser({ ...user, accessToken })
     } catch (error) {
-      snackbar.show({ message: error.message, severity: 'error' })
+      showError.show({ error, message: error.message })
       authStore.setError(error)
     } finally {
       authStore.setSigningIn(false)
