@@ -4,9 +4,9 @@ import SettingsList from './SettingsList'
 import SettingsActionBar from './SettingsActionBar'
 import * as styles from './styles.js'
 
-export default function SettingsFormUi() {
+export default function SettingsFormUi({ onSubmit, handleSubmit, register }) {
   return (
-    <Box sx={styles.wrapper}>
+    <Box sx={styles.wrapper} component='form' onSubmit={handleSubmit(onSubmit)}>
       <SettingsList />
       <SettingsActionBar />
     </Box>

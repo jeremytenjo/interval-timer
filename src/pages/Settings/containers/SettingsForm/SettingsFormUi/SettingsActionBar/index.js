@@ -1,9 +1,9 @@
-import useSettings from '../../../../../../data/settings/useSettings'
-
 import SettingsActionBarUi from './SettingsActionBarUi'
 
 export default function SettingsActionBar() {
-  const settings = useSettings()
+  const onSave = (e) => {
+    e.preventDefault()
+  }
 
-  return <SettingsActionBarUi onSave={(data) => settings.create.exec({ data })} />
+  return <SettingsActionBarUi onSave={onSave} />
 }
