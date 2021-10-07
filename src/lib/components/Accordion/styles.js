@@ -10,7 +10,7 @@ export const accordionSummary = {
     alignItems: 'center',
     '& svg': {
       marginRight: '10px',
-      transform: 'translateY(1px)',
+      transform: 'translateY(2px)',
     },
     '& .MuiAccordionSummary-content': {
       margin: '20px 0',
