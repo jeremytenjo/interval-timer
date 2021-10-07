@@ -1,10 +1,11 @@
-export default [
-  {
-    id: 'sound',
-    name: 'sound',
-    data: {
-      workoutSound: 'beep',
-      restSound: 'beep',
-    },
+export default {
+  sound: {
+    name: 'Sound',
+    workoutSound: 'beep',
+    restSound: 'beep',
   },
-]
+  theme: {
+    name: 'Theme',
+    selection: 'dark',
+  },
+}

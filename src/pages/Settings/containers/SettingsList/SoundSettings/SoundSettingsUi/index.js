@@ -12,18 +12,7 @@ import Text from '../../../../../../lib/components/Text'
 
 import * as styles from './styles.js'
 
-export default function SoundSettingsUi({
-  onWorkoutSoundSelectionChange,
-  onRestSoundSelectionChange,
-}) {
-  const handleOnWorkoutSoundSelectionChange = (_, value) => {
-    onWorkoutSoundSelectionChange(value)
-  }
-
-  const handleOnRestSoundSelectionChange = (_, value) => {
-    onRestSoundSelectionChange(value)
-  }
-
+export default function SoundSettingsUi() {
   return (
     <Box sx={styles.wrapper}>
       <Accordion>
@@ -34,11 +23,7 @@ export default function SoundSettingsUi({
         <AccordionDetails sx={{ display: 'grid', justifyContent: 'start' }}>
           <FormControl component='fieldset'>
             <FormLabel component='legend'>Workout Sound</FormLabel>
-            <RadioGroup
-              aria-label='workout sound'
-              name='row-radio-buttons-group'
-              onChange={handleOnWorkoutSoundSelectionChange}
-            >
+            <RadioGroup aria-label='workout sound' name='row-radio-buttons-group'>
               <FormControlLabel
                 value='voice'
                 control={<Radio />}
@@ -58,11 +43,7 @@ export default function SoundSettingsUi({
 
           <FormControl component='fieldset'>
             <FormLabel component='legend'>Rest Sound</FormLabel>
-            <RadioGroup
-              aria-label='rest sound'
-              name='row-radio-buttons-group'
-              onChange={handleOnRestSoundSelectionChange}
-            >
+            <RadioGroup aria-label='rest sound' name='row-radio-buttons-group'>
               <FormControlLabel
                 value='voice'
                 control={<Radio />}
