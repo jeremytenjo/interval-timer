@@ -1,6 +1,6 @@
 import formatDuration from 'format-duration'
 
-import Box from '../../../../../lib/components/Box'
+import Box from '../../../../../../lib/components/Box'
 
 export default function Info({ time, title, sx = {}, titleSx = {}, timeSx = {} }) {
   return (
