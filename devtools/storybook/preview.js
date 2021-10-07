@@ -2,6 +2,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { create } from '@storybook/theming/create'
 
 import { FirebaseProvider } from '../../src/firebase/../../src/firebase/useFirebase'
+import GlobalProviders from '../../src/globalState/GlobalProviders'
 
 import StorybookTheme from './theme'
 
@@ -15,9 +16,11 @@ export const decorators = [
     return (
       <FirebaseProvider>
         <StorybookTheme>
-          <MemoryRouter initialEntries={['/']}>
-            <Story />
-          </MemoryRouter>
+          <GlobalProviders>
+            <MemoryRouter initialEntries={['/']}>
+              <Story />
+            </MemoryRouter>
+          </GlobalProviders>
         </StorybookTheme>
       </FirebaseProvider>
     )

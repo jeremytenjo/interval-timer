@@ -38,7 +38,7 @@ export default function useAuth() {
 
       authStore.setUser({ ...user, accessToken })
     } catch (error) {
-      showError.show({ error, message: error.message })
+      showError.show({ error, message: 'Error signing in, please try again.' })
       authStore.setError(error)
     } finally {
       authStore.setSigningIn(false)

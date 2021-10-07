@@ -5,4 +5,4 @@
  *
  * [Docs](https://developers.google.com/analytics/devguides/collection/gtagjs)
  */
-export default gtag
+export default (gtag) => null

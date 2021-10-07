@@ -11,7 +11,7 @@ export default function useSettings() {
     },
   })
 
-  const [currentUserSettings] = collection.get.data || defaultSettings
+  const [currentUserSettings] = collection.get.data || [defaultSettings]
 
   return { ...collection, currentUserSettings }
 }
