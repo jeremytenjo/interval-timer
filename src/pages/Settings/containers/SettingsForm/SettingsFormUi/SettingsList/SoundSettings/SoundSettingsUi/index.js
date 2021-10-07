@@ -8,7 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 
-import Text from '../../../../../../lib/components/Text'
+import Text from '../../../../../../../../lib/components/Text/index'
 
 import * as styles from './styles.js'
 

@@ -1,16 +1,14 @@
 import useAppBar from '../../globalState/useAppBar'
 import Box from '../../lib/components/Box'
 
-import SettingsList from './containers/SettingsList'
-import SettingsActionBar from './containers/SettingsActionBar'
+import SettingsForm from './containers/SettingsForm'
 
 export default function SettingsPage() {
   useAppBar({ title: 'Settings' })
 
   return (
     <Box className='centerPage'>
-      <SettingsList />
-      <SettingsActionBar />
+      <SettingsForm />
     </Box>
   )
 }
