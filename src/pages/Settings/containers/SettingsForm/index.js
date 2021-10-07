@@ -7,7 +7,7 @@ export default function SettingsForm() {
   const { handleSubmit } = methods
 
   const handleSumbition = (submttedData) => {
-    console.log({ submttedData })
+    console.log(submttedData)
   }
 
   return (
