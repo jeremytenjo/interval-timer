@@ -13,13 +13,13 @@ const theme = create({
 export const decorators = [
   (Story) => {
     return (
-      <StorybookTheme>
-        <FirebaseProvider>
+      <FirebaseProvider>
+        <StorybookTheme>
           <MemoryRouter initialEntries={['/']}>
             <Story />
           </MemoryRouter>
-        </FirebaseProvider>
-      </StorybookTheme>
+        </StorybookTheme>
+      </FirebaseProvider>
     )
   },
 ]
