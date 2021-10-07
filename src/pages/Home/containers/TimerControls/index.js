@@ -1,29 +1,18 @@
-import Button from '../../../../lib/components/Button'
 import useTimer from '../../../../globalState/useTimer'
-import BottomBar from '../../../../lib/components/BottomBar'
+
+import TimerControlsUi from './TimerControlsUi'
 
 export default function TimerControls() {
   const timer = useTimer()
 
   return (
-    <BottomBar>
-      {!timer.isPlaying && !timer.isStarted && (
-        <Button onClick={timer.startTimer}>Start</Button>
-      )}
-
-      {timer.isStarted && (
-        <>
-          {timer.isStarted && timer.isPlaying && (
-            <Button onClick={timer.pauseTimer}>Pause</Button>
-          )}
-
-          {timer.isStarted && !timer.isPlaying && (
-            <Button onClick={timer.resumeTimer}>Resume</Button>
-          )}
-
-          <Button onClick={timer.resetTimer}>Stop</Button>
-        </>
-      )}
-    </BottomBar>
+    <TimerControlsUi
+      isStarted={timer.isStarted}
+      startTimer={timer.startTimer}
+      isPlaying={timer.isPlaying}
+      pauseTimer={timer.pauseTimer}
+      resumeTimer={timer.resumeTimer}
+      resetTimer={timer.resetTimer}
+    />
   )
 }
