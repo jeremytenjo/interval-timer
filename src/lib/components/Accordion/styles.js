@@ -8,15 +8,16 @@ export const accordionSummary = {
     backgroundColor: '#373543',
     paddingLeft: '30px',
     alignItems: 'center',
-    '& svg': {
-      marginRight: '10px',
-      transform: 'translateY(2px)',
-    },
     '& .MuiAccordionSummary-content': {
       margin: '20px 0',
     },
   },
-  title: { fontWeight: 'bold', fontSize: '19px' },
+  title: { fontWeight: 'bold', fontSize: '16px' },
+  titleIcon: {
+    stroke: 'white',
+    marginRight: '10px',
+    width: '20px',
+  },
 }
 
 export const accordionDetails = {

@@ -31,11 +31,5 @@ export default function SoundSettings() {
     },
   ]
 
-  return (
-    <SoundSettingsUi
-      title='Sound'
-      titleIcon={<VolumeDown sx={{ stroke: 'white' }} />}
-      fields={fields}
-    />
-  )
+  return <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
 }

@@ -6,7 +6,7 @@ import Text from '../Text'
 
 import * as styles from './styles'
 
-export default function Accordion({ title, children, titleIcon }) {
+export default function Accordion({ title, children, titleIcon: TitleIcon }) {
   return (
     <AccordionMui sx={styles.wrapper}>
       <AccordionSummary
@@ -14,7 +14,7 @@ export default function Accordion({ title, children, titleIcon }) {
         aria-controls='panel1a-content'
         id='panel1a-header'
       >
-        {titleIcon}
+        <TitleIcon sx={styles.accordionSummary.titleIcon} />
         <Text sx={styles.accordionSummary.title} text={title} />
       </AccordionSummary>
 
