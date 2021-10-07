@@ -1,4 +1,5 @@
 import VolumeDown from '../../../../../../../../lib/components/icons/VolumeDown'
+import defaultSettings from '../../../../../../../../data/settings/useSettings/defaultSettings'
 
 import SoundSettingsUi from './SoundSettingsUi'
 
@@ -13,20 +14,19 @@ export default function SoundSettings() {
       label: 'Beep',
     },
   ]
-  const defaultValue = 'voice'
   const fields = [
     {
       type: 'radioGroup',
       name: 'sound_workoutSound',
       title: 'Workout Sound',
-      defaultValue,
+      defaultValue: defaultSettings.sound_workoutSound,
       options,
     },
     {
       type: 'radioGroup',
       name: 'sound_restSound',
       title: 'Rest Sound',
-      defaultValue,
+      defaultValue: defaultSettings.sound_restSound,
       options,
     },
   ]
