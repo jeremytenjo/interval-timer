@@ -1,14 +1,17 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs'
 import NumberSelector from '../'
-      
-<Meta title='Lib/components/NumberSelector' component={NumberSelector} argTypes={{}} args={{}} />
+
+;<Meta
+  title='Lib/components/NumberSelector'
+  component={NumberSelector}
+  argTypes={{}}
+  args={{}}
+/>
 
 # NumberSelector
 
 export const Template = (args) => (
-  <NumberSelector {...args}>
-    NumberSelector
-  </NumberSelector>
+  <NumberSelector {...args}>NumberSelector</NumberSelector>
 )
 
 <Story name='default' argTypes={{}} args={{}}>
