@@ -12,14 +12,16 @@ export default function SoundSettings() {
     },
   ]
   const defaultValue = 'voice'
-  const groups = [
+  const fields = [
     {
+      type: 'radioGroup',
       name: 'workoutSound',
       title: 'Workout Sound',
       defaultValue,
       options,
     },
     {
+      type: 'radioGroup',
       name: 'restSound',
       title: 'Rest Sound',
       defaultValue,
@@ -27,5 +29,5 @@ export default function SoundSettings() {
     },
   ]
 
-  return <SoundSettingsUi title='Sound' groups={groups} />
+  return <SoundSettingsUi title='Sound' fields={fields} />
 }

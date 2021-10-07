@@ -6,9 +6,14 @@ import Text from '../Text'
 
 export default function Accordion({ title, children }) {
   // TODO style https://www.figma.com/file/yrds3NAEgd2IjUlQmHugpk/Interval-Timer?node-id=392%3A268
+
   return (
-    <AccordionMui>
-      <AccordionSummary aria-controls='panel1a-content' id='panel1a-header'>
+    <AccordionMui sx={{ borderRadius: '10px' }}>
+      <AccordionSummary
+        sx={{ color: 'white.main', backgroundColor: '#373543' }}
+        aria-controls='panel1a-content'
+        id='panel1a-header'
+      >
         <Text text={title} />
       </AccordionSummary>
 
