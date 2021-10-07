@@ -17,14 +17,14 @@ export default function SoundSettings() {
   const fields = [
     {
       type: 'radioGroup',
-      name: 'workoutSound',
+      name: 'sound_workoutSound',
       title: 'Workout Sound',
       defaultValue,
       options,
     },
     {
       type: 'radioGroup',
-      name: 'restSound',
+      name: 'sound_restSound',
       title: 'Rest Sound',
       defaultValue,
       options,
