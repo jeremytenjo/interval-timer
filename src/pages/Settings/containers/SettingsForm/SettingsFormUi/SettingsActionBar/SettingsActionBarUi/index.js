@@ -1,12 +1,10 @@
 import BottomBar from '../../../../../../../lib/components/BottomBar'
 import Button from '../../../../../../../lib/components/Button'
 
-export default function SettingsActionBarUi({ onSave }) {
+export default function SettingsActionBarUi() {
   return (
     <BottomBar>
-      <Button onClick={onSave} type='submit'>
-        Save
-      </Button>
+      <Button type='submit'>Save</Button>
     </BottomBar>
   )
 }

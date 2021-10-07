@@ -7,12 +7,15 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
+import { useFormContext } from 'react-hook-form'
 
 import Text from '../../../../../../../../../lib/components/Text'
 
 import * as styles from './styles.js'
 
 export default function SoundSettingsUi() {
+  const methods = useFormContext()
+
   return (
     <Box sx={styles.wrapper}>
       <Accordion>
@@ -21,6 +24,8 @@ export default function SoundSettingsUi() {
         </AccordionSummary>
 
         <AccordionDetails sx={{ display: 'grid', justifyContent: 'start' }}>
+          <input {...methods.register('bill')} />
+
           <FormControl component='fieldset'>
             <FormLabel component='legend'>Workout Sound</FormLabel>
             <RadioGroup aria-label='workout sound' name='row-radio-buttons-group'>

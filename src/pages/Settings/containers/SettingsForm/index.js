@@ -4,7 +4,7 @@ import SettingsFormUi from './SettingsFormUi'
 
 export default function SettingsForm() {
   const methods = useForm()
-  const { register, handleSubmit } = methods
+  const { handleSubmit } = methods
 
   const handleSumbition = (submttedData) => {
     console.log({ submttedData })
@@ -12,11 +12,7 @@ export default function SettingsForm() {
 
   return (
     <FormProvider {...methods}>
-      <SettingsFormUi
-        onSubmit={handleSumbition}
-        handleSubmit={handleSubmit}
-        register={register}
-      />
+      <SettingsFormUi onSubmit={handleSumbition} handleSubmit={handleSubmit} />
     </FormProvider>
   )
 }
