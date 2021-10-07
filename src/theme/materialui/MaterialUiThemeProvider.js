@@ -11,7 +11,7 @@ import ListItemButton from '../../lib/components/ListItemButton/listItemButton.m
 
 import CssBaselineOverrides from './CssBaseline'
 
-const materialTheme = createTheme({
+export const materialTheme = createTheme({
   palette: colors,
   typography: typography.variants,
   components: {
