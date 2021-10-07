@@ -143,11 +143,44 @@ module.exports = [
     ],
   },
   {
+    type: 'Container',
+    files: [
+      {
+        path: () => 'index.js',
+        template: ({ name }) => `import ${name}Ui from './${name}Ui'
+        
+        export default function ${name}() {        
+          return <${name}Ui />
+        }`,
+      },
+      {
+        path: ({ name }) => `${name}Ui/index.js`,
+        template: ({ name }) => `import Box from 'lib/components/Box'
+
+        import * as styles from './styles.js'
+        
+        export default function ${name}Ui() {        
+          return (
+            <Box sx={styles.wrapper}>
+              hello
+            </Box>
+          )
+        }`,
+      },
+      {
+        path: ({ name }) => `${name}Ui/styles.js`,
+        template: () => `export const wrapper = {}`,
+      },
+    ],
+  },
+  {
     type: 'Page',
     files: [
       {
         path: () => 'index.js',
-        template: ({ name }) => `export default function ${name}Page() {}`,
+        template: ({ name }) => `export default function ${name}Page() {
+          return <>containers</>
+        }`,
       },
       {
         path: () => 'routes.js',
