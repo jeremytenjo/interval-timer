@@ -4,6 +4,7 @@ import useAppBar from '../../globalState/useAppBar'
 import useTimers from '../../data/timers/useTimers'
 import CreateTimerPage from '../CreateTimer'
 import useTimer from '../../globalState/useTimer'
+import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 
 import Details from './containers/Details'
 import Timer from './containers/Timer'
@@ -11,6 +12,7 @@ import TimerControls from './containers/TimerControls'
 
 export default function HomePage() {
   useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
+  useDocumentTitle({ title: 'Home' })
   const timers = useTimers()
   const urlParams = useParams()
   const timer = useTimer()
