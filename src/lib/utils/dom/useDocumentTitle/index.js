@@ -1,5 +1,5 @@
 export default function useDocumentTitle({ title }) {
   useEffect(() => {
-    document.title = `Interval Timer | ${title}`
+    document.title = `My Interval Timer | ${title}`
   }, [title])
 }
