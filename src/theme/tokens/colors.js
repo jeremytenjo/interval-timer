@@ -16,7 +16,7 @@ const colors = {
     main: '#fff',
   },
   error: {
-    main: '#f44336',
+    main: '#d93025',
   },
 }
 
