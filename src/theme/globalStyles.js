@@ -39,6 +39,7 @@ export default () => (
         padding: '20px',
         maxWidth: '500px',
         margin: 'auto',
+        paddingBottom: '80px',
       },
     }}
   />
