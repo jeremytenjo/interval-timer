@@ -30,13 +30,10 @@ export default function useTimerSound() {
   }
 
   const playWorkoutSound = () => {
-    console.log(settings.currentUserSettings.sound_workoutSound)
-
     playSound(mp3Urls.workout[settings.currentUserSettings.sound_workoutSound])
   }
 
   const playRestSound = () => {
-    console.log(settings.currentUserSettings.sound_restSound)
     playSound(mp3Urls.rest[settings.currentUserSettings.sound_restSound])
   }
 
