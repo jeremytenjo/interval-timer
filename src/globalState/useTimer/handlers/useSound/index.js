@@ -1,20 +1,25 @@
-import create from 'zustand'
-
-import workoutMp3 from '../../../../../public/sounds/workout/1.mp3'
+import workoutBeepMp3 from '../../../../../public/sounds/workout/beep.mp3'
+import workoutVoiceMp3 from '../../../../../public/sounds/workout/beep.mp3'
+import restBeepMp3 from '../../../../../public/sounds/workout/beep.mp3'
+import restVoiceMp3 from '../../../../../public/sounds/workout/beep.mp3'
+import useSettings from '../../../../data/settings/useSettings'
 
 import useVolume from './handlers/useVolume'
 
-const useTimerSoundStore = create((set) => ({
-  workoutSoundUrl: workoutMp3,
-  setWorkoutSoundUrl: (newValue) => set(() => ({ workoutSoundUrl: newValue })),
-
-  restSoundUrl: workoutMp3,
-  setRestSoundUrl: (newValue) => set(() => ({ restSoundUrl: newValue })),
-}))
-
 export default function useTimerSound() {
-  const timerSoundStore = useTimerSoundStore()
   const volume = useVolume()
+  const settings = useSettings()
+
+  const mp3Urls = {
+    workout: {
+      voice: workoutVoiceMp3,
+      beep: workoutBeepMp3,
+    },
+    rest: {
+      voice: restVoiceMp3,
+      beep: restBeepMp3,
+    },
+  }
 
   const playSound = (soundUrl) => {
     const audio = new Audio(soundUrl)
@@ -25,11 +30,14 @@ export default function useTimerSound() {
   }
 
   const playWorkoutSound = () => {
-    playSound(timerSoundStore.workoutSoundUrl)
+    console.log(settings.currentUserSettings.sound_workoutSound)
+
+    playSound(mp3Urls.workout[settings.currentUserSettings.sound_workoutSound])
   }
 
   const playRestSound = () => {
-    playSound(timerSoundStore.restSoundUrl)
+    console.log(settings.currentUserSettings.sound_restSound)
+    playSound(mp3Urls.rest[settings.currentUserSettings.sound_restSound])
   }
 
   return {
