@@ -7,7 +7,7 @@ import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
 export default function useUpdate({
-  data: allData,
+  data: allData = [],
   updateData,
   userId,
   collectionName,

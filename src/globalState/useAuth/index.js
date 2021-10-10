@@ -13,12 +13,16 @@ const provider = new GoogleAuthProvider()
 
 const useAuthStore = create((set) => ({
   user: undefined,
-  signingIn: undefined,
-  error: undefined,
-
   setUser: (newValue) => set(() => ({ user: newValue })),
+
+  signingIn: undefined,
   setSigningIn: (newValue) => set(() => ({ signingIn: newValue })),
+
+  error: undefined,
   setError: (newValue) => set(() => ({ error: newValue })),
+
+  checked: false,
+  setChecked: (newValue) => set(() => ({ checked: newValue })),
 }))
 
 export default function useAuth() {
@@ -26,6 +30,7 @@ export default function useAuth() {
   const showError = useShowError()
 
   const signInWithGoogle = async () => {
+    authStore.setChecked(true)
     authStore.setSigningIn(true)
     authStore.setError(false)
 
@@ -72,6 +77,7 @@ export default function useAuth() {
     user: authStore.user,
     signingIn: authStore.signingIn,
     error: authStore.error,
+    checked: authStore.checked,
     signInWithGoogle,
     signOutFromGoogle,
   }

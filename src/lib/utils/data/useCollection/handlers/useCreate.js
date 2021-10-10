@@ -9,7 +9,7 @@ import useShowError from '../../../../components/feedback/useShowError'
 export default function useCreate({
   userId,
   updateData,
-  data: allData,
+  data: allData = [],
   collectionName,
   onCreate,
 }) {
@@ -42,6 +42,8 @@ export default function useCreate({
         id: docRef.id,
       }
     }
+
+    console.log({ allData, createdItem })
 
     const updatedData = arrayDB.add(allData, { data: createdItem })
     const returnData = { createdItem, updatedData, disableSnackbar }

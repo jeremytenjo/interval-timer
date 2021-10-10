@@ -7,7 +7,7 @@ import useShowError from '../../../../components/feedback/useShowError'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 
 export default function useRemove({
-  data,
+  data = [],
   updateData,
   userId,
   collectionName,
