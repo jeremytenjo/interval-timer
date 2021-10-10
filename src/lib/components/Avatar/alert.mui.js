@@ -23,6 +23,12 @@ export default {
           background: 'rgb(255 0 0 / 32%)',
         },
       },
+      {
+        props: { severity: 'info' },
+        style: {
+          background: 'rgb(255 255 255 / 32%)',
+        },
+      },
     ],
   },
 }

@@ -63,6 +63,14 @@ export default function useCreate({
       !result.disableSnackbar &&
         snackbar.show({ message: `${collectionName.capitalizedSingularized} saved` })
     },
+    onLoading: (loading) => {
+      if (loading) {
+        snackbar.show({
+          message: `Creating ${collectionName.capitalizedSingularized}...`,
+          severity: 'info',
+        })
+      }
+    },
   })
 
   return create

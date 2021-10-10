@@ -41,7 +41,7 @@ export const SnackBarProvider = ({ children }) => {
           },
         }}
         TransitionComponent={Slide}
-        autoHideDuration={5000}
+        autoHideDuration={3000}
       >
         <Alert severity={severity}>{message}</Alert>
       </Snackbar>

@@ -52,6 +52,14 @@ export default function useUpdate({
       updateData(result.updatedItems)
       snackbar.show({ message: `${collectionName.capitalizedSingularized} updated` })
     },
+    onLoading: (loading) => {
+      if (loading) {
+        snackbar.show({
+          message: `Updating ${collectionName.capitalizedSingularized}...`,
+          severity: 'info',
+        })
+      }
+    },
   })
 
   return update

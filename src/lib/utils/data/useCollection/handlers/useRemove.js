@@ -44,6 +44,14 @@ export default function useRemove({
       updateData(result.remainingItems)
       snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
     },
+    onLoading: (loading) => {
+      if (loading) {
+        snackbar.show({
+          message: `Removing ${collectionName.capitalizedSingularized}...`,
+          severity: 'info',
+        })
+      }
+    },
   })
 
   return remove
