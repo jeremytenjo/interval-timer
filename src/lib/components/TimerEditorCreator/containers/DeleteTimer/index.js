@@ -25,8 +25,8 @@ export default function DeleteTimer({ onDelete = () => null }) {
         onConfirm={onConfirm}
         onCancel={hide}
         open={open}
-        title={`Delete ${timer.selectedTimer?.name} timer?`}
-        confirmText='Delete'
+        title={`Remove ${timer.selectedTimer?.name} timer?`}
+        confirmText='Remove'
       />
 
       <Button
@@ -34,7 +34,7 @@ export default function DeleteTimer({ onDelete = () => null }) {
         sx={{ width: 'fit-content', color: 'error.main' }}
         onClick={show}
       >
-        Delete
+        Remove
       </Button>
     </>
   )
