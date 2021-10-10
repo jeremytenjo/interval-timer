@@ -13,6 +13,7 @@ export default function useGet({
   onGet,
 }) {
   const firebase = useFirebase()
+  const showError = useShowError()
 
   const firestoreFetcher = async () => {
     const data = []
@@ -40,6 +41,12 @@ export default function useGet({
     onSuccess: (data) => {
       setLocalStorageData.exec({ value: data })
     },
+    onError: (error) => {
+      showError.show({
+        error,
+        message: `Error fetching ${collectionName.raw}, please try again.`,
+      })
+    },
   })
   const getLocalStorageData = useLocalStorage({ action: 'get', key: collectionName.raw })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
@@ -47,8 +54,6 @@ export default function useGet({
   useOnTrue(!dataFetch.data, () => {
     getLocalStorageData.exec()
   })
-
-  useShowError(dataFetch.error, `Error fetching ${collectionName.raw}, please try again.`)
 
   const update = (newData) => {
     setLocalStorageData.exec({ value: newData })
