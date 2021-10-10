@@ -13,7 +13,9 @@ export default function useSettings() {
 
   const [currentUserSettings] = !settings.get.fetched
     ? [defaultSettings]
-    : settings.get.data
+    : settings.get.data.length
+    ? settings.get.data
+    : [defaultSettings]
 
   return { ...settings, currentUserSettings }
 }
