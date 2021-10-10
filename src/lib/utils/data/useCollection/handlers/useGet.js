@@ -35,16 +35,17 @@ export default function useGet({
 
   const swrKey = () => (userId ? collectionName.raw : null)
 
-  const dataFetch = useSWRImmutable(swrKey, firestoreFetcher)
+  // https://swr.vercel.app/docs/options
+  const dataFetch = useSWRImmutable(swrKey, firestoreFetcher, {
+    onSuccess: (data) => {
+      setLocalStorageData.exec({ value: data })
+    },
+  })
   const getLocalStorageData = useLocalStorage({ action: 'get', key: collectionName.raw })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
   useOnTrue(!dataFetch.data, () => {
     getLocalStorageData.exec()
-  })
-
-  useOnTrue(dataFetch.data, () => {
-    setLocalStorageData.exec({ value: dataFetch.data })
   })
 
   useShowError(dataFetch.error, `Error fetching ${collectionName.raw}, please try again.`)
