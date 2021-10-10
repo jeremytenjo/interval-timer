@@ -55,7 +55,7 @@
     "@babel/eslint-parser": "^7.12.17",
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
-    "@capacitor/android": "^3.1.2",
+    "@capacitor/android": "^3.2.4",
     "@capacitor/cli": "^3.1.2",
     "@capacitor/core": "^3.1.2",
     "@capacitor/geolocation": "^1.1.0",
