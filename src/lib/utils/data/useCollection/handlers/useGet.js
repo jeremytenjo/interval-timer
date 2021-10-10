@@ -1,10 +1,16 @@
 import { collection, query, where, getDocs } from 'firebase/firestore'
 import useSWRImmutable from 'swr/immutable'
 import useOnTrue from '@useweb/use-on-true'
+import create from 'zustand'
 
 import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
+
+const useGetStore = create((set) => ({
+  fetched: false,
+  setFetched: (newValue) => set(() => ({ fetched: newValue })),
+}))
 
 export default function useGet({
   userId,
@@ -14,8 +20,10 @@ export default function useGet({
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
+  const getStore = useGetStore()
 
   const firestoreFetcher = async () => {
+    getStore.setFetched(true)
     const data = []
     const q = query(
       collection(firebase.db, collectionName.raw),
@@ -70,6 +78,7 @@ export default function useGet({
   return {
     data: data || [],
     fetching,
+    fetched: getStore.fetched,
     error,
     update,
   }

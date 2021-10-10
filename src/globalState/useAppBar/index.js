@@ -2,10 +2,10 @@ import create from 'zustand'
 
 const useAppBarStore = create((set) => ({
   title: '',
-  showEditButton: false,
+  updateTitle: (newValue) => set(() => ({ title: newValue })),
 
-  updateTitle: (newTitle) => set(() => ({ title: newTitle })),
-  setShowEditButton: (show) => set(() => ({ showEditButton: show })),
+  showEditButton: false,
+  setShowEditButton: (newValue) => set(() => ({ showEditButton: newValue })),
 }))
 
 export default function useAppBar({
