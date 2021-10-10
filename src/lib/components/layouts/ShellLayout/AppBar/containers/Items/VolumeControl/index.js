@@ -1,6 +1,6 @@
 import useTimer from '../../../../../../../../globalState/useTimer'
 
-import VolumeControlUi from './ui'
+import VolumeControlUi from './VolumeControlUi'
 
 export default function VolumeControl() {
   const timer = useTimer()
