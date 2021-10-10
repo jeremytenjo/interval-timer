@@ -43,8 +43,6 @@ export default function useCreate({
       }
     }
 
-    console.log({ allData, createdItem })
-
     const updatedData = arrayDB.add(allData, { data: createdItem })
     const returnData = { createdItem, updatedData, disableSnackbar }
 

@@ -68,7 +68,7 @@ export default function useGet({
   const error = dataFetch.error
 
   return {
-    data,
+    data: data || [],
     fetching,
     error,
     update,
