@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth'
 
 import useShowError from '../../lib/components/feedback/useShowError'
+import gtag from '../../lib/utils/analytics/gtag'
 
 const provider = new GoogleAuthProvider()
 
@@ -41,6 +42,9 @@ export default function useAuth() {
       const accessToken = credential.accessToken
       const user = result.user
 
+      gtag('event', 'login', {
+        method: 'Google',
+      })
       authStore.setUser({ ...user, accessToken })
     } catch (error) {
       showError.show({ error, message: 'Error signing in, please try again.' })
