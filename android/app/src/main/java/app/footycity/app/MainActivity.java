@@ -1,4 +1,4 @@
-package app.footycity.app;
+package app.myintervaltimer.app;
 
 import com.getcapacitor.BridgeActivity;
 

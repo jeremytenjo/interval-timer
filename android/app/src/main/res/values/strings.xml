@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">my-interval-timer</string>
     <string name="title_activity_main">my-interval-timer</string>
-    <string name="package_name">app.footycity.app</string>
-    <string name="custom_url_scheme">app.footycity.app</string>
+    <string name="package_name">app.myintervaltimer.app</string>
+    <string name="custom_url_scheme">app.myintervaltimer.app</string>
 </resources>
