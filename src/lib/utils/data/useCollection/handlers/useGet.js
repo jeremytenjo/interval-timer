@@ -104,8 +104,8 @@ export default function useGet({
     }
 
     if (
-      !dataFetch.data &&
       collectionWasFetched &&
+      !dataFetch.data &&
       !getLocalStorageData.result &&
       defaultData
     ) {
