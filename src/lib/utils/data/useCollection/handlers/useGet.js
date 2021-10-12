@@ -72,7 +72,8 @@ export default function useGet({
   const getLocalStorageData = useLocalStorage({
     action: 'get',
     key: collectionName.raw,
-    onResult: () => {
+    onResult: (result) => {
+      onGet && onGet(result)
       const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
         data: { id: collectionName.raw },
       })
@@ -100,6 +101,11 @@ export default function useGet({
       getLocalStorageData.result &&
       showLocalStorageDataIfNoUserSignedIn
     ) {
+      if (collectionName.raw === 'timers') {
+        // console.log('HERE!')
+        // console.log(getLocalStorageData.result)
+      }
+
       return getLocalStorageData.result
     }
 
