@@ -4,7 +4,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const setSelectedTimer = (newSelectedTimer) => {
+  const setSelectedTimer = (newSelectedTimer, { redirect = true } = {}) => {
     if (!newSelectedTimer) return null
 
     const redirectUrl = `/timer/${newSelectedTimer.id}`
@@ -20,17 +20,17 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
 
     resetTimer()
 
-    if (location.pathname !== redirectUrl) {
+    if (location.pathname !== redirectUrl && redirect) {
       navigate(redirectUrl)
     }
   }
 
-  const setSelectedTimerById = (timerId, timers) => {
+  const setSelectedTimerById = (timerId, timers, { redirect } = {}) => {
     if (!timers) return null
 
     const selectedTimer = timers.find((timer) => timer?.id === timerId)
 
-    setSelectedTimer(selectedTimer)
+    setSelectedTimer(selectedTimer, { redirect })
   }
 
   return { setSelectedTimer, setSelectedTimerById }
