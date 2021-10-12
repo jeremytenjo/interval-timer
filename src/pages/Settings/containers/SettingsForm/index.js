@@ -8,7 +8,7 @@ export default function SettingsForm() {
   const settings = useSettings()
   const methods = useForm()
 
-  const handleSumbition = (submttedData) => {
+  const handleSubmission = (submttedData) => {
     const payload = {
       ...settings.currentUserSettings,
       ...submttedData,
@@ -22,7 +22,7 @@ export default function SettingsForm() {
 
   return (
     <FormProvider {...methods}>
-      <SettingsFormUi onSubmit={handleSumbition} />
+      <SettingsFormUi onSubmit={handleSubmission} />
     </FormProvider>
   )
 }

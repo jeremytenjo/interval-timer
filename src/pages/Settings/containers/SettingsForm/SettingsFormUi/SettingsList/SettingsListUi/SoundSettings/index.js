@@ -33,9 +33,5 @@ export default function SoundSettings() {
     },
   ]
 
-  return (
-    !settings.get.fetching && (
-      <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
-    )
-  )
+  return <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
 }
