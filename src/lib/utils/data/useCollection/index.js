@@ -12,6 +12,7 @@ export default function useCollection(
   collectionName,
   {
     showLocalStorageDataIfNoUserSignedIn = true,
+    defaultData,
     onGet,
     onCreate,
     onRemove,
@@ -29,6 +30,7 @@ export default function useCollection(
       capitalizedSingularized: capitalize(singularize(collectionName)),
     },
     showLocalStorageDataIfNoUserSignedIn,
+    defaultData,
     onGet,
     onCreate,
     onRemove,

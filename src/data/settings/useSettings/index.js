@@ -4,6 +4,7 @@ import defaultSettings from './defaultSettings'
 
 export default function useSettings() {
   const settings = useCollection('settings', {
+    defaultData: [defaultSettings],
     onGet: (data) => {
       if (!data.length) {
         settings.create.exec({ data: defaultSettings, disableSnackbar: true })
@@ -11,11 +12,7 @@ export default function useSettings() {
     },
   })
 
-  const [currentUserSettings] = !settings.get.fetched
-    ? [defaultSettings]
-    : settings.get.data.length
-    ? settings.get.data
-    : [defaultSettings]
+  const [currentUserSettings] = settings.get.data
 
   return { ...settings, currentUserSettings }
 }

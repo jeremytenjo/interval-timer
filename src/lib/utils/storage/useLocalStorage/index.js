@@ -12,8 +12,8 @@ import useAsync from '@useweb/use-async'
  * const setLocalTimers = useLocalStorage({ action: 'set', key: 'timers' })
  * setLocalTimers({key: 'timers', value: data})
  */
-export default function useLocalStorage({ action = 'get', key } = {}) {
-  return useAsync(async (data) => {
+export default function useLocalStorage({ action = 'get', key, onResult } = {}) {
+  const fetcher = async (data) => {
     if (action === 'get') {
       const { value } = await Storage.get({ key })
       const valueParsed = JSON.parse(value)
@@ -30,5 +30,13 @@ export default function useLocalStorage({ action = 'get', key } = {}) {
     if (action === 'remove') {
       await Storage.remove({ key })
     }
+  }
+
+  const localStorage = useAsync(fetcher, {
+    onResult: (result) => {
+      onResult && onResult(result)
+    },
   })
+
+  return localStorage
 }

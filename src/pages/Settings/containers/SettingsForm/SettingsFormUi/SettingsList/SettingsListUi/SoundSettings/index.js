@@ -33,5 +33,7 @@ export default function SoundSettings() {
     },
   ]
 
-  return <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
+  return settings?.currentUserSettings ? (
+    <SoundSettingsUi title='Sound' titleIcon={VolumeDown} fields={fields} />
+  ) : null
 }

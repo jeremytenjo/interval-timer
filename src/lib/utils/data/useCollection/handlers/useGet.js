@@ -8,8 +8,14 @@ import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
 
 const useGetStore = create((set) => ({
-  fetched: false,
-  setFetched: (newValue) => set(() => ({ fetched: newValue })),
+  fetchedFirestore: false,
+  setFtchedFirestore: (newValue) => set(() => ({ fetchedFirestore: newValue })),
+
+  fetchedLocalStorage: false,
+  setFetchedLocalStorage: (newValue) => set(() => ({ fetchedLocalStorage: newValue })),
+  fetchedLocalStorageData: false,
+  setFetchedLocalStorageData: (newValue) =>
+    set(() => ({ fetchedLocalStorageData: newValue })),
 }))
 
 export default function useGet({
@@ -17,13 +23,14 @@ export default function useGet({
   collectionName,
   showLocalStorageDataIfNoUserSignedIn,
   onGet,
+  defaultData,
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
   const getStore = useGetStore()
 
   const firestoreFetcher = async () => {
-    getStore.setFetched(true)
+    getStore.setFtchedFirestore(true)
     const data = []
     const q = query(
       collection(firebase.db, collectionName.raw),
@@ -56,7 +63,14 @@ export default function useGet({
       })
     },
   })
-  const getLocalStorageData = useLocalStorage({ action: 'get', key: collectionName.raw })
+  const getLocalStorageData = useLocalStorage({
+    action: 'get',
+    key: collectionName.raw,
+    onResult: (result) => {
+      getStore.setFetchedLocalStorageData(result)
+      getStore.setFetchedLocalStorage(true)
+    },
+  })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
   useOnTrue(!dataFetch.data, () => {
@@ -68,17 +82,40 @@ export default function useGet({
     dataFetch.mutate(newData, false)
   }
 
+  const determineReturnData = () => {
+    if (dataFetch.data) {
+      return dataFetch.data
+    }
+
+    if (
+      !dataFetch.data &&
+      getStore.fetchedLocalStorageData &&
+      showLocalStorageDataIfNoUserSignedIn
+    ) {
+      return getStore.fetchedLocalStorageData
+    }
+
+    if (
+      !dataFetch.data &&
+      getStore.fetchedLocalStorage &&
+      !getStore.fetchedLocalStorageData &&
+      defaultData
+    ) {
+      return defaultData
+    }
+
+    return []
+  }
+
   const fetching = !dataFetch.data && !dataFetch.error
-  const data =
-    !dataFetch.data && fetching && showLocalStorageDataIfNoUserSignedIn && !userId
-      ? getLocalStorageData.result
-      : dataFetch.data
+  const data = determineReturnData()
   const error = dataFetch.error
 
   return {
-    data: data || [],
+    data,
     fetching,
-    fetched: getStore.fetched,
+    fetchedFirestore: getStore.fetchedFirestore,
+    fetchedLocalStorage: getStore.fetchedLocalStorage,
     error,
     update,
   }
