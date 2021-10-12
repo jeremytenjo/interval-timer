@@ -7,17 +7,6 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
 
-const useGetStore = create((set) => ({
-  fetchedFirestore: false,
-  setFtchedFirestore: (newValue) => set(() => ({ fetchedFirestore: newValue })),
-
-  fetchedLocalStorage: false,
-  setFetchedLocalStorage: (newValue) => set(() => ({ fetchedLocalStorage: newValue })),
-  fetchedLocalStorageData: false,
-  setFetchedLocalStorageData: (newValue) =>
-    set(() => ({ fetchedLocalStorageData: newValue })),
-}))
-
 export default function useGet({
   userId,
   collectionName,
@@ -27,10 +16,8 @@ export default function useGet({
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
-  const getStore = useGetStore()
 
   const firestoreFetcher = async () => {
-    getStore.setFtchedFirestore(true)
     const data = []
     const q = query(
       collection(firebase.db, collectionName.raw),
@@ -66,10 +53,6 @@ export default function useGet({
   const getLocalStorageData = useLocalStorage({
     action: 'get',
     key: collectionName.raw,
-    onResult: (result) => {
-      getStore.setFetchedLocalStorageData(result)
-      getStore.setFetchedLocalStorage(true)
-    },
   })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
@@ -89,18 +72,13 @@ export default function useGet({
 
     if (
       !dataFetch.data &&
-      getStore.fetchedLocalStorageData &&
+      getLocalStorageData.result &&
       showLocalStorageDataIfNoUserSignedIn
     ) {
-      return getStore.fetchedLocalStorageData
+      return getLocalStorageData.result
     }
 
-    if (
-      !dataFetch.data &&
-      getStore.fetchedLocalStorage &&
-      !getStore.fetchedLocalStorageData &&
-      defaultData
-    ) {
+    if (!dataFetch.data && !getLocalStorageData.result && defaultData) {
       return defaultData
     }
 
@@ -114,8 +92,6 @@ export default function useGet({
   return {
     data,
     fetching,
-    fetchedFirestore: getStore.fetchedFirestore,
-    fetchedLocalStorage: getStore.fetchedLocalStorage,
     error,
     update,
   }
