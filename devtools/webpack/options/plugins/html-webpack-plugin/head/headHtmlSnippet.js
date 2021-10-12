@@ -6,7 +6,7 @@ module.exports = function headHtmlSnippet({ appConfig }) {
   return `
   <title>${appConfig.manifestJson.name}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
-  <link rel="apple-touch-icon" href="images/logo/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon.png">
   <link rel="shortcut icon" href="images/logo/logo.svg">
   <meta name="description" content="${
     appConfig.manifestJson.description || 'App description'
