@@ -101,11 +101,6 @@ export default function useGet({
       getLocalStorageData.result &&
       showLocalStorageDataIfNoUserSignedIn
     ) {
-      if (collectionName.raw === 'timers') {
-        // console.log('HERE!')
-        // console.log(getLocalStorageData.result)
-      }
-
       return getLocalStorageData.result
     }
 
