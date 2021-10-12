@@ -12,10 +12,10 @@ import TimerControls from './containers/TimerControls'
 
 export default function HomePage() {
   useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
-  useDocumentTitle({ title: 'Home' })
+  const timer = useTimer()
+  useDocumentTitle({ title: timer?.selectedTimer?.name || 'Home' })
   const timers = useTimers()
   const urlParams = useParams()
-  const timer = useTimer()
 
   useEffect(() => {
     if (!urlParams.timerId && !!timers.get?.data?.length) {
