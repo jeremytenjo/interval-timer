@@ -13,8 +13,7 @@ export default function ContinueWithGoogle() {
       fullWidth
       sx={styles.wrapper}
       startIcon={<GoogleLogo />}
-    >
-      Continue with Google
-    </Button>
+      text='Continue with Google'
+    />
   )
 }
