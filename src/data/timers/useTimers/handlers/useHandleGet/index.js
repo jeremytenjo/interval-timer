@@ -5,7 +5,7 @@ export default function useHandleGet({ timer }) {
   const location = useLocation()
 
   const setSelectedTimer = (data) => {
-    const redirect = !location.pathname === '/' && !location.pathname.includes('/timer/')
+    const redirect = location.pathname === '/' && !location.pathname.includes('/timer/')
 
     if (!urlParams.timerId && !!data.length) {
       timer.setSelectedTimer(data[0], { redirect })
