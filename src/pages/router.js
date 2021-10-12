@@ -1,8 +1,8 @@
 import ShellLayout from '../lib/components/layouts/ShellLayout'
 
+import HomeRoutes from './Home/routes'
 import CreateTimerRoutes from './CreateTimer/routes'
 import EditTimerRoutes from './EditTimer/routes'
-import HomeRoutes from './Home/routes'
 import SettingsRoutes from './Settings/routes'
 
 export function Routes() {
