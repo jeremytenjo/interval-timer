@@ -2,10 +2,16 @@ import { collection, query, where, getDocs } from 'firebase/firestore'
 import useSWRImmutable from 'swr/immutable'
 import useOnTrue from '@useweb/use-on-true'
 import create from 'zustand'
+import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
+
+const useGetStoreStore = create((set) => ({
+  fetchedCollections: [],
+  setFetchedCollections: (newValue) => set(() => ({ fetchedCollections: newValue })),
+}))
 
 export default function useGet({
   userId,
@@ -16,6 +22,15 @@ export default function useGet({
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
+  const getStore = useGetStoreStore()
+
+  const collectionWasFetched = useMemo(
+    () =>
+      getStore.fetchedCollections.some(
+        (fetchedCollection) => fetchedCollection.id === collectionName.raw,
+      ),
+    [collectionName.raw],
+  )
 
   const firestoreFetcher = async () => {
     const data = []
@@ -41,6 +56,10 @@ export default function useGet({
   // https://swr.vercel.app/docs/options
   const dataFetch = useSWRImmutable(swrKey, firestoreFetcher, {
     onSuccess: (data) => {
+      const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
+        data: { id: collectionName.raw },
+      })
+      getStore.setFetchedCollections(updatedFetchedCollections)
       setLocalStorageData.exec({ value: data })
     },
     onError: (error) => {
@@ -53,6 +72,12 @@ export default function useGet({
   const getLocalStorageData = useLocalStorage({
     action: 'get',
     key: collectionName.raw,
+    onResult: () => {
+      const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
+        data: { id: collectionName.raw },
+      })
+      getStore.setFetchedCollections(updatedFetchedCollections)
+    },
   })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
@@ -78,7 +103,12 @@ export default function useGet({
       return getLocalStorageData.result
     }
 
-    if (!dataFetch.data && !getLocalStorageData.result && defaultData) {
+    if (
+      !dataFetch.data &&
+      collectionWasFetched &&
+      !getLocalStorageData.result &&
+      defaultData
+    ) {
       return defaultData
     }
 
