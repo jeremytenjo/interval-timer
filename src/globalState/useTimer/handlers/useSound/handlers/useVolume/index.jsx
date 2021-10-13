@@ -2,6 +2,7 @@ import create from 'zustand'
 import useOnTrue from '@useweb/use-on-true'
 
 import useLocalStorage from '../../../../../../lib/utils/storage/useLocalStorage'
+import { useEffect } from 'react'
 
 const useVolumeStore = create((set) => ({
   volume: 50,

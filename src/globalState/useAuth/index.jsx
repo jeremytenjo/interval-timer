@@ -9,6 +9,7 @@ import {
 
 import useShowError from '../../lib/components/feedback/useShowError'
 import gtag from '../../lib/utils/analytics/gtag'
+import { useEffect } from 'react'
 
 const provider = new GoogleAuthProvider()
 

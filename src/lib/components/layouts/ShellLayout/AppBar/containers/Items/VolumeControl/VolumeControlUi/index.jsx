@@ -8,6 +8,7 @@ import Box from '../../../../../../../Box'
 import VolumeMuted from '../../../../../../../icons/VolumeMuted'
 
 import * as styles from './styles'
+import { useState } from 'react'
 
 export default function VolumeControlUi({
   onMute = () => null,

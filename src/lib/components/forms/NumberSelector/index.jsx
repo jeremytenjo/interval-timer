@@ -4,6 +4,7 @@ import MinusRound from '../../icons/MinusRound'
 import IconButton from '../../IconButton'
 
 import * as styles from './styles'
+import { useState } from 'react'
 
 export default function NumberSelector({
   title,

@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router'
+import { useLocation, useParams } from 'react-router-dom'
 
 export default function useHandleGet({ timer }) {
   const urlParams = useParams()

@@ -12,6 +12,7 @@ import SignOut from '../../../../../../icons/SignOut/index'
 
 import * as styles from './styles'
 import SettingsLink from './SettingsLink'
+import { useEffect, useState } from 'react'
 
 export default function ProfilePic() {
   const auth = useAuth()

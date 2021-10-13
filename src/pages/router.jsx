@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Suspense } from 'react'
 
 import ShellLayout from '../lib/components/layouts/ShellLayout'
@@ -8,7 +8,7 @@ import CreateTimerRoutes from './CreateTimer/routes'
 import EditTimerRoutes from './EditTimer/routes'
 import SettingsRoutes from './Settings/routes'
 
-export function Routess() {
+export function Routes() {
   return (
     <ShellLayout>
       <Suspense fallback={null}>

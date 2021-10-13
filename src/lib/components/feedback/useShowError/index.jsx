@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import gtag from '../../../utils/analytics/gtag'
 import useSnackBar from '../../Snackbar/useSnackbar'
 
