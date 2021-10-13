@@ -38,7 +38,6 @@
     "@useweb/remove-last-character": "0.0.1",
     "@useweb/use-async": "^0.2.0",
     "@useweb/use-on-true": "0.0.1",
-    "@vitejs/plugin-react": "^1.0.4",
     "firebase": "^9.1.2",
     "format-duration": "^1.4.0",
     "history": "^5.0.1",
@@ -49,10 +48,11 @@
     "react-hook-form": "^7.17.1",
     "react-router-dom": "^6.0.0-beta.5",
     "swr": "^1.0.1",
-    "vite": "^2.6.7",
     "zustand": "^3.5.10"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.4",
+    "vite": "^2.6.7",
     "@babel/core": "^7.12.17",
     "@babel/eslint-parser": "^7.12.17",
     "@babel/preset-env": "^7.12.17",
