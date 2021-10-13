@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes } from 'react-router-dom'
+import { Suspense } from 'react'
 
 import ShellLayout from '../lib/components/layouts/ShellLayout'
 

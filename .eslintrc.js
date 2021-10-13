@@ -7,18 +7,14 @@ module.exports = {
     'cypress/globals': true,
   },
   ignorePatterns: ['node_modules', 'build', '.env', 'ios', 'android', 'dist'],
-  plugins: ['react', 'babel', 'react-hooks', 'import', 'cypress'],
+  plugins: ['react', 'react-hooks', 'import', 'cypress'],
   extends: ['eslint:recommended', 'plugin:react/recommended'],
-  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 9,
+    ecmaVersion: 2021,
     sourceType: 'module',
-    babelOptions: {
-      configFile: './devtools/babel/config.js',
-    },
   },
   settings: {
     react: {
