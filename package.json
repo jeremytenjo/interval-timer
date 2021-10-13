@@ -5,11 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "node ./devtools/vite/scripts/startDevServer",
-    "build": "node ./devtools/vite/scripts/buildApp",
-    "serve": "vite preview",
-    "dev:app": "node ./devtools/webpack/scriptsstartDevServer/",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
-    "dev:prod": "node ./devtools/webpack/scripts/startDevServer",
+    "dev:prod": "node ./devtools/vite/scripts/runBuild",
+    "build": "node ./devtools/vite/scripts/buildApp",
     "emulators:start": "firebase emulators:start --only auth,firestore",
     "emulators:firestore:export-data": "firebase emulators:export src/data/firestoreEmulatorData",
     "android:run": "npm run android:sync && cap run android",
