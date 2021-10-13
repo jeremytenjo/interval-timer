@@ -1,4 +1,4 @@
-import Box from 'lib/components/Box'
+import Box from '../Box/index.jsx'
 
 import * as styles from './styles.js'
 

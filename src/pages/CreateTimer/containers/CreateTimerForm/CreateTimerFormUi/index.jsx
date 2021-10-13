@@ -1,4 +1,4 @@
-import Box from 'lib/components/Box'
+import Box from '../../../../../lib/components/Box/index.jsx'
 
 import TimerEditorCreator from '../../../../../lib/components/TimerEditorCreator'
 

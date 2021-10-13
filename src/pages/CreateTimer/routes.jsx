@@ -1,3 +1,5 @@
+import { lazy } from 'react'
+
 const CreateTimer = lazy(() => import('./'))
 
 export default function CreateTimerRoutes() {

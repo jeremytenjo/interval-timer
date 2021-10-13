@@ -8,7 +8,7 @@ import Popover from '../../../../../../Popover'
 import ContinueWithGoogle from '../../../../../../firebase/ContinueWithGoogle'
 import Box from '../../../../../../Box'
 import useAuth from '../../../../../../../../globalState/useAuth'
-import SignOut from '../../../../../../icons/SignOut'
+import SignOut from '../../../../../../icons/SignOut/index'
 
 import * as styles from './styles'
 import SettingsLink from './SettingsLink'

@@ -1,4 +1,4 @@
-import Box from 'lib/components/Box'
+import Box from '../../../../../lib/components/Box/index.jsx'
 import { useFormContext } from 'react-hook-form'
 
 import SettingsList from './SettingsList'

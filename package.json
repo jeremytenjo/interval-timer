@@ -4,13 +4,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "node ./devtools/scripts/dev",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
     "dev:app": "node ./devtools/webpack/scripts/startDevServer",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
     "dev:prod": "node ./devtools/webpack/scripts/startDevServer",
     "emulators:start": "firebase emulators:start --only auth,firestore",
     "emulators:firestore:export-data": "firebase emulators:export src/data/firestoreEmulatorData",
-    "build": "node ./devtools/webpack/scripts/buildApp",
     "build:analyze": "node ./devtools/webpack/scripts/analyzeBundle",
     "android:run": "npm run android:sync && cap run android",
     "android:open": "npm run android:sync && cap open android",
@@ -21,7 +22,6 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "tests:run": "./devtools/scripts/tests/run",
-    "serve": "node ./devtools/webpack/scripts/serveBuiltApp",
     "prettify": "prettier \"**/*.js\" --write --config ./devtools/prettier/config.js --ignore-path ./devtools/prettier/.prettierignore",
     "lint": "eslint ./ --fix",
     "prepare": "husky install"
@@ -38,6 +38,7 @@
     "@useweb/remove-last-character": "0.0.1",
     "@useweb/use-async": "^0.2.0",
     "@useweb/use-on-true": "0.0.1",
+    "@vitejs/plugin-react": "^1.0.4",
     "firebase": "^9.1.2",
     "format-duration": "^1.4.0",
     "history": "^5.0.1",
@@ -48,6 +49,7 @@
     "react-hook-form": "^7.17.1",
     "react-router-dom": "^6.0.0-beta.5",
     "swr": "^1.0.1",
+    "vite": "^2.6.7",
     "zustand": "^3.5.10"
   },
   "devDependencies": {

@@ -81,7 +81,7 @@ const variants = {
   },
 }
 
-module.exports = {
+export default {
   variants,
   variantNames: Object.keys(variants),
 }

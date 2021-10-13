@@ -1,4 +1,6 @@
-const Home = lazy(() => import('./'))
+import { lazy } from 'react'
+
+const Home = lazy(() => import('.'))
 
 export default function HomeRoutes() {
   return (

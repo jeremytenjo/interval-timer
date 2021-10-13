@@ -1,4 +1,4 @@
-import Box from 'lib/components/Box'
+import Box from '../../../../../../../lib/components/Box/index.jsx'
 
 import SoundSettings from './SoundSettings'
 import * as styles from './styles.js'

@@ -1,4 +1,6 @@
-const Settings = lazy(() => import('./'))
+import { lazy } from 'react'
+
+const Settings = lazy(() => import('.'))
 
 export default function SettingsRoutes() {
   return (
