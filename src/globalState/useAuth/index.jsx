@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import create from 'zustand'
 import {
   getAuth,
@@ -9,7 +10,6 @@ import {
 
 import useShowError from '../../lib/components/feedback/useShowError'
 import gtag from '../../lib/utils/analytics/gtag'
-import { useEffect } from 'react'
 
 const provider = new GoogleAuthProvider()
 
@@ -42,6 +42,9 @@ export default function useAuth() {
       const credential = GoogleAuthProvider.credentialFromResult(result)
       const accessToken = credential.accessToken
       const user = result.user
+
+      console.log(result)
+      console.log(result)
 
       gtag('event', 'login', {
         method: 'Google',
