@@ -1,5 +1,4 @@
 import Box from '../../../../../lib/components/Box/index.jsx'
-
 import TimerEditorCreator from '../../../../../lib/components/TimerEditorCreator'
 
 import * as styles from './styles.js'

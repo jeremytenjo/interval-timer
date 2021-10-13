@@ -3,6 +3,7 @@ import Box from '../../../../../lib/components/Box'
 
 import Info from './Info'
 import * as styles from './styles'
+import { useEffect, useRef } from 'react'
 
 /**
  * [Docs](https://github.com/vydimitrov/react-countdown-circle-timer#props-for-both-reactreact-native)

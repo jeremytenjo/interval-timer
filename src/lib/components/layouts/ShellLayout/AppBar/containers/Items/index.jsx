@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import Edit from '../../../../../icons/Edit'
 import Plus from '../../../../../icons/Plus'
 import Box from '../../../../../Box'
