@@ -1,4 +1,5 @@
 import { Geolocation } from '@capacitor/geolocation'
+import { useState } from 'react'
 
 export default function useGeolocation() {
   const [currentPosition, setCurrentPosition] = useState(null)

@@ -1,10 +1,4 @@
-const globals = require('./devtools/babel/plugins/auto-import/eslint-globals.js')
-
 module.exports = {
-  globals: {
-    MyGlobal: true,
-    ...globals,
-  },
   env: {
     browser: true,
     commonjs: true,

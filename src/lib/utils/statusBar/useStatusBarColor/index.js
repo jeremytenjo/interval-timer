@@ -1,4 +1,5 @@
 import { StatusBar, StatusBarStyle } from '@capacitor/status-bar'
+import { useEffect } from 'react'
 
 import Capacitor from '../../Capacitor'
 
