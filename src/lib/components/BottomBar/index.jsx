@@ -1,6 +1,6 @@
 import Box from '../Box/index.jsx'
 
-import * as styles from './styles.js'
+import * as styles from './styles.ts'
 
 export default function BottomBar({ children }) {
   return (

@@ -1,9 +1,10 @@
-import Box from '../../../../../lib/components/Box/index.jsx'
 import { useFormContext } from 'react-hook-form'
+
+import Box from '../../../../../lib/components/Box/index.jsx'
 
 import SettingsList from './SettingsList'
 import SettingsActionBar from './SettingsActionBar'
-import * as styles from './styles.js'
+import * as styles from './styles.ts'
 
 export default function SettingsFormUi({ onSubmit }) {
   const methods = useFormContext()

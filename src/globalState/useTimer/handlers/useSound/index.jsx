@@ -1,7 +1,7 @@
-import workoutVoiceMp3 from '../../../../../public/sounds/workout/voice.mp3'
-import workoutBeepMp3 from '../../../../../public/sounds/workout/beep.mp3'
-import restVoiceMp3 from '../../../../../public/sounds/rest/voice.mp3'
-import restBeepMp3 from '../../../../../public/sounds/rest/beep.mp3'
+import workoutVoiceMp3 from '/sounds/workout/voice.mp3'
+import workoutBeepMp3 from '/sounds/workout/beep.mp3'
+import restVoiceMp3 from '/sounds/rest/voice.mp3'
+import restBeepMp3 from '/sounds/rest/beep.mp3'
 import useSettings from '../../../../data/settings/useSettings'
 
 import useVolume from './handlers/useVolume'

@@ -1,9 +1,8 @@
 import Box from '../../../../../../../../../lib/components/Box/index.jsx'
-
 import Accordion from '../../../../../../../../../lib/components/Accordion'
 import RadioGroup from '../../../../../../../../../lib/components/forms/RadioGroup'
 
-import * as styles from './styles.js'
+import * as styles from './styles.ts'
 
 export default function SoundSettingsUi({ fields, title, titleIcon }) {
   return (

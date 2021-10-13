@@ -1,7 +1,7 @@
 import Box from '../../../../../../../lib/components/Box/index.jsx'
 
 import SoundSettings from './SoundSettings'
-import * as styles from './styles.js'
+import * as styles from './styles.ts'
 
 export default function SettingsListUi() {
   return (
