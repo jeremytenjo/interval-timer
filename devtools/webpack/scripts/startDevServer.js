@@ -1,13 +1,54 @@
-const { createServer } = require('vite')
+const webpack = require('webpack')
+const WebpackDevServer = require('webpack-dev-server')
+const chalk = require('chalk')
 
-;(async () => {
-  const server = await createServer({
-    // any valid user config options, plus `mode` and `configFile`
-    root: process.cwd(),
-    server: {
-      port: 1337,
+const appConfig = require('../../../app.config')
+const genDeclarationsAndEslintGlobals = require('../../babel/plugins/auto-import/utils/genDeclarationsAndEslintGlobals')
+const getWebpackConfig = require('../getWebpackConfig.js')
+
+;(async function startDevServer() {
+  await genDeclarationsAndEslintGlobals()
+  const webpackConfig = await getWebpackConfig({ appConfig })
+  const compiler = webpack(webpackConfig)
+  const port = appConfig.server.local.port
+  const host = '0.0.0.0'
+  const devServerOptions = {
+    host,
+    open: false,
+    hot: true,
+    historyApiFallback: true,
+    compress: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+      logging: 'error',
     },
-  })
+  }
+  const server = new WebpackDevServer(compiler, devServerOptions)
 
-  await server.listen()
+  server.listen(port, host, () => {
+    console.clear()
+    console.log(chalk.yellow(`You can now view your app in the browser.`))
+    console.log()
+    console.log(
+      `  ${chalk.cyanBright('Localhost:')}        http://localhost:${chalk.cyanBright(
+        port,
+      )}/`,
+    )
+    console.log(
+      `  ${chalk.cyanBright('On Your Network:')}  http://${
+        appConfig.server.local.IPAddress
+      }:${chalk.cyanBright(port)}/`,
+    )
+    console.log()
+    console.log(chalk.cyan('Note that the development build is not optimized.'))
+    console.log(
+      `${chalk.cyan('To create a production build, run')} ${chalk.yellow(
+        'npm run build',
+      )}`,
+    )
+    console.log()
+  })
 })()

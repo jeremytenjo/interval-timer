@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite --config ./devtools/vite/config.js --host",
+    "dev": "node ./devtools/vite/scripts/startDevServer",
     "build": "vite build",
     "serve": "vite preview",
     "dev:app": "node ./devtools/webpack/scripts/startDevServer",
@@ -12,7 +12,6 @@
     "dev:prod": "node ./devtools/webpack/scripts/startDevServer",
     "emulators:start": "firebase emulators:start --only auth,firestore",
     "emulators:firestore:export-data": "firebase emulators:export src/data/firestoreEmulatorData",
-    "build:analyze": "node ./devtools/webpack/scripts/analyzeBundle",
     "android:run": "npm run android:sync && cap run android",
     "android:open": "npm run android:sync && cap open android",
     "android:sync": "npm run build && cap sync android",
