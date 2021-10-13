@@ -12,7 +12,7 @@ const component = {
   type: 'Simple Component',
   files: [
     {
-      path: () => `index.js`,
+      path: () => `index.tsx`,
       template: ({ name, helpers }) => `        
       import Box from 'lib/components/Box'
 
@@ -28,7 +28,7 @@ const component = {
         `,
     },
     {
-      path: () => `styles.js`,
+      path: () => `styles.ts`,
       template: () => `
       export const wrapper = {}
         `,
@@ -65,7 +65,7 @@ const componentWithStory = {
   type: 'Complete Component',
   files: [
     {
-      path: () => `index.js`,
+      path: () => `index.tsx`,
       template: ({ name }) => `        
       import use${name}Data from './use${name}Data'
       import Ui from './ui/ui'
@@ -77,7 +77,7 @@ const componentWithStory = {
         `,
     },
     {
-      path: () => `ui/ui.js`,
+      path: () => `ui/ui.tsx`,
       template: ({ name, helpers }) => `        
       import * as S from './styles'
 
@@ -91,7 +91,7 @@ const componentWithStory = {
         `,
     },
     {
-      path: () => `ui/styles.js`,
+      path: () => `ui/styles.ts`,
       template: ({ helpers }) => `        
       import styled from 'styled-components'
 
@@ -99,7 +99,7 @@ const componentWithStory = {
         `,
     },
     {
-      path: ({ name }) => `use${name}Data/index.js`,
+      path: ({ name }) => `use${name}Data/index.ts`,
       template: ({ name }) => `        
       export default function use${name}Data({ props }) {
         console.log(props)
@@ -137,7 +137,7 @@ module.exports = [
     type: 'Function',
     files: [
       {
-        path: () => 'index.js',
+        path: () => 'index.ts',
         template: ({ name }) => `export default function ${name}() {}`,
       },
     ],
@@ -146,7 +146,7 @@ module.exports = [
     type: 'Container',
     files: [
       {
-        path: () => 'index.js',
+        path: () => 'index.tsx',
         template: ({ name }) => `import ${name}Ui from './${name}Ui'
         
         export default function ${name}() {        
@@ -154,7 +154,7 @@ module.exports = [
         }`,
       },
       {
-        path: ({ name }) => `${name}Ui/index.js`,
+        path: ({ name }) => `${name}Ui/index.ts`,
         template: ({ name }) => `import Box from 'lib/components/Box'
 
         import * as styles from './styles.ts'
@@ -168,7 +168,7 @@ module.exports = [
         }`,
       },
       {
-        path: ({ name }) => `${name}Ui/styles.js`,
+        path: ({ name }) => `${name}Ui/styles.ts`,
         template: () => `export const wrapper = {}`,
       },
     ],
@@ -177,13 +177,13 @@ module.exports = [
     type: 'Page',
     files: [
       {
-        path: () => 'index.js',
+        path: () => 'index.tsx',
         template: ({ name }) => `export default function ${name}Page() {
           return <>containers</>
         }`,
       },
       {
-        path: () => 'routes.js',
+        path: () => 'routes.tsx',
         template: ({ name }) => `const ${name} = lazy(() => import('./'))
 
         export default function ${name}Routes() {
@@ -200,7 +200,7 @@ module.exports = [
     type: 'Global State',
     files: [
       {
-        path: () => 'index.js',
+        path: () => 'index.ts',
         template: ({ name }) => `import create from 'zustand'
 
         const ${name}Store = create((set) => ({
@@ -232,7 +232,7 @@ module.exports = [
     type: 'Async Hook',
     files: [
       {
-        path: () => 'index.js',
+        path: () => 'index.ts',
         template: ({ name }) => `import useAsync from '@useweb/use-async'
         import useSnackbar from '../../../../../lib/components/Snackbar/useSnackbar'
         import useShowError from '../../../../../lib/components/feedback/useShowError'
