@@ -43,9 +43,6 @@ export default function useAuth() {
       const accessToken = credential.accessToken
       const user = result.user
 
-      console.log(result)
-      console.log(result)
-
       gtag('event', 'login', {
         method: 'Google',
       })
