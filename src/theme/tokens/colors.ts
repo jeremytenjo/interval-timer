@@ -1,4 +1,4 @@
-const colors = {
+const colors: any = {
   primary: {
     main: '#5D59FF',
     light: '#EAEAFF',

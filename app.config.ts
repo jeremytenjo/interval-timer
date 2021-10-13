@@ -1,3 +1,5 @@
+import getIpAdress from 'my-local-ip'
+
 import pkg from './package.json'
 import themeTokens from './src/theme/tokens'
 
@@ -19,7 +21,7 @@ export default {
   server: {
     local: {
       port: 3001,
-      IPAddress: require('my-local-ip')(),
+      IPAddress: getIpAdress(),
     },
   },
   theme: {

@@ -1,7 +1,9 @@
-import appConfig from "./app.config"
+import { CapacitorConfig } from '@capacitor/cli'
+
+import appConfig from './app.config'
 
 // https://capacitorjs.com/docs/config
-export default {
+const config: CapacitorConfig = {
   appId: 'app.myintervaltimer.app',
   appName: 'my-interval-timer',
   webDir: 'build',
@@ -12,3 +14,6 @@ export default {
     cleartext: true,
   },
 }
+
+export default config 
+ 

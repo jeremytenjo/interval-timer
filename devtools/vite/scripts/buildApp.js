@@ -1,5 +1,5 @@
-const shell = require('../../nodeUtils/shell')
+import shell from '../../nodeUtils/shell.js'
 
 ;(async function buildApp() {
-  shell('vite build --config ./devtools/vite/config.js')
+  shell('tsc && vite build --config ./devtools/vite/config.ts')
 })()

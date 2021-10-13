@@ -3,6 +3,7 @@
   "description": "Handy app that helps you keep track of your work and rest periods during workouts",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "node ./devtools/vite/scripts/startDevServer",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
