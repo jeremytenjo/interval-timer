@@ -1,7 +1,7 @@
-const appConfig = require('./app.config')
+import appConfig from "./app.config"
 
 // https://capacitorjs.com/docs/config
-module.exports = {
+export default {
   appId: 'app.myintervaltimer.app',
   appName: 'my-interval-timer',
   webDir: 'build',

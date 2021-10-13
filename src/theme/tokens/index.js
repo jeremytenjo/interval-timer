@@ -1,5 +1,5 @@
-const colors = require('./colors')
+import colors from './colors'
 
-module.exports = {
+export default {
   colors,
 }

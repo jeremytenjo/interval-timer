@@ -1,7 +1,7 @@
-const pkg = require('./package.json')
-const themeTokens = require('./src/theme/tokens')
+import pkg from './package.json'
+import themeTokens from './src/theme/tokens'
 
-module.exports = {
+export default {
   manifestJson: {
     name: 'My Interval Timer',
     short_name: 'Timer',
