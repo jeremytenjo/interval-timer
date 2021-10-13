@@ -1,6 +1,7 @@
 import Button from '../../../Button'
 import ConfirmationDialog from '../../../Dialog/ConfirmationDialog'
 import useTimer from '../../../../../globalState/useTimer'
+import { useState } from 'react'
 
 export default function DeleteTimer({ onDelete = () => null }) {
   const [open, setOpen] = useState(false)
