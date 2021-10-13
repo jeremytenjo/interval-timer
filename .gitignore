@@ -5,8 +5,10 @@ firebase-debug.log
 firestore-debug.log
 ui-debug.log
 pubsub-debug.log
+dist
 
-dist/
+# allow 
+!devtools/vite/build
 
 # Compiled Java class files
 *.class
