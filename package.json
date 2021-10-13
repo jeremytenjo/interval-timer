@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "node --loader ts-node/esm ./devtools/vite/scripts/startDevServer.ts",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
-    "dev:prod": "node --loader ts-node/esm ./devtools/vite/scripts/runBuild",
-    "build": "node --loader ts-node/esm ./devtools/vite/scripts/buildApp",
+    "dev:prod": "node --loader ts-node/esm ./devtools/vite/scripts/runBuild.ts",
+    "build": "node --loader ts-node/esm ./devtools/vite/scripts/buildApp.ts",
     "emulators:start": "firebase emulators:start --only auth,firestore",
     "emulators:firestore:export-data": "firebase emulators:export src/data/firestoreEmulatorData",
     "android:run": "npm run android:sync && cap run android",
