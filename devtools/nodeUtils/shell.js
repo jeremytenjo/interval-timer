@@ -11,5 +11,7 @@ const concurrently = require('concurrently')
 module.exports = function shell(commands) {
   const _commands = typeof commands === 'string' ? [commands] : commands
 
-  concurrently(_commands)
+  concurrently(_commands, {
+    prefix: 'none',
+  })
 }

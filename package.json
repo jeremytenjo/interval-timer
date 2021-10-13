@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "node ./devtools/vite/scripts/startDevServer",
-    "build": "vite build",
+    "build": "node ./devtools/vite/scripts/buildApp",
     "serve": "vite preview",
-    "dev:app": "node ./devtools/webpack/scripts/startDevServer",
+    "dev:app": "node ./devtools/webpack/scriptsstartDevServer/",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
     "dev:prod": "node ./devtools/webpack/scripts/startDevServer",
     "emulators:start": "firebase emulators:start --only auth,firestore",
