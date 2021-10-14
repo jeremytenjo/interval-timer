@@ -1,5 +1,11 @@
 /* eslint-disable no-useless-escape */
 
+declare global {
+  interface Window {
+    opera: any
+  }
+}
+
 export default function getisOsMobile() {
   let check = false
   ;(function (a) {
