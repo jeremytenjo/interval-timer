@@ -1,6 +1,7 @@
-export default async function getVitePlugins() {
+export default async function getVitePlugins(payload) {
   return [
-    await (await import('./react')).default(),
-    await (await import('./compression')).default(),
+    await (await import('./react')).default(payload),
+    await (await import('./html/html')).default(payload),
+    await (await import('./compression')).default(payload),
   ]
 }

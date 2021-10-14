@@ -1,4 +1,4 @@
-export default function viteBuild() {
+export default function viteBuild({}) {
   return {
     outDir: 'build',
   }
