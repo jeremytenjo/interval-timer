@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite'
 
-import appConfig from '../../app.config'
+import appConfig, { AppConfigTypes } from '../../app.config'
+
+export type PayloadTypes = {
+  appConfig: AppConfigTypes
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => {
