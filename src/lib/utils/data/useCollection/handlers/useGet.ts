@@ -30,7 +30,7 @@ export default function useGet({
       getStore.fetchedCollections.some(
         (fetchedCollection) => fetchedCollection.id === collectionName.raw,
       ),
-    [collectionName.raw],
+    [collectionName.raw, getStore.fetchedCollections],
   )
 
   const firestoreFetcher = async () => {
@@ -74,11 +74,12 @@ export default function useGet({
     action: 'get',
     key: collectionName.raw,
     onResult: (result) => {
-      onGet && onGet(result)
       const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
         data: { id: collectionName.raw },
       })
+
       getStore.setFetchedCollections(updatedFetchedCollections)
+      onGet && onGet(result)
     },
   })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })

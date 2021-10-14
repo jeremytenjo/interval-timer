@@ -2,6 +2,7 @@ import workoutVoiceMp3 from '/sounds/workout/voice.mp3'
 import workoutBeepMp3 from '/sounds/workout/beep.mp3'
 import restVoiceMp3 from '/sounds/rest/voice.mp3'
 import restBeepMp3 from '/sounds/rest/beep.mp3'
+
 import useSettings from '../../../../data/settings/useSettings'
 
 import useVolume from './handlers/useVolume'
@@ -30,11 +31,13 @@ export default function useTimerSound() {
   }
 
   const playWorkoutSound = () => {
-    playSound(mp3Urls.workout[settings.currentUserSettings.sound_workoutSound])
+    const mp3Url = mp3Urls.workout[settings.currentUserSettings.sound_workoutSound]
+    playSound(mp3Url)
   }
 
   const playRestSound = () => {
-    playSound(mp3Urls.rest[settings.currentUserSettings.sound_restSound])
+    const mp3Url = mp3Urls.rest[settings.currentUserSettings.sound_restSound]
+    playSound(mp3Url)
   }
 
   return {
