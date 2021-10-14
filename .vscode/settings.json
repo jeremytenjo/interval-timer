@@ -6,5 +6,6 @@
     "titleBar.inactiveBackground": "#004489"
   },
   "prettier.configPath": "./devtools/prettier/config.json",
-  "quickComponentCreator.prettierConfigFilePath": "devtools/prettier/config.cjs"
+  "quickComponentCreator.prettierConfigFilePath": "devtools/prettier/config.json",
+  "quickComponentCreator.schemaFilePath": "qcc.schema.cjs"
 }
