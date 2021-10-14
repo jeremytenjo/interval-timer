@@ -3,7 +3,7 @@ import getIpAdress from 'my-local-ip'
 import pkg from './package.json'
 import themeTokens from './src/theme/tokens'
 
-export default {
+const appConfig: AppConfigTypes = {
   manifestJson: {
     name: 'My Interval Timer',
     short_name: 'Timer',
@@ -28,6 +28,8 @@ export default {
     tokens: themeTokens,
   },
 }
+
+export default appConfig
 
 export type AppConfigTypes = {
   manifestJson: {
