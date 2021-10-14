@@ -23,7 +23,7 @@ export default function useGet({
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
-  const getStore = useGetStoreStore()
+  const getStore: any = useGetStoreStore()
 
   const collectionWasFetched = useMemo(
     () =>

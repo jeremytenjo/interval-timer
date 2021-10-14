@@ -1,9 +1,14 @@
 import { Storage } from '@capacitor/storage'
 import useAsync from '@useweb/use-async'
 
+
+type Types = {
+  action: 'get'| 'set' | 'remove'
+  key: string 
+  onResult?: any
+}
+
 /**
- * Actions: get | set | remove
- *
  * [Docs](https://capacitorjs.com/docs/apis/storage)
  *
  * @example
@@ -12,7 +17,7 @@ import useAsync from '@useweb/use-async'
  * const setLocalTimers = useLocalStorage({ action: 'set', key: 'timers' })
  * setLocalTimers({key: 'timers', value: data})
  */
-export default function useLocalStorage({ action = 'get', key, onResult } = {}) {
+export default function useLocalStorage({ action = 'get', key, onResult } : Types) {
   const fetcher = async (data) => {
     if (action === 'get') {
       const { value } = await Storage.get({ key })
