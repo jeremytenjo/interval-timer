@@ -16,13 +16,13 @@ const component = {
       template: ({ name, helpers }) => `        
       import Box from 'lib/components/Box'
 
-      import * as styles from './styles.ts'
+      import * as styles from './styles'
 
       export default function ${helpers.changeCase.pascalCase(name)}() {
         return (
           <Box sx={styles.wrapper}>
            ${name}
-          </Box> 
+          </Box>
         );
       }
         `,
@@ -157,7 +157,7 @@ module.exports = [
         path: ({ name }) => `${name}Ui/index.ts`,
         template: ({ name }) => `import Box from 'lib/components/Box'
 
-        import * as styles from './styles.ts'
+        import * as styles from './styles'
         
         export default function ${name}Ui() {        
           return (
