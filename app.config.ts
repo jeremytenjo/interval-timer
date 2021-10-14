@@ -8,6 +8,7 @@ const appConfig: AppConfigTypes = {
     name: 'My Interval Timer',
     short_name: 'Timer',
     description: pkg.description,
+    startUrl: '/',
     orientation: 'any',
     display: 'standalone',
     theme_color: themeTokens.colors.primary.main,
@@ -40,6 +41,7 @@ export type AppConfigTypes = {
     display: string
     theme_color: string
     background_color: string
+    startUrl: string
   }
   analytics: {
     google: {
