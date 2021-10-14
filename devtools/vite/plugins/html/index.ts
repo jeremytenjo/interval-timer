@@ -8,7 +8,7 @@ import gtag from './items/gtag'
 export default function viteHtmlPlugin(payload: PayloadTypes) {
   return injectHtml({
     data: {
-      title: 'My Interval Timer',
+      title: payload.appConfig.manifestJson.name,
       gtag: gtag(payload),
     },
   })
