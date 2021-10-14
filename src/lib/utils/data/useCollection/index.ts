@@ -8,17 +8,17 @@ import useCreate from './handlers/useCreate'
 import useRemove from './handlers/useRemove'
 import useUpdate from './handlers/useUpdate'
 
-interface options  {
-  showLocalStorageDataIfNoUserSignedIn: boolean,
-    defaultData: string,
-    onGet: string,
-    onCreate: string,
-    onRemove: string,
-    onUpdate: string
+type options = {
+  showLocalStorageDataIfNoUserSignedIn: boolean
+  defaultData: string
+  onGet: string
+  onCreate: string
+  onRemove: string
+  onUpdate: string
 }
 
 export default function useCollection(
-  collectionName,
+  collectionName: string,
   {
     showLocalStorageDataIfNoUserSignedIn = true,
     defaultData,
@@ -42,7 +42,7 @@ export default function useCollection(
     defaultData,
     onGet,
     onCreate,
-    onRemove, 
+    onRemove,
     onUpdate,
   }
 
