@@ -1,4 +1,4 @@
 {
-  "name": "automatically generated in devtools/vite/plugins/manifestJson.ts",
+  "name": "automatically generated in devtools/vite/plugins/manifestJson.ts, test by running npm run build && npm run dev:prod",
   "TODO": "Add icons"
 }
