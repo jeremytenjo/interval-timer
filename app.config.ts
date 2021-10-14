@@ -3,32 +3,6 @@ import getIpAdress from 'my-local-ip'
 import pkg from './package.json'
 import themeTokens from './src/theme/tokens'
 
-export type AppConfigTypes = {
-  manifestJson: {
-    name: string
-    short_name: string
-    description: string
-    orientation: string
-    display: string
-    theme_color: string
-    background_color: string
-  }
-  analytics: {
-    google: {
-      measurementId: string
-    }
-  }
-  server: {
-    local: {
-      port: number
-      IPAddress: string
-    }
-  }
-  theme: {
-    tokens: string
-  }
-}
-
 export default {
   manifestJson: {
     name: 'My Interval Timer',
@@ -53,4 +27,30 @@ export default {
   theme: {
     tokens: themeTokens,
   },
+}
+
+export type AppConfigTypes = {
+  manifestJson: {
+    name: string
+    short_name: string
+    description: string
+    orientation: string
+    display: string
+    theme_color: string
+    background_color: string
+  }
+  analytics: {
+    google: {
+      measurementId: string
+    }
+  }
+  server: {
+    local: {
+      port: number
+      IPAddress: string
+    }
+  }
+  theme: {
+    tokens: any
+  }
 }

@@ -1,6 +1,8 @@
 import viteCompression from 'vite-plugin-compression'
 
-export default function viteCompressPlugin() {
+import { PayloadTypes } from '../config'
+
+export default function viteCompressPlugin({}: PayloadTypes) {
   return viteCompression({
     algorithm: 'brotliCompress',
     ext: 'br',
