@@ -6,7 +6,7 @@ import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.annotation.CapacitorPlugin
 
-@CapacitorPlugin(name = "CapacitorPluginTimerNotification")
+@CapacitorPlugin(name = "TimerNotification")
 class CapacitorPluginTimerNotification : Plugin() {
     @PluginMethod
     fun echo(call: PluginCall) {

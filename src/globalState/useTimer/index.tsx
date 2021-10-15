@@ -7,8 +7,9 @@ import handleStartTimer from './handlers/handleStartTimer'
 import handleStopTimer from './handlers/handleStopTimer'
 import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 import useTimerSound from './handlers/useSound'
+import useHandleTimerNotification from './handlers/useHandleTimerNotification'
 
-const useTimerStore = create((set) => ({
+const useTimerStore = create((set: any) => ({
   // selected timer
   selectedTimer: false,
   setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
@@ -20,7 +21,6 @@ const useTimerStore = create((set) => ({
   totalRestTime: 0,
   trackedRepetitions: 0,
   trackedSets: 0,
-  // TODO set to workout and fix
   type: 'Rest',
   elapsedTime: 0,
 
@@ -74,11 +74,13 @@ export default function useTimer() {
     totalTime,
   } = useTimerMetadata(handlerPayload)
 
+  const timerNotification = useHandleTimerNotification({ remainingTime })
+
   const resetTimer = () => handleResetTimer(handlerPayload)
 
-  const startTimer = (payload) => handleStartTimer({ ...handlerPayload, payload })
+  const startTimer = () => handleStartTimer({ ...handlerPayload,timerNotification })
 
-  const stopTimer = () => handleStopTimer(handlerPayload)
+  const stopTimer = () => handleStopTimer({...handlerPayload,timerNotification})
 
   const startNextRepetition = useNextRepetition({ ...handlerPayload, resetTimer })
 
