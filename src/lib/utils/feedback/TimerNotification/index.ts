@@ -1,18 +1,19 @@
-// https://capacitorjs.com/docs/plugins/android
-// https://capacitorjs.com/docs/plugins/ios
-import { WebPlugin, registerPlugin } from '@capacitor/core'
+import { registerPlugin, WebPlugin } from '@capacitor/core'
+
+export interface EchoPlugin {
+  echo(options: { value: string }): Promise<{ value: string; source: string }>
+}
 
 class CapacitorPluginTimerNotification extends WebPlugin {
-  async echo(value: string) {
+  async echo(props: { value: string }) {
     return {
-      value,
-      source: 'hello from the web!',
+      source: props.value + ' from the web!',
     }
   }
 }
 
-//android file android/app/src/main/java/app/capacitorstarter/app/plugins/CapacitorPluginTimerNotification.kt
-//ios ios/App/App/plugins/CapacitorPluginTimerNotification/CapacitorPluginTimerNotification.swift
-export default registerPlugin<any>('TimerNotification', {
+const Echo = registerPlugin<EchoPlugin>('CapacitorPluginExample', {
   web: () => new CapacitorPluginTimerNotification(),
 })
+
+export default Echo
