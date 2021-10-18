@@ -8,10 +8,7 @@ module.exports = {
   },
   ignorePatterns: ['node_modules', 'build', '.env', 'ios', 'android', 'dist'],
   plugins: ['react', 'react-hooks', 'import', 'cypress'],
-  extends: [
-    'plugin:react/recommended', 
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -37,6 +34,7 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    '@typescript-eslint/no-unused-vars': 1,
     'prefer-const': 2,
     'no-var': 2,
     'no-const-assign': 1,
@@ -44,7 +42,6 @@ module.exports = {
     'no-undef': 2,
     'no-unreachable': 2,
     'no-unneeded-ternary': 2,
-    'no-unused-vars': 1,
     'no-debugger': 1,
     'no-console': 0,
     'constructor-super': 1,

@@ -1,4 +1,4 @@
-package app.capacitorstarter.app.plugins
+package app.intervaltimer.app.plugins
 
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
