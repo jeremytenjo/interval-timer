@@ -1,7 +1,7 @@
-package app.intervaltimer.app
+package app.myintervaltimer.app
 
 import android.os.Bundle
-import app.intervaltimer.app.plugins.CapacitorPluginExample
+import app.myintervaltimer.app.plugins.CapacitorPluginExample
 import com.getcapacitor.BridgeActivity
 
 class MainActivity : BridgeActivity() {
