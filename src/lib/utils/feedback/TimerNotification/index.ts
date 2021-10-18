@@ -12,7 +12,7 @@ class CapacitorPluginTimerNotification extends WebPlugin {
   }
 }
 
-const Echo = registerPlugin<EchoPlugin>('CapacitorPluginExample', {
+const Echo = registerPlugin<EchoPlugin>('CapacitorTimerNotification', {
   web: () => new CapacitorPluginTimerNotification(),
 })
 

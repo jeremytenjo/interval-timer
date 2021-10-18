@@ -6,8 +6,8 @@ import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.annotation.CapacitorPlugin
 
-@CapacitorPlugin(name = "CapacitorPluginExample")
-class CapacitorPluginExample : Plugin() {
+@CapacitorPlugin(name = "CapacitorTimerNotification")
+class CapacitorTimerNotification : Plugin() {
     @PluginMethod
     fun echo(call: PluginCall) {
         val value = call.getString("value")
