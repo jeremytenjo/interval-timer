@@ -13,11 +13,11 @@ class CapacitorTimerNotification : Plugin() {
         println("hello from android!")
         
         val value = call.getString("value")
-        val ret = JSObject()
+        val result = JSObject()
 
-        ret.put("value", value)
-        ret.put("source", "hello from android!")
+        result.put("value", value)
+        result.put("source", "hello from android!")
 
-        call.resolve(ret)
+        call.resolve(result)
     }
 }
