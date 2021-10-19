@@ -10,11 +10,14 @@ import com.getcapacitor.annotation.CapacitorPlugin
 class CapacitorTimerNotification : Plugin() {
     @PluginMethod
     fun echo(call: PluginCall) {
+        println("hello from android!")
+        
         val value = call.getString("value")
         val ret = JSObject()
+
         ret.put("value", value)
         ret.put("source", "hello from android!")
-        println("hello from android!")
+
         call.resolve(ret)
     }
 }
