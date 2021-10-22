@@ -28,9 +28,19 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const setSelectedTimerById = (timerId, timers, { redirect } = {}) => {
     if (!timers) return null
 
-    const selectedTimer = timers.find((timer) => timer?.id === timerId)
+    let selectedTimer = timers.find((timer) => timer?.id === timerId)
 
-    setSelectedTimer(selectedTimer, { redirect })
+    if (selectedTimer) {
+      return setSelectedTimer(selectedTimer, { redirect })
+    }
+
+    selectedTimer = !selectedTimer && timers.length ? timers[0] : false
+
+    if (selectedTimer) {
+      return setSelectedTimer(selectedTimer, { redirect })
+    }
+
+    navigate('/create-timer')
   }
 
   return { setSelectedTimer, setSelectedTimerById }
