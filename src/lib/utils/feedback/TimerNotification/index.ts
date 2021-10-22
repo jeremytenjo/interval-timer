@@ -1,6 +1,6 @@
 import { registerPlugin, WebPlugin } from '@capacitor/core'
 
-export interface EchoPlugin {
+export interface Type {
   echo(options: { value: string }): Promise<{ value: string; source: string }>
 }
 
@@ -12,7 +12,7 @@ class CapacitorPluginTimerNotification extends WebPlugin {
   }
 }
 
-const Echo = registerPlugin<EchoPlugin>('CapacitorTimerNotification', {
+const Echo = registerPlugin<Type>('CapacitorTimerNotification', {
   web: () => new CapacitorPluginTimerNotification(),
 })
 
