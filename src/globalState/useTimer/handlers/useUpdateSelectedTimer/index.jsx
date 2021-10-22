@@ -15,7 +15,6 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
     timerStore.setTrackedSets(newSelectedTimer.sets)
     timerStore.setTotalWorkoutTime(newSelectedTimer.workout)
     timerStore.setTotalRestTime(newSelectedTimer.rest)
-
     timerStore.setSelectedTimer(newSelectedTimer)
 
     resetTimer()
@@ -28,16 +27,16 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const setSelectedTimerById = (timerId, timers, { redirect } = {}) => {
     if (!timers) return null
 
-    let selectedTimer = timers.find((timer) => timer?.id === timerId)
+    const selectedTimerById = timers.find((timer) => timer?.id === timerId)
 
-    if (selectedTimer) {
-      return setSelectedTimer(selectedTimer, { redirect })
+    if (selectedTimerById) {
+      return setSelectedTimer(selectedTimerById, { redirect })
     }
 
-    selectedTimer = !selectedTimer && timers.length ? timers[0] : false
+    const firstTimerFromCollection = timers.length ? timers[0] : false
 
-    if (selectedTimer) {
-      return setSelectedTimer(selectedTimer, { redirect })
+    if (firstTimerFromCollection) {
+      return setSelectedTimer(firstTimerFromCollection, { redirect })
     }
 
     navigate('/create-timer')
