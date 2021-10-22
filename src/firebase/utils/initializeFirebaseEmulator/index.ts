@@ -14,11 +14,11 @@ export default function initializeFirebaseEmulator({
   authEmulatorPort = 9005,
   dbEmulatorPort = 9003,
 }) {
-  if (process.env.NODE_ENV === 'development') {
-    auth && startAuthEmulator({ auth, authEmulatorPort })
-    db && startFirestoreEmulator({ db, dbEmulatorPort })
-    styleEmulatorWarning()
-  }
+  if (process.env.NODE_ENV !== 'development') return
+
+  auth && startAuthEmulator({ auth, authEmulatorPort })
+  db && startFirestoreEmulator({ db, dbEmulatorPort })
+  styleEmulatorWarning()
 }
 
 const startAuthEmulator = ({ auth, authEmulatorPort }) => {
