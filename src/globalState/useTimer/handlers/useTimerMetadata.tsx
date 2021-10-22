@@ -1,17 +1,6 @@
 import formatDuration from 'format-duration'
 
-type Return = {
-  repetitions: number
-  sets: number
-  workoutTime: string
-  restTime: string
-  duration: string
-  color: string
-  remainingTime: string
-  totalTime: string
-}
-
-export default function useTimerMetadata({ timerStore }): Return {
+export default function useTimerMetadata({ timerStore }) {
   const totalTimeRaw =
     timerStore.totalRepetitions *
       timerStore.totalWorkoutTime *
