@@ -31,11 +31,13 @@ const startAuthEmulator = ({ auth, authEmulatorPort }) => {
 
   onAuthStateChanged(auth, (user) => {
     if (!user) {
-      createUserWithEmailAndPassword(auth, testUser.username, testUser.password).then(
-        () => {
+      createUserWithEmailAndPassword(auth, testUser.username, testUser.password)
+        .then(() => {
           signInWithEmailAndPassword(auth, testUser.username, testUser.password)
-        },
-      )
+        })
+        .catch(() => {
+          signInWithEmailAndPassword(auth, testUser.username, testUser.password)
+        })
     }
   })
 }
