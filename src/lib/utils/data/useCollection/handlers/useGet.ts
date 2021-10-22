@@ -84,9 +84,9 @@ export default function useGet({
   })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
-  // useOnTrue(!dataFetch.data && !collectionWasFetched, () => {
-  //   getLocalStorageData.exec()
-  // })
+  useOnTrue(!dataFetch.data && !collectionWasFetched, () => {
+    getLocalStorageData.exec()
+  })
 
   const update = (newData) => {
     setLocalStorageData.exec({ value: newData })
