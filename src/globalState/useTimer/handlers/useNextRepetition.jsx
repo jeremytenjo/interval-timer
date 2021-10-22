@@ -6,7 +6,6 @@ export default function useNextRepetition({ timerStore, resetTimer }) {
   const timerSound = useTimerSound()
 
   const nextRepetition = () => {
-    // TODO fix remaining sets and repettions tracking
     KeepAwake.keepAwake()
     const nextType = timerStore.type === 'Rest' ? 'Workout' : 'Rest'
 
