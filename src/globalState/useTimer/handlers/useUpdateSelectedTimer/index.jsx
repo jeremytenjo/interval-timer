@@ -7,7 +7,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
   const setSelectedTimer = (newSelectedTimer, { redirect = true } = {}) => {
     if (!newSelectedTimer) return null
 
-    const redirectUrl = `/timer/${newSelectedTimer.id}`
+    const redirectUrl = `/timer?id=${newSelectedTimer.id}`
 
     timerStore.setTotalRepetitions(newSelectedTimer.repetitions)
     timerStore.setTrackedRepetitions(newSelectedTimer.repetitions)
