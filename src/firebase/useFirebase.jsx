@@ -12,7 +12,7 @@ const db = getFirestore()
 
 initializeFirebaseEmulator({ auth, db })
 
-export const FirebaseContext = createContext(null)
+const FirebaseContext = createContext(null)
 
 export const FirebaseProvider = ({ children }) => {
   return (
