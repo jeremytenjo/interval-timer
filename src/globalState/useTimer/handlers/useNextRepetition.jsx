@@ -8,11 +8,21 @@ export default function useNextRepetition({ timerStore, resetTimer }) {
   const nextRepetition = () => {
     KeepAwake.keepAwake()
     const nextType = timerStore.type === 'Rest' ? 'Workout' : 'Rest'
+    const noMoreRepetitions = timerStore.trackedRepetitions - 1 === 0
+    const noMoreSets = timerStore.trackedSets - 1 === 0
 
     // On rest start
     if (nextType === 'Rest') {
       timerSound.playRestSound()
       timerStore.setType(nextType)
+
+      if (noMoreRepetitions && noMoreSets) {
+        resetTimer()
+        timerStore.setTrackedSets(timerStore.totalSets)
+        timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
+        return
+      }
+
       timerStore.restartTimer()
     }
 
@@ -27,17 +37,8 @@ export default function useNextRepetition({ timerStore, resetTimer }) {
           ? timerStore.totalSets
           : timerStore.trackedSets - 1
 
-      const noMoreRepetitions = timerStore.trackedRepetitions - 1 === 0
       const hasMoreRepetitions = !noMoreRepetitions
-      const noMoreSets = timerStore.trackedSets - 1 === 0
       const hasMoreSets = !noMoreSets
-
-      if (noMoreRepetitions && noMoreSets) {
-        resetTimer()
-        timerStore.setTrackedSets(timerStore.totalSets)
-        timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
-        return
-      }
 
       timerSound.playWorkoutSound()
 
