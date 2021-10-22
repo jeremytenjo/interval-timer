@@ -4,15 +4,17 @@ export default function useHandleGet({ timer }) {
   const urlParams = useParams()
   const location = useLocation()
 
-  const setSelectedTimer = (data) => {
+  const setSelectedTimer = (timers) => {
+    // console.log(timers, urlParams)
+    console.log('fetched timers')
     const redirect = location.pathname === '/' && !location.pathname.includes('/timer/')
 
-    if (!urlParams.timerId && !!data.length) {
-      timer.setSelectedTimer(data[0], { redirect })
+    if (!urlParams.timerId && !!timers.length) {
+      // timer.setSelectedTimer(timers[0], { redirect })
     }
 
-    if (urlParams.timerId && !!data.length) {
-      timer.setSelectedTimerById(urlParams.timerId, data, { redirect })
+    if (urlParams.timerId && !!timers.length) {
+      timer.setSelectedTimerById(urlParams.timerId, timers, { redirect })
     }
   }
 

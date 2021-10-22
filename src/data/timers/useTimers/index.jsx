@@ -8,7 +8,7 @@ export default function useTimers({ onCreate } = {}) {
   const timer = useTimer()
   const handleGet = useHandleGet({ timer })
   const handleRemove = useHandleRemove({ timer })
-  const collection = useCollection('timers', {
+  const timers = useCollection('timers', {
     onGet: (result) => {
       handleGet.setSelectedTimer(result)
     },
@@ -20,5 +20,5 @@ export default function useTimers({ onCreate } = {}) {
     },
   })
 
-  return collection
+  return timers
 }

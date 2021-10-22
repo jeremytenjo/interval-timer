@@ -9,7 +9,7 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
 
-const useGetStoreStore = create((set) => ({
+const useGetStore = create((set) => ({
   fetchedCollections: [],
   setFetchedCollections: (newValue) => set(() => ({ fetchedCollections: newValue })),
 }))
@@ -23,7 +23,7 @@ export default function useGet({
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
-  const getStore: any = useGetStoreStore()
+  const getStore: any = useGetStore()
 
   const collectionWasFetched = useMemo(
     () =>
@@ -84,10 +84,6 @@ export default function useGet({
   })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
 
-  useOnTrue(!dataFetch.data, () => {
-    getLocalStorageData.exec()
-  })
-
   const update = (newData) => {
     setLocalStorageData.exec({ value: newData })
     dataFetch.mutate(newData, false)
@@ -121,6 +117,10 @@ export default function useGet({
   const fetching = !dataFetch.data && !dataFetch.error
   const data = determineReturnData()
   const error = dataFetch.error
+
+  useOnTrue(!dataFetch.data && !collectionWasFetched, () => {
+    // getLocalStorageData.exec()
+  })
 
   return {
     data,

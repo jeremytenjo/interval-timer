@@ -1,10 +1,9 @@
 import { Storage } from '@capacitor/storage'
 import useAsync from '@useweb/use-async'
 
-
-type Types = {
-  action: 'get'| 'set' | 'remove'
-  key: string 
+type Props = {
+  action: 'get' | 'set' | 'remove'
+  key: string
   onResult?: any
 }
 
@@ -17,7 +16,7 @@ type Types = {
  * const setLocalTimers = useLocalStorage({ action: 'set', key: 'timers' })
  * setLocalTimers({key: 'timers', value: data})
  */
-export default function useLocalStorage({ action = 'get', key, onResult } : Types) {
+export default function useLocalStorage({ action = 'get', key, onResult }: Props) {
   const fetcher = async (data) => {
     if (action === 'get') {
       const { value } = await Storage.get({ key })
