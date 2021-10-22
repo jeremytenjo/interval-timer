@@ -48,7 +48,6 @@ export default function useGet({
       })
     })
 
-    onGet && onGet(data)
     return data
   }
 
@@ -62,6 +61,7 @@ export default function useGet({
       })
       getStore.setFetchedCollections(updatedFetchedCollections)
       setLocalStorageData.exec({ value: data })
+      onGet && onGet(data)
     },
     onError: (error) => {
       showError.show({
@@ -83,6 +83,10 @@ export default function useGet({
     },
   })
   const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
+
+  // useOnTrue(!dataFetch.data && !collectionWasFetched, () => {
+  //   getLocalStorageData.exec()
+  // })
 
   const update = (newData) => {
     setLocalStorageData.exec({ value: newData })
@@ -117,10 +121,6 @@ export default function useGet({
   const fetching = !dataFetch.data && !dataFetch.error
   const data = determineReturnData()
   const error = dataFetch.error
-
-  useOnTrue(!dataFetch.data && !collectionWasFetched, () => {
-    // getLocalStorageData.exec()
-  })
 
   return {
     data,
