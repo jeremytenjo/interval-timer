@@ -76,11 +76,9 @@ export default function useTimer() {
 
   const timerNotification = useHandleTimerNotification({ remainingTime })
 
-  const resetTimer = () => handleResetTimer(handlerPayload)
+  const resetTimer = (options) => handleResetTimer({...handlerPayload,timerNotification, ...options})
 
   const startTimer = () => handleStartTimer({ ...handlerPayload,timerNotification })
-
-  const stopTimer = () => handleStopTimer({...handlerPayload,timerNotification})
 
   const startNextRepetition = useNextRepetition({ ...handlerPayload, resetTimer })
 
@@ -102,7 +100,6 @@ export default function useTimer() {
     ...timerStore,
     sound,
     startTimer,
-    stopTimer,
     setSelectedTimer: udpateSelectedtimer.setSelectedTimer,
     setSelectedTimerById: udpateSelectedtimer.setSelectedTimerById,
   }

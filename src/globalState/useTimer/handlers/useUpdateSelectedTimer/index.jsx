@@ -17,7 +17,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
     timerStore.setTotalRestTime(newSelectedTimer.rest)
     timerStore.setSelectedTimer(newSelectedTimer)
 
-    resetTimer()
+    resetTimer({ dontResetSetsAndReps: true })
 
     if (location.pathname !== redirectUrl && redirect) {
       navigate(redirectUrl)

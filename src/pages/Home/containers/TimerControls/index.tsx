@@ -12,7 +12,7 @@ export default function TimerControls() {
       onStartTimer={timer.startTimer}
       onPauseTimer={timer.pauseTimer}
       onResumeTimer={timer.resumeTimer}
-      onStopTimer={timer.stopTimer}
+      onStopTimer={timer.resetTimer}
     />
   )
 }

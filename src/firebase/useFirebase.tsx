@@ -28,13 +28,12 @@ export const FirebaseProvider = ({ children }) => {
   )
 }
 
-/**
- * @returns {{
- * firebaseApp
- * auth
- * db
- * }}
- */
-const useFirebase = () => useContext(FirebaseContext)
+type Return = {
+  firebaseApp: any
+  auth: any
+  db: any
+}
+
+const useFirebase = () => useContext<Return>(FirebaseContext)
 
 export default useFirebase
