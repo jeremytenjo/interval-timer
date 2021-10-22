@@ -1,12 +1,6 @@
-import { connectFirestoreEmulator } from 'firebase/firestore'
-import {
-  connectAuthEmulator,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from 'firebase/auth'
-
-import styleEmulatorWarning from './styleEmulatorWarning'
+import styleEmulatorWarning from './handlers/styleEmulatorWarning'
+import startAuthEmulator from './handlers/startAuthEmulator'
+import startFirestoreEmulator from './handlers/startFirestoreEmulator'
 
 export default function initializeFirebaseEmulator({
   auth,
@@ -19,29 +13,4 @@ export default function initializeFirebaseEmulator({
   auth && startAuthEmulator({ auth, authEmulatorPort })
   db && startFirestoreEmulator({ db, dbEmulatorPort })
   styleEmulatorWarning()
-}
-
-const startAuthEmulator = ({ auth, authEmulatorPort }) => {
-  const testUser = {
-    username: 'test@gmail.com',
-    password: 'testpassword',
-  }
-
-  connectAuthEmulator(auth, `http://localhost:${authEmulatorPort}`)
-
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      createUserWithEmailAndPassword(auth, testUser.username, testUser.password)
-        .then(() => {
-          signInWithEmailAndPassword(auth, testUser.username, testUser.password)
-        })
-        .catch(() => {
-          signInWithEmailAndPassword(auth, testUser.username, testUser.password)
-        })
-    }
-  })
-}
-
-const startFirestoreEmulator = ({ db, dbEmulatorPort }) => {
-  connectFirestoreEmulator(db, 'localhost', dbEmulatorPort)
 }
