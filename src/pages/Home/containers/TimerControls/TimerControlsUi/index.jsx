@@ -3,23 +3,23 @@ import BottomBar from '../../../../../lib/components/BottomBar'
 
 export default function TimerControlsUi({
   isStarted,
-  startTimer,
+  onStartTimer,
   isPlaying,
-  pauseTimer,
-  resumeTimer,
-  resetTimer,
+  onPauseTimer,
+  onResumeTimer,
+  onStopTimer,
 }) {
   return (
     <BottomBar>
-      {!isPlaying && !isStarted && <Button onClick={startTimer}>Start</Button>}
+      {!isPlaying && !isStarted && <Button onClick={onStartTimer}>Start</Button>}
 
       {isStarted && (
         <>
-          {isStarted && isPlaying && <Button onClick={pauseTimer}>Pause</Button>}
+          {isStarted && isPlaying && <Button onClick={onPauseTimer}>Pause</Button>}
 
-          {isStarted && !isPlaying && <Button onClick={resumeTimer}>Resume</Button>}
+          {isStarted && !isPlaying && <Button onClick={onResumeTimer}>Resume</Button>}
 
-          <Button onClick={resetTimer}>Stop</Button>
+          <Button onClick={onStopTimer}>Stop</Button>
         </>
       )}
     </BottomBar>

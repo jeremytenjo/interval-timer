@@ -23,9 +23,9 @@ export default function useTimerNotification(props: Props) {
     console.log(res.source)
   }
 
-  const hideNotification = () => {
-    console.log('hideNotification!')
+  const removeNotification = () => {
+    console.log('removeNotification!')
   }
 
-  return { getTime, setTime, showNotification, hideNotification }
+  return { getTime, setTime, showNotification, removeNotification }
 }

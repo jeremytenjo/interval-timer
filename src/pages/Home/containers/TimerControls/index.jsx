@@ -8,11 +8,11 @@ export default function TimerControls() {
   return (
     <TimerControlsUi
       isStarted={timer.isStarted}
-      startTimer={timer.startTimer}
       isPlaying={timer.isPlaying}
-      pauseTimer={timer.pauseTimer}
-      resumeTimer={timer.resumeTimer}
-      resetTimer={timer.resetTimer}
+      onStartTimer={timer.startTimer}
+      onPauseTimer={timer.pauseTimer}
+      onResumeTimer={timer.resumeTimer}
+      onStopTimer={timer.stopTimer}
     />
   )
 }
