@@ -34,6 +34,8 @@ export default function useNextRepetition({ timerStore, resetTimer }) {
 
       if (noMoreRepetitions && noMoreSets) {
         resetTimer()
+        timerStore.setTrackedSets(timerStore.totalSets)
+        timerStore.setTrackedRepetitions(timerStore.totalRepetitions)
         return
       }
 
