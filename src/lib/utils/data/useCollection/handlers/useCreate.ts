@@ -6,7 +6,7 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useSnackBar from '../../../../components/Snackbar/useSnackbar'
 import useShowError from '../../../../components/feedback/useShowError'
 
-type Types = {
+type Props = {
   data: any
   disableSnackbar: boolean
 }
@@ -22,7 +22,7 @@ export default function useCreate({
   const snackbar = useSnackBar()
   const showError = useShowError()
 
-  const fetcher = async ({ data, disableSnackbar }: Types) => {
+  const fetcher = async ({ data, disableSnackbar }: Props) => {
     delete data.id
     let createdItem = {
       ...data,
