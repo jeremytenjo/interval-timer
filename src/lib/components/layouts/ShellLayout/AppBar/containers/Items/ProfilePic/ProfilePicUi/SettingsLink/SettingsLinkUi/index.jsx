@@ -2,7 +2,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
-import Settings from '../../../../../../../../icons/Settings'
+import Settings from '../../../../../../../../../icons/Settings'
 
 export default function SettingsLinkUi({ onSettingsClick }) {
   return (
