@@ -61,7 +61,13 @@ export default function ProfilePic() {
         onClose={handleClose}
       >
         <Box sx={styles.popopver}>
-          {auth.user ? (
+          {!auth.user ? (
+            <>
+              <p className='title'>To sync timers across devices</p>
+              <ContinueWithGoogle />
+              <SettingsLink onSettingsClick={onSettingsClick} />
+            </>
+          ) : (
             <>
               <SettingsLink onSettingsClick={onSettingsClick} />
               <ListItemButton onClick={auth.signOutFromGoogle}>
@@ -70,12 +76,6 @@ export default function ProfilePic() {
                 </ListItemIcon>
                 <ListItemText sx={{ color: 'white.main' }} primary='Sign Out' />
               </ListItemButton>
-            </>
-          ) : (
-            <>
-              <SettingsLink onSettingsClick={onSettingsClick} />
-              <p className='title'>Sync timers across devices</p>
-              <ContinueWithGoogle />{' '}
             </>
           )}
         </Box>
