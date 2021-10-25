@@ -9,6 +9,7 @@ import GlobalProviders from './globalState/GlobalProviders'
 function App() {
   return (
     <FirebaseProvider>
+      asdfsadf
       <Theme>
         <GlobalProviders>
           <Router />
