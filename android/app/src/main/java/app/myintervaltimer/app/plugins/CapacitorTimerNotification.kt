@@ -15,7 +15,7 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "CapacitorTimerNotification")
 class CapacitorTimerNotification : Plugin() {
-    private val Channel_id = "channel_id_example_01"
+    private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
 
     @PluginMethod
@@ -39,7 +39,7 @@ class CapacitorTimerNotification : Plugin() {
 //            val name = "Notification Title"
 //            val descriptionText = "Notification Description"
 //            val importance = NotificationManager.IMPORTANCE_DEFAULT
-//            val channel = NotificationChannel(Channel_id, name, importance).apply{
+//            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply{
 //                description= descriptionText
 //            }
 //            val notificationManager: NotificationManager = getSystemService(Context) as NotificationManager
@@ -48,13 +48,12 @@ class CapacitorTimerNotification : Plugin() {
 //    }
 
     fun sendNotification() {
-        var builder = NotificationCompat.Builder(context, Channel_id)
+        var builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentTitle("My notification")
             .setContentText("Much longer text that cannot fit one line...")
-            .setStyle(NotificationCompat.BigTextStyle()
-                .bigText("Much longer text that cannot fit one line..."))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        with(NotificationManagerCompat.from(context)) {
+            
+            with(NotificationManagerCompat.from(context)) {
             notify(notificationId, builder.build())
         }
     }
