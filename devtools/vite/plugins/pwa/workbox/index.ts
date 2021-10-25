@@ -1,8 +1,5 @@
-import { GenerateSWOptions } from 'workbox-build'
-
-export default function getWorkbox(): GenerateSWOptions {
+export default function getWorkbox() {
   return {
-    // swDest: 'offline-sw',
     globIgnores: ['*.map*', '*.br*'],
     // for single page apps
     navigateFallback: '/index.html',
