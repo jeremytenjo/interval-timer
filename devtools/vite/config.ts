@@ -6,7 +6,8 @@ import appConfig, { AppConfigTypes } from '../../app.config'
 export default defineConfig(async ({ mode }) => {
   const payload = {
     appConfig,
-    mode,
+    isProdMode: mode === 'production',
+    isDevMode: mode === 'development',
   }
 
   return {
@@ -17,5 +18,6 @@ export default defineConfig(async ({ mode }) => {
 
 export type PayloadTypes = {
   appConfig: AppConfigTypes
-  mode: string
+  isProdMode: boolean
+  isDevMode: boolean
 }
