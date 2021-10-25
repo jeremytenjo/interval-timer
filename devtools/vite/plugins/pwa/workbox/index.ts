@@ -1,5 +1,6 @@
 import { GenerateSWOptions } from 'workbox-build'
 
+// https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build
 export default function getWorkbox(): GenerateSWOptions {
   return {
     swDest: 'build/sw',
