@@ -11,7 +11,6 @@ function App() {
     <FirebaseProvider>
       <Theme>
         <GlobalProviders>
-
           <Router />
         </GlobalProviders>
       </Theme>
