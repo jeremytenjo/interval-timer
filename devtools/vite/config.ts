@@ -3,9 +3,10 @@ import { defineConfig } from 'vite'
 import appConfig, { AppConfigTypes } from '../../app.config'
 
 // https://vitejs.dev/config/
-export default defineConfig(async () => {
+export default defineConfig(async ({ mode }) => {
   const payload = {
     appConfig,
+    mode,
   }
 
   return {
@@ -16,4 +17,5 @@ export default defineConfig(async () => {
 
 export type PayloadTypes = {
   appConfig: AppConfigTypes
+  mode: string
 }

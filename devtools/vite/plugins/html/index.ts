@@ -8,7 +8,8 @@ import gtag from './items/gtag'
 export default function viteHtmlPlugin(payload: PayloadTypes) {
   return injectHtml({
     data: {
-      title: payload.appConfig.manifestJson.name,
+      title: `<title>${payload.appConfig.manifestJson.name}</title>`,
+      description: `<meta name="description" content="${payload.appConfig.manifestJson.description}" />`,
       gtag: gtag(payload),
     },
   })
