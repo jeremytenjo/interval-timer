@@ -30,6 +30,7 @@ class CapacitorTimerNotification : Plugin() {
     fun sendNotification() {
         val CHANNEL_ID = context.getString(R.string.timer_notification_channel_id)
         val notificationId = 101
+//        TODO fix small icon not showing
         val smallIcon = R.drawable.logo_24x24
         val title = "Title"
         val text = "text"
