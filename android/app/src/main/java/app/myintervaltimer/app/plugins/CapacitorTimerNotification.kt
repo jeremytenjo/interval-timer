@@ -2,6 +2,7 @@ package app.myintervaltimer.app.plugins
 
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import app.myintervaltimer.app.R
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
@@ -29,12 +30,13 @@ class CapacitorTimerNotification : Plugin() {
 
 
     fun sendNotification() {
-        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        var builder = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.drawable.logo_192x192)
             .setContentTitle("My notification")
             .setContentText("Much longer text that cannot fit one line...")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-            with(NotificationManagerCompat.from(this)) {
+            with(NotificationManagerCompat.from(context)) {
             notify(notificationId, builder.build())
         }
 
