@@ -17,7 +17,7 @@ class MainActivity : BridgeActivity() {
     }
 
     private fun createTimerNotificationChannel() {
-        val CHANNEL_ID = "timer_notification_channel"
+        val CHANNEL_ID = getString(R.string.timer_notification_channel_id)
 
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library

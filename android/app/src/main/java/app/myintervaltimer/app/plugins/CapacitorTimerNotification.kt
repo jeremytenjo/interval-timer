@@ -11,9 +11,6 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "CapacitorTimerNotification")
 class CapacitorTimerNotification : Plugin() {
-    private val CHANNEL_ID = "timer_notification_channel"
-    private val notificationId = 101
-
     @PluginMethod
     fun showTimerNotification(call: PluginCall) {
         println("hello from android!")
@@ -30,6 +27,8 @@ class CapacitorTimerNotification : Plugin() {
 
 
     fun sendNotification() {
+        val CHANNEL_ID = context.getString(R.string.timer_notification_channel_id)
+        val notificationId = 101
         var builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo_192x192)
             .setContentTitle("My notification")
