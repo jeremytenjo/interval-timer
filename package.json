@@ -5,7 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --loader ts-node/esm ./devtools/vite/scripts/startDevServer.ts",
+    "dev": "node --loader ts-node/esm ./devtools/scripts/dev.ts",
+    "dev:app": "node --loader ts-node/esm ./devtools/vite/scripts/startDevServer.ts",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
     "dev:prod": "node --loader ts-node/esm ./devtools/vite/scripts/runBuild.ts",
     "build": "node --loader ts-node/esm ./devtools/vite/scripts/buildApp.ts",
