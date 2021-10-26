@@ -19,7 +19,7 @@ export default function useTimerNotification(props: Props) {
 
   const showNotification = async () => {
     // TODO
-    const res = await TimerNotification.echo({ value: 'Hello' })
+    const res = await TimerNotification.showTimerNotification({ value: 'Hello' })
     console.log(res.source)
   }
 

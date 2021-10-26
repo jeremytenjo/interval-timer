@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--https://developer.android.com/guide/topics/resources/string-resource-->
 <resources>
     <string name="app_name">my-interval-timer</string>
     <string name="title_activity_main">my-interval-timer</string>

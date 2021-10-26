@@ -1,12 +1,7 @@
 package app.myintervaltimer.app.plugins
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
@@ -15,16 +10,14 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "CapacitorTimerNotification")
 class CapacitorTimerNotification : Plugin() {
-    private val CHANNEL_ID = "channel_id_example_01"
+    private val CHANNEL_ID = "timer_notification_channel"
     private val notificationId = 101
 
     @PluginMethod
-    fun echo(call: PluginCall) {
+    fun showTimerNotification(call: PluginCall) {
         println("hello from android!")
-
-//        createNotificationChannel()
         sendNotification()
-        
+
         val value = call.getString("value")
         val result = JSObject()
 
@@ -34,27 +27,17 @@ class CapacitorTimerNotification : Plugin() {
         call.resolve(result)
     }
 
-//    fun createNotificationChannel(){
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val name = "Notification Title"
-//            val descriptionText = "Notification Description"
-//            val importance = NotificationManager.IMPORTANCE_DEFAULT
-//            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply{
-//                description= descriptionText
-//            }
-//            val notificationManager: NotificationManager = getSystemService(Context) as NotificationManager
-//            notificationManager.createNotificationChannel(channel)
-//        }
-//    }
 
     fun sendNotification() {
-        var builder = NotificationCompat.Builder(context, CHANNEL_ID)
+        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("My notification")
             .setContentText("Much longer text that cannot fit one line...")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            
-            with(NotificationManagerCompat.from(context)) {
+
+            with(NotificationManagerCompat.from(this)) {
             notify(notificationId, builder.build())
         }
+
+        println("Timer Notification Sent!!")
     }
 }
