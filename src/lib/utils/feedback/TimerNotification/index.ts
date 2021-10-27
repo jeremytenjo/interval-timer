@@ -7,6 +7,7 @@ export type showTimerNotificationTypes = {
 }
 export interface Type {
   showTimerNotification(options: showTimerNotificationTypes)
+  removeNotification()
 }
 
 class CapacitorPluginTimerNotification extends WebPlugin {
@@ -14,6 +15,10 @@ class CapacitorPluginTimerNotification extends WebPlugin {
     return {
       source: props.timeRemaining + ' from the web!',
     }
+  }
+
+  async removeNotification() {
+    return null
   }
 }
 

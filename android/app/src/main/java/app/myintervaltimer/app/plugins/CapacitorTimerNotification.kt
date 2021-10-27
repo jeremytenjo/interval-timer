@@ -7,20 +7,20 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "CapacitorTimerNotification")
 class CapacitorTimerNotification : Plugin() {
+    val notificationId = 101
+
     @PluginMethod
     fun showTimerNotification(call: PluginCall) {
         val timeRemaining = call.getString("timeRemaining")
         val workoutType = call.getString("workoutType")
-        val remove = call.getBoolean("false")
-        val notificationId = 101
-
-        if (remove == true) {
-            handleRemoveNotification(context, notificationId)
-            call.resolve()
-        }
 
         handleShowNotification(context, notificationId, timeRemaining, workoutType)
+        call.resolve()
+    }
 
+    @PluginMethod
+    fun removeNotification(call: PluginCall) {
+        handleRemoveNotification(context, notificationId)
         call.resolve()
     }
 }

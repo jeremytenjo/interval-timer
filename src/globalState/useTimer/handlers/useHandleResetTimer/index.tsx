@@ -7,7 +7,7 @@ export default function useHandleResetTimer({ timerStore }) {
   const resetTimer = ({ dontResetSetsAndReps = false } = {}) => {
     timerStore.setType('Workout')
     KeepAwake.allowSleep()
-    timerNotification.showNotification.exec({ remove: true })
+    timerNotification.removeNotification.exec()
 
     if (!dontResetSetsAndReps) {
       timerStore.setTrackedSets(timerStore.totalSets)

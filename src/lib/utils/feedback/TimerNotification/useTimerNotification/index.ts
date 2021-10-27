@@ -22,9 +22,7 @@ export default function useTimerNotification(props: Props) {
   })
 
   const removeNotification = useAsync(async () => {
-    await TimerNotification.showTimerNotification({
-      remove: true,
-    })
+    await TimerNotification.removeNotification()
   })
 
   return { setTime, showNotification, removeNotification }
