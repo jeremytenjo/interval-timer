@@ -1,31 +1,31 @@
+import useAsync from '@useweb/use-async'
+
+import { showTimerNotificationTypes } from '../'
 import TimerNotification from '../'
 
 type Props = {
   onStop?: () => void
-  onStart?: () => void
+  onResume?: () => void
   onPause?: () => void
 }
 
 export default function useTimerNotification(props: Props) {
-  const getTime = () => {
-    //
-  }
+  const showNotification = useAsync(async () => {
+    await TimerNotification.showTimerNotification({})
+  })
 
-  const setTime = async (time: string) => {
-    // console.log({ time })
-    // get current time of notification
-    // send time to native notitivation if it has changed from current
-  }
+  const setTime = useAsync(async (props: showTimerNotificationTypes) => {
+    await TimerNotification.showTimerNotification({
+      timeRemaining: props.timeRemaining,
+      workoutType: props.workoutType,
+    })
+  })
 
-  const showNotification = async () => {
-    // TODO
-    const res = await TimerNotification.showTimerNotification({ value: 'Hello' })
-    console.log(res.source)
-  }
+  const removeNotification = useAsync(async () => {
+    await TimerNotification.showTimerNotification({
+      remove: true,
+    })
+  })
 
-  const removeNotification = () => {
-    // console.log('removeNotification!')
-  }
-
-  return { getTime, setTime, showNotification, removeNotification }
+  return { setTime, showNotification, removeNotification }
 }

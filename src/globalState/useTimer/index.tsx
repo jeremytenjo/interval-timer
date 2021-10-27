@@ -2,8 +2,8 @@ import create from 'zustand'
 
 import useTimerMetadata from './handlers/useTimerMetadata'
 import useNextRepetition from './handlers/useNextRepetition'
-import handleResetTimer from './handlers/handleResetTimer'
-import handleStartTimer from './handlers/handleStartTimer'
+import useHandleResetTimer from './handlers/useHandleResetTimer'
+import useHandlerStartTimer from './handlers/useHandlerStartTimer'
 import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 import useTimerSound from './handlers/useSound'
 import useHandleTimerNotification from './handlers/useHandleTimerNotification'
@@ -71,19 +71,25 @@ export default function useTimer() {
     color,
     remainingTime,
     totalTime,
+    currentTypeTimeRemaining,
   } = useTimerMetadata(handlerPayload)
 
-  const timerNotification = useHandleTimerNotification({ remainingTime })
+  const resetTimer = useHandleResetTimer({
+    ...handlerPayload,
+  })
 
-  const resetTimer = (options) => handleResetTimer({...handlerPayload,timerNotification, ...options})
-
-  const startTimer = () => handleStartTimer({ ...handlerPayload,timerNotification })
+  const startTimer = useHandlerStartTimer({ ...handlerPayload })
 
   const startNextRepetition = useNextRepetition({ ...handlerPayload, resetTimer })
 
   const udpateSelectedtimer = useUpdateSelectedTimer({ ...handlerPayload, resetTimer })
 
   const sound = useTimerSound()
+
+  useHandleTimerNotification({
+    elapsedTime: currentTypeTimeRemaining,
+    workoutType: timerStore.type,
+  })
 
   return {
     repetitions,

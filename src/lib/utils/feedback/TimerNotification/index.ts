@@ -1,15 +1,18 @@
 import { registerPlugin, WebPlugin } from '@capacitor/core'
 
+export type showTimerNotificationTypes = {
+  timeRemaining?: string
+  workoutType?: string
+  remove?: boolean
+}
 export interface Type {
-  showTimerNotification(options: {
-    value: string
-  }): Promise<{ value: string; source: string }>
+  showTimerNotification(options: showTimerNotificationTypes)
 }
 
 class CapacitorPluginTimerNotification extends WebPlugin {
-  async showTimerNotification(props: { value: string }) {
+  async showTimerNotification(props: showTimerNotificationTypes) {
     return {
-      source: props.value + ' from the web!',
+      source: props.timeRemaining + ' from the web!',
     }
   }
 }

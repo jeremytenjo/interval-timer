@@ -5,12 +5,11 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import app.myintervaltimer.app.R
 
-fun handleShowNotification(context: Context) {
+fun handleShowNotification(context: Context, notificationId: Int, time: String? = "0:00", workoutType: String? = "Workout") {
     val CHANNEL_ID = context.getString(R.string.timer_notification_channel_id)
-    val notificationId = 101
     val smallIcon = R.drawable.logo_android_notification
-    val title = "Title"
-    val text = "text"
+    val title = "Timer is running"
+    val text = "Current mode: ${workoutType}"
     val priority = NotificationCompat.PRIORITY_DEFAULT
     val ongoing = true
     val silent = true
