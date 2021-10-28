@@ -1,4 +1,4 @@
-package app.myintervaltimer.app.plugins
+package app.myintervaltimer.app.plugins.TimerNotification
 
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall

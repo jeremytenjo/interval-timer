@@ -1,4 +1,4 @@
-package app.myintervaltimer.app.plugins
+package app.myintervaltimer.app.plugins.TimerNotification
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -13,12 +13,12 @@ class ActionReceiver : BroadcastReceiver() {
         println(action)
 
         if (action == "pause") {
-            notifyListeners("onPauseTimer", JSObject())
+//            notifyListeners("onPauseTimer", JSObject())
         } else if (action == "resume") {
-            notifyListeners("onResumeTimer", JSObject())
+//            notifyListeners("onResumeTimer", JSObject())
         } else if (action == "stop") {
-            notifyListeners("onCloseTimer", JSObject())
-            handleRemoveNotification(context)
+//            notifyListeners("onCloseTimer", JSObject())
+            handleRemoveTimerNotification(context)
         }
     }
 }

@@ -8,6 +8,7 @@ export type showTimerNotificationTypes = {
 export interface Type {
   showTimerNotification(options: showTimerNotificationTypes)
   removeNotification()
+  addListener(string, any)
 }
 
 class CapacitorPluginTimerNotification extends WebPlugin {

@@ -1,4 +1,4 @@
-package app.myintervaltimer.app.plugins
+package app.myintervaltimer.app.plugins.TimerNotification
 
 import android.content.Context
 import androidx.core.app.NotificationManagerCompat

@@ -1,4 +1,4 @@
-package app.myintervaltimer.app.plugins
+package app.myintervaltimer.app.plugins.TimerNotification
 
 import android.app.PendingIntent
 import android.content.Context
