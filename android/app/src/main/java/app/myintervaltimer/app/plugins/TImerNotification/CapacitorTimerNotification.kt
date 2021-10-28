@@ -14,13 +14,13 @@ class CapacitorTimerNotification : Plugin() {
         val timeRemaining = call.getString("timeRemaining")
         val workoutType = call.getString("workoutType")
 
-        handleShowNotification(context, notificationId, timeRemaining, workoutType)
+        handleShowTimerNotification(context, timeRemaining, workoutType)
         call.resolve()
     }
 
     @PluginMethod
     fun removeNotification(call: PluginCall) {
-        handleRemoveNotification(context, notificationId)
+        handleRemoveTimerNotification(context)
         call.resolve()
     }
 }
