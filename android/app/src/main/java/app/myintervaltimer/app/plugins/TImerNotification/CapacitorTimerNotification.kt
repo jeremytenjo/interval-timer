@@ -7,8 +7,6 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "CapacitorTimerNotification")
 class CapacitorTimerNotification : Plugin() {
-    val notificationId = 101
-
     @PluginMethod
     fun showTimerNotification(call: PluginCall) {
         val timeRemaining = call.getString("timeRemaining")
