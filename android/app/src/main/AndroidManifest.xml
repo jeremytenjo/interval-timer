@@ -31,7 +31,7 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
 
-        <receiver android:name=".plugins.TImerNotification.ActionReceiver" />
+        <receiver android:name=".plugins.TimerNotification.ActionReceiver" />
 
     </application>
 

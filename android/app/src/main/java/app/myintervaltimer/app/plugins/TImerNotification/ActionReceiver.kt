@@ -8,8 +8,8 @@ import com.getcapacitor.Plugin
 
 class ActionReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val action: String? = intent.getStringExtra("action");
-        println("ACTION!!!!!!!")
+        val action = intent.action
+
         println(action)
 
         if (action == "pause") {

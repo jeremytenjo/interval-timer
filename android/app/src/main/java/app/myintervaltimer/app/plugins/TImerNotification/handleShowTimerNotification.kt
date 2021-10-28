@@ -18,13 +18,13 @@ fun handleShowTimerNotification(context: Context, time: String? = "0:00", workou
     val silent = true
 
     val pauseIntent = Intent(context, ActionReceiver::class.java).apply {
-        putExtra("action", "pause")
+        action = "pause"
     }
     val pausePendingIntent: PendingIntent =
         PendingIntent.getBroadcast(context, 0, pauseIntent, 0)
 
     val stopIntent = Intent(context, ActionReceiver::class.java).apply {
-        putExtra("action", "stop")
+        action = "stop"
     }
     val stopPendingIntent: PendingIntent =
         PendingIntent.getBroadcast(context, 0, stopIntent, 0)
