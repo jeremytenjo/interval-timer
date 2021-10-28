@@ -8,9 +8,7 @@ import com.getcapacitor.Plugin
 
 class TimerNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val action = intent.action
-
-        println(action)
+        val action: String? = intent.action
 
         if (action == "pause") {
 //            notifyListeners("onPauseTimer", JSObject())
