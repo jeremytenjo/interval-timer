@@ -6,7 +6,7 @@ import android.content.Intent
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 
-class ActionReceiver : BroadcastReceiver() {
+class TimerNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
 
