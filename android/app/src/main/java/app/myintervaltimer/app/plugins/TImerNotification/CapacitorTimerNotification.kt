@@ -15,12 +15,12 @@ class CapacitorTimerNotification : Plugin() {
 
         // add notifyListeners globally in order to use it in broadcast receivers
         val sharedData = Globals.instance
-        class Lister: Globals(), Globals.Listeners {
+        class Listeners: Globals(), Globals.Listeners {
             override fun triggerListener(listenerName: String) {
                 notifyListeners(listenerName, JSObject())
             }
         }
-        sharedData.value = Lister()
+        sharedData.value = Listeners()
     }
 
     @PluginMethod
