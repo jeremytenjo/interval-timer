@@ -17,18 +17,17 @@ fun handleShowTimerNotification(context: Context, time: String? = "0:00", workou
     val ongoing = true
     val silent = true
 
-    val pauseIntent = Intent(context, TimerNotificationReceiver::class.java).apply {
-        action = "pause"
+    fun createPendingIntent(action: String): PendingIntent? {
+        val intent = Intent(
+            context,
+            TimerNotificationReceiver::class.java
+        )
+        intent.action = action
+        return PendingIntent.getBroadcast(context, 0, intent, 0)
     }
-    val pausePendingIntent: PendingIntent =
-        PendingIntent.getBroadcast(context, 0, pauseIntent, 0)
 
-    val stopIntent = Intent(context, TimerNotificationReceiver::class.java).apply {
-        action = "stop"
-    }
-    val stopPendingIntent: PendingIntent =
-        PendingIntent.getBroadcast(context, 0, stopIntent, 0)
-
+    val pausePendingIntent = createPendingIntent( "pause")
+    val stopPendingIntent = createPendingIntent( "stop")
 
     var builder = NotificationCompat.Builder(context, CHANNEL_ID)
         .setSmallIcon(smallIcon)
