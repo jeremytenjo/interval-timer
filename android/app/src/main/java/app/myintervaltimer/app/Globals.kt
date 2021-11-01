@@ -1,10 +1,8 @@
 package app.myintervaltimer.app
 
-import kotlin.reflect.KFunction
-
 open class Globals public constructor() {
     interface Listeners {
-        fun onPause()
+        fun triggerListener(listenerName: String)
     }
 
     lateinit var value: Listeners

@@ -12,10 +12,12 @@ import com.getcapacitor.annotation.CapacitorPlugin
 class CapacitorTimerNotification : Plugin() {
     override fun load() {
         super.load()
+
+        // add notifyListeners globally in order to use it in broadcast receivers
         val sharedData = Globals.instance
         class Lister: Globals(), Globals.Listeners {
-            override fun onPause() {
-                notifyListeners("onPauseTimer", JSObject())
+            override fun triggerListener(listenerName: String) {
+                notifyListeners(listenerName, JSObject())
             }
         }
         sharedData.value = Lister()
@@ -33,7 +35,7 @@ class CapacitorTimerNotification : Plugin() {
     fun triggerListener(listenerName: String) {
         val sharedData = Globals.instance
         val listener = sharedData.value
-        listener.onPause()
+        listener.triggerListener(listenerName)
     }
 
     @PluginMethod
