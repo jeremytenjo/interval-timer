@@ -10,15 +10,15 @@ type Options = {
 export default function useHandleTimerNotification(options: Options) {
   const timerNotifiction = useTimerNotification({
     onStop: () => {
-      console.log('stop timer')
+      console.log('F YEAH! stop timer')
       // timer.resetTimer({})
     },
     onResume: () => {
-      console.log('start timer')
+      console.log('F YEAH! start timer')
       // timer.resumeTimer()
     },
     onPause: () => {
-      console.log('pause timer')
+      console.log('F YEAH! pause timer')
       // timer.pauseTimer()
     },
   })

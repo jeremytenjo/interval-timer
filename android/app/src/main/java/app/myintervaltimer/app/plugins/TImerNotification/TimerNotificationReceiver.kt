@@ -9,14 +9,11 @@ class TimerNotificationReceiver : BroadcastReceiver() {
         val action: String? = intent.action
 // TODO enable notifyListeners
         if (action == "pause") {
-//            notifyListeners("onPauseTimer", JSObject())
-            val plugin = CapacitorTimerNotification()
-            plugin.triggerListener("onPauseTimer")
-            
+            CapacitorTimerNotification().triggerListener("onPauseTimer")
         } else if (action == "resume") {
-//            notifyListeners("onResumeTimer", JSObject())
+//            triggerListener("onResumeTimer", JSObject())
         } else if (action == "stop") {
-//            notifyListeners("onCloseTimer", JSObject())
+//            triggerListener("onCloseTimer", JSObject())
             handleRemoveTimerNotification(context)
         }
     }
