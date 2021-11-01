@@ -32,12 +32,6 @@ class CapacitorTimerNotification : Plugin() {
         call.resolve()
     }
 
-    fun triggerListener(listenerName: String) {
-        val sharedData = Globals.instance
-        val listener = sharedData.value
-        listener.triggerListener(listenerName)
-    }
-
     @PluginMethod
     fun removeNotification(call: PluginCall) {
         handleRemoveTimerNotification(context)

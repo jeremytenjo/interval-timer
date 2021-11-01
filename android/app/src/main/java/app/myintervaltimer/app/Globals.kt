@@ -1,6 +1,6 @@
 package app.myintervaltimer.app
 
-open class Globals public constructor() {
+open class Globals {
     interface Listeners {
         fun triggerListener(listenerName: String)
     }

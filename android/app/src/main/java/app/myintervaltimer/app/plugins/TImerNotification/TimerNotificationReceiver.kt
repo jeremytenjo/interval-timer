@@ -3,17 +3,18 @@ package app.myintervaltimer.app.plugins.TimerNotification
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import app.myintervaltimer.app.utils.TriggerListener
 
 class TimerNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action: String? = intent.action
-// TODO enable notifyListeners
+
         if (action == "pause") {
-            CapacitorTimerNotification().triggerListener("onPauseTimer")
+            TriggerListener("onPauseTimer")
         } else if (action == "resume") {
-//            triggerListener("onResumeTimer", JSObject())
+            TriggerListener("onResumeTimer")
         } else if (action == "stop") {
-//            triggerListener("onCloseTimer", JSObject())
+            TriggerListener("onStopTimer")
             handleRemoveTimerNotification(context)
         }
     }
