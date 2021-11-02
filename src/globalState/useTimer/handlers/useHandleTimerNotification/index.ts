@@ -2,33 +2,33 @@ import { useMemo } from 'react'
 
 import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification'
 
-type Options = {
+type Props = {
   elapsedTime: string
   workoutType: string
+  resetTimer: () => void
+  resumeTimer: () => void
+  pauseTimer: () => void
 }
 
-export default function useHandleTimerNotification(options: Options) {
+export default function useHandleTimerNotification(props: Props) {
   const timerNotifiction = useTimerNotification({
     onStop: () => {
-      console.log('F YEAH! stop timer')
-      // timer.resetTimer({})
+      props.resetTimer()
     },
     onResume: () => {
-      console.log('F YEAH! start timer')
-      // timer.resumeTimer()
+      props.resumeTimer()
     },
     onPause: () => {
-      console.log('F YEAH! pause timer')
-      // timer.pauseTimer()
+      props.pauseTimer()
     },
   })
 
   useMemo(() => {
     timerNotifiction.setTime.exec({
-      timeRemaining: options.elapsedTime,
-      workoutType: options.workoutType,
+      timeRemaining: props.elapsedTime,
+      workoutType: props.workoutType,
     })
-  }, [options.elapsedTime])
+  }, [props.elapsedTime])
 
   return timerNotifiction
 }

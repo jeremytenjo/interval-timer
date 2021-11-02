@@ -89,6 +89,9 @@ export default function useTimer() {
   useHandleTimerNotification({
     elapsedTime: currentTypeTimeRemaining,
     workoutType: timerStore.type,
+    resetTimer,
+    resumeTimer: timerStore.resumeTimer,
+    pauseTimer: timerStore.pauseTimer,
   })
 
   return {
