@@ -29,8 +29,6 @@ class CapacitorTimerNotification : Plugin() {
         val workoutType = call.getString("workoutType")
         val isPaused = call.getBoolean("isPaused")
 
-        println("isPaused $isPaused")
-
         handleShowTimerNotification(context, timeRemaining, workoutType, isPaused)
         call.resolve()
     }

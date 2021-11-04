@@ -19,7 +19,6 @@ export default function useTimerMetadata({ timerStore }) {
     ? timerStore.totalRepetitions
     : timerStore.trackedRepetitions
   const sets = !timerStore.isStarted ? timerStore.totalSets : timerStore.trackedSets
-  const currentTypeTimeRemaining = formatDuration(timerStore.elapsedTime * 1000)
 
   return {
     repetitions,
@@ -30,6 +29,5 @@ export default function useTimerMetadata({ timerStore }) {
     color,
     remainingTime,
     totalTime,
-    currentTypeTimeRemaining,
   }
 }

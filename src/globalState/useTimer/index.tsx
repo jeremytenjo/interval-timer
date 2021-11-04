@@ -98,7 +98,6 @@ export default function useTimer() {
 
   const { updateElapsedTime } = useUpdateElapsedTime({
     ...handlerPayload,
-    duration,
     udpateTimeRemainingFormatted: timerStore.setTimeRimeRemainingFormatted,
   })
 

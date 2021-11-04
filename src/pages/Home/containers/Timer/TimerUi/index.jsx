@@ -34,7 +34,7 @@ export default function Timer({
     if (isStarted) {
       if (currentRemainingTime.current !== newRemainingTiming) {
         elapsedTime.current = elapsedTime.current + 1
-        onElapsedTimeUpdate(elapsedTime.current)
+        onElapsedTimeUpdate(newRemainingTiming)
       }
       currentRemainingTime.current = newRemainingTiming
     } else {

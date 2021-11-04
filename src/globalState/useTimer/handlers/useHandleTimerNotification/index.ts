@@ -27,8 +27,6 @@ export default function useHandleTimerNotification(props: Props) {
   })
 
   useMemo(() => {
-    // TODO change notification button to pause
-    // TODO change notification button to resume
     if (props.timerIsStarted) {
       const isPaused = !props.timerIsPlaying
       timerNotifiction.updateTimerNotification.exec({
