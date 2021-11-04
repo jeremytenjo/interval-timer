@@ -7,7 +7,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import app.myintervaltimer.app.R
 
-fun handleShowTimerNotification(context: Context, timeRemaining: String? = "0:00", workoutType: String? = "Workout") {
+fun handleShowTimerNotification(context: Context, timeRemaining: String? = "0:00", workoutType: String? = "Workout", isPaused: Boolean? = true) {
     val CHANNEL_ID = context.getString(R.string.timer_notification_channel_id)
     val TIMER_NOTIFICATION_ID = R.integer.timer_notification_id
     val smallIcon = R.drawable.logo_android_notification

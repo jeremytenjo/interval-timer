@@ -16,22 +16,32 @@ const useTimerStore = create((set: any) => ({
 
   // timer info
   totalRepetitions: 0,
-  totalSets: 0,
-  totalWorkoutTime: 0,
-  totalRestTime: 0,
-  trackedRepetitions: 0,
-  trackedSets: 0,
-  type: 'Rest',
-  elapsedTime: 0,
-
   setTotalRepetitions: (newValue) => set(() => ({ totalRepetitions: newValue })),
+
+  totalSets: 0,
   setTotalSets: (newValue) => set(() => ({ totalSets: newValue })),
+
+  totalWorkoutTime: 0,
   setTotalWorkoutTime: (newValue) => set(() => ({ totalWorkoutTime: newValue })),
+
+  totalRestTime: 0,
   setTotalRestTime: (newValue) => set(() => ({ totalRestTime: newValue })),
+
+  trackedRepetitions: 0,
   setTrackedRepetitions: (newValue) => set(() => ({ trackedRepetitions: newValue })),
+
+  trackedSets: 0,
   setTrackedSets: (newValue) => set(() => ({ trackedSets: newValue })),
+
+  type: 'Rest',
   setType: (newValue) => set(() => ({ type: newValue })),
+
+  elapsedTime: 0,
   setElapsedTime: (newValue) => set(() => ({ elapsedTime: newValue })),
+
+  timeRemainingFormatted: '00:00',
+  setTimeRimeRemainingFormatted: (newValue) =>
+    set(() => ({ timeRemainingFormatted: newValue })),
 
   // timer controls
   isPlaying: false,
@@ -89,12 +99,17 @@ export default function useTimer() {
   const { updateElapsedTime } = useUpdateElapsedTime({
     ...handlerPayload,
     duration,
+    udpateTimeRemainingFormatted: timerStore.setTimeRimeRemainingFormatted,
   })
 
   useHandleTimerNotification({
     resetTimer,
     resumeTimer: timerStore.resumeTimer,
     pauseTimer: timerStore.pauseTimer,
+    timerIsPlaying: timerStore.isPlaying,
+    timerIsStarted: timerStore.isStarted,
+    timeRemainingInType: timerStore.timeRemainingFormatted,
+    workoutType: timerStore.type,
   })
 
   return {
