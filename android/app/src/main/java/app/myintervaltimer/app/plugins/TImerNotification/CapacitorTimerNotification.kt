@@ -24,7 +24,7 @@ class CapacitorTimerNotification : Plugin() {
     }
 
     @PluginMethod
-    fun showTimerNotification(call: PluginCall) {
+    fun updateTimerNotification(call: PluginCall) {
         val timeRemaining = call.getString("timeRemaining")
         val workoutType = call.getString("workoutType")
 

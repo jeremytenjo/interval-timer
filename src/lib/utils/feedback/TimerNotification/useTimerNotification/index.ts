@@ -29,12 +29,8 @@ export default function useTimerNotification(props: Props) {
     }
   }, [])
 
-  const showNotification = useAsync(async () => {
-    await TimerNotification.showTimerNotification({})
-  })
-
-  const setTime = useAsync(async (props: showTimerNotificationTypes) => {
-    await TimerNotification.showTimerNotification({
+  const updateTimerNotification = useAsync(async (props: showTimerNotificationTypes) => {
+    await TimerNotification.updateTimerNotification({
       timeRemaining: props.timeRemaining,
       workoutType: props.workoutType,
     })
@@ -44,5 +40,5 @@ export default function useTimerNotification(props: Props) {
     await TimerNotification.removeNotification()
   })
 
-  return { setTime, showNotification, removeNotification }
+  return { updateTimerNotification, removeNotification }
 }

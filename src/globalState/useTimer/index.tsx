@@ -72,7 +72,6 @@ export default function useTimer() {
     color,
     remainingTime,
     totalTime,
-    currentTypeTimeRemaining,
   } = useTimerMetadata(handlerPayload)
 
   const resetTimer = useHandleResetTimer({
@@ -87,18 +86,15 @@ export default function useTimer() {
 
   const sound = useTimerSound()
 
-  const { updateElapsedTime, timeRemainingInType } = useUpdateElapsedTime({
+  const { updateElapsedTime } = useUpdateElapsedTime({
     ...handlerPayload,
     duration,
   })
 
   useHandleTimerNotification({
-    elapsedTime: currentTypeTimeRemaining,
-    workoutType: timerStore.type,
     resetTimer,
     resumeTimer: timerStore.resumeTimer,
     pauseTimer: timerStore.pauseTimer,
-    timeRemainingInType,
   })
 
   return {
