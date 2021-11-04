@@ -19,6 +19,7 @@ export default function useUpdateElapsedTimer({
     timerNotifiction.updateTimerNotification.exec({
       timeRemaining: timeRemainingFormatted,
       workoutType: timerStore.type,
+      isPaused: false,
     })
   }
 

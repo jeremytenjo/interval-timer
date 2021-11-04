@@ -34,6 +34,7 @@ export default function useTimerNotification(props: Props) {
       await TimerNotification.updateTimerNotification({
         timeRemaining: props.timeRemaining,
         workoutType: props.workoutType,
+        isPaused: props.isPaused,
       })
     },
   )

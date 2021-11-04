@@ -16,6 +16,8 @@ fun handleShowTimerNotification(context: Context, timeRemaining: String? = "0:00
     val priority = NotificationCompat.PRIORITY_DEFAULT
     val ongoing = true
     val silent = true
+    val pauseResumeTitle = if (isPaused == true) "Resume" else "Pause"
+    val pauseResumPendingIntentAction = if (isPaused == true) "resume" else "pause"
 
     fun createPendingIntent(action: String): PendingIntent? {
         val intent = Intent(
@@ -26,7 +28,7 @@ fun handleShowTimerNotification(context: Context, timeRemaining: String? = "0:00
         return PendingIntent.getBroadcast(context, 0, intent, 0)
     }
 
-    val pausePendingIntent = createPendingIntent( "pause")
+    val pausePendingIntent = createPendingIntent( pauseResumPendingIntentAction)
     val stopPendingIntent = createPendingIntent( "stop")
 
     var builder = NotificationCompat.Builder(context, CHANNEL_ID)
@@ -36,7 +38,7 @@ fun handleShowTimerNotification(context: Context, timeRemaining: String? = "0:00
         .setPriority(priority)
         .setOngoing(ongoing)
         .setSilent(silent)
-        .addAction(R.drawable.logo_android_notification, "Pause", pausePendingIntent)
+        .addAction(R.drawable.logo_android_notification, pauseResumeTitle, pausePendingIntent)
         .addAction(R.drawable.logo_android_notification, "Stop", stopPendingIntent)
 
 

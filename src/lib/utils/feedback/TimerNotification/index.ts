@@ -1,9 +1,9 @@
 import { registerPlugin, WebPlugin } from '@capacitor/core'
 
 export type updateTimerNotificationTypes = {
-  timeRemaining?: string
-  workoutType?: string
-  isPaused?: boolean
+  timeRemaining: string
+  workoutType: string
+  isPaused: boolean
 }
 export interface Type {
   updateTimerNotification(options: updateTimerNotificationTypes)
