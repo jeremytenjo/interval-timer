@@ -1,7 +1,7 @@
 import useAsync from '@useweb/use-async'
 import { useEffect } from 'react'
 
-import { showTimerNotificationTypes } from '../'
+import { updateTimerNotificationTypes } from '../'
 import TimerNotification from '../'
 
 type Props = {
@@ -29,12 +29,14 @@ export default function useTimerNotification(props: Props) {
     }
   }, [])
 
-  const updateTimerNotification = useAsync(async (props: showTimerNotificationTypes) => {
-    await TimerNotification.updateTimerNotification({
-      timeRemaining: props.timeRemaining,
-      workoutType: props.workoutType,
-    })
-  })
+  const updateTimerNotification = useAsync(
+    async (props: updateTimerNotificationTypes) => {
+      await TimerNotification.updateTimerNotification({
+        timeRemaining: props.timeRemaining,
+        workoutType: props.workoutType,
+      })
+    },
+  )
 
   const removeNotification = useAsync(async () => {
     await TimerNotification.removeNotification()
