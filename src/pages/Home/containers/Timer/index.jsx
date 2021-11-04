@@ -16,7 +16,7 @@ export default function Timer() {
       workoutTime={timer.workoutTime}
       type={timer.type}
       onTimerComplete={timer.startNextRepetition}
-      onElapsedTimeUpdate={timer.setElapsedTime}
+      onElapsedTimeUpdate={timer.updateElapsedTime}
     />
   )
 }

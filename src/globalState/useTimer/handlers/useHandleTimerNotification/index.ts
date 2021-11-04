@@ -5,6 +5,7 @@ import useTimerNotification from '../../../../lib/utils/feedback/TimerNotificati
 type Props = {
   elapsedTime: string
   workoutType: string
+  timeRemainingInType: number
   resetTimer: () => void
   resumeTimer: () => void
   pauseTimer: () => void
@@ -17,9 +18,11 @@ export default function useHandleTimerNotification(props: Props) {
     },
     onResume: () => {
       props.resumeTimer()
+      // TODO change notification button to pause
     },
     onPause: () => {
       props.pauseTimer()
+      // TODO change notification button to resume
     },
   })
 

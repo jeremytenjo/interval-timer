@@ -7,6 +7,7 @@ import useHandlerStartTimer from './handlers/useHandlerStartTimer'
 import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 import useTimerSound from './handlers/useSound'
 import useHandleTimerNotification from './handlers/useHandleTimerNotification'
+import useUpdateElapsedTime from './handlers/useUpdateElapsedTime'
 
 const useTimerStore = create((set: any) => ({
   // selected timer
@@ -86,12 +87,18 @@ export default function useTimer() {
 
   const sound = useTimerSound()
 
+  const { updateElapsedTime, timeRemainingInType } = useUpdateElapsedTime({
+    ...handlerPayload,
+    duration,
+  })
+
   useHandleTimerNotification({
     elapsedTime: currentTypeTimeRemaining,
     workoutType: timerStore.type,
     resetTimer,
     resumeTimer: timerStore.resumeTimer,
     pauseTimer: timerStore.pauseTimer,
+    timeRemainingInType,
   })
 
   return {
@@ -110,5 +117,6 @@ export default function useTimer() {
     startTimer,
     setSelectedTimer: udpateSelectedtimer.setSelectedTimer,
     setSelectedTimerById: udpateSelectedtimer.setSelectedTimerById,
+    updateElapsedTime,
   }
 }

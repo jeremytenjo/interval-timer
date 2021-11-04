@@ -92,6 +92,8 @@ export default function TimerEditorCreator({
   const onSave = () => {
     const isValid = validate()
     if (isValid) {
+      payload.rest = payload.rest === 0 ? 1 : payload.rest
+      payload.workout = payload.workout === 0 ? 1 : payload.workout
       onSaveTimer(payload)
     }
   }

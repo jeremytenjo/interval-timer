@@ -14,8 +14,8 @@ export default function MinuteSelector({
   const [value, setValue] = React.useState(new Date(defaultValue))
 
   const updateValue = (newValue) => {
-    const minutes = newValue.getMinutes()
-    const seconds = newValue.getSeconds()
+    const minutes = newValue?.getMinutes() || 0
+    const seconds = newValue?.getSeconds() || 0
     const payload = {
       minutes,
       seconds,
