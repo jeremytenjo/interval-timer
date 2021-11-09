@@ -15,22 +15,22 @@ const appConfig: AppConfigTypes = {
     background_color: themeTokens.colors.black.main,
     screenshots: [
       {
-        src: 'source/screenshot-create.png',
+        src: 'images/manifest/screenshot-create.png',
         sizes: '360x640',
         type: 'image/png',
       },
       {
-        src: 'source/screenshot-home.png',
+        src: 'images/manifest/screenshot-home.png',
         sizes: '360x640',
         type: 'image/png',
       },
       {
-        src: 'source/screenshot-sync.png',
+        src: 'images/manifest/screenshot-sync.png',
         sizes: '360x640',
         type: 'image/png',
       },
       {
-        src: 'source/screenshot-edit.png',
+        src: 'images/manifest/screenshot-edit.png',
         sizes: '360x640',
         type: 'image/png',
       },
