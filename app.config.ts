@@ -13,6 +13,28 @@ const appConfig: AppConfigTypes = {
     display: 'standalone',
     theme_color: themeTokens.colors.primary.main,
     background_color: themeTokens.colors.black.main,
+    screenshots: [
+      {
+        src: 'source/screenshot-create.png',
+        sizes: '360x640',
+        type: 'image/png',
+      },
+      {
+        src: 'source/screenshot-home.png',
+        sizes: '360x640',
+        type: 'image/png',
+      },
+      {
+        src: 'source/screenshot-sync.png',
+        sizes: '360x640',
+        type: 'image/png',
+      },
+      {
+        src: 'source/screenshot-edit.png',
+        sizes: '360x640',
+        type: 'image/png',
+      },
+    ],
   },
   analytics: {
     google: {
@@ -42,6 +64,11 @@ export type AppConfigTypes = {
     theme_color: string
     background_color: string
     start_url: string
+    screenshots: {
+      src: string
+      sizes: string
+      type: string
+    }[]
   }
   analytics: {
     google: {
