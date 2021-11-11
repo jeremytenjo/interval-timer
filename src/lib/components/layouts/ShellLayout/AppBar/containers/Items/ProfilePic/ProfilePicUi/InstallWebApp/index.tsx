@@ -1,6 +1,5 @@
 import { Capacitor } from '@capacitor/core'
-
-import useInstallPrompt from '../../../../../../../../../utils/dom/useInstallPrompt'
+import useInstallPrompt from '@useweb/use-install-prompt'
 
 import InstallWebAppUi from './InstallWebAppUi'
 
