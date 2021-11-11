@@ -5,7 +5,7 @@ import appConfig from './app.config'
 // https://capacitorjs.com/docs/config
 const config: CapacitorConfig = {
   appId: 'app.myintervaltimer.app',
-  appName: 'my-interval-timer',
+  appName: 'My Interval Timer',
   webDir: 'build',
   bundledWebRuntime: false,
   server: {
@@ -15,5 +15,4 @@ const config: CapacitorConfig = {
   },
 }
 
-export default config 
- 
+export default config

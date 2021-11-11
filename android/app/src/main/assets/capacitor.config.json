@@ -1,6 +1,6 @@
 {
 	"appId": "app.myintervaltimer.app",
-	"appName": "my-interval-timer",
+	"appName": "My Interval Timer",
 	"webDir": "build",
 	"bundledWebRuntime": false,
 	"server": {
