@@ -10,6 +10,12 @@ export const UseInstallPromptProvider = ({ children }) => {
   const prompt = () => {
     if (deferredPromptRef.current) {
       deferredPromptRef.current.prompt()
+
+      deferredPromptRef.current.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          setIsNotInstalled(false)
+        }
+      })
     }
   }
 
