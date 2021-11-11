@@ -21,7 +21,7 @@ export const UseInstallPromptProvider = ({ children }) => {
 
     if (window.matchMedia) {
       const appIsInstalled = window.matchMedia('(display-mode: standalone)').matches
-      setIsNotInstalled(appIsInstalled)
+      setIsNotInstalled(!appIsInstalled)
     }
   }
 
