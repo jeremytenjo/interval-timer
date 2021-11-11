@@ -5,16 +5,19 @@ import { FirebaseProvider } from './firebase/useFirebase'
 import Router from './pages/router'
 import Theme from './theme/theme'
 import GlobalProviders from './globalState/GlobalProviders'
+import { UseInstallPromptProvider } from './lib/utils/dom/useInstallPrompt'
 
 function App() {
   return (
-    <FirebaseProvider>
-      <Theme>
-        <GlobalProviders>
-          <Router />
-        </GlobalProviders>
-      </Theme>
-    </FirebaseProvider>
+    <UseInstallPromptProvider>
+      <FirebaseProvider>
+        <Theme>
+          <GlobalProviders>
+            <Router />
+          </GlobalProviders>
+        </Theme>
+      </FirebaseProvider>
+    </UseInstallPromptProvider>
   )
 }
 

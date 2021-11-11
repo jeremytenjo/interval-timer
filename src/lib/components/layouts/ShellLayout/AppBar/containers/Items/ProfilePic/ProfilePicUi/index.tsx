@@ -9,10 +9,11 @@ import Popover from '../../../../../../../Popover'
 import ContinueWithGoogle from '../../../../../../../firebase/ContinueWithGoogle'
 import Box from '../../../../../../../Box'
 import useAuth from '../../../../../../../../../globalState/useAuth'
-import SignOut from '../../../../../../../icons/SignOut/index'
+import SignOut from '../../../../../../../icons/SignOut'
 
 import * as styles from './styles'
 import SettingsLink from './SettingsLink'
+import InstallWebApp from './InstallWebApp'
 
 export default function ProfilePicUi() {
   const auth = useAuth()
@@ -33,6 +34,10 @@ export default function ProfilePicUi() {
   }
 
   const onSettingsClick = () => {
+    handleClose()
+  }
+
+  const onInstallWebAppClick = () => {
     handleClose()
   }
 
@@ -66,10 +71,12 @@ export default function ProfilePicUi() {
               <p className='title'>To sync timers across devices</p>
               <ContinueWithGoogle />
               <SettingsLink onSettingsClick={onSettingsClick} />
+              <InstallWebApp onClick={onInstallWebAppClick} />
             </>
           ) : (
             <>
               <SettingsLink onSettingsClick={onSettingsClick} />
+              <InstallWebApp onClick={onInstallWebAppClick} />
               <ListItemButton onClick={auth.signOutFromGoogle}>
                 <ListItemIcon sx={{ minWidth: '35px' }}>
                   <SignOut sx={{ width: '17px' }} />
