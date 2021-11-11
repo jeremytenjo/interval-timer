@@ -15,6 +15,7 @@
     "android:run": "npm run android:sync && cap run android",
     "android:open": "npm run android:sync && cap open android",
     "android:sync": "npm run build && cap sync android",
+    "android:build-prod": "ENV=production npm run android:sync",
     "ios:open": "npm run ios:sync && cap open ios",
     "ios:sync": "npm run build && cap sync ios",
     "capacitor:updateConfig": "npx cap copy",

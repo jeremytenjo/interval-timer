@@ -21,8 +21,8 @@ class MainActivity : BridgeActivity() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "timerNotification"
-            val descriptionText = "Timer Notification"
+            val name = "Status Bar Notifications"
+            val descriptionText = "Status Bar Notifications"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
