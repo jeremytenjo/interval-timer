@@ -3,7 +3,7 @@ import useTimer from '../../../../globalState/useTimer'
 
 import CreateTimerFormUi from './CreateTimerFormUi'
 
-export default function CreateTimerForm() {
+export default function CreateTimerForm({ header }) {
   const timer = useTimer()
   const timers = useTimers({
     onCreate: (result) => {
@@ -15,5 +15,5 @@ export default function CreateTimerForm() {
     timers.create.exec({ data: payload })
   }
 
-  return <CreateTimerFormUi onSaveTimer={onSaveTimer} />
+  return <CreateTimerFormUi onSaveTimer={onSaveTimer} header={header} />
 }

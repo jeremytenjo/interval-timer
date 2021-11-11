@@ -1,5 +1,5 @@
 import useAppBar from '../../globalState/useAppBar'
-import CreateTimerPage from '../CreateTimer'
+import CreateTimerForm from '../CreateTimer/containers/CreateTimerForm'
 import useTimer from '../../globalState/useTimer'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 
@@ -21,7 +21,7 @@ export default function HomePage() {
           <TimerControls />
         </>
       ) : (
-        <CreateTimerPage />
+        <CreateTimerForm header='Create your first timer' />
       )}
     </section>
   )
