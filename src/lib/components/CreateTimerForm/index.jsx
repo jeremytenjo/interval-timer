@@ -1,5 +1,5 @@
-import useTimers from '../../../../data/timers/useTimers'
-import useTimer from '../../../../globalState/useTimer'
+import useTimers from '../../../data/timers/useTimers'
+import useTimer from '../../../globalState/useTimer'
 
 import CreateTimerFormUi from './CreateTimerFormUi'
 

@@ -1,5 +1,5 @@
 import useAppBar from '../../globalState/useAppBar'
-import CreateTimerForm from '../CreateTimer/containers/CreateTimerForm'
+import CreateTimerForm from '../../lib/components/CreateTimerForm'
 import useTimer from '../../globalState/useTimer'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 

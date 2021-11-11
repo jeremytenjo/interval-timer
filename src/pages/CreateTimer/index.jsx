@@ -1,7 +1,6 @@
 import useAppBar from '../../globalState/useAppBar'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
-
-import CreateTimerForm from './containers/CreateTimerForm'
+import CreateTimerForm from '../../lib/components/CreateTimerForm'
 
 export default function CreateTimerPage() {
   useAppBar({ title: 'Create Timer' })

@@ -1,6 +1,6 @@
-import Box from '../../../../../lib/components/Box/index.jsx'
-import TimerEditorCreator from '../../../../../lib/components/TimerEditorCreator'
-import Text from '../../../../../lib/components/Text'
+import Box from '../../Box/index.jsx'
+import TimerEditorCreator from '../../TimerEditorCreator'
+import Text from '../../Text'
 
 import * as styles from './styles.ts'
 
