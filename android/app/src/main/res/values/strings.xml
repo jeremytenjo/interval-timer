@@ -2,7 +2,7 @@
 <!-- https://developer.android.com/guide/topics/resources/string-resource -->
 <resources>
     <string name="app_name">My Interval Timer</string>
-    <string name="title_activity_main">my-interval-timer</string>
+    <string name="title_activity_main">My Interval Timer</string>
     <string name="package_name">app.myintervaltimer.app</string>
     <string name="custom_url_scheme">app.myintervaltimer.app</string>
     <string name="timer_notification_channel_id">app.myintervaltimer.app_timer_notification_channel</string>
