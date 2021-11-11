@@ -3,8 +3,9 @@ import { createContext, useContext, useRef, useEffect, useState } from 'react'
 export const UseInstallPromptContext = createContext(null)
 
 export const UseInstallPromptProvider = ({ children }) => {
-  const [isInstalled, setIsInstalled] = useState(null)
+  const [isNotInstalledRef, setIsNotInstalled] = useState(null)
   const deferredPromptRef = useRef(null)
+  const isNotInstalled = isNotInstalledRef === null ? false : isNotInstalledRef
 
   const prompt = () => {
     if (deferredPromptRef.current) {
@@ -20,7 +21,7 @@ export const UseInstallPromptProvider = ({ children }) => {
 
     if (window.matchMedia) {
       const appIsInstalled = window.matchMedia('(display-mode: standalone)').matches
-      setIsInstalled(appIsInstalled)
+      setIsNotInstalled(appIsInstalled)
     }
   }
 
@@ -36,7 +37,7 @@ export const UseInstallPromptProvider = ({ children }) => {
     <UseInstallPromptContext.Provider
       value={{
         prompt,
-        isInstalled,
+        isNotInstalled,
       }}
     >
       {children}
@@ -44,7 +45,7 @@ export const UseInstallPromptProvider = ({ children }) => {
   )
 }
 
-type Return = { prompt: () => void; isInstalled: boolean }
+type Return = { prompt: () => void; isNotInstalled: boolean }
 
 const useInstallPrompt = (): Return => useContext(UseInstallPromptContext)
 

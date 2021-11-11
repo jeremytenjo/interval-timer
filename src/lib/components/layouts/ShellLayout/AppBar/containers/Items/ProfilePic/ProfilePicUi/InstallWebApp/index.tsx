@@ -10,7 +10,7 @@ export default function InstallWebApp({ onClick }) {
     webAppInstallPrompt.prompt()
   }
 
-  return !webAppInstallPrompt.isInstalled ? (
+  return webAppInstallPrompt.isNotInstalled ? (
     <InstallWebAppUi onClick={handleOnClick} />
   ) : null
 }
