@@ -2,7 +2,7 @@
 export default [
   {
     id: 1,
-    name: 'Upper Body',
+    name: 'Default Data',
     repetitions: 2,
     sets: 2,
     rest: 5000,

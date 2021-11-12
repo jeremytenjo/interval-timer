@@ -1,46 +1,71 @@
 import { Storage } from '@capacitor/storage'
 import useAsync from '@useweb/use-async'
+import { useState } from 'react'
+import useSWRImmutable from 'swr/immutable'
 
-type Props = {
-  action: 'get' | 'set' | 'remove'
-  key: string
-  onResult?: any
+type Options = {
+  onUpdate?: (result: any) => void
+  onError?: (error: any) => void
+}
+
+type Return = {
+  data: any
+  error: any
+  updating: boolean
+  fetching: boolean
+  update: (newData: any) => void
+  remove: () => void
 }
 
 /**
  * [Docs](https://capacitorjs.com/docs/apis/storage)
  *
  * @example
- * const getLocalTimers = useLocalStorage({ action: 'get', key: 'timers' })
- *
- * const setLocalTimers = useLocalStorage({ action: 'set', key: 'timers' })
- * setLocalTimers({key: 'timers', value: data})
+ * const getLocalTimers = useLocalStorage('timers')
  */
-export default function useLocalStorage({ action = 'get', key, onResult }: Props) {
-  const fetcher = async (data) => {
-    if (action === 'get') {
-      const { value } = await Storage.get({ key })
-      const valueParsed = JSON.parse(value)
+export default function useLocalStorage(key: string, options?: Options): Return {
+  const [updating, setUpdating] = useState(null)
+  const [error, setError] = useState(null)
 
-      return valueParsed
-    }
+  const fetcher = async () => {
+    const { value } = await Storage.get({ key })
+    const valueParsed = JSON.parse(value)
 
-    if (action === 'set') {
-      const valueStringifyed = JSON.stringify(data.value)
-
-      await Storage.set({ key: key || data.key, value: valueStringifyed })
-    }
-
-    if (action === 'remove') {
-      await Storage.remove({ key })
-    }
+    return valueParsed
   }
 
-  const localStorage = useAsync(fetcher, {
-    onResult: (result) => {
-      onResult && onResult(result)
+  // https://swr.vercel.app/docs/options
+  const swr = useSWRImmutable(key, fetcher, {
+    onSuccess: (data) => {
+      options?.onUpdate && options?.onUpdate(data)
+    },
+    onError: (error) => {
+      setError(error)
+      options?.onError && options?.onError(error)
     },
   })
 
-  return localStorage
+  const update = async (newData) => {
+    setError(false)
+    setUpdating(true)
+
+    try {
+      const valueStringifyed = JSON.stringify(newData)
+      await Storage.set({ key: key, value: valueStringifyed })
+      swr.mutate(newData, false)
+      options?.onUpdate && options?.onUpdate(newData)
+    } catch (error) {
+      setError(error)
+    } finally {
+      setUpdating(false)
+    }
+  }
+
+  const remove = async () => {
+    await Storage.remove({ key: key })
+  }
+
+  const fetching = !swr.data && !swr.error
+
+  return { data: swr.data, update, remove, error, updating, fetching }
 }

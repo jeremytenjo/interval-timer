@@ -9,8 +9,8 @@ import useRemove from './handlers/useRemove'
 import useUpdate from './handlers/useUpdate'
 
 type options = {
-  showLocalStorageDataIfNoUserSignedIn?: boolean
   defaultData?: any
+  returnDefaultDataOnNoData?: boolean
   onGet?: (result: any) => void
   onCreate?: (result: any) => void
   onRemove?: (result: any) => void
@@ -20,12 +20,12 @@ type options = {
 export default function useCollection(
   collectionName: string,
   {
-    showLocalStorageDataIfNoUserSignedIn = true,
     defaultData,
     onGet,
     onCreate,
     onRemove,
     onUpdate,
+    returnDefaultDataOnNoData,
   }: options,
 ) {
   const auth = useAuth()
@@ -38,7 +38,7 @@ export default function useCollection(
       capitalized: capitalize(collectionName),
       capitalizedSingularized: capitalize(singularize(collectionName)),
     },
-    showLocalStorageDataIfNoUserSignedIn,
+    returnDefaultDataOnNoData,
     defaultData,
     onGet,
     onCreate,

@@ -1,4 +1,6 @@
 import useOnTrue from '@useweb/use-on-true'
+import { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router'
 
 import useTimers from '../../../../data/timers/useTimers'
 import useTimer from '../../../../globalState/useTimer'
@@ -6,8 +8,19 @@ import useTimer from '../../../../globalState/useTimer'
 import EditTimerFormUi from './EditTimerFormUi'
 
 export default function EditTimerForm() {
+  const navigate = useNavigate()
   const timers = useTimers()
   const timer = useTimer()
+  const params = useParams()
+
+  useEffect(() => {
+    if (timers.get.isFetched) {
+      const timerExists = timers.get.data.some((timer) => timer.id === params.timerId)
+      if (!timerExists) {
+        navigate('/')
+      }
+    }
+  }, [timers.get.isFetched, timers.get.data])
 
   const defaultName = timer?.selectedTimer?.name || ''
   const restDefaultValue = timer?.selectedTimer?.rest * 1000 || 1000

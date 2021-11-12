@@ -7,6 +7,7 @@ export default function CreateTimerForm({ header }) {
   const timer = useTimer()
   const timers = useTimers({
     onCreate: (result) => {
+      console.log(result.createdItem)
       timer.setSelectedTimer(result.createdItem)
     },
   })

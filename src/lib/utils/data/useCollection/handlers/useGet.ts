@@ -1,9 +1,9 @@
+import { useMemo } from 'react'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 import useSWRImmutable from 'swr/immutable'
 import useOnTrue from '@useweb/use-on-true'
 import create from 'zustand'
 import arrayDB from '@useweb/array-db'
-import { useMemo } from 'react'
 
 import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
@@ -17,21 +17,20 @@ const useGetStore = create((set) => ({
 export default function useGet({
   userId,
   collectionName,
-  showLocalStorageDataIfNoUserSignedIn,
   onGet,
   defaultData,
+  returnDefaultDataOnNoData,
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
   const getStore: any = useGetStore()
 
-  const collectionWasFetched = useMemo(
-    () =>
-      getStore.fetchedCollections.some(
-        (fetchedCollection) => fetchedCollection.id === collectionName.raw,
-      ),
-    [collectionName.raw, getStore.fetchedCollections],
-  )
+  const collectionWasFetched = useMemo(() => {
+    const wasCollectionFetched = getStore.fetchedCollections.some(
+      (fetchedCollection) => fetchedCollection.id === collectionName.raw,
+    )
+    return wasCollectionFetched
+  }, [collectionName.raw, getStore.fetchedCollections])
 
   const firestoreFetcher = async () => {
     const data = []
@@ -51,16 +50,28 @@ export default function useGet({
     return data
   }
 
+  const localStorageData = useLocalStorage(collectionName.raw, {
+    onUpdate: (result) => {
+      const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
+        data: { id: collectionName.raw },
+      })
+
+      getStore.setFetchedCollections(updatedFetchedCollections)
+      onGet && onGet(result)
+    },
+  })
+
   const swrKey = () => (userId ? collectionName.raw : null)
 
   // https://swr.vercel.app/docs/options
-  const dataFetch = useSWRImmutable(swrKey, firestoreFetcher, {
+  const swr = useSWRImmutable(swrKey, firestoreFetcher, {
     onSuccess: (data) => {
       const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
         data: { id: collectionName.raw },
       })
+
       getStore.setFetchedCollections(updatedFetchedCollections)
-      setLocalStorageData.exec({ value: data })
+      localStorageData.update(data)
       onGet && onGet(data)
     },
     onError: (error) => {
@@ -70,48 +81,31 @@ export default function useGet({
       })
     },
   })
-  const getLocalStorageData = useLocalStorage({
-    action: 'get',
-    key: collectionName.raw,
-    onResult: (result) => {
-      const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
-        data: { id: collectionName.raw },
-      })
-
-      getStore.setFetchedCollections(updatedFetchedCollections)
-      onGet && onGet(result)
-    },
-  })
-  const setLocalStorageData = useLocalStorage({ action: 'set', key: collectionName.raw })
-
-  useOnTrue(!dataFetch.data && !collectionWasFetched, () => {
-    getLocalStorageData.exec()
-  })
 
   const update = (newData) => {
-    console.log('udpate ', newData)
-    setLocalStorageData.exec({ value: newData })
-    dataFetch.mutate(newData, false)
+    localStorageData.update(newData)
+
+    swr.mutate(newData, false)
   }
 
-  const determineReturnData = () => {
-    console.log(dataFetch.data)
-    if (dataFetch.data) {
-      return dataFetch.data
+  const getReturnData = () => {
+    if (!swr.data && !collectionWasFetched && localStorageData.data) {
+      return localStorageData.data
     }
 
-    if (
-      !dataFetch.data &&
-      getLocalStorageData.result &&
-      showLocalStorageDataIfNoUserSignedIn
-    ) {
-      return getLocalStorageData.result
+    if (swr.data) {
+      return swr.data
+    }
+
+    if (!swr.data && localStorageData.data) {
+      return localStorageData.data
     }
 
     if (
       collectionWasFetched &&
-      !dataFetch.data &&
-      !getLocalStorageData.result &&
+      !swr.data &&
+      !localStorageData.data &&
+      returnDefaultDataOnNoData &&
       defaultData
     ) {
       return defaultData
@@ -120,13 +114,15 @@ export default function useGet({
     return []
   }
 
-  const fetching = !dataFetch.data && !dataFetch.error
-  const data = determineReturnData()
-  const error = dataFetch.error
+  const fetching = !swr.data && !swr.error
+  const data = getReturnData()
+  const error = swr.error
+  const isFetched = collectionWasFetched
 
   return {
     data,
     fetching,
+    isFetched,
     error,
     update,
   }
