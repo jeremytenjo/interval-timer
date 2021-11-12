@@ -9,12 +9,12 @@ import useRemove from './handlers/useRemove'
 import useUpdate from './handlers/useUpdate'
 
 type options = {
-  showLocalStorageDataIfNoUserSignedIn: boolean
-  defaultData: string
-  onGet: string
-  onCreate: string
-  onRemove: string
-  onUpdate: string
+  showLocalStorageDataIfNoUserSignedIn?: boolean
+  defaultData?: any
+  onGet?: (result: any) => void
+  onCreate?: (result: any) => void
+  onRemove?: (result: any) => void
+  onUpdate?: (result: any) => void
 }
 
 export default function useCollection(

@@ -89,11 +89,13 @@ export default function useGet({
   })
 
   const update = (newData) => {
+    console.log('udpate ', newData)
     setLocalStorageData.exec({ value: newData })
     dataFetch.mutate(newData, false)
   }
 
   const determineReturnData = () => {
+    console.log(dataFetch.data)
     if (dataFetch.data) {
       return dataFetch.data
     }

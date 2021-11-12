@@ -17,7 +17,7 @@ export default function Items() {
   const appBar = useAppBar()
   const timers = useTimers()
 
-  console.log(timers)
+  console.log(timers.get.data)
 
   const showEditButton = !!timers?.get?.data?.length && !appBar.title
   const showCreateTimerButton = location.pathname !== '/create-timer'
