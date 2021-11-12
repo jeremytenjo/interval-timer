@@ -4,6 +4,7 @@ import { useState } from 'react'
 import useSWRImmutable from 'swr/immutable'
 
 type Options = {
+  onGet?: (result: any) => void
   onUpdate?: (result: any) => void
   onError?: (error: any) => void
 }
@@ -37,7 +38,7 @@ export default function useLocalStorage(key: string, options?: Options): Return 
   // https://swr.vercel.app/docs/options
   const swr = useSWRImmutable(key, fetcher, {
     onSuccess: (data) => {
-      options?.onUpdate && options?.onUpdate(data)
+      options?.onGet && options?.onGet(data)
     },
     onError: (error) => {
       setError(error)

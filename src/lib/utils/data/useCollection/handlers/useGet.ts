@@ -50,13 +50,17 @@ export default function useGet({
     return data
   }
 
-  const localStorageData = useLocalStorage(collectionName.raw, {
-    onUpdate: (result) => {
-      const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
-        data: { id: collectionName.raw },
-      })
+  const updateFetchedCollections = () => {
+    const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
+      data: { id: collectionName.raw },
+    })
 
-      getStore.setFetchedCollections(updatedFetchedCollections)
+    getStore.setFetchedCollections(updatedFetchedCollections)
+  }
+
+  const localStorageData = useLocalStorage(collectionName.raw, {
+    onGet: (result) => {
+      updateFetchedCollections()
       onGet && onGet(result)
     },
   })
@@ -85,7 +89,9 @@ export default function useGet({
   const update = (newData) => {
     localStorageData.update(newData)
 
-    swr.mutate(newData, false)
+    if (swrKey()) {
+      swr.mutate(newData, false)
+    }
   }
 
   const getReturnData = () => {
