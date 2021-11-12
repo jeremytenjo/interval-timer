@@ -10,7 +10,7 @@ export default function EditTimerFormUi({
   workoutDefaultValue,
   repetitionsDefaultValue,
   setsDefaultValue,
-  handleRemoveButtonClick,
+  onRemoveButtonClick,
 }) {
   return (
     <Box sx={styles.wrapper}>
@@ -22,7 +22,7 @@ export default function EditTimerFormUi({
         workoutDefaultValue={workoutDefaultValue}
         repetitionsDefaultValue={repetitionsDefaultValue}
         setsDefaultValue={setsDefaultValue}
-        onRemoveButtonClick={handleRemoveButtonClick}
+        onRemoveButtonClick={onRemoveButtonClick}
       />
     </Box>
   )

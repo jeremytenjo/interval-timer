@@ -23,7 +23,7 @@ export default function EditTimerForm() {
     timers.update.exec({ id: timer.selectedTimer.id, data: payload })
   }
 
-  const handleRemoveButtonClick = () => {
+  const onRemoveButtonClick = () => {
     if (timer?.selectedTimer?.id) {
       timers.remove.exec({ id: timer?.selectedTimer?.id })
     }
@@ -37,7 +37,7 @@ export default function EditTimerForm() {
       workoutDefaultValue={workoutDefaultValue}
       repetitionsDefaultValue={repetitionsDefaultValue}
       setsDefaultValue={setsDefaultValue}
-      handleRemoveButtonClick={handleRemoveButtonClick}
+      onRemoveButtonClick={onRemoveButtonClick}
     />
   )
 }
