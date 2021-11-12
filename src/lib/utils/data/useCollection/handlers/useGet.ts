@@ -18,7 +18,7 @@ export default function useGet({
   collectionName,
   onGet,
   defaultData,
-  returnDefaultDataOnNoData,
+  returnDefaultData,
 }) {
   const firebase = useFirebase()
   const showError = useShowError()
@@ -110,7 +110,7 @@ export default function useGet({
       collectionWasFetched &&
       !swr.data &&
       !localStorageData.data &&
-      returnDefaultDataOnNoData &&
+      returnDefaultData &&
       defaultData
     ) {
       return defaultData

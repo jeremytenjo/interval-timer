@@ -10,7 +10,7 @@ import useUpdate from './handlers/useUpdate'
 
 type options = {
   defaultData?: any
-  returnDefaultDataOnNoData?: boolean
+  returnDefaultData?: boolean
   onGet?: (result: any) => void
   onCreate?: (result: any) => void
   onRemove?: (result: any) => void
@@ -19,14 +19,7 @@ type options = {
 
 export default function useCollection(
   collectionName: string,
-  {
-    defaultData,
-    onGet,
-    onCreate,
-    onRemove,
-    onUpdate,
-    returnDefaultDataOnNoData,
-  }: options,
+  { defaultData, onGet, onCreate, onRemove, onUpdate, returnDefaultData }: options,
 ) {
   const auth = useAuth()
 
@@ -38,7 +31,7 @@ export default function useCollection(
       capitalized: capitalize(collectionName),
       capitalizedSingularized: capitalize(singularize(collectionName)),
     },
-    returnDefaultDataOnNoData,
+    returnDefaultData,
     defaultData,
     onGet,
     onCreate,
