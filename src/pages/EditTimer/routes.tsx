@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-const EditTimer = lazy(() => import('./'))
+const EditTimer = lazy(() => import('.'))
 
 export default function EditTimerRoutes() {
   return (

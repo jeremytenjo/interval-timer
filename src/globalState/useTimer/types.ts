@@ -1,5 +1,7 @@
+import TimerSchema from '../../data/timers/schema'
+
 type Types = {
-  selectedTimer: any
+  selectedTimer: TimerSchema
   setSelectedTimer: (newValue: any) => void
   totalRepetitions: number
   setTotalRepetitions: (newValue: any) => void

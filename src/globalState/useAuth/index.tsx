@@ -13,7 +13,18 @@ import gtag from '../../lib/utils/analytics/gtag'
 
 const provider = new GoogleAuthProvider()
 
-const useAuthStore = create((set) => ({
+type Types = {
+  user: any
+  setUser: (newValue: any) => void
+  signingIn: boolean
+  setSigningIn: (newValue: boolean) => void
+  error: any
+  setError: (newValue: any) => void
+  checked: boolean
+  setChecked: (newValue: boolean) => void
+}
+
+const useAuthStore = create<Types>((set) => ({
   user: undefined,
   setUser: (newValue) => set(() => ({ user: newValue })),
 

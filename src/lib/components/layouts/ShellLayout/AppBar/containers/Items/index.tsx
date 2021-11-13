@@ -6,6 +6,7 @@ import Box from '../../../../../Box'
 import IconButton from '../../../../../IconButton'
 import useAppBar from '../../../../../../../globalState/useAppBar'
 import useTimers from '../../../../../../../data/timers/useTimers'
+import useTimer from '../../../../../../../globalState/useTimer'
 
 import VolumeControl from './VolumeControl'
 import * as styles from './styles'
@@ -14,14 +15,15 @@ import ProfilePic from './ProfilePic'
 export default function Items() {
   const navigate = useNavigate()
   const location = useLocation()
-  const appBar = useAppBar()
+  const appBar = useAppBar({})
   const timers = useTimers()
+  const timer = useTimer()
 
   const showEditButton = !!timers?.get?.data?.length && !appBar.title
   const showCreateTimerButton = location.pathname !== '/create-timer'
 
   const onEditClick = () => {
-    const editTimerId = timers?.selectedTimer?.id || timers.get.data[0]?.id
+    const editTimerId = timer?.selectedTimer?.id || timers.get.data[0]?.id
     const editTimerUrl = '/edit-timer/' + editTimerId
 
     if (editTimerId) {

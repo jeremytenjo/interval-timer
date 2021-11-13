@@ -23,7 +23,7 @@ const TitleText = ({ title }) => {
 }
 
 export default function Title() {
-  const appBar = useAppBar()
+  const appBar = useAppBar({})
 
   return (
     <div>{appBar.title ? <TitleText title={appBar.title} /> : <TimersDropdown />}</div>

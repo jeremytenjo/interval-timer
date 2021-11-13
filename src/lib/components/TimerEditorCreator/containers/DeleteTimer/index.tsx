@@ -1,9 +1,14 @@
+import { useState } from 'react'
+
 import Button from '../../../Button'
 import ConfirmationDialog from '../../../Dialog/ConfirmationDialog'
 import useTimer from '../../../../../globalState/useTimer'
-import { useState } from 'react'
 
-export default function DeleteTimer({ onDelete = () => null }) {
+type Props = {
+  onDelete?: (payload?: any) => void
+}
+
+export default function DeleteTimer({ onDelete = () => null }: Props) {
   const [open, setOpen] = useState(false)
   const timer = useTimer()
 
@@ -34,9 +39,8 @@ export default function DeleteTimer({ onDelete = () => null }) {
         variant='text'
         sx={{ width: 'fit-content', color: 'error.main' }}
         onClick={show}
-      >
-        Remove
-      </Button>
+        text='Remove'
+      />
     </>
   )
 }

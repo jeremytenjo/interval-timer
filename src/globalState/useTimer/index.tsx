@@ -12,7 +12,7 @@ import Types from './types'
 
 const useTimerStore = create<Types>((set: any) => ({
   // selected timer
-  selectedTimer: false,
+  selectedTimer: null,
   setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),
 
   // timer info

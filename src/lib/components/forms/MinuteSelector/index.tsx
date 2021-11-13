@@ -6,11 +6,17 @@ import TextField from '../Textfield/index'
 
 import * as styles from './styles'
 
+type Props = {
+  title: string
+  onChange: (payload: any) => void
+  defaultValue: number
+}
+
 export default function MinuteSelector({
   title,
   onChange = () => null,
   defaultValue = 1000,
-}) {
+}: Props) {
   const [value, setValue] = React.useState(new Date(defaultValue))
 
   const updateValue = (newValue) => {

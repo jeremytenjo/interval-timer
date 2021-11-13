@@ -3,7 +3,11 @@ import useTimer from '../../../globalState/useTimer'
 
 import CreateTimerFormUi from './CreateTimerFormUi'
 
-export default function CreateTimerForm({ header }) {
+type Props = {
+  header?: string
+}
+
+export default function CreateTimerForm({ header }: Props) {
   const timer = useTimer()
   const timers = useTimers({
     onCreate: (result) => {

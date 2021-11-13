@@ -1,10 +1,19 @@
+import { useState } from 'react'
+
 import Box from '../../Box'
 import PlusRound from '../../icons/PlusRound'
 import MinusRound from '../../icons/MinusRound'
 import IconButton from '../../IconButton'
 
 import * as styles from './styles'
-import { useState } from 'react'
+
+type Props = {
+  id: string
+  title: string
+  stepperTime?: number
+  onChange: (payload: any) => void
+  defaultValue: number
+}
 
 export default function NumberSelector({
   title,
@@ -12,11 +21,11 @@ export default function NumberSelector({
   stepperTime = 5,
   onChange = () => null,
   defaultValue = 1,
-}) {
+}: Props) {
   const [timeNumber, setTimeNumber] = useState(defaultValue)
 
   const onPlusClick = () => {
-    const nextNumber = parseInt(timeNumber, 10) + stepperTime
+    const nextNumber = timeNumber + stepperTime
     if (nextNumber === 6) {
       setTimeNumber(5)
       onChange(5)
@@ -27,7 +36,7 @@ export default function NumberSelector({
   }
 
   const onMinusClick = () => {
-    const nextNumber = parseInt(timeNumber, 10) - stepperTime
+    const nextNumber = timeNumber - stepperTime
     if (nextNumber <= 1) {
       setTimeNumber(1)
       onChange(1)

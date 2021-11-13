@@ -1,4 +1,5 @@
 import { useParams } from 'react-router'
+import { useState } from 'react'
 
 import Box from '../Box'
 import TextField from '../forms/Textfield'
@@ -8,7 +9,17 @@ import MinuteSelector from '../forms/MinuteSelector'
 import DeleteTimer from './containers/DeleteTimer'
 import * as styles from './styles'
 import Controls from './containers/Controls'
-import { useState } from 'react'
+
+type Props = {
+  onSaveTimer?: (payload: any) => void
+  defaultName?: number
+  restDefaultValue?: number
+  workoutDefaultValue?: number
+  repetitionsDefaultValue?: number
+  setsDefaultValue?: number
+  onRemoveButtonClick?: (payload: any) => void
+  saveButtonText?: string
+}
 
 export default function TimerEditorCreator({
   onSaveTimer = () => null,
@@ -19,7 +30,7 @@ export default function TimerEditorCreator({
   setsDefaultValue = 1,
   onRemoveButtonClick,
   saveButtonText,
-}) {
+}: Props) {
   // fields
   const [name, setName] = useState(defaultName)
   const [nameError, setNameError] = useState(null)
@@ -38,12 +49,12 @@ export default function TimerEditorCreator({
     sets,
   }
 
-  const totalSeconds = ({ minutes, seconds }) => {
+  const totalSeconds = ({ minutes, seconds }: { minutes: number; seconds: number }) => {
     const total = minutes * 60 + seconds
     return total
   }
 
-  const updateValue = ({ data, id }) => {
+  const updateValue = ({ data, id }: { data: any; id: string }) => {
     if (id === 'name') {
       setName(data)
 
@@ -113,14 +124,12 @@ export default function TimerEditorCreator({
 
       <MinuteSelector
         title='Rest'
-        id='rest'
         defaultValue={restDefaultValue}
         onChange={(data) => updateValue({ id: 'rest', data })}
       />
 
       <MinuteSelector
         title='Workout'
-        id='workout'
         defaultValue={workoutDefaultValue}
         onChange={(data) => updateValue({ id: 'workout', data })}
       />

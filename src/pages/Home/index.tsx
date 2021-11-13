@@ -8,7 +8,11 @@ import Timer from './containers/Timer'
 import TimerControls from './containers/TimerControls'
 
 export default function HomePage() {
-  useAppBar({ title: false, hideEditButtonOnUnmount: true, showEditButton: true })
+  useAppBar({
+    title: false,
+    hideEditButtonOnUnmount: true,
+    showEditButton: true,
+  })
   const timer = useTimer()
   useDocumentTitle({ title: timer?.selectedTimer?.name || 'Home' })
 

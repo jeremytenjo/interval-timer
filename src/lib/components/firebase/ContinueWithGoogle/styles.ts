@@ -9,4 +9,4 @@ export const wrapper = {
   '&:hover': {
     boxShadow: 'none',
   },
-}
+} as const

@@ -5,6 +5,15 @@ import Dialog from '@mui/material/Dialog'
 
 import Button from '../../Button'
 
+type Props = {
+  open: boolean
+  text?: string
+  title?: string
+  cancelText?: string
+  confirmText?: string
+  onConfirm?: () => void
+  onCancel?: () => void
+}
 export default function ConfirmationDialog({
   open,
   text,
@@ -13,7 +22,7 @@ export default function ConfirmationDialog({
   onCancel,
   cancelText = 'Cancel',
   confirmText = 'Confirm',
-}) {
+}: Props) {
   const handleConfirm = () => {
     onConfirm()
   }
