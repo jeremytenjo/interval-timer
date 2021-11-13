@@ -8,7 +8,12 @@ import useFirebase from '../../../../../firebase/useFirebase'
 import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
 
-const useGetStore = create((set) => ({
+type Types = {
+  fetchedCollections: any[]
+  setFetchedCollections: (newValue: any) => void
+}
+
+const useGetStore = create<Types>((set) => ({
   fetchedCollections: [],
   setFetchedCollections: (newValue) => set(() => ({ fetchedCollections: newValue })),
 }))

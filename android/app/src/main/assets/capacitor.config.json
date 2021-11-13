@@ -3,5 +3,8 @@
 	"appName": "My Interval Timer",
 	"webDir": "build",
 	"bundledWebRuntime": false,
-	"server": {}
+	"server": {
+		"url": "http://10.0.0.31:3001",
+		"cleartext": true
+	}
 }

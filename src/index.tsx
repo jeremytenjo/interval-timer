@@ -6,21 +6,18 @@ import { FirebaseProvider } from './firebase/useFirebase'
 import Router from './pages/router'
 import Theme from './theme/theme'
 import GlobalProviders from './globalState/GlobalProviders'
-import Capacitor from './lib/components/Capacitor'
 
 function App() {
   return (
-    <Capacitor>
-      <UseInstallPromptProvider>
-        <FirebaseProvider>
-          <Theme>
-            <GlobalProviders>
-              <Router />
-            </GlobalProviders>
-          </Theme>
-        </FirebaseProvider>
-      </UseInstallPromptProvider>
-    </Capacitor>
+    <UseInstallPromptProvider>
+      <FirebaseProvider>
+        <Theme>
+          <GlobalProviders>
+            <Router />
+          </GlobalProviders>
+        </Theme>
+      </FirebaseProvider>
+    </UseInstallPromptProvider>
   )
 }
 
