@@ -16,19 +16,21 @@ export default function DetailsUi({
         <Item title='Sets' time={sets} sx={{ textAlign: 'right' }} />
       </Row>
 
-      <Row sx={styles.bottomRow}>
-        <Item
-          title='Remaining'
-          time={isStarted ? remainingTime : totalTime}
-          sx={{ ...styles.bottomItemsCss }}
-        />
+      {remainingTime && (
+        <Row sx={styles.bottomRow}>
+          <Item
+            title='Remaining'
+            time={isStarted ? remainingTime : totalTime}
+            sx={{ ...styles.bottomItemsCss }}
+          />
 
-        <Item
-          title='Total'
-          time={totalTime}
-          sx={{ ...styles.bottomItemsCss, textAlign: 'right' }}
-        />
-      </Row>
+          <Item
+            title='Total'
+            time={totalTime}
+            sx={{ ...styles.bottomItemsCss, textAlign: 'right' }}
+          />
+        </Row>
+      )}
     </>
   )
 }
