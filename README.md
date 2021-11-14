@@ -1,1 +1,1 @@
-# Interval TImer
+# Interval Timer
