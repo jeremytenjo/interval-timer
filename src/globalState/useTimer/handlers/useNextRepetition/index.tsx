@@ -1,7 +1,13 @@
 import KeepAwake from '../../../../lib/utils/Capacitor/KeepAwake'
 import useTimerSound from '../useSound'
+import TimerStoreTypes from '../../types'
 
-export default function useNextRepetition({ timerStore, resetTimer }) {
+type Props = {
+  timerStore: TimerStoreTypes
+  resetTimer?: () => void
+}
+
+export default function useNextRepetition({ timerStore, resetTimer }: Props) {
   const timerSound = useTimerSound()
 
   const nextRepetition = () => {

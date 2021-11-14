@@ -1,11 +1,17 @@
 import formatDuration from 'format-duration'
 
 import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification'
+import TimerStoreTypes from '../../types'
+
+type Props = {
+  timerStore: TimerStoreTypes
+  udpateTimeRemainingFormatted?: (newValue: any) => void
+}
 
 export default function useUpdateElapsedTimer({
   timerStore,
   udpateTimeRemainingFormatted,
-}) {
+}: Props) {
   const timerNotifiction = useTimerNotification({})
 
   const updateElapsedTime = (newValue) => {

@@ -1,7 +1,12 @@
 import KeepAwake from '../../../../lib/utils/Capacitor/KeepAwake'
 import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification'
+import TimerStoreTypes from '../../types'
 
-export default function useHandleResetTimer({ timerStore }) {
+type Props = {
+  timerStore: TimerStoreTypes
+}
+
+export default function useHandleResetTimer({ timerStore }: Props) {
   const timerNotification = useTimerNotification({})
 
   const resetTimer = ({ dontResetSetsAndReps = false } = {}) => {

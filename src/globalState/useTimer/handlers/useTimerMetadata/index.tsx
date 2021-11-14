@@ -1,6 +1,12 @@
 import formatDuration from 'format-duration'
 
-export default function useTimerMetadata({ timerStore }) {
+import TimerStoreTypes from '../../types'
+
+type Props = {
+  timerStore: TimerStoreTypes
+}
+
+export default function useTimerMetadata({ timerStore }: Props) {
   const totalTimeRaw =
     timerStore.totalRepetitions *
       timerStore.totalWorkoutTime *

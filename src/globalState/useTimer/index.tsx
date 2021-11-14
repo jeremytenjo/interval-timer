@@ -8,9 +8,9 @@ import useUpdateSelectedTimer from './handlers/useUpdateSelectedTimer'
 import useTimerSound from './handlers/useSound'
 import useHandleTimerNotification from './handlers/useHandleTimerNotification'
 import useUpdateElapsedTime from './handlers/useUpdateElapsedTime'
-import Types from './types'
+import TimerStoreTypes from './types'
 
-const useTimerStore = create<Types>((set: any) => ({
+const useTimerStore = create<TimerStoreTypes>((set: any) => ({
   // selected timer
   selectedTimer: null,
   setSelectedTimer: (newValue) => set(() => ({ selectedTimer: newValue })),

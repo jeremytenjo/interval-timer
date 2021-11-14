@@ -1,6 +1,11 @@
 import KeepAwake from '../../../../lib/utils/Capacitor/KeepAwake'
+import TimerStoreTypes from '../../types'
 
-export default function useHandlerStartTimer({ timerStore }) {
+type Props = {
+  timerStore: TimerStoreTypes
+}
+
+export default function useHandlerStartTimer({ timerStore }: Props) {
   const startTimer = () => {
     KeepAwake.keepAwake()
     timerStore.startTimer()

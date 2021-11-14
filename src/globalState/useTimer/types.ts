@@ -18,16 +18,17 @@ type Types = {
   type: 'Workout' | 'Rest'
   setType: (newValue: any) => void
   elapsedTime: number
+  setElapsedTime: (newValue: any) => void
   timeRemainingFormatted: string
   setTimeRimeRemainingFormatted: (newValue: any) => void
   isPlaying: boolean
   isStarted: boolean
   timerKey: number
-  startTimer: (newValue: any) => void
+  startTimer: () => void
   pauseTimer: () => void
   resumeTimer: () => void
-  stopTimer: (newValue: any) => void
-  restartTimer: (newValue: any) => void
+  stopTimer: () => void
+  restartTimer: () => void
 }
 
 export default Types

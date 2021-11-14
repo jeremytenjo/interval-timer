@@ -1,6 +1,13 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 
-export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
+import TimerStoreTypes from '../../types'
+
+type Props = {
+  timerStore: TimerStoreTypes
+  resetTimer?: (newValue: any) => void
+}
+
+export default function useUpdateSelectedTimer({ timerStore, resetTimer }: Props) {
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -25,7 +32,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
     }
   }
 
-  const setSelectedTimerById = (timerId, timers, { redirect } = {}) => {
+  const setSelectedTimerById = (timerId, timers, { redirect = undefined } = {}) => {
     if (!timers) return null
 
     const selectedTimerById = timers.find((timer) => timer?.id === timerId)
