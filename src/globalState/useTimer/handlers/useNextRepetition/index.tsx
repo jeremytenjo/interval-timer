@@ -1,6 +1,5 @@
-import KeepAwake from '../../../lib/utils/Capacitor/KeepAwake'
-
-import useTimerSound from './useSound'
+import KeepAwake from '../../../../lib/utils/Capacitor/KeepAwake'
+import useTimerSound from '../useSound'
 
 export default function useNextRepetition({ timerStore, resetTimer }) {
   const timerSound = useTimerSound()
