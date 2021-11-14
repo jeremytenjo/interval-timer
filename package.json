@@ -4,7 +4,13 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "size-limit": [
+    {
+      "path": "build/assets/*.js"
+    }
+  ],
   "scripts": {
+    "size": "npm run build && size-limit",
     "dev": "node --loader ts-node/esm ./devtools/scripts/dev.ts",
     "dev:app": "node --loader ts-node/esm ./devtools/vite/scripts/startDevServer.ts",
     "dev:storybook": "start-storybook -c ./devtools/storybook -p 6007 -s ./public --quiet --ci",
@@ -60,6 +66,7 @@
     "@capacitor/core": "^3.3.1",
     "@capacitor/ios": "^3.3.1",
     "@check-light-or-dark/color": "^1.0.3",
+    "@size-limit/file": "^6.0.4",
     "@storybook/addon-controls": "^6.3.12",
     "@storybook/addon-docs": "^6.3.12",
     "@storybook/react": "^6.3.12",
@@ -89,6 +96,7 @@
     "prettier": "^2.4.1",
     "react-refresh": "^0.11.0",
     "rollup-plugin-manifest-json": "^1.5.1",
+    "size-limit": "^6.0.4",
     "storybook": "^6.3.12",
     "style-loader": "^3.3.1",
     "typescript": "^4.4.4",
