@@ -1,13 +1,13 @@
 import { useLocation } from 'react-router-dom'
 
-import useUrlParams from '../../../../../lib/utils/navigation/useUrlParams'
+import useUrlSearchParams from '../../../../../lib/utils/navigation/useUrlSearchParams'
 
 export default function useHandleGet({ timer }) {
   const location = useLocation()
-  const urlParams = useUrlParams()
+  const urlSearchParams = useUrlSearchParams()
 
   const setSelectedTimer = (timers) => {
-    const urlTimerId = urlParams.get('id')
+    const urlTimerId = urlSearchParams.id
     const redirect = location.pathname === '/' && !location.pathname.includes('/timer/')
 
     if (!urlTimerId && !!timers.length) {

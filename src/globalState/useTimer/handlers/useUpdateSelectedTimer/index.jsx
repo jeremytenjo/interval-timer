@@ -8,6 +8,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
     if (!newSelectedTimer) return null
 
     const redirectUrl = `/timer?id=${newSelectedTimer.id}`
+    const currentUrl = location.pathname + location.search
 
     timerStore.setTotalRepetitions(newSelectedTimer.repetitions)
     timerStore.setTrackedRepetitions(newSelectedTimer.repetitions)
@@ -19,7 +20,7 @@ export default function useUpdateSelectedTimer({ timerStore, resetTimer }) {
 
     resetTimer({ dontResetSetsAndReps: true })
 
-    if (location.pathname !== redirectUrl && redirect) {
+    if (currentUrl !== redirectUrl && redirect) {
       navigate(redirectUrl)
     }
   }

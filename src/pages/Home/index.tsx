@@ -2,6 +2,8 @@ import useAppBar from '../../globalState/useAppBar'
 import CreateTimerForm from '../../lib/components/CreateTimerForm'
 import useTimer from '../../globalState/useTimer'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
+import useUrlSearchParams from '../../lib/utils/navigation/useUrlSearchParams'
+import useTimers from '../../data/timers/useTimers'
 
 import Details from './containers/Details'
 import Timer from './containers/Timer'
@@ -15,6 +17,14 @@ export default function HomePage() {
   })
   const timer = useTimer()
   useDocumentTitle({ title: timer?.selectedTimer?.name || 'Home' })
+  const timers = useTimers()
+  useUrlSearchParams({
+    onUpdate: (updatedValues) => {
+      if (timers?.get?.data?.length && updatedValues.id) {
+        timer.setSelectedTimerById(updatedValues.id, timers.get.data)
+      }
+    },
+  })
 
   return (
     <section>
