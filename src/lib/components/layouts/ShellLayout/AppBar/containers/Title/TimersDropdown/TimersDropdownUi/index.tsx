@@ -37,7 +37,7 @@ export default function TimersDropdownUi({ onTimerSelected, timers, selectedTime
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        variant='noGradient'
+        variant={'noGradient' as any}
         endIcon={<Chevron sx={{ width: '11px' }} />}
         sx={{ paddingLeft: '8px', paddingRight: '8px' }}
       >
