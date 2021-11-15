@@ -38,7 +38,7 @@
     "@useweb/capitalize": "0.0.1",
     "@useweb/remove-last-character": "0.0.1",
     "@useweb/use-async": "^0.2.0",
-    "@useweb/use-install-prompt": "0.0.2",
+    "@useweb/use-install-prompt": "^0.1.0",
     "@useweb/use-on-true": "0.0.1",
     "firebase": "^9.4.1",
     "format-duration": "^1.4.0",
