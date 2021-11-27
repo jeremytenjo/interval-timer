@@ -15,7 +15,16 @@ type Return = {
 export default function getRemainingTime({ timerStore, totalTimeRaw }: Props): Return {
   // TODO fix remainign time, have to 'timerStore.elapsedTime' refers to current workout or rest seconds left not total elapsed time
 
-  const remainingTimeRaw = totalTimeRaw - timerStore.elapsedTime * 1000
+  let remainingTimeRaw =
+    timerStore.trackedRepetitions *
+      timerStore.totalWorkoutTime *
+      timerStore.trackedSets *
+      1000 +
+    timerStore.trackedSets *
+      timerStore.totalRestTime *
+      timerStore.trackedRepetitions *
+      1000
+  remainingTimeRaw = totalTimeRaw - remainingTimeRaw
   // const remainingTime = formatDuration(remainingTimeRaw)
   const remainingTime = null
 

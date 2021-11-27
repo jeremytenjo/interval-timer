@@ -1,6 +1,6 @@
 import TimerSchema from '../../data/timers/schema'
 
-type Types = {
+type UseTimerTypes = {
   selectedTimer: TimerSchema
   setSelectedTimer: (newValue: any) => void
   totalRepetitions: number
@@ -31,4 +31,4 @@ type Types = {
   restartTimer: () => void
 }
 
-export default Types
+export default UseTimerTypes
