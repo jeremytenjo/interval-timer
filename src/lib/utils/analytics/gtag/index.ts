@@ -2,7 +2,7 @@
 
 declare global {
   interface Window {
-    gtag: any;
+    gtag: any
   }
 }
 /**
@@ -10,4 +10,4 @@ declare global {
  *
  * [Docs](https://developers.google.com/analytics/devguides/collection/gtagjs)
  */
-export default window.gtag;
+export default window.gtag
