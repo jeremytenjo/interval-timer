@@ -2,9 +2,15 @@ import { defineConfig } from 'vite'
 
 import appConfig, { AppConfigTypes } from '../../app.config'
 
+export type PayloadTypes = {
+  appConfig: AppConfigTypes
+  isProdMode: boolean
+  isDevMode: boolean
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(async ({ mode }) => {
-  const payload = {
+  const payload: PayloadTypes = {
     appConfig,
     isProdMode: mode === 'production',
     isDevMode: mode === 'development',
@@ -15,9 +21,3 @@ export default defineConfig(async ({ mode }) => {
     build: (await import('./build')).default(payload),
   }
 })
-
-export type PayloadTypes = {
-  appConfig: AppConfigTypes
-  isProdMode: boolean
-  isDevMode: boolean
-}
