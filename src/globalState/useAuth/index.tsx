@@ -16,10 +16,13 @@ const provider = new GoogleAuthProvider()
 type Types = {
   user: any
   setUser: (newValue: any) => void
+
   signingIn: boolean
   setSigningIn: (newValue: boolean) => void
+
   error: any
   setError: (newValue: any) => void
+
   checked: boolean
   setChecked: (newValue: boolean) => void
 }
