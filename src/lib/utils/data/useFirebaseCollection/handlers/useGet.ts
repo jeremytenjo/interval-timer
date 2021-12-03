@@ -6,6 +6,7 @@ import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
 import useLocalStorage from '../../../storage/useLocalStorage'
+import type { HandlerPayloadType } from '../'
 
 type Types = {
   fetchedCollections: any[]
@@ -24,7 +25,7 @@ type Callbacks = {
 }
 
 export default function useGet(
-  { userId, collectionName, defaultData, returnDefaultData },
+  { userId, collectionName, defaultData, returnDefaultData }: HandlerPayloadType,
   callbacks?: Callbacks,
 ) {
   const firebase = useFirebase()

@@ -3,19 +3,19 @@ import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
-import useShowError from '../../../../components/feedback/useShowError'
-import useSnackBar from '../../../../components/Snackbar/useSnackbar'
+import type { HandlerPayloadType } from '../'
 
-export default function useRemove({
-  data = [],
-  updateData,
-  userId,
-  collectionName,
-  onRemove,
-}) {
+type Callbacks = {
+  onRemove?: (result: any) => void
+  onRemoveError?: (error: any) => void
+  onRemoveLoading?: (loading: boolean) => void
+}
+
+export default function useRemove(
+  { data = [], updateData, userId, collectionName }: HandlerPayloadType,
+  callbacks?: Callbacks,
+) {
   const firebase = useFirebase()
-  const snackbar = useSnackBar()
-  const showError = useShowError()
 
   const fetcher = async ({ id }) => {
     const remainingItems = arrayDB.remove(data, {
@@ -28,29 +28,19 @@ export default function useRemove({
 
     const returnData = { removedItemId: id, remainingItems }
 
-    onRemove && onRemove(returnData)
-
     return returnData
   }
 
   const remove = useAsync(fetcher, {
     onError: (error) => {
-      showError.show({
-        error,
-        message: `Error removing ${collectionName}, please try again`,
-      })
+      callbacks.onRemoveError(error)
     },
     onResult: (result) => {
       updateData(result.remainingItems)
-      snackbar.show({ message: `${collectionName} removed` })
+      callbacks.onRemove(result)
     },
     onLoading: (loading) => {
-      if (loading) {
-        snackbar.show({
-          message: `Removing ${collectionName}...`,
-          severity: 'info',
-        })
-      }
+      callbacks.onRemoveLoading(loading)
     },
   })
 

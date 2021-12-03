@@ -3,13 +3,7 @@ import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
-
-type Props = {
-  userId?: any
-  updateData: any
-  data: any
-  collectionName: any
-}
+import type { HandlerPayloadType } from '../'
 
 type Callbacks = {
   onCreate?: (result: any) => void
@@ -23,7 +17,7 @@ type FetcherProps = {
 }
 
 export default function useCreate(
-  { userId, updateData, data: allData = [], collectionName }: Props,
+  { userId, updateData, data: allData = [], collectionName }: HandlerPayloadType,
   callbacks: Callbacks,
 ) {
   const firebase = useFirebase()

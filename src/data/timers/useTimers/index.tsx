@@ -29,10 +29,10 @@ export default function useTimers({
       })
     },
     onCreate: (result) => {
-      onCreate && onCreate(result)
       snackbar.show({
         message: `Timer saved`,
       })
+      onCreate && onCreate(result)
     },
     onCreateLoading: (loading) => {
       if (loading) {
@@ -49,7 +49,7 @@ export default function useTimers({
       })
     },
     onUpdate: () => {
-      snackbar.show({ message: `timer updated` })
+      snackbar.show({ message: `Timer updated` })
     },
     onUpdateError: (error) => {
       showError.show({
@@ -67,7 +67,22 @@ export default function useTimers({
     },
     onRemove: (result) => {
       handleRemove.setSelectedTimer(result)
+      snackbar.show({ message: `Timer removed` })
       onRemove && onRemove()
+    },
+    onRemoveError: (error) => {
+      showError.show({
+        error,
+        message: `Error removing timer, please try again`,
+      })
+    },
+    onRemoveLoading: (loading) => {
+      if (loading) {
+        snackbar.show({
+          message: `Removing timer...`,
+          severity: 'info',
+        })
+      }
     },
   })
 

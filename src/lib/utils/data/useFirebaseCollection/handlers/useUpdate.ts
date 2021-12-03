@@ -3,6 +3,7 @@ import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
+import type { HandlerPayloadType } from '../'
 
 type Callbacks = {
   onUpdate?: (result: any) => void
@@ -11,7 +12,7 @@ type Callbacks = {
 }
 
 export default function useUpdate(
-  { data: allData = [], updateData, userId, collectionName },
+  { data: allData = [], updateData, userId, collectionName }: HandlerPayloadType,
   callbacks?: Callbacks,
 ) {
   const firebase = useFirebase()

@@ -5,6 +5,15 @@ import useCreate from './handlers/useCreate'
 import useRemove from './handlers/useRemove'
 import useUpdate from './handlers/useUpdate'
 
+export type HandlerPayloadType = {
+  userId: string
+  collectionName: string
+  returnDefaultData: any
+  defaultData: any
+  updateData: (newData: any) => void
+  data: any
+}
+
 type options = {
   defaultData?: any
   returnDefaultData?: boolean
@@ -47,11 +56,13 @@ export default function useFirebaseCollection(
 ) {
   const auth = useAuth()
 
-  const handlerPayload: any = {
+  const handlerPayload: HandlerPayloadType = {
     userId: auth?.user?.uid,
     collectionName,
     returnDefaultData,
     defaultData,
+    updateData: () => null,
+    data: [],
   }
 
   const get = useGet(handlerPayload, {
