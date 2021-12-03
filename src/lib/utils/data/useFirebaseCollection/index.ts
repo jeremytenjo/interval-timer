@@ -1,4 +1,4 @@
-import useAuth from '../../../../globalState/useAuth'
+import useFirebase from '../../../../firebase/useFirebase'
 
 import useGet from './handlers/useGet'
 import useCreate from './handlers/useCreate'
@@ -35,6 +35,7 @@ type Options = {
   onUpdateLoading?: (loading: boolean) => void
 }
 
+// TODO extract to npm package
 export default function useFirebaseCollection(
   collectionName: string,
   {
@@ -58,10 +59,10 @@ export default function useFirebaseCollection(
     onUpdateLoading = () => null,
   }: Options,
 ) {
-  const auth = useAuth()
+  const firebase = useFirebase()
 
   const handlerPayload: HandlerPayloadType = {
-    userId: auth?.user?.uid,
+    userId: firebase.user?.uid,
     collectionName,
     returnDefaultData,
     defaultData,

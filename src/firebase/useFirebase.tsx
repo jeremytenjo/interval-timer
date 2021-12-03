@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { getFirestore } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
 
 import firebaseConfig from './config'
@@ -14,13 +14,32 @@ initializeFirebaseEmulator({ auth, db })
 
 const FirebaseContext = createContext(null)
 
-export const FirebaseProvider = ({ children }) => {
+// TODO extract to npm package
+export const FirebaseProvider = ({ children, enableAuth = true }) => {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    if (enableAuth) {
+      const cleanOnAuthStateChanged = onAuthStateChanged(auth, (user) => {
+        if (user) setUser(user)
+        if (user !== null) {
+          setUser(false)
+        }
+      })
+
+      return () => {
+        cleanOnAuthStateChanged()
+      }
+    }
+  }, [])
+
   return (
     <FirebaseContext.Provider
       value={{
         firebaseApp,
         auth,
         db,
+        user,
       }}
     >
       {children}
@@ -32,6 +51,7 @@ type Return = {
   firebaseApp: any
   auth: any
   db: any
+  user: any
 }
 
 const useFirebase = () => useContext<Return>(FirebaseContext)
