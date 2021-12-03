@@ -6,6 +6,8 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import firebaseConfig from './config'
 import initializeFirebaseEmulator from './utils/initializeFirebaseEmulator'
 
+console.log(import.meta.env)
+
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore()
