@@ -16,10 +16,17 @@ export default function useTimers({
   const timer = useTimer()
   const handleGet = useHandleGet({ timer })
   const handleRemove = useHandleRemove({ timer })
+
   const timers = useFirebaseCollection('timers', {
     onGet: (result) => {
       handleGet.setSelectedTimer(result)
       onGet && onGet(result)
+    },
+    onGetError: (error) => {
+      showError.show({
+        error,
+        message: `Error fetching timer, please try again.`,
+      })
     },
     onCreate: (result) => {
       onCreate && onCreate(result)
@@ -40,6 +47,23 @@ export default function useTimers({
         error,
         message: `Error creating timer, please try again`,
       })
+    },
+    onUpdate: () => {
+      snackbar.show({ message: `timer updated` })
+    },
+    onUpdateError: (error) => {
+      showError.show({
+        error,
+        message: `Error updating timer, please try again`,
+      })
+    },
+    onUpdateLoading: (loading) => {
+      if (loading) {
+        snackbar.show({
+          message: `Updating timer...`,
+          severity: 'info',
+        })
+      }
     },
     onRemove: (result) => {
       handleRemove.setSelectedTimer(result)

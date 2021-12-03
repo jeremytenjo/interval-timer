@@ -3,19 +3,18 @@ import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
-import useSnackBar from '../../../../components/Snackbar/useSnackbar'
-import useShowError from '../../../../components/feedback/useShowError'
 
-export default function useUpdate({
-  data: allData = [],
-  updateData,
-  userId,
-  collectionName,
-  onUpdate,
-}) {
+type Callbacks = {
+  onUpdate?: (result: any) => void
+  onUpdateError?: (error: any) => void
+  onUpdateLoading?: (loading: boolean) => void
+}
+
+export default function useUpdate(
+  { data: allData = [], updateData, userId, collectionName },
+  callbacks?: Callbacks,
+) {
   const firebase = useFirebase()
-  const snackbar = useSnackBar()
-  const showError = useShowError()
 
   const fetcher = async ({ id, data }) => {
     delete data.id
@@ -31,34 +30,24 @@ export default function useUpdate({
     })
 
     if (userId) {
-      await updateDoc(doc(firebase.db, collectionName.raw, id), updatedItem)
+      await updateDoc(doc(firebase.db, collectionName, id), updatedItem)
     }
 
     const returnData = { updatedItem, updatedItems }
-
-    onUpdate && onUpdate(returnData)
 
     return returnData
   }
 
   const update = useAsync(fetcher, {
     onError: (error) => {
-      showError.show({
-        error,
-        message: `Error updating ${collectionName.singularized}, please try again`,
-      })
+      callbacks.onUpdateError(error)
     },
     onResult: (result) => {
       updateData(result.updatedItems)
-      snackbar.show({ message: `${collectionName.capitalizedSingularized} updated` })
+      callbacks.onUpdate(result)
     },
     onLoading: (loading) => {
-      if (loading) {
-        snackbar.show({
-          message: `Updating ${collectionName.capitalizedSingularized}...`,
-          severity: 'info',
-        })
-      }
+      callbacks.onUpdateLoading(loading)
     },
   })
 

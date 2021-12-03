@@ -5,7 +5,6 @@ import create from 'zustand'
 import arrayDB from '@useweb/array-db'
 
 import useFirebase from '../../../../../firebase/useFirebase'
-import useShowError from '../../../../components/feedback/useShowError'
 import useLocalStorage from '../../../storage/useLocalStorage'
 
 type Types = {
@@ -18,28 +17,30 @@ const useGetStore = create<Types>((set) => ({
   setFetchedCollections: (newValue) => set(() => ({ fetchedCollections: newValue })),
 }))
 
-export default function useGet({
-  userId,
-  collectionName,
-  onGet,
-  defaultData,
-  returnDefaultData,
-}) {
+type Callbacks = {
+  onGet?: (result: any) => void
+  onGetError?: (error: any) => void
+  onGetLoading?: (loading: boolean) => void
+}
+
+export default function useGet(
+  { userId, collectionName, defaultData, returnDefaultData },
+  callbacks?: Callbacks,
+) {
   const firebase = useFirebase()
-  const showError = useShowError()
   const getStore: any = useGetStore()
 
   const collectionWasFetched = useMemo(() => {
     const wasCollectionFetched = getStore.fetchedCollections.some(
-      (fetchedCollection) => fetchedCollection.id === collectionName.raw,
+      (fetchedCollection) => fetchedCollection.id === collectionName,
     )
     return wasCollectionFetched
-  }, [collectionName.raw, getStore.fetchedCollections])
+  }, [collectionName, getStore.fetchedCollections])
 
   const firestoreFetcher = async () => {
     const data = []
     const q = query(
-      collection(firebase.db, collectionName.raw),
+      collection(firebase.db, collectionName),
       where('userId', '==', userId),
     )
     const querySnapshot = await getDocs(q)
@@ -56,37 +57,34 @@ export default function useGet({
 
   const updateFetchedCollections = () => {
     const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
-      data: { id: collectionName.raw },
+      data: { id: collectionName },
     })
 
     getStore.setFetchedCollections(updatedFetchedCollections)
   }
 
-  const localStorageData = useLocalStorage(collectionName.raw, {
+  const localStorageData = useLocalStorage(collectionName, {
     onGet: (result) => {
       updateFetchedCollections()
-      onGet && onGet(result)
+      callbacks.onGet(result)
     },
   })
 
-  const swrKey = () => (userId ? collectionName.raw : null)
+  const swrKey = () => (userId ? collectionName : null)
 
   // https://swr.vercel.app/docs/options
   const swr = useSWRImmutable(swrKey, firestoreFetcher, {
     onSuccess: (data) => {
       const updatedFetchedCollections = arrayDB.add(getStore.fetchedCollections, {
-        data: { id: collectionName.raw },
+        data: { id: collectionName },
       })
 
       getStore.setFetchedCollections(updatedFetchedCollections)
       localStorageData.update(data)
-      onGet && onGet(data)
+      callbacks.onGet(data)
     },
     onError: (error) => {
-      showError.show({
-        error,
-        message: `Error fetching ${collectionName.raw}, please try again.`,
-      })
+      callbacks.onGetError(error)
     },
   })
 

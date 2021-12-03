@@ -23,7 +23,7 @@ export default function useRemove({
     })
 
     if (userId) {
-      await deleteDoc(doc(firebase.db, collectionName.raw, id))
+      await deleteDoc(doc(firebase.db, collectionName, id))
     }
 
     const returnData = { removedItemId: id, remainingItems }
@@ -37,17 +37,17 @@ export default function useRemove({
     onError: (error) => {
       showError.show({
         error,
-        message: `Error removing ${collectionName.singularized}, please try again`,
+        message: `Error removing ${collectionName}, please try again`,
       })
     },
     onResult: (result) => {
       updateData(result.remainingItems)
-      snackbar.show({ message: `${collectionName.capitalizedSingularized} removed` })
+      snackbar.show({ message: `${collectionName} removed` })
     },
     onLoading: (loading) => {
       if (loading) {
         snackbar.show({
-          message: `Removing ${collectionName.capitalizedSingularized}...`,
+          message: `Removing ${collectionName}...`,
           severity: 'info',
         })
       }

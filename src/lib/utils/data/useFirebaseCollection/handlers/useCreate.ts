@@ -43,10 +43,7 @@ export default function useCreate(
       }
     } else {
       // update firestore
-      const docRef = await addDoc(
-        collection(firebase.db, collectionName.raw),
-        createdItem,
-      )
+      const docRef = await addDoc(collection(firebase.db, collectionName), createdItem)
 
       createdItem = {
         ...createdItem,

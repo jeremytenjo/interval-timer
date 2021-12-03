@@ -1,7 +1,4 @@
-import capitalize from '@useweb/capitalize'
-
 import useAuth from '../../../../globalState/useAuth'
-import singularize from '../../string/singularize'
 
 import useGet from './handlers/useGet'
 import useCreate from './handlers/useCreate'
@@ -11,12 +8,22 @@ import useUpdate from './handlers/useUpdate'
 type options = {
   defaultData?: any
   returnDefaultData?: boolean
+
   onGet?: (result: any) => void
+  onGetError?: (error: any) => void
+  onGetLoading?: (loading: boolean) => void
+
   onCreate?: (result: any) => void
   onCreateError?: (error: any) => void
   onCreateLoading?: (loading: boolean) => void
+
   onRemove?: (result: any) => void
+  onRemoveError?: (error: any) => void
+  onRemoveLoading?: (loading: boolean) => void
+
   onUpdate?: (result: any) => void
+  onUpdateError?: (error: any) => void
+  onUpdateLoading?: (loading: boolean) => void
 }
 
 export default function useFirebaseCollection(
@@ -24,11 +31,17 @@ export default function useFirebaseCollection(
   {
     defaultData,
     onGet = () => null,
+    onGetError = () => null,
+    onGetLoading = () => null,
     onCreate = () => null,
     onCreateError = () => null,
     onCreateLoading = () => null,
     onRemove = () => null,
+    onRemoveError = () => null,
+    onRemoveLoading = () => null,
     onUpdate = () => null,
+    onUpdateError = () => null,
+    onUpdateLoading = () => null,
     returnDefaultData,
   }: options,
 ) {
@@ -36,20 +49,16 @@ export default function useFirebaseCollection(
 
   const handlerPayload: any = {
     userId: auth?.user?.uid,
-    collectionName: {
-      raw: collectionName,
-      singularized: singularize(collectionName),
-      capitalized: capitalize(collectionName),
-      capitalizedSingularized: capitalize(singularize(collectionName)),
-    },
+    collectionName,
     returnDefaultData,
     defaultData,
-    onGet,
-    onRemove,
-    onUpdate,
   }
 
-  const get = useGet(handlerPayload)
+  const get = useGet(handlerPayload, {
+    onGet,
+    onGetError,
+    onGetLoading,
+  })
 
   handlerPayload.updateData = get.update
   handlerPayload.data = get.data
@@ -59,8 +68,18 @@ export default function useFirebaseCollection(
     onCreateError,
     onCreateLoading,
   })
-  const update = useUpdate(handlerPayload)
-  const remove = useRemove(handlerPayload)
+
+  const update = useUpdate(handlerPayload, {
+    onUpdate,
+    onUpdateError,
+    onUpdateLoading,
+  })
+
+  const remove = useRemove(handlerPayload, {
+    onRemove,
+    onRemoveError,
+    onRemoveLoading,
+  })
 
   return {
     get,
