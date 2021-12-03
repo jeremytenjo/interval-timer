@@ -14,7 +14,7 @@ export type HandlerPayloadType = {
   data: any
 }
 
-type options = {
+type Options = {
   defaultData?: any
   returnDefaultData?: boolean
 
@@ -52,7 +52,7 @@ export default function useFirebaseCollection(
     onUpdateError = () => null,
     onUpdateLoading = () => null,
     returnDefaultData,
-  }: options,
+  }: Options,
 ) {
   const auth = useAuth()
 
