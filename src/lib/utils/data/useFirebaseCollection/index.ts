@@ -17,7 +17,7 @@ type options = {
   onUpdate?: (result: any) => void
 }
 
-export default function useCollection(
+export default function useFirebaseCollection(
   collectionName: string,
   { defaultData, onGet, onCreate, onRemove, onUpdate, returnDefaultData }: options,
 ) {

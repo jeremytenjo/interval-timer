@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 
 import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification'
-import TimerNotification from '../../../../lib/utils/feedback/TimerNotification'
 
 type Props = {
   timerIsPlaying: boolean

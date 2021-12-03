@@ -1,4 +1,4 @@
-import useCollection from '../../../lib/utils/data/useCollection'
+import useCollection from '../../../lib/utils/data/useFirebaseCollection'
 
 import defaultSettings from './defaultSettings'
 

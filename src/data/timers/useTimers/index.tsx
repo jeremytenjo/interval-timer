@@ -1,4 +1,4 @@
-import useCollection from '../../../lib/utils/data/useCollection'
+import useCollection from '../../../lib/utils/data/useFirebaseCollection'
 import useTimer from '../../../globalState/useTimer'
 
 import useHandleGet from './handlers/useHandleGet'

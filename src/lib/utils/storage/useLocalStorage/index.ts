@@ -1,5 +1,4 @@
 import { Storage } from '@capacitor/storage'
-import useAsync from '@useweb/use-async'
 import { useState } from 'react'
 import useSWRImmutable from 'swr/immutable'
 
