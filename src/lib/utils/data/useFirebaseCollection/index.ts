@@ -13,13 +13,24 @@ type options = {
   returnDefaultData?: boolean
   onGet?: (result: any) => void
   onCreate?: (result: any) => void
+  onCreateError?: (error: any) => void
+  onCreateLoading?: (loading: boolean) => void
   onRemove?: (result: any) => void
   onUpdate?: (result: any) => void
 }
 
 export default function useFirebaseCollection(
   collectionName: string,
-  { defaultData, onGet, onCreate, onRemove, onUpdate, returnDefaultData }: options,
+  {
+    defaultData,
+    onGet = () => null,
+    onCreate = () => null,
+    onCreateError = () => null,
+    onCreateLoading = () => null,
+    onRemove = () => null,
+    onUpdate = () => null,
+    returnDefaultData,
+  }: options,
 ) {
   const auth = useAuth()
 
@@ -34,7 +45,6 @@ export default function useFirebaseCollection(
     returnDefaultData,
     defaultData,
     onGet,
-    onCreate,
     onRemove,
     onUpdate,
   }
@@ -44,7 +54,11 @@ export default function useFirebaseCollection(
   handlerPayload.updateData = get.update
   handlerPayload.data = get.data
 
-  const create = useCreate(handlerPayload)
+  const create = useCreate(handlerPayload, {
+    onCreate,
+    onCreateError,
+    onCreateLoading,
+  })
   const update = useUpdate(handlerPayload)
   const remove = useRemove(handlerPayload)
 
