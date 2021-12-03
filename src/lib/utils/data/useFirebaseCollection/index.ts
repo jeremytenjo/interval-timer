@@ -39,19 +39,23 @@ export default function useFirebaseCollection(
   collectionName: string,
   {
     defaultData,
+    returnDefaultData,
+
     onGet = () => null,
     onGetError = () => null,
     onGetLoading = () => null,
+
     onCreate = () => null,
     onCreateError = () => null,
     onCreateLoading = () => null,
+
     onRemove = () => null,
     onRemoveError = () => null,
     onRemoveLoading = () => null,
+
     onUpdate = () => null,
     onUpdateError = () => null,
     onUpdateLoading = () => null,
-    returnDefaultData,
   }: Options,
 ) {
   const auth = useAuth()
