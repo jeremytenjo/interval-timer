@@ -22,7 +22,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "tests:run": "./devtools/scripts/tests/run",
-    "prettify": "prettier \"**/*.{js,json,ts,tsx,jsx}\" --write --config ./devtools/prettier/config.json --ignore-path ./devtools/prettier/.prettierignore",
+    "prettify": "node --loader  ts-node/esm ./devtools/prettier/scripts/runPrettier/runPrettier.ts",
     "lint": "eslint ./ --fix && tsc --noemit",
     "prepare": "husky install"
   },
