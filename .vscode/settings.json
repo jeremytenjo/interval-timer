@@ -7,5 +7,6 @@
   },
   "prettier.configPath": "./devtools/prettier/config.json",
   "quickComponentCreator.prettierConfigFilePath": "devtools/prettier/config.json",
-  "quickComponentCreator.schemaFilePath": "qcc.schema.cjs"
+  "quickComponentCreator.schemaFilePath": "devtools/codeGenerator/qcc.schema.cjs"
+
 }
