@@ -3,8 +3,8 @@ import { collection, query, where, getDocs } from 'firebase/firestore'
 import useSWRImmutable from 'swr/immutable'
 import create from 'zustand'
 import arrayDB from '@useweb/array-db'
+import useFirebase from '@useweb/use-firebase'
 
-import useFirebase from '../../../../../firebase/useFirebase'
 import useLocalStorage from '../../../storage/useLocalStorage'
 import type { HandlerPayloadType } from '../'
 

@@ -1,4 +1,4 @@
-import useFirebase from '../../../../firebase/useFirebase'
+import useFirebase from '@useweb/use-firebase'
 
 import useGet from './handlers/useGet'
 import useCreate from './handlers/useCreate'

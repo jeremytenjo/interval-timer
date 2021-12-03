@@ -1,8 +1,8 @@
 import { collection, addDoc } from 'firebase/firestore'
 import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
+import useFirebase from '@useweb/use-firebase'
 
-import useFirebase from '../../../../../firebase/useFirebase'
 import type { HandlerPayloadType } from '../'
 
 type Callbacks = {

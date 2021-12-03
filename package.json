@@ -39,7 +39,7 @@
     "@useweb/remove-last-character": "0.0.1",
     "@useweb/use-async": "^0.3.2",
     "@useweb/use-event-listener": "^0.1.1",
-    "@useweb/use-firebase": "^1.0.9",
+    "@useweb/use-firebase": "^2.1.2",
     "@useweb/use-install-prompt": "^1.0.1",
     "@useweb/use-on-true": "0.0.1",
     "firebase": "^9.4.1",

@@ -2,7 +2,7 @@ import '@capacitor/core'
 import ReactDOM from 'react-dom'
 import { UseInstallPromptProvider } from '@useweb/use-install-prompt'
 
-import { FirebaseProvider } from './firebase/useFirebase'
+import Firebase from './firebase/firebase'
 import Router from './pages/router'
 import Theme from './theme/theme'
 import GlobalProviders from './globalState/GlobalProviders'
@@ -10,13 +10,13 @@ import GlobalProviders from './globalState/GlobalProviders'
 function App() {
   return (
     <UseInstallPromptProvider>
-      <FirebaseProvider>
+      <Firebase>
         <Theme>
           <GlobalProviders>
             <Router />
           </GlobalProviders>
         </Theme>
-      </FirebaseProvider>
+      </Firebase>
     </UseInstallPromptProvider>
   )
 }
