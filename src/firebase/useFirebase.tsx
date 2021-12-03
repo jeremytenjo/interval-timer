@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { initializeApp } from 'firebase/app'
 
 import firebaseConfig from './config'
 import initializeFirebaseEmulator from './utils/initializeFirebaseEmulator'
