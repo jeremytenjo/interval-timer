@@ -9,6 +9,7 @@ const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore()
 
+// TODO fix initializeFirebaseEmulator, it is not starting
 initializeFirebaseEmulator({ auth, db })
 
 export default function Firebase({ children }) {
