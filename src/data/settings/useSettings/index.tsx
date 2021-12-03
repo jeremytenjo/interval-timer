@@ -1,9 +1,9 @@
-import useCollection from '../../../lib/utils/data/useFirebaseCollection'
+import useFirebaseCollection from '../../../lib/utils/data/useFirebaseCollection'
 
 import defaultSettings from './defaultSettings'
 
 export default function useSettings() {
-  const settings = useCollection('settings', {
+  const settings = useFirebaseCollection('settings', {
     returnDefaultData: true,
     defaultData: [defaultSettings],
     onGet: (data) => {

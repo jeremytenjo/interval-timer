@@ -1,4 +1,4 @@
-import useCollection from '../../../lib/utils/data/useFirebaseCollection'
+import useFirebaseCollection from '../../../lib/utils/data/useFirebaseCollection'
 import useTimer from '../../../globalState/useTimer'
 
 import useHandleGet from './handlers/useHandleGet'
@@ -12,7 +12,7 @@ export default function useTimers({
   const timer = useTimer()
   const handleGet = useHandleGet({ timer })
   const handleRemove = useHandleRemove({ timer })
-  const timers = useCollection('timers', {
+  const timers = useFirebaseCollection('timers', {
     onGet: (result) => {
       handleGet.setSelectedTimer(result)
       onGet && onGet(result)
