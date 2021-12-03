@@ -3,7 +3,7 @@ import useAsync from '@useweb/use-async'
 import arrayDB from '@useweb/array-db'
 import useFirebase from '@useweb/use-firebase'
 
-import type { HandlerPayloadType } from '../'
+import type { HandlerPayloadType } from '..'
 
 type Callbacks = {
   onCreate?: (result: any) => void

@@ -36,7 +36,7 @@ type Options = {
 }
 
 // TODO extract to npm package
-export default function useFirebaseCollection(
+export default function useFirestore(
   collectionName: string,
   {
     defaultData,

@@ -6,7 +6,7 @@ import arrayDB from '@useweb/array-db'
 import useFirebase from '@useweb/use-firebase'
 
 import useLocalStorage from '../../../storage/useLocalStorage'
-import type { HandlerPayloadType } from '../'
+import type { HandlerPayloadType } from '..'
 
 type Types = {
   fetchedCollections: any[]

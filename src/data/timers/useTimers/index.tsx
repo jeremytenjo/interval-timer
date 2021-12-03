@@ -1,4 +1,4 @@
-import useFirebaseCollection from '../../../lib/utils/data/useFirebaseCollection'
+import useFirestore from '../../../lib/utils/data/useFirestore'
 import useTimer from '../../../globalState/useTimer'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../lib/components/feedback/useShowError'
@@ -17,7 +17,7 @@ export default function useTimers({
   const handleGet = useHandleGet({ timer })
   const handleRemove = useHandleRemove({ timer })
 
-  const timers = useFirebaseCollection('timers', {
+  const timers = useFirestore('timers', {
     onGet: (result) => {
       handleGet.setSelectedTimer(result)
       onGet && onGet(result)

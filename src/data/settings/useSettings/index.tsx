@@ -1,6 +1,6 @@
 import useShowError from '../../../lib/components/feedback/useShowError'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
-import useFirebaseCollection from '../../../lib/utils/data/useFirebaseCollection'
+import useFirestore from '../../../lib/utils/data/useFirestore'
 
 import defaultSettings from './defaultSettings'
 
@@ -8,7 +8,7 @@ export default function useSettings() {
   const showError = useShowError()
   const snackbar = useSnackBar()
 
-  const settings = useFirebaseCollection('settings', {
+  const settings = useFirestore('settings', {
     returnDefaultData: true,
     defaultData: [defaultSettings],
     onGet: (data) => {
