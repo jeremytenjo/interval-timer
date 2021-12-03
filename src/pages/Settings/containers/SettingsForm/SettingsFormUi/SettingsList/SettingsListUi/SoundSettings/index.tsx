@@ -1,5 +1,5 @@
 import VolumeDown from '../../../../../../../../lib/components/icons/VolumeDown'
-import useSettings from '../../../../../../../../data/settings/useSettings'
+import useSettings from '../../../../../../../../data/settings/useSettings/useSettings'
 
 import SoundSettingsUi from './SoundSettingsUi'
 

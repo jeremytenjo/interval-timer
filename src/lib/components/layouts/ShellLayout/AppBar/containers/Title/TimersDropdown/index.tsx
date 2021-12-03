@@ -1,5 +1,5 @@
-import useTimers from '../../../../../../../../data/timers/useTimers'
-import useTimer from '../../../../../../../../globalState/useTimer'
+import useTimers from '../../../../../../../../data/timers/useTimers/useTimers'
+import useTimer from '../../../../../../../../globalState/useTimer/useTimer'
 
 import TimersDropdownUi from './TimersDropdownUi'
 

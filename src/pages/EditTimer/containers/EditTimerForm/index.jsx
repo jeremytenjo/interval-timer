@@ -2,8 +2,8 @@ import useOnTrue from '@useweb/use-on-true'
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router'
 
-import useTimers from '../../../../data/timers/useTimers'
-import useTimer from '../../../../globalState/useTimer'
+import useTimers from '../../../../data/timers/useTimers/useTimers'
+import useTimer from '../../../../globalState/useTimer/useTimer'
 
 import EditTimerFormUi from './EditTimerFormUi'
 

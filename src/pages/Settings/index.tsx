@@ -1,4 +1,4 @@
-import useAppBar from '../../globalState/useAppBar'
+import useAppBar from '../../globalState/useAppBar/useAppBar'
 import Box from '../../lib/components/Box'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import Button from '../../../Button'
 import ConfirmationDialog from '../../../Dialog/ConfirmationDialog'
-import useTimer from '../../../../../globalState/useTimer'
+import useTimer from '../../../../../globalState/useTimer/useTimer'
 
 type Props = {
   onDelete?: (payload?: any) => void

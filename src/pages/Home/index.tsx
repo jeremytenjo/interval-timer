@@ -1,9 +1,9 @@
-import useAppBar from '../../globalState/useAppBar'
+import useAppBar from '../../globalState/useAppBar/useAppBar'
 import CreateTimerForm from '../../lib/components/CreateTimerForm'
-import useTimer from '../../globalState/useTimer'
+import useTimer from '../../globalState/useTimer/useTimer'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 import useUrlSearchParams from '../../lib/utils/navigation/useUrlSearchParams'
-import useTimers from '../../data/timers/useTimers'
+import useTimers from '../../data/timers/useTimers/useTimers'
 
 import Details from './containers/Details'
 import Timer from './containers/Timer'

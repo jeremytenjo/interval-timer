@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import useAppBar from '../../../../../../../globalState/useAppBar'
+import useAppBar from '../../../../../../../globalState/useAppBar/useAppBar'
 import BackArrow from '../../../../../icons/BackArrow'
 import Box from '../../../../../Box'
 import Iconbutton from '../../../../../IconButton'

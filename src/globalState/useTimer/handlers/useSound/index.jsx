@@ -3,7 +3,7 @@ import workoutBeepMp3 from '/sounds/workout/beep.mp3'
 import restVoiceMp3 from '/sounds/rest/voice.mp3'
 import restBeepMp3 from '/sounds/rest/beep.mp3'
 
-import useSettings from '../../../../data/settings/useSettings'
+import useSettings from '../../../../data/settings/useSettings/useSettings'
 
 import useVolume from './handlers/useVolume'
 

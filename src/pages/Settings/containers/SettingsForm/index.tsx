@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from 'react-hook-form'
 
-import useSettings from '../../../../data/settings/useSettings'
+import useSettings from '../../../../data/settings/useSettings/useSettings'
 
 import SettingsFormUi from './SettingsFormUi'
 

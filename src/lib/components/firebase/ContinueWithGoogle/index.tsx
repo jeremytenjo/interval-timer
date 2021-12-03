@@ -1,4 +1,4 @@
-import useAuth from '../../../../globalState/useAuth'
+import useAuth from '../../../../globalState/useAuth/useAuth'
 import Button from '../../Button'
 import GoogleLogo from '../../icons/GoogleLogo'
 

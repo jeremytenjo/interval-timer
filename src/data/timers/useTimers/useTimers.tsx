@@ -1,6 +1,6 @@
 import useFirestore from '@useweb/use-firestore'
 
-import useTimer from '../../../globalState/useTimer'
+import useTimer from '../../../globalState/useTimer/useTimer'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../lib/components/feedback/useShowError'
 

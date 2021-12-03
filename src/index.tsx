@@ -5,7 +5,7 @@ import { UseInstallPromptProvider } from '@useweb/use-install-prompt'
 import Firebase from './firebase/firebase'
 import Router from './pages/router'
 import Theme from './theme/theme'
-import GlobalProviders from './globalState/GlobalProviders'
+import GlobalProviders from './globalState/GlobalProviders/GlobalProviders'
 
 function App() {
   return (
