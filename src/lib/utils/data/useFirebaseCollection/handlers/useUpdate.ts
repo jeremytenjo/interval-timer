@@ -40,12 +40,12 @@ export default function useUpdate(
   }
 
   const update = useAsync(fetcher, {
-    onError: (error) => {
-      callbacks.onUpdateError(error)
-    },
     onResult: (result) => {
       updateData(result.updatedItems)
       callbacks.onUpdate(result)
+    },
+    onError: (error) => {
+      callbacks.onUpdateError(error)
     },
     onLoading: (loading) => {
       callbacks.onUpdateLoading(loading)

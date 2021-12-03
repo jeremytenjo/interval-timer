@@ -52,12 +52,12 @@ export default function useCreate(
   }
 
   const create = useAsync(fetcher, {
-    onError: (error) => {
-      callbacks.onCreateError(error)
-    },
     onResult: (result) => {
       updateData(result.updatedData)
       callbacks.onCreate(result)
+    },
+    onError: (error) => {
+      callbacks.onCreateError(error)
     },
     onLoading: (loading) => {
       callbacks.onCreateLoading(loading)

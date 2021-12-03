@@ -32,12 +32,12 @@ export default function useRemove(
   }
 
   const remove = useAsync(fetcher, {
-    onError: (error) => {
-      callbacks.onRemoveError(error)
-    },
     onResult: (result) => {
       updateData(result.remainingItems)
       callbacks.onRemove(result)
+    },
+    onError: (error) => {
+      callbacks.onRemoveError(error)
     },
     onLoading: (loading) => {
       callbacks.onRemoveLoading(loading)
