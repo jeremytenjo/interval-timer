@@ -1,6 +1,7 @@
+import useFirestore from '@useweb/use-firestore'
+
 import useShowError from '../../../lib/components/feedback/useShowError'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
-import useFirestore from '../../../lib/utils/data/useFirestore'
 
 import defaultSettings from './defaultSettings'
 

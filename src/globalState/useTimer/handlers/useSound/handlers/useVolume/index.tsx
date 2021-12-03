@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 import create from 'zustand'
 import useOnTrue from '@useweb/use-on-true'
-
-import useLocalStorage from '../../../../../../lib/utils/storage/useLocalStorage'
+import useLocalStorage from '@useweb/use-local-storage'
 
 type Types = {
   volume: number

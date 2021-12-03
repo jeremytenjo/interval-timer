@@ -1,4 +1,5 @@
-import useFirestore from '../../../lib/utils/data/useFirestore'
+import useFirestore from '@useweb/use-firestore'
+
 import useTimer from '../../../globalState/useTimer'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../lib/components/feedback/useShowError'
