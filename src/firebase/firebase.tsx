@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth'
 import { FirebaseProvider, initializeFirebaseEmulator } from '@useweb/use-firebase'
 
 import firebaseConfig from './config'
+import localStorageOptions from './handlers/localStorageOptions/localStorageOptions'
 
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
@@ -14,7 +15,12 @@ initializeFirebaseEmulator({ auth, db })
 
 export default function Firebase({ children }) {
   return (
-    <FirebaseProvider firebaseApp={firebaseApp} auth={auth} db={db}>
+    <FirebaseProvider
+      firebaseApp={firebaseApp}
+      auth={auth}
+      db={db}
+      localStorageOptions={localStorageOptions}
+    >
       {children}
     </FirebaseProvider>
   )
