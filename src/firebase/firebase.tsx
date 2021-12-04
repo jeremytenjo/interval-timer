@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
-import { FirebaseProvider, initializeFirebaseEmulator } from '@useweb/use-firebase'
+import { FirebaseProvider } from '@useweb/use-firebase'
+import initializeFirebaseEmulator from '@useweb/start-firebase-emulator'
 
 import firebaseConfig from './config'
 import localStorageOptions from './handlers/localStorageOptions/localStorageOptions'
@@ -10,8 +11,7 @@ const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore()
 
-// TODO fix initializeFirebaseEmulator, it is not starting
-initializeFirebaseEmulator({ auth, db })
+initializeFirebaseEmulator({ auth, db, enable: process.env.NODE_ENV === 'development' })
 
 export default function Firebase({ children }) {
   return (
