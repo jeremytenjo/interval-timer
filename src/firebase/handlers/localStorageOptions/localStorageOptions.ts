@@ -1,5 +1,5 @@
 import { Storage } from '@capacitor/storage'
-import type { LocalStorageOptionsTypes } from '@useweb/use-firebase'
+import type { LocalStorageOptionsTypes } from '@useweb/use-local-storage'
 
 export default {
   getterFunction: async ({ key }) => {
