@@ -12,7 +12,7 @@ const component = {
   type: 'Simple Component',
   files: [
     {
-      path: () => `index.tsx`,
+      path: ({ name }) => `${name}.tsx`,
       template: ({ name, helpers }) => `        
       import Box from 'lib/components/Box'
 
@@ -36,7 +36,7 @@ const component = {
     {
       path: () => `stories/sb.stories.mdx`,
       template: ({ name }) => `import { Meta, Story } from '@storybook/addon-docs/blocks'
-import ${name} from '../'
+import ${name} from '../${name}'
       
 <Meta 
   title='Lib/components/${name}' 
@@ -65,7 +65,7 @@ const componentWithStory = {
   type: 'Complete Component',
   files: [
     {
-      path: () => `index.tsx`,
+      path: ({ name }) => `${name}.tsx`,
       template: ({ name }) => `        
       import use${name}Data from './use${name}Data'
       import Ui from './ui/ui'
@@ -110,7 +110,7 @@ const componentWithStory = {
     {
       path: () => `stories/sb.stories.mdx`,
       template: ({ name }) => `import { Meta } from '@storybook/addon-docs/blocks'
-import ${name} from '../'
+import ${name} from '../${name}'
       
 <Meta title='Lib/components${name}' component={${name}} argTypes={{}} args={{}} />
 
@@ -137,7 +137,7 @@ module.exports = [
     type: 'Function',
     files: [
       {
-        path: () => 'index.ts',
+        path: ({ name }) => `${name}.ts`,
         template: ({ name }) => `export default function ${name}() {}`,
       },
     ],
@@ -146,7 +146,7 @@ module.exports = [
     type: 'Container',
     files: [
       {
-        path: () => 'index.tsx',
+        path: ({ name }) => `${name}.tsx`,
         template: ({ name }) => `import ${name}Ui from './${name}Ui'
         
         export default function ${name}() {        
