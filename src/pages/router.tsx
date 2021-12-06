@@ -4,10 +4,10 @@ import { Suspense } from 'react'
 import ShellLayout from '../lib/components/layouts/ShellLayout'
 import CapacitorHandleBackButton from '../lib/components/Capacitor/CapacitorHandleBackButton'
 
-import HomeRoutes from './Home/routes'
-import CreateTimerRoutes from './CreateTimer/routes'
-import EditTimerRoutes from './EditTimer/routes'
-import SettingsRoutes from './Settings/routes'
+import HomeRoutes from './HomePage/routes'
+import CreateTimerRoutes from './CreateTimerPage/routes'
+import EditTimerRoutes from './EditTimerPage/routes'
+import SettingsRoutes from './SettingsPage/routes'
 
 export function Routes() {
   return (
