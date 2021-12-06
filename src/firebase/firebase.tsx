@@ -20,6 +20,7 @@ export default function Firebase({ children }) {
       auth={auth}
       db={db}
       localStorageOptions={localStorageOptions}
+      enableAuth
     >
       {children}
     </FirebaseProvider>
