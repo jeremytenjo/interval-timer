@@ -10,7 +10,6 @@ export default function useSettings() {
   const snackbar = useSnackBar()
 
   const settings = useFirestore('settings', {
-    returnDefaultData: true,
     defaultData: [defaultSettings],
     onGet: (data) => {
       if (!data.length) {
