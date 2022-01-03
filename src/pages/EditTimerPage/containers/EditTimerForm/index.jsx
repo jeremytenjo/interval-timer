@@ -13,6 +13,7 @@ export default function EditTimerForm() {
   const timer = useTimer()
   const params = useParams()
 
+  // use get onResult function to check if timer exists instead of `timers.get.isFetched`
   useEffect(() => {
     if (timers.get.isFetched) {
       const timerExists = timers.get.data.some((timer) => timer.id === params.timerId)
