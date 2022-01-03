@@ -11,6 +11,7 @@ export default function useTimers({
   onCreate = undefined,
   onGet = undefined,
   onRemove = undefined,
+  onUpdate = undefined,
 } = {}) {
   const snackbar = useSnackBar()
   const showError = useShowError()
@@ -49,8 +50,9 @@ export default function useTimers({
         message: `Error creating timer, please try again`,
       })
     },
-    onUpdate: () => {
+    onUpdate: (result) => {
       snackbar.show({ message: `Timer updated` })
+      onUpdate && onUpdate(result)
     },
     onUpdateError: (error) => {
       showError.show({

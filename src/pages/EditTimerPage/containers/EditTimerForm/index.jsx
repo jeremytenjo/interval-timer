@@ -1,5 +1,3 @@
-import useOnTrue from '@useweb/use-on-true'
-import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router'
 
 import useTimers from '../../../../data/timers/useTimers/useTimers'
@@ -9,29 +7,26 @@ import EditTimerFormUi from './EditTimerFormUi'
 
 export default function EditTimerForm() {
   const navigate = useNavigate()
-  const timers = useTimers()
-  const timer = useTimer()
-  const params = useParams()
+  const timers = useTimers({
+    onGet: (result) => {
+      const timerExists = result.some((timer) => timer.id === params.timerId)
 
-  // use get onResult function to check if timer exists instead of `timers.get.isFetched`
-  useEffect(() => {
-    if (timers.get.isFetched) {
-      const timerExists = timers.get.data.some((timer) => timer.id === params.timerId)
       if (!timerExists) {
         navigate('/')
       }
-    }
-  }, [timers.get.isFetched, timers.get.data])
+    },
+    onUpdate: (result) => {
+      timer.setSelectedTimer(result.updatedItem)
+    },
+  })
+  const timer = useTimer()
+  const params = useParams()
 
   const defaultName = timer?.selectedTimer?.name || ''
   const restDefaultValue = timer?.selectedTimer?.rest * 1000 || 1000
   const workoutDefaultValue = timer?.selectedTimer?.workout * 1000 || 1000
   const repetitionsDefaultValue = timer?.selectedTimer?.repetitions || 1
   const setsDefaultValue = timer?.selectedTimer?.sets || 1
-
-  useOnTrue(timers.update.result, () => {
-    timer.setSelectedTimer(timers.update.result.updatedItem)
-  })
 
   const onSaveTimer = (payload) => {
     timers.update.exec({ id: timer.selectedTimer.id, data: payload })
