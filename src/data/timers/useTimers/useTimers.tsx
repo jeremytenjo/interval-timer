@@ -3,6 +3,7 @@ import useFirestore from '@useweb/use-firestore'
 import useTimer from '../../../globalState/useTimer/useTimer'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../lib/components/feedback/useShowError'
+import gtag from '../../../lib/utils/analytics/gtag'
 
 import useHandleGet from './handlers/useHandleGet'
 import useHandleRemove from './handlers/useHandleRemove'
@@ -34,6 +35,7 @@ export default function useTimers({
       snackbar.show({
         message: `Timer saved`,
       })
+      gtag('event', 'timer_created')
       onCreate && onCreate(result)
     },
     onCreateLoading: (loading) => {
