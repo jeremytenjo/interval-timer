@@ -1,7 +1,7 @@
 import log from '../../../utils/node/log.js'
 
 import captureScreenshot, {
-  type CaptureScreenshotProps,
+  CaptureScreenshotProps,
 } from './captureScreenshot/captureScreenshot.js'
 
 export type CaptureScreenshotsProps = {

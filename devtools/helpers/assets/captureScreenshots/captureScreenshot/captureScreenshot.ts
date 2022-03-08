@@ -1,7 +1,7 @@
 import nodePath from 'path'
 
 // https://github.com/sindresorhus/capture-website#readme
-import captureWebsite, { type FileOptions } from 'capture-website'
+import captureWebsite, { FileOptions } from 'capture-website'
 
 import log from '../../../../utils/node/log.js'
 import createFolder from '../../../../utils/node/createFolder.js'

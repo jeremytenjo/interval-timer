@@ -1,11 +1,10 @@
 import path from 'path'
 
 import getAppConfig from '../../../app.config.js'
-import captureScreenshots ,
-{
-  type CaptureScreenshotsProps
+import captureScreenshots, {
+  CaptureScreenshotsProps,
 } from '../../../devtools/helpers/assets/captureScreenshots/captureScreenshots.js'
- 
+
 export default async function capturePageScreenshots() {
   const appConfig = await getAppConfig()
   const mobileSize = {
