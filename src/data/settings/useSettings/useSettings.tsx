@@ -9,6 +9,7 @@ export default function useSettings() {
   const showError = useShowError()
   const snackbar = useSnackBar()
 
+  // TODO replace useFirestore with useData
   const settings = useFirestore('settings', {
     defaultData: [defaultSettings],
     onGet: (data) => {

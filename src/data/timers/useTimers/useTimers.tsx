@@ -20,6 +20,7 @@ export default function useTimers({
   const handleGet = useHandleGet({ timer })
   const handleRemove = useHandleRemove({ timer })
 
+  // TODO replace useFirestore with useData
   const timers = useFirestore('timers', {
     onGet: (result) => {
       handleGet.setSelectedTimer(result)
