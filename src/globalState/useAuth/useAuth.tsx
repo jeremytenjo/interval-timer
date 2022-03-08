@@ -1,5 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import useFirebaseAuth ,  {type UseFirebaseAuthProps} from '@useweb/use-firebase-auth'
+import useFirebaseAuth, { type UseFirebaseAuthProps } from '@useweb/use-firebase-auth'
 
 import useShowError from '../../lib/components/feedback/useShowError'
 import gtag from '../../lib/utils/analytics/gtag'
@@ -13,7 +13,11 @@ type UseAuthProps = {
 }
 
 export default function useAuth(
-  props: UseAuthProps = { onSignOut: undefined, onSignIn: undefined, onSignInError: undefined },
+  props: UseAuthProps = {
+    onSignOut: undefined,
+    onSignIn: undefined,
+    onSignInError: undefined,
+  },
 ) {
   const showError = useShowError()
 
