@@ -1,17 +1,13 @@
-import users from '../../users/users.stubs.js'
+import type { CollectionType } from '../../../lib/utils/firebase/emulator/addEmulatorData/handlers/addFirestoreEmulatorData'
 
 // used by src/services/firebase/emulator/addEmulatorData/handlers/addFirestoreEmulatorData.ts
-export default [
-  {
-    name: 'users',
-    data: users,
-  },
+const mockDatabase: CollectionType[] = [
   // TODO add timers collection
   {
     name: 'timers',
+    setUserIdToDataFromSignedInUser: true,
     data: [
       {
-        id: 'aOFUmKeILruty79acGAK',
         name: 'Upper Body',
         repetitions: 12,
         rest: 55,
@@ -25,3 +21,5 @@ export default [
     ],
   },
 ]
+
+export default mockDatabase

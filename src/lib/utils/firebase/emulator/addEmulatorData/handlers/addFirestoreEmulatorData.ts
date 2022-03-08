@@ -1,9 +1,10 @@
 import mockDatabase from '../../../../../../data/_emulator/mockDatabase/mockDatabase.js'
 
-type CollectionType = {
+export type CollectionType = {
   name: string
   data: any[]
   documentIdIsCreatedUserId?: boolean
+  setUserIdToDataFromSignedInUser?: boolean
 }
 
 /**
@@ -16,6 +17,13 @@ export default async function addMockDataToFirestore({ db, createdUserId }) {
         // https://firebase.google.com/docs/firestore/manage-data/add-data#set_a_document
         if (collection.documentIdIsCreatedUserId) {
           db.collection(collection.name).doc(createdUserId).set(collectionData)
+        }
+        // add userId property to document
+        else if (collection.setUserIdToDataFromSignedInUser) {
+          db.collection(collection.name).add({
+            userId: createdUserId,
+            ...collectionData,
+          })
         } else {
           db.collection(collection.name).add(collectionData)
         }
