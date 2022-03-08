@@ -1,5 +1,7 @@
 import GlobalStyles from '@mui/material/GlobalStyles'
 
+import colors from './tokens/colors'
+
 const noMarginPadding = {
   padding: 0,
   margin: 0,
@@ -18,7 +20,7 @@ export default () => (
       body: {
         webkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
         boxSizing: 'border-box',
-        backgroundColor: '#1C1929',
+        backgroundColor: colors.backgroundColor,
         color: 'white',
         margin: 0,
         fontFamily: 'SourceSandProRegular',
