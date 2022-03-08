@@ -1,3 +1,5 @@
+import React from 'react'
+
 import TopBar from './AppBar'
 
 export default function ShellLayout({ children }) {

@@ -1,9 +1,13 @@
 import useFirestore from '@useweb/use-firestore'
+import useData from '@useweb/use-data'
+import { collection, query, where, getDocs } from 'firebase/firestore'
+import useFirebase from '@useweb/use-firebase'
 
 import useTimer from '../../../globalState/useTimer/useTimer'
 import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../lib/components/feedback/useShowError'
 import gtag from '../../../lib/utils/analytics/gtag'
+import useAuth from '../../../globalState/useAuth/useAuth'
 
 import useHandleGet from './handlers/useHandleGet'
 import useHandleRemove from './handlers/useHandleRemove'
@@ -19,10 +23,38 @@ export default function useTimers({
   const timer = useTimer()
   const handleGet = useHandleGet({ timer })
   const handleRemove = useHandleRemove({ timer })
+  const firebase = useFirebase()
+  const auth = useAuth()
 
   // TODO replace useFirestore with useData
+  const newTimers = useData({
+    id: 'timers',
+    get: {
+      fetcher: async () => {
+        const data = []
+        const q = query(
+          collection(firebase.db, 'timers'),
+          where('userId', '==', auth.user.uid),
+        )
+        const querySnapshot = await getDocs(q)
+
+        querySnapshot.forEach((doc) => {
+          data.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+
+        console.log(data)
+
+        return data
+      },
+    },
+  })
+
   const timers = useFirestore('timers', {
     onGet: (result) => {
+      console.log({ result })
       handleGet.setSelectedTimer(result)
       onGet && onGet(result)
     },

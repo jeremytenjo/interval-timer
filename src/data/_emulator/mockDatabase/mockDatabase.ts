@@ -2,7 +2,6 @@ import type { CollectionType } from '../../../lib/utils/firebase/emulator/addEmu
 
 // used by src/services/firebase/emulator/addEmulatorData/handlers/addFirestoreEmulatorData.ts
 const mockDatabase: CollectionType[] = [
-  // TODO add timers collection
   {
     name: 'timers',
     setUserIdToDataFromSignedInUser: true,
