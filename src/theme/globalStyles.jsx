@@ -9,7 +9,6 @@ export default () => (
   <GlobalStyles
     styles={{
       html: {
-        overscrollBehaviorY: 'contain',
         '& input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button':
           {
             WebkitAppearance: 'none',
@@ -23,7 +22,6 @@ export default () => (
         color: 'white',
         margin: 0,
         fontFamily: 'SourceSandProRegular',
-        overscrollBehaviorY: 'contain',
       },
       '*': {
         boxSizing: 'border-box',
