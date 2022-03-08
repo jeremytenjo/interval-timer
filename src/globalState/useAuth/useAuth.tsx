@@ -1,105 +1,54 @@
-import { useEffect } from 'react'
-import create from 'zustand'
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signOut,
-} from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import useFirebaseAuth ,  {type UseFirebaseAuthProps} from '@useweb/use-firebase-auth'
 
 import useShowError from '../../lib/components/feedback/useShowError'
 import gtag from '../../lib/utils/analytics/gtag'
 
 const provider = new GoogleAuthProvider()
 
-type Types = {
-  user: any
-  setUser: (newValue: any) => void
-
-  signingIn: boolean
-  setSigningIn: (newValue: boolean) => void
-
-  error: any
-  setError: (newValue: any) => void
-
-  checked: boolean
-  setChecked: (newValue: boolean) => void
+type UseAuthProps = {
+  onSignOut?: UseFirebaseAuthProps['onSignOut']
+  onSignIn?: UseFirebaseAuthProps['onSignIn']
+  onSignInError?: UseFirebaseAuthProps['onSignInError']
 }
 
-const useAuthStore = create<Types>((set) => ({
-  user: undefined,
-  setUser: (newValue) => set(() => ({ user: newValue })),
-
-  signingIn: undefined,
-  setSigningIn: (newValue) => set(() => ({ signingIn: newValue })),
-
-  error: undefined,
-  setError: (newValue) => set(() => ({ error: newValue })),
-
-  checked: false,
-  setChecked: (newValue) => set(() => ({ checked: newValue })),
-}))
-
-export default function useAuth() {
-  const authStore = useAuthStore()
+export default function useAuth(
+  props: UseAuthProps = { onSignOut: undefined, onSignIn: undefined, onSignInError: undefined },
+) {
   const showError = useShowError()
 
-  const signInWithGoogle = async () => {
-    authStore.setChecked(true)
-    authStore.setSigningIn(true)
-    authStore.setError(false)
-
-    try {
+  const signInWithGoogle = useFirebaseAuth({
+    auth: getAuth(),
+    signInFetcher: async () => {
       const auth = getAuth()
       const result = await signInWithPopup(auth, provider)
       const credential = GoogleAuthProvider.credentialFromResult(result)
       const accessToken = credential.accessToken
       const user = result.user
 
+      return { ...user, accessToken }
+    },
+
+    onSignIn: () => {
       gtag('event', 'login', {
         method: 'Google',
       })
-      authStore.setUser({ ...user, accessToken })
-    } catch (error) {
+    },
+    onSignInError: (error) => {
       if (error.code !== 'auth/popup-closed-by-user') {
         showError.show({ error, message: 'Error signing in, please try again.' })
-        authStore.setError(error)
       }
-    } finally {
-      authStore.setSigningIn(false)
-    }
-  }
-
-  const signOutFromGoogle = async () => {
-    const auth = getAuth()
-    await signOut(auth)
-    authStore.setUser(false)
-  }
-
-  useEffect(() => {
-    const auth = getAuth()
-
-    const cleanOnAuthStateChanged = onAuthStateChanged(auth, (user) => {
-      if (user) authStore.setUser(user)
-      else {
-        if (user !== null) {
-          authStore.setUser(false)
-        }
-      }
-    })
-
-    return () => {
-      cleanOnAuthStateChanged()
-    }
-  }, [])
+    },
+    onSignOut: () => {
+      props.onSignOut && props.onSignOut()
+    },
+  })
 
   return {
-    user: authStore.user,
-    signingIn: authStore.signingIn,
-    error: authStore.error,
-    checked: authStore.checked,
-    signInWithGoogle,
-    signOutFromGoogle,
+    user: signInWithGoogle.user,
+    signInWithGoogle: signInWithGoogle.signIn.exec,
+    signingIn: signInWithGoogle.signIn.loading,
+    error: signInWithGoogle.signIn.error,
+    signOutFromGoogle: signInWithGoogle.signOut,
   }
 }

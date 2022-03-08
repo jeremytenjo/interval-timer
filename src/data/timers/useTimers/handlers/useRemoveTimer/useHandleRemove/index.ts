@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 export default function useHandleRemove({ timer }) {
   const navigate = useNavigate()
 
-  const setSelectedTimer = (data) => {
-    const remainingTimers = data.remainingItems.filter(
+  const setSelectedTimer = (data: { removedItemId: string; latestData: any[] }) => {
+    const remainingTimers = data.latestData.filter(
       (item) => item.id !== data.removedItemId,
     )
 

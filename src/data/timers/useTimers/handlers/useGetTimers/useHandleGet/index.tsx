@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 
-import useUrlSearchParams from '../../../../../lib/utils/navigation/useUrlSearchParams'
+import useUrlSearchParams from '../../../../../../lib/utils/navigation/useUrlSearchParams'
 
 export default function useHandleGet({ timer }) {
   const location = useLocation()

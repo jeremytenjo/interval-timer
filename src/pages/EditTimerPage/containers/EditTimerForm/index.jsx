@@ -1,3 +1,4 @@
+import React from 'react'
 import { useNavigate, useParams } from 'react-router'
 
 import useTimers from '../../../../data/timers/useTimers/useTimers'
@@ -29,7 +30,7 @@ export default function EditTimerForm() {
   const setsDefaultValue = timer?.selectedTimer?.sets || 1
 
   const onSaveTimer = (payload) => {
-    timers.update.exec({ id: timer.selectedTimer.id, data: payload })
+    timers.update.exec({ id: timer.selectedTimer.id, value: payload })
   }
 
   const onRemoveButtonClick = () => {
