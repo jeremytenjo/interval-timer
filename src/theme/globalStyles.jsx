@@ -24,6 +24,7 @@ export default () => (
         color: 'white',
         margin: 0,
         fontFamily: 'SourceSandProRegular',
+        overflowX: 'hidden',
       },
       '*': {
         boxSizing: 'border-box',
