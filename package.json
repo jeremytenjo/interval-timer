@@ -24,7 +24,8 @@
     "tests:run": "./devtools/scripts/tests/run",
     "prettify": "node --loader  ts-node/esm ./devtools/prettier/scripts/runPrettier/runPrettier.ts",
     "lint": "eslint ./ --fix && tsc --noemit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "helpers:capture-page-screenshots": "node --experimental-json-modules --loader  ts-node/esm ./scripts/assets/capturePageScreenshots/run.ts"
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^2.1.0",
@@ -71,6 +72,7 @@
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "@vitejs/plugin-react": "^1.1.1",
+    "capture-website": "^2.3.0",
     "chalk": "^4.1.2",
     "concurrently": "^6.4.0",
     "css-loader": "^6.5.1",
@@ -91,12 +93,13 @@
     "lodash": "^4.17.21",
     "my-local-ip": "^1.0.0",
     "node-emoji": "^1.11.0",
+    "ora": "^6.0.1",
     "prettier": "^2.4.1",
     "react-refresh": "^0.11.0",
     "rollup-plugin-manifest-json": "^1.5.1",
     "storybook": "^6.3.12",
     "style-loader": "^3.3.1",
-    "typescript": "^4.4.4",
+    "typescript": "^4.5.5",
     "vite": "^2.7.0",
     "vite-plugin-compression": "^0.3.5",
     "vite-plugin-html": "^2.1.1",

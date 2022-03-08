@@ -1,58 +1,58 @@
 import getIpAdress from 'my-local-ip'
 
 import pkg from './package.json'
-import themeTokens from './src/theme/tokens/tokens'
+import themeTokens from './src/theme/tokens/tokens.js'
 
-const appConfig: AppConfigTypes = {
-  manifestJson: {
-    name: 'My Interval Timer',
-    short_name: 'Timer',
-    description: pkg.description,
-    start_url: '/',
-    orientation: 'any',
-    display: 'standalone',
-    theme_color: themeTokens.colors.primary.main,
-    background_color: themeTokens.colors.black.main,
-    screenshots: [
-      {
-        src: 'images/manifest/screenshot-create.png',
-        sizes: '360x640',
-        type: 'image/png',
-      },
-      {
-        src: 'images/manifest/screenshot-home.png',
-        sizes: '360x640',
-        type: 'image/png',
-      },
-      {
-        src: 'images/manifest/screenshot-sync.png',
-        sizes: '360x640',
-        type: 'image/png',
-      },
-      {
-        src: 'images/manifest/screenshot-edit.png',
-        sizes: '360x640',
-        type: 'image/png',
-      },
-    ],
-  },
-  analytics: {
-    google: {
-      measurementId: 'G-83D8302GLZ',
+export default async function appConfig(): Promise<AppConfigTypes> {
+  return {
+    manifestJson: {
+      name: 'My Interval Timer',
+      short_name: 'Timer',
+      description: pkg.description,
+      start_url: '/',
+      orientation: 'any',
+      display: 'standalone',
+      theme_color: themeTokens.colors.primary.main,
+      background_color: themeTokens.colors.black.main,
+      screenshots: [
+        {
+          src: 'images/manifest/screenshot-create.png',
+          sizes: '360x640',
+          type: 'image/png',
+        },
+        {
+          src: 'images/manifest/screenshot-home.png',
+          sizes: '360x640',
+          type: 'image/png',
+        },
+        {
+          src: 'images/manifest/screenshot-sync.png',
+          sizes: '360x640',
+          type: 'image/png',
+        },
+        {
+          src: 'images/manifest/screenshot-edit.png',
+          sizes: '360x640',
+          type: 'image/png',
+        },
+      ],
     },
-  },
-  server: {
-    local: {
-      port: 3001,
-      IPAddress: getIpAdress(),
+    analytics: {
+      google: {
+        measurementId: 'G-83D8302GLZ',
+      },
     },
-  },
-  theme: {
-    tokens: themeTokens,
-  },
+    server: {
+      local: {
+        port: 3001,
+        IPAddress: getIpAdress(),
+      },
+    },
+    theme: {
+      tokens: themeTokens,
+    },
+  }
 }
-
-export default appConfig
 
 export type AppConfigTypes = {
   manifestJson: {
