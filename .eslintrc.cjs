@@ -34,6 +34,7 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-unused-vars': 1,
     'prefer-const': 2,
     'no-var': 2,
@@ -47,7 +48,6 @@ module.exports = {
     'constructor-super': 1,
     'valid-typeof': 1,
     'react/display-name': 0,
-    'react/jsx-uses-react': 1,
     'react/prop-types': 0,
     'react/jsx-fragments': [0, 'syntax'],
     'react-hooks/rules-of-hooks': 2,
@@ -55,6 +55,8 @@ module.exports = {
     'no-useless-catch': 1,
     'no-async-promise-executor': 0,
     'react/react-in-jsx-scope': 0,
+    'react/react-in-jsx-scope': 2,
+    'react/jsx-uses-react': 0,
     'react/jsx-no-undef': [
       2,
       {

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import useAppBar from '../../globalState/useAppBar/useAppBar'
 import CreateTimerForm from '../../lib/components/CreateTimerForm'
 import useTimer from '../../globalState/useTimer/useTimer'

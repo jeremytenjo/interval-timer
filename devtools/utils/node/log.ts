@@ -2,7 +2,7 @@ import emoji from 'node-emoji'
 // https://github.com/chalk/chalk
 import chalk from 'chalk'
 // https://github.com/sindresorhus/ora
-import ora, { Ora as OraInterface } from 'ora'
+import ora, { type Ora as OraInterface } from 'ora'
 
 type Return = {
   spinner: OraInterface

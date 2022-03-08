@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import Box from '../../Box'
 import PlusRound from '../../icons/PlusRound'

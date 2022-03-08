@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Box from '../../Box/index.jsx'
 import TimerEditorCreator from '../../TimerEditorCreator'
 import Text from '../../Text'
