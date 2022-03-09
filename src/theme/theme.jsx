@@ -1,11 +1,13 @@
+import React from 'react'
+
 import GlobalStyles from './globalStyles'
-import MaterialUiThemeProvider from './materialui/MaterialUiThemeProvider'
+import MuiProvider from './mui/MuiProvider'
 
 export default function ThemeProvider({ children }) {
   return (
-    <MaterialUiThemeProvider>
+    <MuiProvider>
       <GlobalStyles />
       {children}
-    </MaterialUiThemeProvider>
+    </MuiProvider>
   )
 }

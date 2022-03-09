@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Box from '../../../Box'
 
 import * as styles from './styles'

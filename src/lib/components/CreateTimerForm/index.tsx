@@ -1,3 +1,5 @@
+import React from 'react'
+
 import useTimers from '../../../data/timers/useTimers/useTimers'
 import useTimer from '../../../globalState/useTimer/useTimer'
 
@@ -16,7 +18,7 @@ export default function CreateTimerForm({ header }: Props) {
   })
 
   const onSaveTimer = (payload) => {
-    timers.create.exec({ data: payload })
+    timers.create.exec({ value: payload })
   }
 
   return <CreateTimerFormUi onSaveTimer={onSaveTimer} header={header} />

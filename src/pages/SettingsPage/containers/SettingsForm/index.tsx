@@ -1,3 +1,4 @@
+import React from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import useSettings from '../../../../data/settings/useSettings/useSettings'
@@ -16,7 +17,7 @@ export default function SettingsForm() {
 
     settings.update.exec({
       id: payload.id,
-      data: payload,
+      value: payload,
     })
   }
 

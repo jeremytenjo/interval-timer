@@ -1,45 +1,31 @@
-import useFirestore from '@useweb/use-firestore'
+import useData from '@useweb/use-data'
 
-import useShowError from '../../../lib/components/feedback/useShowError'
-import useSnackBar from '../../../lib/components/Snackbar/useSnackbar'
+import useAuth from '../../../globalState/useAuth/useAuth'
 
 import defaultSettings from './defaultSettings'
+import useGetSettings from './useGetSettings/useGetSettings'
+import useCreateSettings from './useCreateSettings/useCreateSettings'
+import useUpdateSettings from './useUpdateSettings/useUpdateSettings'
 
 export default function useSettings() {
-  const showError = useShowError()
-  const snackbar = useSnackBar()
+  const auth = useAuth()
 
-  // TODO replace useFirestore with useData
-  const settings = useFirestore('settings', {
+  const get = useGetSettings({
+    onGet: (results) => {
+      if (!results.length) {
+        settings.create.exec({ value: defaultSettings })
+      }
+    },
+  })
+  const create = useCreateSettings()
+  const update = useUpdateSettings()
+
+  const settings = useData({
+    id: auth?.user?.uid ? `settings/${auth.user.uid}` : undefined,
     defaultData: [defaultSettings],
-    onGet: (data) => {
-      if (!data.length) {
-        settings.create.exec({ data: defaultSettings, disableSnackbar: true })
-      }
-    },
-    onGetError: (error) => {
-      showError.show({
-        error,
-        message: `Error fetching settings, please try again.`,
-      })
-    },
-    onUpdate: () => {
-      snackbar.show({ message: `Settings updated` })
-    },
-    onUpdateError: (error) => {
-      showError.show({
-        error,
-        message: `Error updating settings, please try again`,
-      })
-    },
-    onUpdateLoading: (loading) => {
-      if (loading) {
-        snackbar.show({
-          message: `Updating settings...`,
-          severity: 'info',
-        })
-      }
-    },
+    get,
+    create,
+    update,
   })
 
   const [currentUserSettings] = settings.get.data

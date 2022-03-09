@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import React, { useNavigate, useLocation } from 'react-router-dom'
 
 import Edit from '../../../../../icons/Edit'
 import Plus from '../../../../../icons/Plus'

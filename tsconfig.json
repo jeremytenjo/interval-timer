@@ -7,14 +7,26 @@
     "skipLibCheck": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "noImplicitAny": false,
+    "jsx": "react",
+    "baseUrl": "./",
+    "types": ["vite/client", "cypress", "vite-plugin-pwa/client", "node"],
+    "paths": {
+      "*": ["devtools/ts/declaredModules/*"]
+    }
   },
-  "include": ["./src"]
+  "include": [
+    "./src",
+    "./functions/scripts",
+    "./functions/src",
+    "./devtools",
+    "devtools/ts/declaredModules/*"
+  ],
+  "exclude": ["./devtools/vite"]
 }

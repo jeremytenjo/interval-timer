@@ -1,3 +1,4 @@
+import React from 'react'
 import { Capacitor } from '@capacitor/core'
 import useInstallPrompt from '@useweb/use-install-prompt'
 

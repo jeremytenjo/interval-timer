@@ -1,3 +1,4 @@
+import React from 'react'
 import GlobalStyles from '@mui/material/GlobalStyles'
 
 import colors from './tokens/colors'
