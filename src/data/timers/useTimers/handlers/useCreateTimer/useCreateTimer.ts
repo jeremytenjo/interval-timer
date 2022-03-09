@@ -17,7 +17,6 @@ export default function useCreateTimer({ onCreate }): UseCreateTimerProps {
 
   return {
     creator: async ({ value }) => {
-      console.log(value)
       delete value.id
 
       const doc = {

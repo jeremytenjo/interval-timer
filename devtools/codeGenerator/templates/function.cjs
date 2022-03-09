@@ -2,13 +2,12 @@
 const files = [
   {
     path: ({ name }) => `${name}.ts`,
-    template: ({ name, helpers }) => `type ${helpers.changeCase.capitalCase(
-      name,
-    )}Props = {name: string}
+    template: ({ name, helpers }) => {
+      const propsTypeName = `${helpers.changeCase.capitalCase(name)}Props`.trim()
+      return `type ${propsTypeName} = {name: string}
     
-    export default function ${name}({name}: ${helpers.changeCase.capitalCase(
-      name,
-    )}Props) {}`,
+    export default function ${name}({name}: ${propsTypeName}) {}`
+    },
   },
 ]
 
