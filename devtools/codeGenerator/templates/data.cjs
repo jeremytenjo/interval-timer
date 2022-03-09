@@ -1,12 +1,12 @@
 // https://github.com/jeremytenjo/quick-component-creator/tree/master#component-type-properties
 const files = [
   {
-    path: ({ name }) => `${name}.ts`,
+    path: ({ name }) => `use${name}.ts`,
     template: ({ name, helpers }) => {
       const propsTypeName = `${helpers.changeCase.capitalCase(name)}Props`.trim()
       return `type ${propsTypeName} = {name: string}
     
-    export default function ${name}({name}: ${propsTypeName}) {}`
+      export default function ${name}({name}: ${propsTypeName}) {}`
     },
   },
 ]
