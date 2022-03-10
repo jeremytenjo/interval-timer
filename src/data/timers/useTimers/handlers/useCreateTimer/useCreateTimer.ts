@@ -17,6 +17,15 @@ export default function useCreateTimer({ onCreate }): UseCreateTimerProps {
 
   return {
     creator: async ({ value }) => {
+      if (!auth?.user) {
+        return {
+          newItem: {
+            id: Math.random(),
+            ...value,
+          },
+        }
+      }
+
       delete value.id
 
       const doc = {

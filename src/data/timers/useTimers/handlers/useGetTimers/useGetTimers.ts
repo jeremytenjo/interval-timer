@@ -19,6 +19,10 @@ export default function useGetTimers({ onGet }): UseGetTimersProps {
 
   return {
     fetcher: async () => {
+      if (!auth?.user) {
+        return undefined
+      }
+
       const data = []
       const q = query(
         collection(firebase.db, 'timers'),

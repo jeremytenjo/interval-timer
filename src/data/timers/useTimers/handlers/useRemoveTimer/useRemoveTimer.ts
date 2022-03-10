@@ -5,6 +5,7 @@ import useFirebase from '@useweb/use-firebase'
 import useTimer from '../../../../../globalState/useTimer/useTimer'
 import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
+import useAuth from '../../../../../globalState/useAuth/useAuth'
 
 import useHandleRemove from './useHandleRemove'
 
@@ -15,10 +16,15 @@ export default function useRemoveTimer({ onRemove }): UseRemoveTimerProps {
   const showError = useShowError()
   const firebase = useFirebase()
   const timer = useTimer()
+  const auth = useAuth()
   const handleRemove = useHandleRemove({ timer })
 
   return {
     remover: async ({ removedItemId }) => {
+      if (!auth?.user) {
+        return
+      }
+
       await deleteDoc(doc(firebase.db, 'timers', removedItemId))
     },
     onRemove: (result) => {
