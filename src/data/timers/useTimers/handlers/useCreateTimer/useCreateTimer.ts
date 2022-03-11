@@ -6,6 +6,7 @@ import gtag from '../../../../../lib/utils/analytics/gtag'
 import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
 import useAuth from '../../../../../globalState/useAuth/useAuth'
+import getUniqueId from '../../../../../lib/utils/identity/getUniqueId/getUniqueId'
 
 type UseCreateTimerProps = UseDataProps['create']
 
@@ -18,11 +19,13 @@ export default function useCreateTimer({ onCreate }): UseCreateTimerProps {
   return {
     creator: async ({ value }) => {
       if (!auth?.user) {
+        const newItem = {
+          ...value,
+          id: getUniqueId(),
+        }
+
         return {
-          newItem: {
-            id: Math.random(),
-            ...value,
-          },
+          newItem,
         }
       }
 
