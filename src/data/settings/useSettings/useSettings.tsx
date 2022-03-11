@@ -22,6 +22,7 @@ export default function useSettings() {
 
   const settings = useData({
     id: auth?.user?.uid ? `settings/${auth.user.uid}` : undefined,
+    localStorageDefaultId: 'settings',
     defaultData: [defaultSettings],
     get,
     create,

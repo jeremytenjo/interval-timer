@@ -1,3 +1,5 @@
+import React from 'react'
+
 import * as styles from './styles'
 import Row from './Row'
 import Item from './Item'
