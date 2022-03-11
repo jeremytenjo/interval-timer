@@ -19,7 +19,6 @@ export default function useTimers({
   const update = useUpdateTimer({ onUpdate })
   const remove = useRemoveTimer({ onRemove })
 
-  // TODO fix useData slowing down page transition
   const timers = useData({
     id: auth?.user?.uid ? `timers/${auth.user.uid}` : undefined,
     localStorageDefaultId: 'timers',
@@ -28,8 +27,6 @@ export default function useTimers({
     update,
     remove,
   })
-
-  console.log(timers.get.data)
 
   return timers
 }
