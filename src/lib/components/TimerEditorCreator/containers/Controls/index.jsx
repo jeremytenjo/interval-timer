@@ -1,3 +1,5 @@
+import React from 'react'
+
 import BottomBar from '../../../BottomBar'
 import Button from '../../../Button'
 

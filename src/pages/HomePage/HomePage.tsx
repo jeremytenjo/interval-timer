@@ -1,7 +1,7 @@
 import React from 'react'
 
 import useAppBar from '../../globalState/useAppBar/useAppBar'
-import CreateTimerForm from '../../lib/components/CreateTimerForm'
+import CreateTimerForm from '../../lib/components/CreateTimerForm/CreateTimerForm'
 import useTimer from '../../globalState/useTimer/useTimer'
 import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 import useUrlSearchParams from '../../lib/utils/navigation/useUrlSearchParams'
