@@ -3,7 +3,7 @@ import { doc, deleteDoc } from 'firebase/firestore'
 import useFirebase from '@useweb/use-firebase'
 
 import useTimer from '../../../../../globalState/useTimer/useTimer'
-import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar'
+import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar/useSnackbar'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
 import useAuth from '../../../../../globalState/useAuth/useAuth'
 

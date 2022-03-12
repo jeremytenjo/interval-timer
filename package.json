@@ -44,7 +44,7 @@
     "@useweb/remove-last-character": "0.1.0",
     "@useweb/start-firebase-emulator": "^1.2.0",
     "@useweb/use-async": "^3.1.0",
-    "@useweb/use-data": "^8.0.0",
+    "@useweb/use-data": "^8.0.2",
     "@useweb/use-event-listener": "^0.2.0",
     "@useweb/use-firebase": "^8.0.0",
     "@useweb/use-firebase-auth": "^1.5.0",

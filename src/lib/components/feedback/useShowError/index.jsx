@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import gtag from '../../../utils/analytics/gtag'
-import useSnackBar from '../../Snackbar/useSnackbar'
+import useSnackBar from '../../Snackbar/useSnackbar/useSnackbar'
 
 export default function useShowError(defaultError, errorMessage) {
   const snackbar = useSnackBar()

@@ -3,7 +3,7 @@ import { collection, addDoc } from 'firebase/firestore'
 import useFirebase from '@useweb/use-firebase'
 
 import gtag from '../../../../../lib/utils/analytics/gtag'
-import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar'
+import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar/useSnackbar'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
 import useAuth from '../../../../../globalState/useAuth/useAuth'
 import getUniqueId from '../../../../../lib/utils/identity/getUniqueId/getUniqueId'
@@ -59,6 +59,7 @@ export default function useCreateTimer({ onCreate }): UseCreateTimerProps {
         snackbar.show({
           message: `Creating timer...`,
           severity: 'info',
+          autoHideDuration: null,
         })
       }
     },

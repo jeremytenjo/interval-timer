@@ -9,13 +9,20 @@ export const SnackBarProvider = ({ children }) => {
   const [open, setShow] = useState(null)
   const [severity, setSeverity] = useState('success')
   const [message, setMessage] = useState('')
+  const [autoHideDuration, setAutoHideDuration] = useState(4000)
   const vertical = 'bottom'
   const horizontal = 'center'
 
-  const show = ({ message = '', severity = 'success' }) => {
+  const show = ({
+    message = '',
+    severity = 'success',
+    autoHideDuration = 4000,
+    show = true,
+  }) => {
     setSeverity(severity)
-    setShow(true)
+    setShow(show)
     setMessage(message)
+    setAutoHideDuration(autoHideDuration)
   }
 
   const hide = () => {
@@ -41,7 +48,7 @@ export const SnackBarProvider = ({ children }) => {
           },
         }}
         TransitionComponent={Slide}
-        autoHideDuration={4000}
+        autoHideDuration={autoHideDuration}
       >
         <Alert severity={severity}>{message}</Alert>
       </Snackbar>

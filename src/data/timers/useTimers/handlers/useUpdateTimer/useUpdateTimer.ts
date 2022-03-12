@@ -2,7 +2,7 @@ import type { UseDataProps } from '@useweb/use-data'
 import { doc, updateDoc } from 'firebase/firestore'
 import useFirebase from '@useweb/use-firebase'
 
-import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar'
+import useSnackBar from '../../../../../lib/components/Snackbar/useSnackbar/useSnackbar'
 import useShowError from '../../../../../lib/components/feedback/useShowError'
 import useAuth from '../../../../../globalState/useAuth/useAuth'
 
