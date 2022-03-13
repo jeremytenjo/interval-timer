@@ -1,3 +1,5 @@
+import path from 'path'
+
 import type { PlaywrightTestConfig } from '@playwright/test'
 import { devices } from '@playwright/test'
 
@@ -6,12 +8,13 @@ import { devices } from '@playwright/test'
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './src/tests',
+  testDir: path.join(process.cwd(), 'src'),
+  // testDir: '../../../src/specs',
+  testMatch: /.*\.e2e\.js/,
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {

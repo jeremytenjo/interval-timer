@@ -1,7 +1,7 @@
 // https://on.cypress.io/writing-first-test
 
-import '../createTimer/spec.createTimer.js'
-import './spec.editTimer'
+import '../createTimer/command.createTimer.js'
+import './command.editTimer'
 
 const timerName = 'Lower Body'
 
