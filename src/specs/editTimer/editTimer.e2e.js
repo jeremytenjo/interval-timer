@@ -1,12 +1,12 @@
 import { test } from '@playwright/test'
 
-import createTimerTest from '../createTimer/createTimer.spec.js'
+import testCreateTimer from '../createTimer/testCreateTimer.js'
 
-import testTimerTest from './editTimer.spec.js'
+import testEditTimer from './testEditTimer.spec.js'
 
 const timerName = 'Lower Workout'
 
 test('Edit timer', async ({ page }) => {
-  await createTimerTest({ page, timerName })
-  await testTimerTest({ page, timerName })
+  await testCreateTimer({ page, timerName })
+  await testEditTimer({ page, timerName })
 })

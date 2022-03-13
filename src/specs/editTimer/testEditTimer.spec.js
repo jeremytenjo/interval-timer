@@ -1,7 +1,8 @@
 // https://playwright.dev/docs/input#mouse-click
 import { expect } from '@playwright/test'
 
-export default async function editTimerTest({ page, timerName }) {
+export default async function testEditTimer({ page, timerName }) {
+  // TODO make sure edit timer edits lower timer
   await page.goto('/')
 
   const editTimerForm = page.locator('data-id=CreateTimerForm')
