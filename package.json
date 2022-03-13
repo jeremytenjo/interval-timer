@@ -86,7 +86,7 @@
     "chalk": "^4.1.2",
     "concurrently": "^6.4.0",
     "css-loader": "^6.5.1",
-    "cypress": "^9.0.0",
+    "cypress": "^9.5.1",
     "dotenv": "^10.0.0",
     "dotenv-parse-variables": "^2.0.0",
     "eslint": "^8.2.0",

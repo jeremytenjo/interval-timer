@@ -43,6 +43,7 @@ export default function useRemoveTimer({ onRemove }): UseRemoveTimerProps {
         snackbar.show({
           message: `Removing timer...`,
           severity: 'info',
+          autoHideDuration: null,
         })
       }
     },

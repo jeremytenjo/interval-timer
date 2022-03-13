@@ -37,6 +37,7 @@ export default function useUpdateTimer({ onUpdate }): UseUpdateTimerProps {
         snackbar.show({
           message: `Updating timer...`,
           severity: 'info',
+          autoHideDuration: null,
         })
       }
     },

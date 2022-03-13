@@ -50,6 +50,7 @@ export default function TimersDropdownUi({ onTimerSelected, timers, selectedTime
             textTransform: 'capitalize',
           }}
           component='h1'
+          data-id='selectedTimerHeader'
         >
           {selectedTimer?.name || 'Timers'}
         </Box>

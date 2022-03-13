@@ -34,7 +34,7 @@ export default function Items() {
   return (
     <Box component='nav' sx={styles.wrapper}>
       {showEditButton && (
-        <IconButton onClick={onEditClick}>
+        <IconButton onClick={onEditClick} data-id='editTimerButton'>
           <Edit sx={{ width: '18px' }} />
         </IconButton>
       )}
