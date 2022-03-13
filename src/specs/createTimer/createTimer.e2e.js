@@ -1,18 +1,7 @@
-// https://playwright.dev/docs/input#mouse-click
-import { test, expect } from '@playwright/test'
+import { test } from '@playwright/test'
 
-const timerName = 'Upper Body'
+import testCreateTimer from './createTimer.spec.js'
 
 test('Create timer', async ({ page }) => {
-  await page.goto('/')
-
-  const createTimerForm = page.locator('data-id=CreateTimerForm')
-  await expect(createTimerForm).toBeTruthy()
-  await page.fill('#timer-name', timerName)
-  await page.click('button[data-id=editTimerSaveButton]')
-  const countdownTimer = page.locator('aria-label="Countdown timer"')
-  await expect(countdownTimer).toBeTruthy()
-
-  const text = await page.innerText('[data-id=selectedTimerHeader]')
-  expect(text).toBe(timerName)
+  await testCreateTimer({ page, timerName: 'Upper Body' })
 })
