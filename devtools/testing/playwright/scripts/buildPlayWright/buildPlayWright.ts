@@ -1,5 +1,3 @@
-// import shell from '../../../../utils/node/shell.cjs'
-// import compileToTs from '../../../../ts/compileToTs.js'
 import path from 'path'
 
 import esbuild from 'esbuild'
@@ -36,23 +34,4 @@ export default async function buildPlayWright() {
     fileContent: '{"type": "commonjs"}',
     nojs: true,
   })
-
-  // await shell(
-  //   'tsc --incremental -p ./devtools/testing/playwright/playwright.tsconfig.json',
-  // )
-  // compileToTs(
-  //   [
-  //     '/Users/jeremytenjo/Dev/interval-timer/devtools/testing/playwright/playwright.config.ts',
-  //   ],
-  //   {
-  //     module: 1,
-  //     target: 4,
-  //     moduleResolution: 3,
-  //     sourceMap: true,
-  //     outDir: './build',
-  //     skipLibCheck: true,
-  //     esModuleInterop: true,
-  //     allowJs: true,
-  //   },
-  // )
 }
