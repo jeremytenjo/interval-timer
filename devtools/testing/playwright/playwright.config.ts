@@ -78,6 +78,12 @@ const config: PlaywrightTestConfig = {
     //   },
     // },
   ],
+  webServer: {
+    command: 'npm run dev:user-signedOut',
+    port: 3001,
+    timeout: 120 * 1000,
+    reuseExistingServer: !process.env.CI,
+  },
 }
 
 export default config
