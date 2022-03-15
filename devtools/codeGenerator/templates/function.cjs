@@ -3,10 +3,15 @@ const files = [
   {
     path: ({ name }) => `${name}.ts`,
     template: ({ name, helpers }) => {
-      const propsTypeName = `${helpers.changeCase.capitalCase(name)}Props`.trim()
-      return `type ${propsTypeName} = {name: string}
+      const propsName = `${helpers.changeCase.capitalCase(name).split(' ').join('')}Props`
+
+      return `type ${propsName} = {name: string}
     
-    export default function ${name}({name}: ${propsTypeName}) {}`
+    export default function ${name}({name}: ${propsName}) {
+      const data = 'hi'
+      
+      return data
+    }`
     },
   },
 ]
