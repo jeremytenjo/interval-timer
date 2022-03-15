@@ -6,6 +6,8 @@ type RemoveTimerProps = {
 }
 
 export default async function removeTimer({ page }: RemoveTimerProps) {
-  const header = await page.innerText('h1')
-  expect(header).toBe('Home Page')
+  page.click('[data-id=editTimerButton]')
+  page.click('text=Remove')
+  page.click('[data-id=ConfirmationDialogConfirmButton]')
+  expect(page.locator('h1.title')).toContainText('Create Timer')
 }

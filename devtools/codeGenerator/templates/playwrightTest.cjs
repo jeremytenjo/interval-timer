@@ -30,7 +30,7 @@ export default async function ${name}({ page }: ${propsName}) {
 
       import ${name} from './${name}.test'
       
-      test('Testname', async ({ page }) => {
+      test('${name}', async ({ page }) => {
         await ${name}({ page })
       })
       

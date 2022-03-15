@@ -40,7 +40,11 @@ export default function ConfirmationDialog({
         <Button variant='text' autoFocus onClick={onCancel}>
           {cancelText}
         </Button>
-        <Button variant='text' onClick={handleConfirm}>
+        <Button
+          variant='text'
+          onClick={handleConfirm}
+          data-id='ConfirmationDialogConfirmButton'
+        >
           {confirmText}
         </Button>
       </DialogActions>

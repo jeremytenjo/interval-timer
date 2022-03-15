@@ -1,7 +1,12 @@
-// https://playwright.dev/docs/input#mouse-click
-import { expect } from '@playwright/test'
+// https://playwright.dev/docs/selectors
+import { expect, type Page } from '@playwright/test'
 
-export default async function testEditTimer({ page, timerName }) {
+type EditTimerTestProps = {
+  page: Page
+  timerName: string
+}
+
+export default async function testEditTimer({ page, timerName }: EditTimerTestProps) {
   const newTimerExtra = '!!!'
   const newTimerName = `${timerName}${newTimerExtra}`
 

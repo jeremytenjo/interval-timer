@@ -1,7 +1,12 @@
-// https://playwright.dev/docs/input#mouse-click
-import { expect } from '@playwright/test'
+// https://playwright.dev/docs/selectors
+import { expect, type Page } from '@playwright/test'
 
-export default async function createTimerTest({ page, timerName }) {
+type CreateTimerTestProps = {
+  page: Page
+  timerName: string
+}
+
+export default async function createTimerTest({ page, timerName }: CreateTimerTestProps) {
   await page.goto('/')
 
   const createTimerForm = page.locator('data-id=CreateTimerForm')
