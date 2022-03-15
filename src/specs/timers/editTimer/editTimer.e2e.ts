@@ -1,8 +1,8 @@
 import { test } from '@playwright/test'
 
-import testCreateTimer from '../createTimer/testCreateTimer'
+import testCreateTimer from '../createTimer/createTimer.test'
 
-import testEditTimer from './testEditTimer.spec'
+import testEditTimer from './editTimer.test'
 
 const timerName = 'Lower Workout'
 
