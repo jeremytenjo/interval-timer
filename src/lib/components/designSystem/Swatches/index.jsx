@@ -1,4 +1,4 @@
-import Box from '../../Box'
+import Box from '../../Box/Box'
 import objectToArray from '../../../utils/objects/objectToArray'
 import flattenObject from '../../../utils/objects/flattenObject'
 

@@ -4,7 +4,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import Dialog from '@mui/material/Dialog'
 
-import Button from '../../Button'
+import Button from '../../Button/Button'
 
 type Props = {
   open: boolean

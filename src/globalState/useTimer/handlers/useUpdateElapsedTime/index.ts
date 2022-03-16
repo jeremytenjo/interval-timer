@@ -1,6 +1,6 @@
 import formatDuration from 'format-duration'
 
-import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification'
+import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification/useTimerNotification'
 import TimerStoreTypes from '../../types'
 
 type Props = {

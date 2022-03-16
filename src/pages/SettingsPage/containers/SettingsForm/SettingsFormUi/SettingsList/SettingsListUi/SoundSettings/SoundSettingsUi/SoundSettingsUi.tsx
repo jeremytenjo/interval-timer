@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Box from '../../../../../../../../../lib/components/Box/index.jsx'
+import Box from '../../../../../../../../../lib/components/Box/Box.jsx'
 import Accordion from '../../../../../../../../../lib/components/Accordion'
 import RadioGroup from '../../../../../../../../../lib/components/forms/RadioGroup'
 

@@ -2,7 +2,7 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionMui from '@mui/material/Accordion'
 
-import Text from '../Text'
+import Text from '../Text/Text'
 
 import * as styles from './styles'
 

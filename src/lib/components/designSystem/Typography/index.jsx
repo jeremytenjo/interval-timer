@@ -1,5 +1,5 @@
-import Box from '../../Box'
-import Text from '../../Text'
+import Box from '../../Box/Box'
+import Text from '../../Text/Text'
 
 export default function DSTypography({ variantNames = [] }) {
   const text = 'The quick brown fox jumps over the lazy dog.'

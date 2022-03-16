@@ -1,8 +1,8 @@
 import useAsync from '@useweb/use-async'
 import { useEffect } from 'react'
 
-import { updateTimerNotificationTypes } from '../'
-import TimerNotification from '../'
+import { updateTimerNotificationTypes } from '../TimerNotification'
+import TimerNotification from '../TimerNotification'
 
 type Props = {
   onStop?: () => void

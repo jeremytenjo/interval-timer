@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import Button from '../../../Button'
-import ConfirmationDialog from '../../../Dialog/ConfirmationDialog'
+import Button from '../../../Button/Button'
+import ConfirmationDialog from '../../../Dialog/ConfirmationDialog/ConfirmationDialog'
 import useTimer from '../../../../../globalState/useTimer/useTimer'
 
 type Props = {

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Button from '../../../../../lib/components/Button'
-import BottomBar from '../../../../../lib/components/BottomBar'
+import Button from '../../../../../lib/components/Button/Button'
+import BottomBar from '../../../../../lib/components/BottomBar/BottomBar'
 
 export default function TimerControlsUi({
   isStarted,

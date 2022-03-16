@@ -1,8 +1,8 @@
 import React from 'react'
 
 import TimePicker from '../../time/TimePicker'
-import Box from '../../Box'
-import TextField from '../Textfield/index'
+import Box from '../../Box/Box'
+import TextField from '../Textfield/Textfield'
 
 import * as styles from './styles'
 

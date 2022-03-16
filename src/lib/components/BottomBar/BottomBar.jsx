@@ -1,4 +1,6 @@
-import Box from '../Box/index.jsx'
+import React from 'react'
+
+import Box from '../Box/Box.jsx'
 
 import * as styles from './styles.ts'
 

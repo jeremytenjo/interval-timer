@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import Box from '../../../../../lib/components/Box/index.jsx'
+import Box from '../../../../../lib/components/Box/Box.jsx'
 
 import SettingsList from './SettingsList'
 import SettingsActionBar from './SettingsActionBar/SettingsActionBar'

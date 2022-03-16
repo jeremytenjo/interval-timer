@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Box from '../../../../../../lib/components/Box/index.jsx'
+import Box from '../../../../../../lib/components/Box/Box.jsx'
 
 export default function Item({ title, time, sx = {} }) {
   return (

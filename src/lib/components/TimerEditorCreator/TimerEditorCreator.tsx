@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router'
 
-import Box from '../Box'
-import TextField from '../forms/Textfield'
+import Box from '../Box/Box'
+import TextField from '../forms/Textfield/Textfield'
 import NumberSelector from '../forms/NumberSelector'
 import MinuteSelector from '../forms/MinuteSelector'
 

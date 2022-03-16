@@ -1,5 +1,5 @@
 import KeepAwake from '../../../../lib/utils/Capacitor/KeepAwake'
-import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification'
+import useTimerNotification from '../../../../lib/utils/feedback/TimerNotification/useTimerNotification/useTimerNotification'
 import TimerStoreTypes from '../../types'
 
 type Props = {

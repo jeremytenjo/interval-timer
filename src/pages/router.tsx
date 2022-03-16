@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom'
 import React, { Suspense } from 'react'
 
 import ShellLayout from '../lib/components/layouts/ShellLayout'
-import CapacitorHandleBackButton from '../lib/components/Capacitor/CapacitorHandleBackButton'
+import CapacitorHandleBackButton from '../lib/components/Capacitor/CapacitorHandleBackButton/Capacitor'
 
 import HomeRoutes from './HomePage/routes'
 import CreateTimerRoutes from './CreateTimerPage/routes'

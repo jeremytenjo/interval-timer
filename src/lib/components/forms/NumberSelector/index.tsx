@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import Box from '../../Box'
+import Box from '../../Box/Box'
 import PlusRound from '../../icons/PlusRound'
 import MinusRound from '../../icons/MinusRound'
-import IconButton from '../../IconButton'
+import IconButton from '../../IconButton/IconButton'
 
 import * as styles from './styles'
 

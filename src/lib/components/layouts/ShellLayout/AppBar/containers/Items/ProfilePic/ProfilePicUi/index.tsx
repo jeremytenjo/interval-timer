@@ -4,10 +4,10 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 import Avatar from '../../../../../../../Avatar'
-import IconButton from '../../../../../../../IconButton'
+import IconButton from '../../../../../../../IconButton/IconButton'
 import Popover from '../../../../../../../Popover'
-import ContinueWithGoogle from '../../../../../../../firebase/ContinueWithGoogle'
-import Box from '../../../../../../../Box'
+import ContinueWithGoogle from '../../../../../../../firebase/ContinueWithGoogle/ContinueWithGoogle'
+import Box from '../../../../../../../Box/Box'
 import useAuth from '../../../../../../../../../globalState/useAuth/useAuth'
 import SignOut from '../../../../../../../icons/SignOut'
 

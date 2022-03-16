@@ -1,7 +1,7 @@
 import React from 'react'
 
 import useAuth from '../../../../globalState/useAuth/useAuth'
-import Button from '../../Button'
+import Button from '../../Button/Button'
 import GoogleLogo from '../../icons/GoogleLogo'
 
 import * as styles from './styles'

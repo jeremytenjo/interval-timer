@@ -1,6 +1,6 @@
 import lightOrDarkColor from '@check-light-or-dark/color'
 
-import Box from '../../../Box'
+import Box from '../../../Box/Box'
 
 import * as styles from './styles'
 

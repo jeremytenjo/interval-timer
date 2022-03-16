@@ -3,7 +3,7 @@ import React from 'react'
 import useTimers from '../../../data/timers/useTimers/useTimers'
 import useTimer from '../../../globalState/useTimer/useTimer'
 
-import CreateTimerFormUi from './CreateTimerFormUi'
+import CreateTimerFormUi from './CreateTimerFormUi/CreateTimerFormUi'
 
 type Props = {
   header?: string

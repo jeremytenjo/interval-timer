@@ -1,10 +1,10 @@
 import VolumeIcon from '../../../../../../../icons/Volume'
-import IconButton from '../../../../../../../IconButton'
+import IconButton from '../../../../../../../IconButton/IconButton'
 import Popover from '../../../../../../../Popover'
 import Slider from '../../../../../../../Slider'
 import VolumeDown from '../../../../../../../icons/VolumeDown'
 import VolumeUp from '../../../../../../../icons/VolumeUp'
-import Box from '../../../../../../../Box'
+import Box from '../../../../../../../Box/Box'
 import VolumeMuted from '../../../../../../../icons/VolumeMuted'
 
 import * as styles from './styles'

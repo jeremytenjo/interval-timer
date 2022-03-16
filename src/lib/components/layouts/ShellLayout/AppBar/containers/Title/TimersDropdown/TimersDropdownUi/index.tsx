@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
 import MenuItem from '../../../../../../../Menu/MenuItem'
-import Button from '../../../../../../../Button'
+import Button from '../../../../../../../Button/Button'
 import Chevron from '../../../../../../../icons/Chevron'
-import Box from '../../../../../../../Box'
+import Box from '../../../../../../../Box/Box'
 import Popover from '../../../../../../../Popover'
 
 import * as styles from './styles'

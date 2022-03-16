@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Box from '../../Box/index.jsx'
-import TimerEditorCreator from '../../TimerEditorCreator'
-import Text from '../../Text'
+import Box from '../../Box/Box.jsx'
+import TimerEditorCreator from '../../TimerEditorCreator/TimerEditorCreator'
+import Text from '../../Text/Text'
 
 import * as styles from './styles'
 
