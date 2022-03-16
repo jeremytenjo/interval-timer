@@ -1,8 +1,8 @@
 import React from 'react'
 
 import * as styles from './styles'
-import Row from './Row'
-import Item from './Item'
+import Row from './Row/Row'
+import Item from './Item/Item'
 
 export default function DetailsUi({
   repetitions,

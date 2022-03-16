@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import CountdownCircleTimer from '../../../../../lib/components/CountdownCircleTimer'
 import Box from '../../../../../lib/components/Box'
 
-import Info from './Info'
+import Info from './Info/Info'
 import * as styles from './styles'
 
 /**

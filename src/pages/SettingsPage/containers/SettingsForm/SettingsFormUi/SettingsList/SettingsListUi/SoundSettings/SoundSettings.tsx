@@ -3,7 +3,7 @@ import React from 'react'
 import VolumeDown from '../../../../../../../../lib/components/icons/VolumeDown'
 import useSettings from '../../../../../../../../data/settings/useSettings/useSettings'
 
-import SoundSettingsUi from './SoundSettingsUi'
+import SoundSettingsUi from './SoundSettingsUi/SoundSettingsUi'
 
 export default function SoundSettings() {
   const settings = useSettings()

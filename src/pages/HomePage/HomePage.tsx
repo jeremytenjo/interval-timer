@@ -7,9 +7,9 @@ import useDocumentTitle from '../../lib/utils/dom/useDocumentTitle'
 import useUrlSearchParams from '../../lib/utils/navigation/useUrlSearchParams'
 import useTimers from '../../data/timers/useTimers/useTimers'
 
-import Details from './containers/Details'
-import Timer from './containers/Timer'
-import TimerControls from './containers/TimerControls'
+import Details from './containers/Details/Details'
+import Timer from './containers/Timer/Timer'
+import TimerControls from './containers/TimerControls/TimerControls'
 
 export default function HomePage() {
   useAppBar({

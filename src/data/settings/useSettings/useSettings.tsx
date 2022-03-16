@@ -2,7 +2,7 @@ import useData from '@useweb/use-data'
 
 import useAuth from '../../../globalState/useAuth/useAuth'
 
-import defaultSettings from './defaultSettings'
+import defaultSettings from './defaultSettings/defaultSettings'
 import useGetSettings from './useGetSettings/useGetSettings'
 import useCreateSettings from './useCreateSettings/useCreateSettings'
 import useUpdateSettings from './useUpdateSettings/useUpdateSettings'

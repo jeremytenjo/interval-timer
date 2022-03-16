@@ -1,3 +1,4 @@
+import React from 'react'
 import formatDuration from 'format-duration'
 
 import Box from '../../../../../../lib/components/Box'

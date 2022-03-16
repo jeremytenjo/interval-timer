@@ -2,7 +2,7 @@ import React from 'react'
 
 import useTimer from '../../../../globalState/useTimer/useTimer'
 
-import TimerControlsUi from './TimerControlsUi'
+import TimerControlsUi from './TimerControlsUi/TimerControlsUi'
 
 export default function TimerControls() {
   const timer = useTimer()

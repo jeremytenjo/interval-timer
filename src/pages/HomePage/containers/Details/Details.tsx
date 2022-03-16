@@ -2,7 +2,7 @@ import React from 'react'
 
 import useTimer from '../../../../globalState/useTimer/useTimer'
 
-import DetailsUi from './DetailsUi'
+import DetailsUi from './DetailsUi/DetailsUi'
 
 export default function Details() {
   const timer = useTimer()

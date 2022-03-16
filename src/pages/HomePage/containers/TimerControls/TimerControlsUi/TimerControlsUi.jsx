@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Button from '../../../../../lib/components/Button'
 import BottomBar from '../../../../../lib/components/BottomBar'
 
